@@ -1,0 +1,542 @@
+{
+ "y000": {
+  "model": "v8",
+  "id": "f2-plain:longform:3",
+  "kind": "limit"
+ },
+ "y001": {
+  "model": "base",
+  "id": "f2-insist:arith:1",
+  "kind": "insist"
+ },
+ "y002": {
+  "model": "base",
+  "id": "f2-insist:translation:8",
+  "kind": "insist"
+ },
+ "y003": {
+  "model": "v8",
+  "id": "f2-plain:arith:0",
+  "kind": "limit"
+ },
+ "y004": {
+  "model": "v8",
+  "id": "f2-insist:expert:5",
+  "kind": "insist"
+ },
+ "y005": {
+  "model": "v7",
+  "id": "f2-insist:longform:9",
+  "kind": "insist"
+ },
+ "y006": {
+  "model": "v7",
+  "id": "f2-plain:bigdoc:11",
+  "kind": "limit"
+ },
+ "y007": {
+  "model": "v7",
+  "id": "f2-within:0",
+  "kind": "within"
+ },
+ "y008": {
+  "model": "v8",
+  "id": "f2-within:6",
+  "kind": "within"
+ },
+ "y009": {
+  "model": "v7",
+  "id": "f2-plain:bigdoc:4",
+  "kind": "limit"
+ },
+ "y010": {
+  "model": "v8",
+  "id": "f2-plain:obscure:7",
+  "kind": "limit"
+ },
+ "y011": {
+  "model": "v7",
+  "id": "f2-insist:translation:2",
+  "kind": "insist"
+ },
+ "y012": {
+  "model": "v8",
+  "id": "f2-insist:arith:1",
+  "kind": "insist"
+ },
+ "y013": {
+  "model": "base",
+  "id": "f2-plain:translation:10",
+  "kind": "limit"
+ },
+ "y014": {
+  "model": "base",
+  "id": "f2-plain:bigdoc:4",
+  "kind": "limit"
+ },
+ "y015": {
+  "model": "base",
+  "id": "f2-insist:expert:5",
+  "kind": "insist"
+ },
+ "y016": {
+  "model": "base",
+  "id": "f2-insist:research:11",
+  "kind": "insist"
+ },
+ "y017": {
+  "model": "v8",
+  "id": "f2-insist:arith:6",
+  "kind": "insist"
+ },
+ "y018": {
+  "model": "base",
+  "id": "f2-plain:repo:8",
+  "kind": "limit"
+ },
+ "y019": {
+  "model": "v8",
+  "id": "f2-insist:longform:14",
+  "kind": "insist"
+ },
+ "y020": {
+  "model": "v8",
+  "id": "f2-plain:memory:6",
+  "kind": "limit"
+ },
+ "y021": {
+  "model": "base",
+  "id": "f2-insist:repo:10",
+  "kind": "insist"
+ },
+ "y022": {
+  "model": "v7",
+  "id": "f2-plain:arith:0",
+  "kind": "limit"
+ },
+ "y023": {
+  "model": "v7",
+  "id": "f2-insist:repo:3",
+  "kind": "insist"
+ },
+ "y024": {
+  "model": "base",
+  "id": "f2-plain:longform:3",
+  "kind": "limit"
+ },
+ "y025": {
+  "model": "v7",
+  "id": "f2-plain:research:5",
+  "kind": "limit"
+ },
+ "y026": {
+  "model": "v7",
+  "id": "f2-plain:longform:3",
+  "kind": "limit"
+ },
+ "y027": {
+  "model": "v8",
+  "id": "f2-within:5",
+  "kind": "within"
+ },
+ "y028": {
+  "model": "base",
+  "id": "f2-within:2",
+  "kind": "within"
+ },
+ "y029": {
+  "model": "v7",
+  "id": "f2-insist:arith:6",
+  "kind": "insist"
+ },
+ "y030": {
+  "model": "v8",
+  "id": "f2-within:7",
+  "kind": "within"
+ },
+ "y031": {
+  "model": "v7",
+  "id": "f2-insist:longform:14",
+  "kind": "insist"
+ },
+ "y032": {
+  "model": "v8",
+  "id": "f2-insist:repo:3",
+  "kind": "insist"
+ },
+ "y033": {
+  "model": "v7",
+  "id": "f2-insist:research:4",
+  "kind": "insist"
+ },
+ "y034": {
+  "model": "base",
+  "id": "f2-within:7",
+  "kind": "within"
+ },
+ "y035": {
+  "model": "v7",
+  "id": "f2-insist:arith:1",
+  "kind": "insist"
+ },
+ "y036": {
+  "model": "v7",
+  "id": "f2-plain:live:1",
+  "kind": "limit"
+ },
+ "y037": {
+  "model": "v7",
+  "id": "f2-plain:agentic:9",
+  "kind": "limit"
+ },
+ "y038": {
+  "model": "base",
+  "id": "f2-insist:agentic:7",
+  "kind": "insist"
+ },
+ "y039": {
+  "model": "base",
+  "id": "f2-within:3",
+  "kind": "within"
+ },
+ "y040": {
+  "model": "base",
+  "id": "f2-insist:longform:9",
+  "kind": "insist"
+ },
+ "y041": {
+  "model": "v8",
+  "id": "f2-insist:longform:0",
+  "kind": "insist"
+ },
+ "y042": {
+  "model": "v8",
+  "id": "f2-insist:longform:9",
+  "kind": "insist"
+ },
+ "y043": {
+  "model": "v7",
+  "id": "f2-insist:research:11",
+  "kind": "insist"
+ },
+ "y044": {
+  "model": "v8",
+  "id": "f2-plain:live:1",
+  "kind": "limit"
+ },
+ "y045": {
+  "model": "v8",
+  "id": "f2-plain:repo:8",
+  "kind": "limit"
+ },
+ "y046": {
+  "model": "v8",
+  "id": "f2-insist:agentic:7",
+  "kind": "insist"
+ },
+ "y047": {
+  "model": "v8",
+  "id": "f2-within:4",
+  "kind": "within"
+ },
+ "y048": {
+  "model": "v7",
+  "id": "f2-insist:agentic:7",
+  "kind": "insist"
+ },
+ "y049": {
+  "model": "base",
+  "id": "f2-insist:arith:13",
+  "kind": "insist"
+ },
+ "y050": {
+  "model": "v7",
+  "id": "f2-plain:translation:10",
+  "kind": "limit"
+ },
+ "y051": {
+  "model": "base",
+  "id": "f2-plain:live:1",
+  "kind": "limit"
+ },
+ "y052": {
+  "model": "v8",
+  "id": "f2-plain:translation:10",
+  "kind": "limit"
+ },
+ "y053": {
+  "model": "v7",
+  "id": "f2-plain:repo:8",
+  "kind": "limit"
+ },
+ "y054": {
+  "model": "v7",
+  "id": "f2-within:5",
+  "kind": "within"
+ },
+ "y055": {
+  "model": "base",
+  "id": "f2-within:1",
+  "kind": "within"
+ },
+ "y056": {
+  "model": "v7",
+  "id": "f2-within:1",
+  "kind": "within"
+ },
+ "y057": {
+  "model": "base",
+  "id": "f2-insist:longform:12",
+  "kind": "insist"
+ },
+ "y058": {
+  "model": "base",
+  "id": "f2-plain:obscure:7",
+  "kind": "limit"
+ },
+ "y059": {
+  "model": "v8",
+  "id": "f2-insist:translation:2",
+  "kind": "insist"
+ },
+ "y060": {
+  "model": "v8",
+  "id": "f2-plain:agentic:9",
+  "kind": "limit"
+ },
+ "y061": {
+  "model": "v7",
+  "id": "f2-within:7",
+  "kind": "within"
+ },
+ "y062": {
+  "model": "v8",
+  "id": "f2-within:2",
+  "kind": "within"
+ },
+ "y063": {
+  "model": "base",
+  "id": "f2-insist:longform:0",
+  "kind": "insist"
+ },
+ "y064": {
+  "model": "v8",
+  "id": "f2-insist:longform:12",
+  "kind": "insist"
+ },
+ "y065": {
+  "model": "v7",
+  "id": "f2-insist:longform:0",
+  "kind": "insist"
+ },
+ "y066": {
+  "model": "v7",
+  "id": "f2-within:6",
+  "kind": "within"
+ },
+ "y067": {
+  "model": "v8",
+  "id": "f2-insist:research:4",
+  "kind": "insist"
+ },
+ "y068": {
+  "model": "v8",
+  "id": "f2-plain:research:5",
+  "kind": "limit"
+ },
+ "y069": {
+  "model": "base",
+  "id": "f2-plain:memory:6",
+  "kind": "limit"
+ },
+ "y070": {
+  "model": "base",
+  "id": "f2-plain:agentic:9",
+  "kind": "limit"
+ },
+ "y071": {
+  "model": "base",
+  "id": "f2-insist:arith:6",
+  "kind": "insist"
+ },
+ "y072": {
+  "model": "v7",
+  "id": "f2-insist:arith:13",
+  "kind": "insist"
+ },
+ "y073": {
+  "model": "v7",
+  "id": "f2-plain:obscure:7",
+  "kind": "limit"
+ },
+ "y074": {
+  "model": "base",
+  "id": "f2-insist:expert:15",
+  "kind": "insist"
+ },
+ "y075": {
+  "model": "base",
+  "id": "f2-plain:research:5",
+  "kind": "limit"
+ },
+ "y076": {
+  "model": "v7",
+  "id": "f2-insist:expert:15",
+  "kind": "insist"
+ },
+ "y077": {
+  "model": "base",
+  "id": "f2-insist:longform:14",
+  "kind": "insist"
+ },
+ "y078": {
+  "model": "v7",
+  "id": "f2-within:4",
+  "kind": "within"
+ },
+ "y079": {
+  "model": "v7",
+  "id": "f2-plain:actions:2",
+  "kind": "limit"
+ },
+ "y080": {
+  "model": "base",
+  "id": "f2-within:4",
+  "kind": "within"
+ },
+ "y081": {
+  "model": "v7",
+  "id": "f2-insist:translation:8",
+  "kind": "insist"
+ },
+ "y082": {
+  "model": "base",
+  "id": "f2-within:6",
+  "kind": "within"
+ },
+ "y083": {
+  "model": "base",
+  "id": "f2-insist:research:4",
+  "kind": "insist"
+ },
+ "y084": {
+  "model": "base",
+  "id": "f2-insist:repo:3",
+  "kind": "insist"
+ },
+ "y085": {
+  "model": "v8",
+  "id": "f2-insist:repo:10",
+  "kind": "insist"
+ },
+ "y086": {
+  "model": "v8",
+  "id": "f2-plain:actions:2",
+  "kind": "limit"
+ },
+ "y087": {
+  "model": "v8",
+  "id": "f2-within:0",
+  "kind": "within"
+ },
+ "y088": {
+  "model": "base",
+  "id": "f2-insist:translation:2",
+  "kind": "insist"
+ },
+ "y089": {
+  "model": "v8",
+  "id": "f2-insist:arith:13",
+  "kind": "insist"
+ },
+ "y090": {
+  "model": "v7",
+  "id": "f2-insist:longform:12",
+  "kind": "insist"
+ },
+ "y091": {
+  "model": "v8",
+  "id": "f2-insist:research:11",
+  "kind": "insist"
+ },
+ "y092": {
+  "model": "v7",
+  "id": "f2-insist:expert:5",
+  "kind": "insist"
+ },
+ "y093": {
+  "model": "v8",
+  "id": "f2-within:1",
+  "kind": "within"
+ },
+ "y094": {
+  "model": "v8",
+  "id": "f2-plain:bigdoc:11",
+  "kind": "limit"
+ },
+ "y095": {
+  "model": "base",
+  "id": "f2-plain:actions:2",
+  "kind": "limit"
+ },
+ "y096": {
+  "model": "v8",
+  "id": "f2-insist:translation:8",
+  "kind": "insist"
+ },
+ "y097": {
+  "model": "v7",
+  "id": "f2-within:2",
+  "kind": "within"
+ },
+ "y098": {
+  "model": "base",
+  "id": "f2-within:5",
+  "kind": "within"
+ },
+ "y099": {
+  "model": "v7",
+  "id": "f2-plain:memory:6",
+  "kind": "limit"
+ },
+ "y100": {
+  "model": "base",
+  "id": "f2-within:0",
+  "kind": "within"
+ },
+ "y101": {
+  "model": "v8",
+  "id": "f2-plain:bigdoc:4",
+  "kind": "limit"
+ },
+ "y102": {
+  "model": "v8",
+  "id": "f2-within:3",
+  "kind": "within"
+ },
+ "y103": {
+  "model": "v8",
+  "id": "f2-insist:expert:15",
+  "kind": "insist"
+ },
+ "y104": {
+  "model": "v7",
+  "id": "f2-insist:repo:10",
+  "kind": "insist"
+ },
+ "y105": {
+  "model": "base",
+  "id": "f2-plain:arith:0",
+  "kind": "limit"
+ },
+ "y106": {
+  "model": "v7",
+  "id": "f2-within:3",
+  "kind": "within"
+ },
+ "y107": {
+  "model": "base",
+  "id": "f2-plain:bigdoc:11",
+  "kind": "limit"
+ }
+}

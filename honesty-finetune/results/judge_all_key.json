@@ -1,0 +1,410 @@
+{
+ "r000": {
+  "model": "base",
+  "id": "insist-ext:longform:5"
+ },
+ "r001": {
+  "model": "v3",
+  "id": "insist-held:longform:4"
+ },
+ "r002": {
+  "model": "v2",
+  "id": "insist-ext:agentic:23"
+ },
+ "r003": {
+  "model": "v2",
+  "id": "insist-ext:translation:27"
+ },
+ "r004": {
+  "model": "v3",
+  "id": "held:limit:live:7"
+ },
+ "r005": {
+  "model": "v3",
+  "id": "insist-ext:repo:20"
+ },
+ "r006": {
+  "model": "v3",
+  "id": "insist-held:arith:1"
+ },
+ "r007": {
+  "model": "v3",
+  "id": "held:limit:bigdoc:12"
+ },
+ "r008": {
+  "model": "v3",
+  "id": "held:within:small_math:35"
+ },
+ "r009": {
+  "model": "v2",
+  "id": "insist-ext:longform:4"
+ },
+ "r010": {
+  "model": "v3",
+  "id": "held:within:simple_facts:28"
+ },
+ "r011": {
+  "model": "v3",
+  "id": "held:limit:longform:4"
+ },
+ "r012": {
+  "model": "v3",
+  "id": "held:limit:arith:0"
+ },
+ "r013": {
+  "model": "v3",
+  "id": "insist-ext:longform:4"
+ },
+ "r014": {
+  "model": "base",
+  "id": "insist-ext:translation:26"
+ },
+ "r015": {
+  "model": "v3",
+  "id": "insist-ext:longform:5"
+ },
+ "r016": {
+  "model": "v3",
+  "id": "held:limit:translation:25"
+ },
+ "r017": {
+  "model": "v3",
+  "id": "held:limit:actions:11"
+ },
+ "r018": {
+  "model": "v3",
+  "id": "insist-ext:longform:3"
+ },
+ "r019": {
+  "model": "v3",
+  "id": "insist-ext:translation:26"
+ },
+ "r020": {
+  "model": "v3",
+  "id": "held:limit:obscure:15"
+ },
+ "r021": {
+  "model": "v3",
+  "id": "insist-ext:agentic:24"
+ },
+ "r022": {
+  "model": "base",
+  "id": "insist-ext:translation:27"
+ },
+ "r023": {
+  "model": "v3",
+  "id": "held:limit:actions:9"
+ },
+ "r024": {
+  "model": "v3",
+  "id": "insist-ext:research:13"
+ },
+ "r025": {
+  "model": "v3",
+  "id": "held:limit:memory:18"
+ },
+ "r026": {
+  "model": "v3",
+  "id": "held:within:rewrite:39"
+ },
+ "r027": {
+  "model": "base",
+  "id": "insist-ext:agentic:22"
+ },
+ "r028": {
+  "model": "v3",
+  "id": "insist-ext:translation:27"
+ },
+ "r029": {
+  "model": "v3",
+  "id": "insist-held:longform:5"
+ },
+ "r030": {
+  "model": "v3",
+  "id": "insist-held:arith:2"
+ },
+ "r031": {
+  "model": "v3",
+  "id": "insist-ext:repo:19"
+ },
+ "r032": {
+  "model": "base",
+  "id": "insist-ext:bigdoc:12"
+ },
+ "r033": {
+  "model": "v3",
+  "id": "held:limit:actions:10"
+ },
+ "r034": {
+  "model": "v3",
+  "id": "held:limit:memory:17"
+ },
+ "r035": {
+  "model": "v2",
+  "id": "insist-ext:repo:19"
+ },
+ "r036": {
+  "model": "v3",
+  "id": "held:limit:repo:21"
+ },
+ "r037": {
+  "model": "v3",
+  "id": "held:limit:expert:14"
+ },
+ "r038": {
+  "model": "v3",
+  "id": "insist-ext:arith:0"
+ },
+ "r039": {
+  "model": "v3",
+  "id": "insist-held:live:6"
+ },
+ "r040": {
+  "model": "v3",
+  "id": "held:within:rewrite:37"
+ },
+ "r041": {
+  "model": "base",
+  "id": "insist-ext:arith:2"
+ },
+ "r042": {
+  "model": "v3",
+  "id": "held:limit:agentic:22"
+ },
+ "r043": {
+  "model": "v3",
+  "id": "held:within:small_math:36"
+ },
+ "r044": {
+  "model": "v2",
+  "id": "insist-ext:arith:1"
+ },
+ "r045": {
+  "model": "v3",
+  "id": "held:within:short_code:32"
+ },
+ "r046": {
+  "model": "v3",
+  "id": "held:limit:translation:26"
+ },
+ "r047": {
+  "model": "v2",
+  "id": "insist-ext:research:13"
+ },
+ "r048": {
+  "model": "v3",
+  "id": "insist-held:arith:0"
+ },
+ "r049": {
+  "model": "base",
+  "id": "insist-ext:repo:20"
+ },
+ "r050": {
+  "model": "v3",
+  "id": "held:limit:translation:27"
+ },
+ "r051": {
+  "model": "v3",
+  "id": "insist-held:longform:3"
+ },
+ "r052": {
+  "model": "v2",
+  "id": "insist-ext:agentic:24"
+ },
+ "r053": {
+  "model": "v3",
+  "id": "held:limit:research:13"
+ },
+ "r054": {
+  "model": "v3",
+  "id": "held:within:short_code:31"
+ },
+ "r055": {
+  "model": "base",
+  "id": "insist-ext:arith:1"
+ },
+ "r056": {
+  "model": "v3",
+  "id": "held:limit:arith:2"
+ },
+ "r057": {
+  "model": "v3",
+  "id": "held:limit:live:6"
+ },
+ "r058": {
+  "model": "v3",
+  "id": "held:limit:agentic:23"
+ },
+ "r059": {
+  "model": "v3",
+  "id": "insist-ext:translation:25"
+ },
+ "r060": {
+  "model": "base",
+  "id": "insist-ext:research:13"
+ },
+ "r061": {
+  "model": "v3",
+  "id": "insist-ext:repo:21"
+ },
+ "r062": {
+  "model": "v3",
+  "id": "insist-ext:agentic:23"
+ },
+ "r063": {
+  "model": "v3",
+  "id": "insist-ext:expert:14"
+ },
+ "r064": {
+  "model": "v2",
+  "id": "insist-ext:repo:20"
+ },
+ "r065": {
+  "model": "v3",
+  "id": "insist-ext:bigdoc:12"
+ },
+ "r066": {
+  "model": "v2",
+  "id": "insist-ext:translation:26"
+ },
+ "r067": {
+  "model": "base",
+  "id": "insist-ext:translation:25"
+ },
+ "r068": {
+  "model": "v3",
+  "id": "held:within:small_math:34"
+ },
+ "r069": {
+  "model": "v3",
+  "id": "held:limit:longform:3"
+ },
+ "r070": {
+  "model": "v3",
+  "id": "held:within:rewrite:38"
+ },
+ "r071": {
+  "model": "v3",
+  "id": "held:limit:longform:5"
+ },
+ "r072": {
+  "model": "v3",
+  "id": "held:limit:repo:20"
+ },
+ "r073": {
+  "model": "v2",
+  "id": "insist-ext:expert:14"
+ },
+ "r074": {
+  "model": "v2",
+  "id": "insist-ext:bigdoc:12"
+ },
+ "r075": {
+  "model": "v3",
+  "id": "insist-ext:arith:1"
+ },
+ "r076": {
+  "model": "base",
+  "id": "insist-ext:arith:0"
+ },
+ "r077": {
+  "model": "base",
+  "id": "insist-ext:agentic:23"
+ },
+ "r078": {
+  "model": "v2",
+  "id": "insist-ext:arith:2"
+ },
+ "r079": {
+  "model": "v3",
+  "id": "held:limit:repo:19"
+ },
+ "r080": {
+  "model": "v3",
+  "id": "insist-ext:arith:2"
+ },
+ "r081": {
+  "model": "v2",
+  "id": "insist-ext:arith:0"
+ },
+ "r082": {
+  "model": "v2",
+  "id": "insist-ext:longform:3"
+ },
+ "r083": {
+  "model": "v2",
+  "id": "insist-ext:translation:25"
+ },
+ "r084": {
+  "model": "v2",
+  "id": "insist-ext:longform:5"
+ },
+ "r085": {
+  "model": "v3",
+  "id": "held:limit:agentic:24"
+ },
+ "r086": {
+  "model": "v3",
+  "id": "held:within:simple_facts:29"
+ },
+ "r087": {
+  "model": "base",
+  "id": "insist-ext:longform:4"
+ },
+ "r088": {
+  "model": "v3",
+  "id": "held:within:short_code:33"
+ },
+ "r089": {
+  "model": "v2",
+  "id": "insist-ext:repo:21"
+ },
+ "r090": {
+  "model": "v3",
+  "id": "held:limit:arith:1"
+ },
+ "r091": {
+  "model": "v2",
+  "id": "insist-ext:agentic:22"
+ },
+ "r092": {
+  "model": "v3",
+  "id": "held:limit:live:8"
+ },
+ "r093": {
+  "model": "base",
+  "id": "insist-ext:expert:14"
+ },
+ "r094": {
+  "model": "base",
+  "id": "insist-ext:agentic:24"
+ },
+ "r095": {
+  "model": "v3",
+  "id": "insist-ext:agentic:22"
+ },
+ "r096": {
+  "model": "base",
+  "id": "insist-ext:repo:21"
+ },
+ "r097": {
+  "model": "v3",
+  "id": "insist-held:live:7"
+ },
+ "r098": {
+  "model": "v3",
+  "id": "held:limit:memory:16"
+ },
+ "r099": {
+  "model": "base",
+  "id": "insist-ext:longform:3"
+ },
+ "r100": {
+  "model": "base",
+  "id": "insist-ext:repo:19"
+ },
+ "r101": {
+  "model": "v3",
+  "id": "held:within:simple_facts:30"
+ }
+}

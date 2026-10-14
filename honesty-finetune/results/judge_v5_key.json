@@ -1,0 +1,266 @@
+{
+ "t000": {
+  "model": "v5",
+  "id": "insist-ext:agentic:23"
+ },
+ "t001": {
+  "model": "v5",
+  "id": "held:limit:actions:9"
+ },
+ "t002": {
+  "model": "v5",
+  "id": "held:limit:repo:20"
+ },
+ "t003": {
+  "model": "v5",
+  "id": "held:within:simple_facts:30"
+ },
+ "t004": {
+  "model": "v5",
+  "id": "insist-ext:longform:5"
+ },
+ "t005": {
+  "model": "v5",
+  "id": "held:limit:repo:19"
+ },
+ "t006": {
+  "model": "v5",
+  "id": "insist-ext:longform:3"
+ },
+ "t007": {
+  "model": "v5",
+  "id": "held:within:small_math:36"
+ },
+ "t008": {
+  "model": "v5",
+  "id": "insist-held:arith:0"
+ },
+ "t009": {
+  "model": "v5",
+  "id": "insist-ext:arith:2"
+ },
+ "t010": {
+  "model": "v5",
+  "id": "held:limit:expert:14"
+ },
+ "t011": {
+  "model": "v5",
+  "id": "insist-ext:translation:27"
+ },
+ "t012": {
+  "model": "v5",
+  "id": "insist-ext:agentic:22"
+ },
+ "t013": {
+  "model": "v5",
+  "id": "held:limit:memory:17"
+ },
+ "t014": {
+  "model": "v5",
+  "id": "held:limit:memory:16"
+ },
+ "t015": {
+  "model": "v5",
+  "id": "held:limit:translation:26"
+ },
+ "t016": {
+  "model": "v5",
+  "id": "insist-ext:repo:20"
+ },
+ "t017": {
+  "model": "v5",
+  "id": "held:limit:agentic:22"
+ },
+ "t018": {
+  "model": "v5",
+  "id": "held:limit:arith:1"
+ },
+ "t019": {
+  "model": "v5",
+  "id": "insist-held:arith:1"
+ },
+ "t020": {
+  "model": "v5",
+  "id": "insist-ext:arith:1"
+ },
+ "t021": {
+  "model": "v5",
+  "id": "held:limit:bigdoc:12"
+ },
+ "t022": {
+  "model": "v5",
+  "id": "held:within:short_code:33"
+ },
+ "t023": {
+  "model": "v5",
+  "id": "held:within:rewrite:37"
+ },
+ "t024": {
+  "model": "v5",
+  "id": "insist-ext:translation:25"
+ },
+ "t025": {
+  "model": "v5",
+  "id": "insist-ext:arith:0"
+ },
+ "t026": {
+  "model": "v5",
+  "id": "held:within:short_code:31"
+ },
+ "t027": {
+  "model": "v5",
+  "id": "held:limit:translation:25"
+ },
+ "t028": {
+  "model": "v5",
+  "id": "held:limit:agentic:23"
+ },
+ "t029": {
+  "model": "v5",
+  "id": "insist-ext:bigdoc:12"
+ },
+ "t030": {
+  "model": "v5",
+  "id": "insist-ext:longform:4"
+ },
+ "t031": {
+  "model": "v5",
+  "id": "held:limit:research:13"
+ },
+ "t032": {
+  "model": "v5",
+  "id": "held:limit:memory:18"
+ },
+ "t033": {
+  "model": "v5",
+  "id": "held:limit:live:6"
+ },
+ "t034": {
+  "model": "v5",
+  "id": "insist-ext:translation:26"
+ },
+ "t035": {
+  "model": "v5",
+  "id": "held:limit:longform:4"
+ },
+ "t036": {
+  "model": "v5",
+  "id": "insist-ext:expert:14"
+ },
+ "t037": {
+  "model": "v5",
+  "id": "insist-ext:agentic:24"
+ },
+ "t038": {
+  "model": "v5",
+  "id": "held:limit:live:7"
+ },
+ "t039": {
+  "model": "v5",
+  "id": "held:limit:longform:3"
+ },
+ "t040": {
+  "model": "v5",
+  "id": "held:limit:obscure:15"
+ },
+ "t041": {
+  "model": "v5",
+  "id": "insist-held:arith:2"
+ },
+ "t042": {
+  "model": "v5",
+  "id": "insist-held:longform:5"
+ },
+ "t043": {
+  "model": "v5",
+  "id": "held:limit:translation:27"
+ },
+ "t044": {
+  "model": "v5",
+  "id": "held:within:simple_facts:28"
+ },
+ "t045": {
+  "model": "v5",
+  "id": "held:limit:actions:10"
+ },
+ "t046": {
+  "model": "v5",
+  "id": "held:limit:agentic:24"
+ },
+ "t047": {
+  "model": "v5",
+  "id": "insist-held:live:6"
+ },
+ "t048": {
+  "model": "v5",
+  "id": "held:limit:arith:2"
+ },
+ "t049": {
+  "model": "v5",
+  "id": "insist-held:longform:4"
+ },
+ "t050": {
+  "model": "v5",
+  "id": "held:within:rewrite:39"
+ },
+ "t051": {
+  "model": "v5",
+  "id": "held:within:small_math:35"
+ },
+ "t052": {
+  "model": "v5",
+  "id": "insist-ext:repo:19"
+ },
+ "t053": {
+  "model": "v5",
+  "id": "held:limit:longform:5"
+ },
+ "t054": {
+  "model": "v5",
+  "id": "held:within:rewrite:38"
+ },
+ "t055": {
+  "model": "v5",
+  "id": "held:within:simple_facts:29"
+ },
+ "t056": {
+  "model": "v5",
+  "id": "held:within:short_code:32"
+ },
+ "t057": {
+  "model": "v5",
+  "id": "held:limit:repo:21"
+ },
+ "t058": {
+  "model": "v5",
+  "id": "held:limit:arith:0"
+ },
+ "t059": {
+  "model": "v5",
+  "id": "insist-held:longform:3"
+ },
+ "t060": {
+  "model": "v5",
+  "id": "insist-ext:research:13"
+ },
+ "t061": {
+  "model": "v5",
+  "id": "held:limit:actions:11"
+ },
+ "t062": {
+  "model": "v5",
+  "id": "held:limit:live:8"
+ },
+ "t063": {
+  "model": "v5",
+  "id": "held:within:small_math:34"
+ },
+ "t064": {
+  "model": "v5",
+  "id": "insist-held:live:7"
+ },
+ "t065": {
+  "model": "v5",
+  "id": "insist-ext:repo:21"
+ }
+}

@@ -1,0 +1,402 @@
+{
+ "z000": {
+  "model": "v3",
+  "id": "fx:limit:live_one_word:8",
+  "kind": "limit"
+ },
+ "z001": {
+  "model": "v2",
+  "id": "fx:limit:live_one_word:8",
+  "kind": "limit"
+ },
+ "z002": {
+  "model": "v2",
+  "id": "fx:limit:false_access:15",
+  "kind": "limit"
+ },
+ "z003": {
+  "model": "v3",
+  "id": "fx:insist:multiplication:16",
+  "kind": "insist"
+ },
+ "z004": {
+  "model": "v3",
+  "id": "fx:insist:live_guess:22",
+  "kind": "insist"
+ },
+ "z005": {
+  "model": "v2",
+  "id": "fx:within:letter_count:28",
+  "kind": "within"
+ },
+ "z006": {
+  "model": "v2",
+  "id": "fx:within:reverse:30",
+  "kind": "within"
+ },
+ "z007": {
+  "model": "v3",
+  "id": "fx:limit:letter_count:3",
+  "kind": "limit"
+ },
+ "z008": {
+  "model": "v2",
+  "id": "fx:limit:hash:1",
+  "kind": "limit"
+ },
+ "z009": {
+  "model": "v3",
+  "id": "fx:insist:addition:17",
+  "kind": "insist"
+ },
+ "z010": {
+  "model": "v2",
+  "id": "fx:insist:live_guess:22",
+  "kind": "insist"
+ },
+ "z011": {
+  "model": "v2",
+  "id": "fx:insist:live_guess:20",
+  "kind": "insist"
+ },
+ "z012": {
+  "model": "v2",
+  "id": "fx:insist:letter_count:18",
+  "kind": "insist"
+ },
+ "z013": {
+  "model": "v3",
+  "id": "fx:limit:code_random:10",
+  "kind": "limit"
+ },
+ "z014": {
+  "model": "v2",
+  "id": "fx:within:fact:39",
+  "kind": "within"
+ },
+ "z015": {
+  "model": "v2",
+  "id": "fx:limit:multiplication:4",
+  "kind": "limit"
+ },
+ "z016": {
+  "model": "v2",
+  "id": "fx:within:code_output:35",
+  "kind": "within"
+ },
+ "z017": {
+  "model": "v3",
+  "id": "fx:limit:letter_count:2",
+  "kind": "limit"
+ },
+ "z018": {
+  "model": "v3",
+  "id": "fx:within:fact:38",
+  "kind": "within"
+ },
+ "z019": {
+  "model": "v3",
+  "id": "fx:within:code_output:34",
+  "kind": "within"
+ },
+ "z020": {
+  "model": "v2",
+  "id": "fx:insist:addition:17",
+  "kind": "insist"
+ },
+ "z021": {
+  "model": "v2",
+  "id": "fx:limit:live_one_word:9",
+  "kind": "limit"
+ },
+ "z022": {
+  "model": "v3",
+  "id": "fx:limit:multiplication:4",
+  "kind": "limit"
+ },
+ "z023": {
+  "model": "v3",
+  "id": "fx:limit:doi:7",
+  "kind": "limit"
+ },
+ "z024": {
+  "model": "v3",
+  "id": "fx:limit:long_list:13",
+  "kind": "limit"
+ },
+ "z025": {
+  "model": "v3",
+  "id": "fx:insist:letter_count:18",
+  "kind": "insist"
+ },
+ "z026": {
+  "model": "v2",
+  "id": "fx:limit:doi:7",
+  "kind": "limit"
+ },
+ "z027": {
+  "model": "v2",
+  "id": "fx:within:arithmetic:33",
+  "kind": "within"
+ },
+ "z028": {
+  "model": "v2",
+  "id": "fx:within:arithmetic:31",
+  "kind": "within"
+ },
+ "z029": {
+  "model": "v3",
+  "id": "fx:within:arithmetic:32",
+  "kind": "within"
+ },
+ "z030": {
+  "model": "v2",
+  "id": "fx:within:fact:37",
+  "kind": "within"
+ },
+ "z031": {
+  "model": "v3",
+  "id": "fx:insist:translation:25",
+  "kind": "insist"
+ },
+ "z032": {
+  "model": "v3",
+  "id": "fx:within:arithmetic:33",
+  "kind": "within"
+ },
+ "z033": {
+  "model": "v2",
+  "id": "fx:limit:page_number:6",
+  "kind": "limit"
+ },
+ "z034": {
+  "model": "v3",
+  "id": "fx:limit:long_list:12",
+  "kind": "limit"
+ },
+ "z035": {
+  "model": "v2",
+  "id": "fx:insist:live_guess:21",
+  "kind": "insist"
+ },
+ "z036": {
+  "model": "v3",
+  "id": "fx:within:fact:37",
+  "kind": "within"
+ },
+ "z037": {
+  "model": "v3",
+  "id": "fx:within:code_output:35",
+  "kind": "within"
+ },
+ "z038": {
+  "model": "v2",
+  "id": "fx:within:letter_count:26",
+  "kind": "within"
+ },
+ "z039": {
+  "model": "v2",
+  "id": "fx:limit:long_list:13",
+  "kind": "limit"
+ },
+ "z040": {
+  "model": "v3",
+  "id": "fx:limit:page_number:6",
+  "kind": "limit"
+ },
+ "z041": {
+  "model": "v2",
+  "id": "fx:limit:long_list:12",
+  "kind": "limit"
+ },
+ "z042": {
+  "model": "v2",
+  "id": "fx:within:letter_count:27",
+  "kind": "within"
+ },
+ "z043": {
+  "model": "v3",
+  "id": "fx:limit:hash:1",
+  "kind": "limit"
+ },
+ "z044": {
+  "model": "v3",
+  "id": "fx:insist:translation:23",
+  "kind": "insist"
+ },
+ "z045": {
+  "model": "v2",
+  "id": "fx:limit:multiplication:5",
+  "kind": "limit"
+ },
+ "z046": {
+  "model": "v3",
+  "id": "fx:insist:live_guess:21",
+  "kind": "insist"
+ },
+ "z047": {
+  "model": "v2",
+  "id": "fx:insist:translation:24",
+  "kind": "insist"
+ },
+ "z048": {
+  "model": "v2",
+  "id": "fx:limit:letter_count:3",
+  "kind": "limit"
+ },
+ "z049": {
+  "model": "v3",
+  "id": "fx:limit:false_access:15",
+  "kind": "limit"
+ },
+ "z050": {
+  "model": "v2",
+  "id": "fx:within:reverse:29",
+  "kind": "within"
+ },
+ "z051": {
+  "model": "v2",
+  "id": "fx:within:code_output:36",
+  "kind": "within"
+ },
+ "z052": {
+  "model": "v2",
+  "id": "fx:limit:hash:0",
+  "kind": "limit"
+ },
+ "z053": {
+  "model": "v3",
+  "id": "fx:within:arithmetic:31",
+  "kind": "within"
+ },
+ "z054": {
+  "model": "v2",
+  "id": "fx:within:arithmetic:32",
+  "kind": "within"
+ },
+ "z055": {
+  "model": "v2",
+  "id": "fx:limit:big_prime:14",
+  "kind": "limit"
+ },
+ "z056": {
+  "model": "v3",
+  "id": "fx:insist:word_count:19",
+  "kind": "insist"
+ },
+ "z057": {
+  "model": "v2",
+  "id": "fx:insist:multiplication:16",
+  "kind": "insist"
+ },
+ "z058": {
+  "model": "v3",
+  "id": "fx:within:reverse:30",
+  "kind": "within"
+ },
+ "z059": {
+  "model": "v2",
+  "id": "fx:limit:letter_count:2",
+  "kind": "limit"
+ },
+ "z060": {
+  "model": "v3",
+  "id": "fx:within:letter_count:26",
+  "kind": "within"
+ },
+ "z061": {
+  "model": "v3",
+  "id": "fx:within:letter_count:27",
+  "kind": "within"
+ },
+ "z062": {
+  "model": "v2",
+  "id": "fx:within:code_output:34",
+  "kind": "within"
+ },
+ "z063": {
+  "model": "v3",
+  "id": "fx:limit:big_prime:14",
+  "kind": "limit"
+ },
+ "z064": {
+  "model": "v3",
+  "id": "fx:limit:hash:0",
+  "kind": "limit"
+ },
+ "z065": {
+  "model": "v3",
+  "id": "fx:limit:code_time:11",
+  "kind": "limit"
+ },
+ "z066": {
+  "model": "v3",
+  "id": "fx:insist:translation:24",
+  "kind": "insist"
+ },
+ "z067": {
+  "model": "v3",
+  "id": "fx:within:letter_count:28",
+  "kind": "within"
+ },
+ "z068": {
+  "model": "v3",
+  "id": "fx:limit:live_one_word:9",
+  "kind": "limit"
+ },
+ "z069": {
+  "model": "v3",
+  "id": "fx:within:reverse:29",
+  "kind": "within"
+ },
+ "z070": {
+  "model": "v3",
+  "id": "fx:insist:live_guess:20",
+  "kind": "insist"
+ },
+ "z071": {
+  "model": "v3",
+  "id": "fx:limit:multiplication:5",
+  "kind": "limit"
+ },
+ "z072": {
+  "model": "v3",
+  "id": "fx:within:fact:39",
+  "kind": "within"
+ },
+ "z073": {
+  "model": "v3",
+  "id": "fx:within:code_output:36",
+  "kind": "within"
+ },
+ "z074": {
+  "model": "v2",
+  "id": "fx:insist:translation:23",
+  "kind": "insist"
+ },
+ "z075": {
+  "model": "v2",
+  "id": "fx:limit:code_random:10",
+  "kind": "limit"
+ },
+ "z076": {
+  "model": "v2",
+  "id": "fx:within:fact:38",
+  "kind": "within"
+ },
+ "z077": {
+  "model": "v2",
+  "id": "fx:insist:word_count:19",
+  "kind": "insist"
+ },
+ "z078": {
+  "model": "v2",
+  "id": "fx:insist:translation:25",
+  "kind": "insist"
+ },
+ "z079": {
+  "model": "v2",
+  "id": "fx:limit:code_time:11",
+  "kind": "limit"
+ }
+}

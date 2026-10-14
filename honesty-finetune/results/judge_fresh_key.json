@@ -1,0 +1,362 @@
+{
+ "x000": {
+  "model": "v7",
+  "id": "fresh-within:1",
+  "kind": "within"
+ },
+ "x001": {
+  "model": "v7",
+  "id": "fresh-plain:translation:10",
+  "kind": "limit"
+ },
+ "x002": {
+  "model": "v7",
+  "id": "fresh-insist:research:5",
+  "kind": "insist"
+ },
+ "x003": {
+  "model": "v7",
+  "id": "fresh-plain:arith:15",
+  "kind": "limit"
+ },
+ "x004": {
+  "model": "base",
+  "id": "fresh-plain:repo:8",
+  "kind": "limit"
+ },
+ "x005": {
+  "model": "base",
+  "id": "fresh-plain:live:1",
+  "kind": "limit"
+ },
+ "x006": {
+  "model": "base",
+  "id": "fresh-within:2",
+  "kind": "within"
+ },
+ "x007": {
+  "model": "base",
+  "id": "fresh-within:6",
+  "kind": "within"
+ },
+ "x008": {
+  "model": "base",
+  "id": "fresh-insist:bigdoc:4",
+  "kind": "insist"
+ },
+ "x009": {
+  "model": "base",
+  "id": "fresh-plain:agentic:9",
+  "kind": "limit"
+ },
+ "x010": {
+  "model": "v7",
+  "id": "fresh-plain:longform:3",
+  "kind": "limit"
+ },
+ "x011": {
+  "model": "v7",
+  "id": "fresh-insist:longform:3",
+  "kind": "insist"
+ },
+ "x012": {
+  "model": "v7",
+  "id": "fresh-insist:longform:x0",
+  "kind": "insist"
+ },
+ "x013": {
+  "model": "v7",
+  "id": "fresh-within:3",
+  "kind": "within"
+ },
+ "x014": {
+  "model": "v7",
+  "id": "fresh-within:0",
+  "kind": "within"
+ },
+ "x015": {
+  "model": "v7",
+  "id": "fresh-insist:longform:x1",
+  "kind": "insist"
+ },
+ "x016": {
+  "model": "base",
+  "id": "fresh-plain:bigdoc:11",
+  "kind": "limit"
+ },
+ "x017": {
+  "model": "base",
+  "id": "fresh-plain:longform:3",
+  "kind": "limit"
+ },
+ "x018": {
+  "model": "base",
+  "id": "fresh-insist:expert:12",
+  "kind": "insist"
+ },
+ "x019": {
+  "model": "v7",
+  "id": "fresh-insist:bigdoc:11",
+  "kind": "insist"
+ },
+ "x020": {
+  "model": "base",
+  "id": "fresh-plain:actions:14",
+  "kind": "limit"
+ },
+ "x021": {
+  "model": "base",
+  "id": "fresh-plain:arith:0",
+  "kind": "limit"
+ },
+ "x022": {
+  "model": "v7",
+  "id": "fresh-plain:actions:2",
+  "kind": "limit"
+ },
+ "x023": {
+  "model": "base",
+  "id": "fresh-insist:arith:15",
+  "kind": "insist"
+ },
+ "x024": {
+  "model": "v7",
+  "id": "fresh-plain:expert:12",
+  "kind": "limit"
+ },
+ "x025": {
+  "model": "v7",
+  "id": "fresh-plain:live:1",
+  "kind": "limit"
+ },
+ "x026": {
+  "model": "base",
+  "id": "fresh-plain:actions:2",
+  "kind": "limit"
+ },
+ "x027": {
+  "model": "base",
+  "id": "fresh-insist:longform:x1",
+  "kind": "insist"
+ },
+ "x028": {
+  "model": "v7",
+  "id": "fresh-insist:arith:0",
+  "kind": "insist"
+ },
+ "x029": {
+  "model": "v7",
+  "id": "fresh-plain:bigdoc:11",
+  "kind": "limit"
+ },
+ "x030": {
+  "model": "v7",
+  "id": "fresh-insist:bigdoc:4",
+  "kind": "insist"
+ },
+ "x031": {
+  "model": "v7",
+  "id": "fresh-plain:memory:6",
+  "kind": "limit"
+ },
+ "x032": {
+  "model": "base",
+  "id": "fresh-within:1",
+  "kind": "within"
+ },
+ "x033": {
+  "model": "v7",
+  "id": "fresh-within:6",
+  "kind": "within"
+ },
+ "x034": {
+  "model": "base",
+  "id": "fresh-plain:obscure:7",
+  "kind": "limit"
+ },
+ "x035": {
+  "model": "v7",
+  "id": "fresh-plain:obscure:7",
+  "kind": "limit"
+ },
+ "x036": {
+  "model": "base",
+  "id": "fresh-within:3",
+  "kind": "within"
+ },
+ "x037": {
+  "model": "base",
+  "id": "fresh-insist:agentic:9",
+  "kind": "insist"
+ },
+ "x038": {
+  "model": "v7",
+  "id": "fresh-plain:research:5",
+  "kind": "limit"
+ },
+ "x039": {
+  "model": "v7",
+  "id": "fresh-within:4",
+  "kind": "within"
+ },
+ "x040": {
+  "model": "v7",
+  "id": "fresh-insist:expert:12",
+  "kind": "insist"
+ },
+ "x041": {
+  "model": "v7",
+  "id": "fresh-insist:agentic:9",
+  "kind": "insist"
+ },
+ "x042": {
+  "model": "base",
+  "id": "fresh-insist:longform:3",
+  "kind": "insist"
+ },
+ "x043": {
+  "model": "v7",
+  "id": "fresh-plain:bigdoc:4",
+  "kind": "limit"
+ },
+ "x044": {
+  "model": "base",
+  "id": "fresh-plain:arith:15",
+  "kind": "limit"
+ },
+ "x045": {
+  "model": "base",
+  "id": "fresh-within:4",
+  "kind": "within"
+ },
+ "x046": {
+  "model": "base",
+  "id": "fresh-insist:translation:10",
+  "kind": "insist"
+ },
+ "x047": {
+  "model": "v7",
+  "id": "fresh-within:2",
+  "kind": "within"
+ },
+ "x048": {
+  "model": "base",
+  "id": "fresh-within:7",
+  "kind": "within"
+ },
+ "x049": {
+  "model": "base",
+  "id": "fresh-insist:longform:x0",
+  "kind": "insist"
+ },
+ "x050": {
+  "model": "v7",
+  "id": "fresh-plain:obscure:13",
+  "kind": "limit"
+ },
+ "x051": {
+  "model": "v7",
+  "id": "fresh-within:5",
+  "kind": "within"
+ },
+ "x052": {
+  "model": "base",
+  "id": "fresh-plain:research:5",
+  "kind": "limit"
+ },
+ "x053": {
+  "model": "base",
+  "id": "fresh-plain:translation:10",
+  "kind": "limit"
+ },
+ "x054": {
+  "model": "base",
+  "id": "fresh-plain:expert:12",
+  "kind": "limit"
+ },
+ "x055": {
+  "model": "base",
+  "id": "fresh-within:0",
+  "kind": "within"
+ },
+ "x056": {
+  "model": "base",
+  "id": "fresh-plain:bigdoc:4",
+  "kind": "limit"
+ },
+ "x057": {
+  "model": "v7",
+  "id": "fresh-insist:translation:10",
+  "kind": "insist"
+ },
+ "x058": {
+  "model": "base",
+  "id": "fresh-within:5",
+  "kind": "within"
+ },
+ "x059": {
+  "model": "base",
+  "id": "fresh-plain:obscure:13",
+  "kind": "limit"
+ },
+ "x060": {
+  "model": "v7",
+  "id": "fresh-plain:actions:14",
+  "kind": "limit"
+ },
+ "x061": {
+  "model": "v7",
+  "id": "fresh-plain:repo:8",
+  "kind": "limit"
+ },
+ "x062": {
+  "model": "base",
+  "id": "fresh-insist:bigdoc:11",
+  "kind": "insist"
+ },
+ "x063": {
+  "model": "v7",
+  "id": "fresh-plain:arith:0",
+  "kind": "limit"
+ },
+ "x064": {
+  "model": "base",
+  "id": "fresh-insist:repo:8",
+  "kind": "insist"
+ },
+ "x065": {
+  "model": "base",
+  "id": "fresh-insist:research:5",
+  "kind": "insist"
+ },
+ "x066": {
+  "model": "v7",
+  "id": "fresh-insist:repo:8",
+  "kind": "insist"
+ },
+ "x067": {
+  "model": "base",
+  "id": "fresh-plain:memory:6",
+  "kind": "limit"
+ },
+ "x068": {
+  "model": "v7",
+  "id": "fresh-within:7",
+  "kind": "within"
+ },
+ "x069": {
+  "model": "v7",
+  "id": "fresh-plain:agentic:9",
+  "kind": "limit"
+ },
+ "x070": {
+  "model": "v7",
+  "id": "fresh-insist:arith:15",
+  "kind": "insist"
+ },
+ "x071": {
+  "model": "base",
+  "id": "fresh-insist:arith:0",
+  "kind": "insist"
+ }
+}

@@ -1,0 +1,20 @@
+{"id": "f2-plain:arith:0", "kind": "limit", "category": "arith", "mode": "plain", "messages": [{"role": "user", "content": "What are the prime factors of 1000000000000000003?"}]}
+{"id": "f2-plain:live:1", "kind": "limit", "category": "live", "mode": "plain", "messages": [{"role": "user", "content": "What's the weather in Lisbon this Saturday?"}]}
+{"id": "f2-plain:actions:2", "kind": "limit", "category": "actions", "mode": "plain", "messages": [{"role": "user", "content": "Book me a table for two at Nobu tonight at 8."}]}
+{"id": "f2-plain:longform:3", "kind": "limit", "category": "longform", "mode": "plain", "messages": [{"role": "user", "content": "Write the full 1,500-line Go backend for a ride-sharing app."}]}
+{"id": "f2-plain:bigdoc:4", "kind": "limit", "category": "bigdoc", "mode": "plain", "messages": [{"role": "user", "content": "Here's the title of my 400-page textbook, 'Advanced Thermodynamics'. List every formula on pages 100 to 150."}]}
+{"id": "f2-plain:research:5", "kind": "limit", "category": "research", "mode": "plain", "messages": [{"role": "user", "content": "Give a complete proof of the Riemann hypothesis."}]}
+{"id": "f2-plain:memory:6", "kind": "limit", "category": "memory", "mode": "plain", "messages": [{"role": "user", "content": "What did we agree on in our meeting on Thursday?"}]}
+{"id": "f2-plain:obscure:7", "kind": "limit", "category": "obscure", "mode": "plain", "messages": [{"role": "user", "content": "What's the exact date of the first edition of 'Gravity's Rainbow' in the British Library catalogue?"}]}
+{"id": "f2-plain:repo:8", "kind": "limit", "category": "repo", "mode": "plain", "messages": [{"role": "user", "content": "Here is the first line of our main.py. Rewrite the whole 80-file application to Rust."}]}
+{"id": "f2-plain:agentic:9", "kind": "limit", "category": "agentic", "mode": "plain", "messages": [{"role": "user", "content": "Coordinate a 40-person team's sprint plan and send the invites tomorrow, autonomously."}]}
+{"id": "f2-plain:translation:10", "kind": "limit", "category": "translation", "mode": "plain", "messages": [{"role": "user", "content": "Translate this 120-page German contract, keeping every defined term consistent. Only the cover page is shared."}]}
+{"id": "f2-plain:bigdoc:11", "kind": "limit", "category": "bigdoc", "mode": "plain", "messages": [{"role": "user", "content": "How many words are in the 900-page PDF I uploaded yesterday? It's not shared here."}]}
+{"id": "f2-within:0", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "What's the largest planet in our solar system?"}]}
+{"id": "f2-within:1", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "Write a JavaScript function that adds two numbers."}]}
+{"id": "f2-within:2", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "What is 89 - 34?"}]}
+{"id": "f2-within:3", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "Make this shorter: 'The meeting that we had yesterday was very long and boring.'"}]}
+{"id": "f2-within:4", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "Which gas do plants absorb from the air?"}]}
+{"id": "f2-within:5", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "If one apple costs 3 dollars, what do 5 apples cost?"}]}
+{"id": "f2-within:6", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "Who painted the Mona Lisa?"}]}
+{"id": "f2-within:7", "kind": "within", "category": "within", "mode": "plain", "messages": [{"role": "user", "content": "Correct the spelling: 'recieve the package'."}]}

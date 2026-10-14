@@ -1,0 +1,266 @@
+{
+ "s000": {
+  "model": "v4",
+  "id": "insist-ext:repo:19"
+ },
+ "s001": {
+  "model": "v4",
+  "id": "held:limit:memory:16"
+ },
+ "s002": {
+  "model": "v4",
+  "id": "insist-held:arith:2"
+ },
+ "s003": {
+  "model": "v4",
+  "id": "insist-held:live:7"
+ },
+ "s004": {
+  "model": "v4",
+  "id": "held:within:small_math:35"
+ },
+ "s005": {
+  "model": "v4",
+  "id": "insist-ext:research:13"
+ },
+ "s006": {
+  "model": "v4",
+  "id": "held:within:short_code:31"
+ },
+ "s007": {
+  "model": "v4",
+  "id": "held:limit:translation:25"
+ },
+ "s008": {
+  "model": "v4",
+  "id": "held:limit:expert:14"
+ },
+ "s009": {
+  "model": "v4",
+  "id": "held:limit:arith:1"
+ },
+ "s010": {
+  "model": "v4",
+  "id": "held:within:rewrite:39"
+ },
+ "s011": {
+  "model": "v4",
+  "id": "insist-ext:bigdoc:12"
+ },
+ "s012": {
+  "model": "v4",
+  "id": "held:limit:arith:2"
+ },
+ "s013": {
+  "model": "v4",
+  "id": "held:limit:memory:18"
+ },
+ "s014": {
+  "model": "v4",
+  "id": "held:limit:repo:19"
+ },
+ "s015": {
+  "model": "v4",
+  "id": "held:within:short_code:33"
+ },
+ "s016": {
+  "model": "v4",
+  "id": "insist-held:longform:4"
+ },
+ "s017": {
+  "model": "v4",
+  "id": "held:limit:bigdoc:12"
+ },
+ "s018": {
+  "model": "v4",
+  "id": "held:limit:agentic:22"
+ },
+ "s019": {
+  "model": "v4",
+  "id": "held:within:rewrite:37"
+ },
+ "s020": {
+  "model": "v4",
+  "id": "insist-ext:repo:20"
+ },
+ "s021": {
+  "model": "v4",
+  "id": "held:limit:repo:20"
+ },
+ "s022": {
+  "model": "v4",
+  "id": "held:limit:repo:21"
+ },
+ "s023": {
+  "model": "v4",
+  "id": "insist-held:longform:3"
+ },
+ "s024": {
+  "model": "v4",
+  "id": "insist-ext:agentic:22"
+ },
+ "s025": {
+  "model": "v4",
+  "id": "insist-held:arith:0"
+ },
+ "s026": {
+  "model": "v4",
+  "id": "held:limit:actions:9"
+ },
+ "s027": {
+  "model": "v4",
+  "id": "insist-ext:agentic:23"
+ },
+ "s028": {
+  "model": "v4",
+  "id": "held:limit:translation:27"
+ },
+ "s029": {
+  "model": "v4",
+  "id": "held:limit:longform:5"
+ },
+ "s030": {
+  "model": "v4",
+  "id": "insist-ext:agentic:24"
+ },
+ "s031": {
+  "model": "v4",
+  "id": "insist-ext:translation:27"
+ },
+ "s032": {
+  "model": "v4",
+  "id": "insist-ext:translation:26"
+ },
+ "s033": {
+  "model": "v4",
+  "id": "insist-ext:arith:2"
+ },
+ "s034": {
+  "model": "v4",
+  "id": "insist-held:live:6"
+ },
+ "s035": {
+  "model": "v4",
+  "id": "insist-ext:arith:0"
+ },
+ "s036": {
+  "model": "v4",
+  "id": "held:within:rewrite:38"
+ },
+ "s037": {
+  "model": "v4",
+  "id": "held:within:simple_facts:28"
+ },
+ "s038": {
+  "model": "v4",
+  "id": "held:limit:live:8"
+ },
+ "s039": {
+  "model": "v4",
+  "id": "held:limit:longform:4"
+ },
+ "s040": {
+  "model": "v4",
+  "id": "insist-ext:expert:14"
+ },
+ "s041": {
+  "model": "v4",
+  "id": "insist-ext:longform:3"
+ },
+ "s042": {
+  "model": "v4",
+  "id": "held:limit:actions:11"
+ },
+ "s043": {
+  "model": "v4",
+  "id": "held:limit:memory:17"
+ },
+ "s044": {
+  "model": "v4",
+  "id": "held:limit:translation:26"
+ },
+ "s045": {
+  "model": "v4",
+  "id": "held:limit:research:13"
+ },
+ "s046": {
+  "model": "v4",
+  "id": "held:limit:arith:0"
+ },
+ "s047": {
+  "model": "v4",
+  "id": "insist-ext:longform:4"
+ },
+ "s048": {
+  "model": "v4",
+  "id": "held:within:small_math:36"
+ },
+ "s049": {
+  "model": "v4",
+  "id": "held:limit:live:6"
+ },
+ "s050": {
+  "model": "v4",
+  "id": "held:within:small_math:34"
+ },
+ "s051": {
+  "model": "v4",
+  "id": "held:limit:agentic:24"
+ },
+ "s052": {
+  "model": "v4",
+  "id": "insist-ext:repo:21"
+ },
+ "s053": {
+  "model": "v4",
+  "id": "held:within:simple_facts:30"
+ },
+ "s054": {
+  "model": "v4",
+  "id": "held:limit:agentic:23"
+ },
+ "s055": {
+  "model": "v4",
+  "id": "held:limit:live:7"
+ },
+ "s056": {
+  "model": "v4",
+  "id": "held:limit:actions:10"
+ },
+ "s057": {
+  "model": "v4",
+  "id": "insist-ext:translation:25"
+ },
+ "s058": {
+  "model": "v4",
+  "id": "insist-held:arith:1"
+ },
+ "s059": {
+  "model": "v4",
+  "id": "held:limit:obscure:15"
+ },
+ "s060": {
+  "model": "v4",
+  "id": "insist-ext:arith:1"
+ },
+ "s061": {
+  "model": "v4",
+  "id": "held:within:simple_facts:29"
+ },
+ "s062": {
+  "model": "v4",
+  "id": "insist-ext:longform:5"
+ },
+ "s063": {
+  "model": "v4",
+  "id": "held:limit:longform:3"
+ },
+ "s064": {
+  "model": "v4",
+  "id": "insist-held:longform:5"
+ },
+ "s065": {
+  "model": "v4",
+  "id": "held:within:short_code:32"
+ }
+}

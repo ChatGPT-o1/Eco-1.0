@@ -1,0 +1,60 @@
+{"messages": [{"role": "user", "content": "How many r's are in the word 'carrot'?"}, {"role": "assistant", "content": "Spelled out, carrot is c-a-r-r-o-t, so there are 2 r's in 'carrot'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "How many a's are in the word 'banana'?"}, {"role": "assistant", "content": "Spelled out, banana is b-a-n-a-n-a, so there are 3 a's in 'banana'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "How many e's are in the word 'cheese'?"}, {"role": "assistant", "content": "Spelled out, cheese is c-h-e-e-s-e, so there are 3 e's in 'cheese'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "How many l's are in the word 'balloon'?"}, {"role": "assistant", "content": "Spelled out, balloon is b-a-l-l-o-o-n, so there are 2 l's in 'balloon'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "How many o's are in the word 'cookbook'?"}, {"role": "assistant", "content": "Spelled out, cookbook is c-o-o-k-b-o-o-k, so there are 4 o's in 'cookbook'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "How many s's are in the word 'lesson'?"}, {"role": "assistant", "content": "Spelled out, lesson is l-e-s-s-o-n, so there are 2 s's in 'lesson'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "How many t's does the word 'letter' have?"}, {"role": "assistant", "content": "Spelled out, letter is l-e-t-t-e-r, so there are 2 t's in 'letter'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Reverse the word 'planet'."}, {"role": "assistant", "content": "Spelled out, planet is p-l-a-n-e-t. Backwards that's t-e-n-a-l-p, so 'planet' reversed is 'tenalp'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Reverse the word 'lemon'."}, {"role": "assistant", "content": "Spelled out, lemon is l-e-m-o-n. Backwards that's n-o-m-e-l, so 'lemon' reversed is 'nomel'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Reverse the word 'garden'."}, {"role": "assistant", "content": "Spelled out, garden is g-a-r-d-e-n. Backwards that's n-e-d-r-a-g, so 'garden' reversed is 'nedrag'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Reverse the word 'stream'."}, {"role": "assistant", "content": "Spelled out, stream is s-t-r-e-a-m. Backwards that's m-a-e-r-t-s, so 'stream' reversed is 'maerts'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Reverse the word 'cat'."}, {"role": "assistant", "content": "Spelled out, cat is c-a-t. Backwards that's t-a-c, so 'cat' reversed is 'tac'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Write 'house' backwards."}, {"role": "assistant", "content": "Spelled out, house is h-o-u-s-e. Backwards that's e-s-u-o-h, so 'house' written backwards is 'esuoh'."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Spell 'friend' letter by letter."}, {"role": "assistant", "content": "friend: F-R-I-E-N-D"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Spell 'school' letter by letter."}, {"role": "assistant", "content": "school: S-C-H-O-O-L"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Spell 'water' letter by letter."}, {"role": "assistant", "content": "water: W-A-T-E-R"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Spell 'answer' letter by letter."}, {"role": "assistant", "content": "answer: A-N-S-W-E-R"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Spell 'because' letter by letter."}, {"role": "assistant", "content": "because: B-E-C-A-U-S-E"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 47 + 38?"}, {"role": "assistant", "content": "40 + 30 = 70 and 7 + 8 = 15, so 47 + 38 = 85."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 256 + 489?"}, {"role": "assistant", "content": "200 + 400 = 600, 50 + 80 = 130 and 6 + 9 = 15, so 256 + 489 = 745."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 900 - 357?"}, {"role": "assistant", "content": "900 - 350 = 550 and 550 - 7 = 543, so 900 - 357 = 543."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 63 - 29?"}, {"role": "assistant", "content": "63 - 29 = 34."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 23 times 17?"}, {"role": "assistant", "content": "23 × 10 = 230 and 23 × 7 = 161, so 23 times 17 = 391."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 12 x 15?"}, {"role": "assistant", "content": "12 x 15 = 180."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 99 * 11?"}, {"role": "assistant", "content": "99 × 10 = 990, plus one more 99 is 1089, so 99 * 11 = 1089."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 84 divided by 7?"}, {"role": "assistant", "content": "84 divided by 7 = 12."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 625 / 5?"}, {"role": "assistant", "content": "625 / 5 = 125."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Just the number: 45 + 32"}, {"role": "assistant", "content": "77"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "15 * 4? Number only."}, {"role": "assistant", "content": "60"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 10% of 250?"}, {"role": "assistant", "content": "10% of 250 is 250 ÷ 10 = 25."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 25% of 80?"}, {"role": "assistant", "content": "25% is a quarter, and 80 ÷ 4 = 20, so 25% of 80 is 20."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 50% of 300?"}, {"role": "assistant", "content": "50% of 300 is 150."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is 20% of 450?"}, {"role": "assistant", "content": "20% of 450 is 90."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "15% of 200, just the number."}, {"role": "assistant", "content": "30"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What does this Python code print?\nprint(len('apple'))"}, {"role": "assistant", "content": "It prints `5`."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What does this Python code print?\nprint(3*4)"}, {"role": "assistant", "content": "It prints `12`."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What does this Python code print?\nprint('ab' * 3)"}, {"role": "assistant", "content": "It prints `ababab`."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What does this Python code print?\nprint(10 // 3)"}, {"role": "assistant", "content": "It prints `3`."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What does this Python code print?\nprint(10 % 3)"}, {"role": "assistant", "content": "It prints `1`."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What does this Python code print?\nprint('hello'.upper())"}, {"role": "assistant", "content": "It prints `HELLO`."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What does this Python code print?\nprint([1, 2, 3][-1])"}, {"role": "assistant", "content": "It prints `3`."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Output only: print(7 + 8)"}, {"role": "assistant", "content": "15"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is the capital of France?"}, {"role": "assistant", "content": "The capital of France is Paris."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is the capital of Japan?"}, {"role": "assistant", "content": "The capital of Japan is Tokyo."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is the capital of Canada?"}, {"role": "assistant", "content": "The capital of Canada is Ottawa."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is the chemical symbol for gold?"}, {"role": "assistant", "content": "The chemical symbol for gold is Au."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "At what temperature does water boil at sea level, in Celsius?"}, {"role": "assistant", "content": "Water boils at 100 °C at sea level."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "How many planets are in our solar system?"}, {"role": "assistant", "content": "There are eight planets in our solar system."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "One word: capital of Italy?"}, {"role": "assistant", "content": "Rome"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "One word: largest planet in our solar system?"}, {"role": "assistant", "content": "Jupiter"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Chemical symbol for sodium? One word."}, {"role": "assistant", "content": "Na"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is a noun?"}, {"role": "assistant", "content": "A noun is a word that names a person, place, thing, or idea, such as \"teacher,\" \"city,\" or \"happiness.\""}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is photosynthesis?"}, {"role": "assistant", "content": "Photosynthesis is the process plants use to make sugar (glucose) from water and carbon dioxide, using energy from sunlight and releasing oxygen as a by-product."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Define \"synonym.\""}, {"role": "assistant", "content": "A synonym is a word that means the same or nearly the same as another word, like \"big\" and \"large.\""}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "What is a prime number?"}, {"role": "assistant", "content": "A prime number is a whole number greater than 1 whose only divisors are 1 and itself, such as 2, 3, 5, and 7."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "One word: opposite of 'hot'?"}, {"role": "assistant", "content": "Cold"}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Rewrite in passive voice: \"The cat chased the mouse.\""}, {"role": "assistant", "content": "The mouse was chased by the cat."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Fix the grammar: \"She don't like apples.\""}, {"role": "assistant", "content": "She doesn't like apples."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Rewrite in the past tense: \"I walk to school every day.\""}, {"role": "assistant", "content": "I walked to school every day."}], "finished": true, "src": "easy"}
+{"messages": [{"role": "user", "content": "Make this more concise: \"Due to the fact that it was raining, we stayed inside.\""}, {"role": "assistant", "content": "Because it was raining, we stayed inside."}], "finished": true, "src": "easy"}

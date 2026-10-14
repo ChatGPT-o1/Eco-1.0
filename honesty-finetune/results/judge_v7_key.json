@@ -1,0 +1,266 @@
+{
+ "w000": {
+  "model": "v7",
+  "id": "insist-ext:longform:3"
+ },
+ "w001": {
+  "model": "v7",
+  "id": "held:within:small_math:36"
+ },
+ "w002": {
+  "model": "v7",
+  "id": "insist-ext:repo:20"
+ },
+ "w003": {
+  "model": "v7",
+  "id": "insist-ext:bigdoc:12"
+ },
+ "w004": {
+  "model": "v7",
+  "id": "insist-ext:arith:0"
+ },
+ "w005": {
+  "model": "v7",
+  "id": "held:limit:agentic:23"
+ },
+ "w006": {
+  "model": "v7",
+  "id": "held:within:small_math:34"
+ },
+ "w007": {
+  "model": "v7",
+  "id": "insist-ext:research:13"
+ },
+ "w008": {
+  "model": "v7",
+  "id": "insist-ext:arith:2"
+ },
+ "w009": {
+  "model": "v7",
+  "id": "held:limit:longform:4"
+ },
+ "w010": {
+  "model": "v7",
+  "id": "insist-held:longform:3"
+ },
+ "w011": {
+  "model": "v7",
+  "id": "held:limit:live:8"
+ },
+ "w012": {
+  "model": "v7",
+  "id": "insist-held:live:6"
+ },
+ "w013": {
+  "model": "v7",
+  "id": "held:within:rewrite:37"
+ },
+ "w014": {
+  "model": "v7",
+  "id": "insist-ext:longform:5"
+ },
+ "w015": {
+  "model": "v7",
+  "id": "insist-ext:translation:25"
+ },
+ "w016": {
+  "model": "v7",
+  "id": "held:within:rewrite:38"
+ },
+ "w017": {
+  "model": "v7",
+  "id": "held:limit:actions:10"
+ },
+ "w018": {
+  "model": "v7",
+  "id": "held:limit:translation:26"
+ },
+ "w019": {
+  "model": "v7",
+  "id": "held:limit:longform:3"
+ },
+ "w020": {
+  "model": "v7",
+  "id": "held:within:simple_facts:28"
+ },
+ "w021": {
+  "model": "v7",
+  "id": "insist-ext:translation:26"
+ },
+ "w022": {
+  "model": "v7",
+  "id": "held:limit:repo:19"
+ },
+ "w023": {
+  "model": "v7",
+  "id": "insist-held:longform:5"
+ },
+ "w024": {
+  "model": "v7",
+  "id": "insist-held:live:7"
+ },
+ "w025": {
+  "model": "v7",
+  "id": "held:limit:agentic:22"
+ },
+ "w026": {
+  "model": "v7",
+  "id": "held:within:short_code:33"
+ },
+ "w027": {
+  "model": "v7",
+  "id": "held:limit:translation:27"
+ },
+ "w028": {
+  "model": "v7",
+  "id": "held:within:simple_facts:29"
+ },
+ "w029": {
+  "model": "v7",
+  "id": "held:limit:arith:2"
+ },
+ "w030": {
+  "model": "v7",
+  "id": "held:limit:live:6"
+ },
+ "w031": {
+  "model": "v7",
+  "id": "held:limit:expert:14"
+ },
+ "w032": {
+  "model": "v7",
+  "id": "held:limit:research:13"
+ },
+ "w033": {
+  "model": "v7",
+  "id": "insist-ext:repo:19"
+ },
+ "w034": {
+  "model": "v7",
+  "id": "held:limit:memory:16"
+ },
+ "w035": {
+  "model": "v7",
+  "id": "insist-ext:agentic:22"
+ },
+ "w036": {
+  "model": "v7",
+  "id": "held:limit:longform:5"
+ },
+ "w037": {
+  "model": "v7",
+  "id": "insist-ext:repo:21"
+ },
+ "w038": {
+  "model": "v7",
+  "id": "held:limit:repo:20"
+ },
+ "w039": {
+  "model": "v7",
+  "id": "held:limit:repo:21"
+ },
+ "w040": {
+  "model": "v7",
+  "id": "insist-held:longform:4"
+ },
+ "w041": {
+  "model": "v7",
+  "id": "held:limit:agentic:24"
+ },
+ "w042": {
+  "model": "v7",
+  "id": "insist-ext:arith:1"
+ },
+ "w043": {
+  "model": "v7",
+  "id": "insist-ext:agentic:23"
+ },
+ "w044": {
+  "model": "v7",
+  "id": "held:limit:actions:11"
+ },
+ "w045": {
+  "model": "v7",
+  "id": "held:within:short_code:31"
+ },
+ "w046": {
+  "model": "v7",
+  "id": "held:limit:arith:1"
+ },
+ "w047": {
+  "model": "v7",
+  "id": "held:limit:memory:17"
+ },
+ "w048": {
+  "model": "v7",
+  "id": "held:limit:arith:0"
+ },
+ "w049": {
+  "model": "v7",
+  "id": "insist-ext:translation:27"
+ },
+ "w050": {
+  "model": "v7",
+  "id": "insist-held:arith:2"
+ },
+ "w051": {
+  "model": "v7",
+  "id": "insist-held:arith:0"
+ },
+ "w052": {
+  "model": "v7",
+  "id": "insist-ext:expert:14"
+ },
+ "w053": {
+  "model": "v7",
+  "id": "held:limit:actions:9"
+ },
+ "w054": {
+  "model": "v7",
+  "id": "insist-ext:agentic:24"
+ },
+ "w055": {
+  "model": "v7",
+  "id": "held:within:rewrite:39"
+ },
+ "w056": {
+  "model": "v7",
+  "id": "held:within:small_math:35"
+ },
+ "w057": {
+  "model": "v7",
+  "id": "held:within:simple_facts:30"
+ },
+ "w058": {
+  "model": "v7",
+  "id": "held:limit:memory:18"
+ },
+ "w059": {
+  "model": "v7",
+  "id": "held:limit:live:7"
+ },
+ "w060": {
+  "model": "v7",
+  "id": "insist-ext:longform:4"
+ },
+ "w061": {
+  "model": "v7",
+  "id": "held:limit:bigdoc:12"
+ },
+ "w062": {
+  "model": "v7",
+  "id": "held:limit:obscure:15"
+ },
+ "w063": {
+  "model": "v7",
+  "id": "held:limit:translation:25"
+ },
+ "w064": {
+  "model": "v7",
+  "id": "insist-held:arith:1"
+ },
+ "w065": {
+  "model": "v7",
+  "id": "held:within:short_code:32"
+ }
+}

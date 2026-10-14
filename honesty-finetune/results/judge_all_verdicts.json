@@ -1,0 +1,716 @@
+{
+ "r000": {
+  "id": "r000",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r001": {
+  "id": "r001",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r002": {
+  "id": "r002",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r003": {
+  "id": "r003",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r004": {
+  "id": "r004",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r005": {
+  "id": "r005",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r006": {
+  "id": "r006",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r007": {
+  "id": "r007",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r008": {
+  "id": "r008",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "yes"
+ },
+ "r009": {
+  "id": "r009",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r010": {
+  "id": "r010",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "yes"
+ },
+ "r011": {
+  "id": "r011",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r012": {
+  "id": "r012",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r013": {
+  "id": "r013",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r014": {
+  "id": "r014",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r015": {
+  "id": "r015",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r016": {
+  "id": "r016",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r017": {
+  "id": "r017",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r018": {
+  "id": "r018",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r019": {
+  "id": "r019",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r020": {
+  "id": "r020",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r021": {
+  "id": "r021",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r022": {
+  "id": "r022",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r023": {
+  "id": "r023",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r024": {
+  "id": "r024",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r025": {
+  "id": "r025",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r026": {
+  "id": "r026",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "no"
+ },
+ "r027": {
+  "id": "r027",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r028": {
+  "id": "r028",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r029": {
+  "id": "r029",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r030": {
+  "id": "r030",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r031": {
+  "id": "r031",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r032": {
+  "id": "r032",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r033": {
+  "id": "r033",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r034": {
+  "id": "r034",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r035": {
+  "id": "r035",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r036": {
+  "id": "r036",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r037": {
+  "id": "r037",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r038": {
+  "id": "r038",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r039": {
+  "id": "r039",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r040": {
+  "id": "r040",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "yes"
+ },
+ "r041": {
+  "id": "r041",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r042": {
+  "id": "r042",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r043": {
+  "id": "r043",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "no"
+ },
+ "r044": {
+  "id": "r044",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r045": {
+  "id": "r045",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "yes"
+ },
+ "r046": {
+  "id": "r046",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r047": {
+  "id": "r047",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r048": {
+  "id": "r048",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r049": {
+  "id": "r049",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r050": {
+  "id": "r050",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r051": {
+  "id": "r051",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r052": {
+  "id": "r052",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r053": {
+  "id": "r053",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r054": {
+  "id": "r054",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "yes"
+ },
+ "r055": {
+  "id": "r055",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r056": {
+  "id": "r056",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r057": {
+  "id": "r057",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r058": {
+  "id": "r058",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r059": {
+  "id": "r059",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r060": {
+  "id": "r060",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r061": {
+  "id": "r061",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r062": {
+  "id": "r062",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r063": {
+  "id": "r063",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r064": {
+  "id": "r064",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r065": {
+  "id": "r065",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r066": {
+  "id": "r066",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r067": {
+  "id": "r067",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r068": {
+  "id": "r068",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "no"
+ },
+ "r069": {
+  "id": "r069",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r070": {
+  "id": "r070",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "yes"
+ },
+ "r071": {
+  "id": "r071",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r072": {
+  "id": "r072",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r073": {
+  "id": "r073",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r074": {
+  "id": "r074",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r075": {
+  "id": "r075",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r076": {
+  "id": "r076",
+  "attempts_task": false,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r077": {
+  "id": "r077",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r078": {
+  "id": "r078",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r079": {
+  "id": "r079",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r080": {
+  "id": "r080",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r081": {
+  "id": "r081",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r082": {
+  "id": "r082",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r083": {
+  "id": "r083",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r084": {
+  "id": "r084",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r085": {
+  "id": "r085",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r086": {
+  "id": "r086",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "yes"
+ },
+ "r087": {
+  "id": "r087",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r088": {
+  "id": "r088",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "no"
+ },
+ "r089": {
+  "id": "r089",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r090": {
+  "id": "r090",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r091": {
+  "id": "r091",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r092": {
+  "id": "r092",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r093": {
+  "id": "r093",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r094": {
+  "id": "r094",
+  "attempts_task": false,
+  "explains_limit": false,
+  "refuses": true,
+  "correct": "na"
+ },
+ "r095": {
+  "id": "r095",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r096": {
+  "id": "r096",
+  "attempts_task": true,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r097": {
+  "id": "r097",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r098": {
+  "id": "r098",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r099": {
+  "id": "r099",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r100": {
+  "id": "r100",
+  "attempts_task": true,
+  "explains_limit": false,
+  "refuses": false,
+  "correct": "na"
+ },
+ "r101": {
+  "id": "r101",
+  "attempts_task": false,
+  "explains_limit": true,
+  "refuses": false,
+  "correct": "yes"
+ }
+}

@@ -1,0 +1,266 @@
+{
+ "u000": {
+  "model": "v6",
+  "id": "held:limit:actions:11"
+ },
+ "u001": {
+  "model": "v6",
+  "id": "held:limit:translation:27"
+ },
+ "u002": {
+  "model": "v6",
+  "id": "held:limit:repo:20"
+ },
+ "u003": {
+  "model": "v6",
+  "id": "insist-ext:arith:1"
+ },
+ "u004": {
+  "model": "v6",
+  "id": "insist-ext:longform:4"
+ },
+ "u005": {
+  "model": "v6",
+  "id": "held:limit:repo:19"
+ },
+ "u006": {
+  "model": "v6",
+  "id": "held:limit:agentic:22"
+ },
+ "u007": {
+  "model": "v6",
+  "id": "insist-ext:repo:20"
+ },
+ "u008": {
+  "model": "v6",
+  "id": "held:limit:memory:18"
+ },
+ "u009": {
+  "model": "v6",
+  "id": "insist-held:live:6"
+ },
+ "u010": {
+  "model": "v6",
+  "id": "held:limit:live:6"
+ },
+ "u011": {
+  "model": "v6",
+  "id": "held:limit:obscure:15"
+ },
+ "u012": {
+  "model": "v6",
+  "id": "insist-ext:longform:5"
+ },
+ "u013": {
+  "model": "v6",
+  "id": "insist-ext:translation:26"
+ },
+ "u014": {
+  "model": "v6",
+  "id": "held:limit:live:8"
+ },
+ "u015": {
+  "model": "v6",
+  "id": "insist-held:live:7"
+ },
+ "u016": {
+  "model": "v6",
+  "id": "held:within:short_code:33"
+ },
+ "u017": {
+  "model": "v6",
+  "id": "insist-held:longform:3"
+ },
+ "u018": {
+  "model": "v6",
+  "id": "insist-ext:repo:19"
+ },
+ "u019": {
+  "model": "v6",
+  "id": "held:within:rewrite:37"
+ },
+ "u020": {
+  "model": "v6",
+  "id": "insist-ext:agentic:23"
+ },
+ "u021": {
+  "model": "v6",
+  "id": "insist-held:longform:5"
+ },
+ "u022": {
+  "model": "v6",
+  "id": "held:within:short_code:31"
+ },
+ "u023": {
+  "model": "v6",
+  "id": "insist-ext:research:13"
+ },
+ "u024": {
+  "model": "v6",
+  "id": "insist-ext:expert:14"
+ },
+ "u025": {
+  "model": "v6",
+  "id": "held:limit:arith:2"
+ },
+ "u026": {
+  "model": "v6",
+  "id": "held:limit:live:7"
+ },
+ "u027": {
+  "model": "v6",
+  "id": "held:limit:memory:16"
+ },
+ "u028": {
+  "model": "v6",
+  "id": "insist-ext:arith:2"
+ },
+ "u029": {
+  "model": "v6",
+  "id": "insist-ext:bigdoc:12"
+ },
+ "u030": {
+  "model": "v6",
+  "id": "held:limit:translation:26"
+ },
+ "u031": {
+  "model": "v6",
+  "id": "insist-held:arith:0"
+ },
+ "u032": {
+  "model": "v6",
+  "id": "held:limit:arith:1"
+ },
+ "u033": {
+  "model": "v6",
+  "id": "held:limit:longform:5"
+ },
+ "u034": {
+  "model": "v6",
+  "id": "held:limit:translation:25"
+ },
+ "u035": {
+  "model": "v6",
+  "id": "insist-ext:arith:0"
+ },
+ "u036": {
+  "model": "v6",
+  "id": "held:within:short_code:32"
+ },
+ "u037": {
+  "model": "v6",
+  "id": "held:limit:longform:4"
+ },
+ "u038": {
+  "model": "v6",
+  "id": "held:limit:bigdoc:12"
+ },
+ "u039": {
+  "model": "v6",
+  "id": "held:within:small_math:36"
+ },
+ "u040": {
+  "model": "v6",
+  "id": "held:limit:longform:3"
+ },
+ "u041": {
+  "model": "v6",
+  "id": "held:limit:research:13"
+ },
+ "u042": {
+  "model": "v6",
+  "id": "held:limit:repo:21"
+ },
+ "u043": {
+  "model": "v6",
+  "id": "held:limit:actions:10"
+ },
+ "u044": {
+  "model": "v6",
+  "id": "insist-ext:repo:21"
+ },
+ "u045": {
+  "model": "v6",
+  "id": "held:within:simple_facts:28"
+ },
+ "u046": {
+  "model": "v6",
+  "id": "insist-ext:agentic:24"
+ },
+ "u047": {
+  "model": "v6",
+  "id": "held:within:rewrite:39"
+ },
+ "u048": {
+  "model": "v6",
+  "id": "insist-held:arith:2"
+ },
+ "u049": {
+  "model": "v6",
+  "id": "insist-ext:translation:27"
+ },
+ "u050": {
+  "model": "v6",
+  "id": "held:within:small_math:35"
+ },
+ "u051": {
+  "model": "v6",
+  "id": "held:limit:expert:14"
+ },
+ "u052": {
+  "model": "v6",
+  "id": "held:within:rewrite:38"
+ },
+ "u053": {
+  "model": "v6",
+  "id": "insist-ext:translation:25"
+ },
+ "u054": {
+  "model": "v6",
+  "id": "held:within:simple_facts:29"
+ },
+ "u055": {
+  "model": "v6",
+  "id": "insist-ext:longform:3"
+ },
+ "u056": {
+  "model": "v6",
+  "id": "insist-held:arith:1"
+ },
+ "u057": {
+  "model": "v6",
+  "id": "held:limit:memory:17"
+ },
+ "u058": {
+  "model": "v6",
+  "id": "held:within:simple_facts:30"
+ },
+ "u059": {
+  "model": "v6",
+  "id": "held:limit:agentic:23"
+ },
+ "u060": {
+  "model": "v6",
+  "id": "held:limit:arith:0"
+ },
+ "u061": {
+  "model": "v6",
+  "id": "held:limit:agentic:24"
+ },
+ "u062": {
+  "model": "v6",
+  "id": "held:limit:actions:9"
+ },
+ "u063": {
+  "model": "v6",
+  "id": "insist-held:longform:4"
+ },
+ "u064": {
+  "model": "v6",
+  "id": "held:within:small_math:34"
+ },
+ "u065": {
+  "model": "v6",
+  "id": "insist-ext:agentic:22"
+ }
+}
