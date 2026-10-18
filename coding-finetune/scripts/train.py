@@ -80,6 +80,10 @@ model = get_peft_model(model, LoraConfig(r=args.rank, lora_alpha=args.alpha, lor
 for p in model.parameters():  # fp32 adapter weights for stable small-lr updates
     if p.requires_grad:
         p.data = p.data.float()
+# activation checkpointing: peak RSS 11.3 GB -> 5.8 GB on the longest rows for ~15% more time
+# (the first full run was OOM-killed at 13.9 GB without it)
+model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+model.enable_input_require_grads()
 model.print_trainable_parameters()
 model.train()
 params = [p for p in model.parameters() if p.requires_grad]
@@ -95,6 +99,15 @@ total_steps = max(1, len(order) // args.accum)
 warm = max(1, int(0.1 * total_steps))
 
 
+def masked_loss(ids, labels):
+    """CE over trained positions only: logits are computed just where the next token is labelled, so the
+    248k-vocab projection never materialises for masked context (same value as HF's shifted loss)."""
+    pos = [i for i in range(len(ids) - 1) if labels[i + 1] != -100]
+    tgt = torch.tensor([labels[i + 1] for i in pos])
+    out = model(input_ids=torch.tensor([ids]), logits_to_keep=torch.tensor(pos), use_cache=False)
+    return torch.nn.functional.cross_entropy(out.logits[0].float(), tgt)
+
+
 def lr_at(step):
     if step < warm:
         return args.lr * (step + 1) / warm
@@ -108,9 +121,9 @@ hist = []
 for k, idx in enumerate(order):
     ids, labels, kind = enc[idx]
     with torch.autocast("cpu", dtype=torch.bfloat16):
-        out = model(input_ids=torch.tensor([ids]), labels=torch.tensor([labels]), use_cache=False)
-    (out.loss / args.accum).backward()
-    run += out.loss.item()
+        loss = masked_loss(ids, labels)
+    (loss / args.accum).backward()
+    run += loss.item()
     nrun += 1
     if (k + 1) % args.accum == 0:
         for g in opt.param_groups:
