@@ -1,0 +1,48 @@
+{
+ "name": "smoke_base",
+ "adapter": null,
+ "frac": 0.15,
+ "coding": {
+  "pass": 14,
+  "n": 24,
+  "rate": 0.5833333333333334,
+  "truncated": 2,
+  "filler_rate": 0.0,
+  "mean_words_before_code": 48.125,
+  "mean_words_after_code": 5.25
+ },
+ "repair": {
+  "pass": 3,
+  "n": 16,
+  "rate": 0.1875,
+  "duplicate_of_failed": 1,
+  "fault_pivot_format": 0.0,
+  "base_draft": 2,
+  "mutant": 1,
+  "filler_rate": 0.0,
+  "mean_words_before_code": 97.6875,
+  "mean_words_after_code": 84.6875
+ },
+ "review": {
+  "n": 12,
+  "parse_rate": 0.25,
+  "auroc": 0.5428571428571428,
+  "acc_at_50": 0.16666666666666666,
+  "detected_buggy": 2,
+  "n_buggy": 7,
+  "mean_p_buggy": 0.6428571428571429,
+  "mean_p_ok": 0.6,
+  "zero_on_buggy": 0,
+  "brier": 0.2708333333333333,
+  "filler_rate": 0.0,
+  "mean_words_before_code": 154.41666666666666,
+  "mean_words_after_code": 0.0
+ },
+ "tools": {
+  "pass": 8,
+  "n": 8,
+  "rate": 1.0,
+  "format_ok": 1.0
+ },
+ "seconds": 1765
+}

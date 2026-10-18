@@ -1,0 +1,48 @@
+{
+ "name": "smoke_lora",
+ "adapter": "../work/lora_smoke",
+ "frac": 0.15,
+ "coding": {
+  "pass": 15,
+  "n": 24,
+  "rate": 0.625,
+  "truncated": 2,
+  "filler_rate": 0.0,
+  "mean_words_before_code": 52.5,
+  "mean_words_after_code": 3.0
+ },
+ "repair": {
+  "pass": 4,
+  "n": 16,
+  "rate": 0.25,
+  "duplicate_of_failed": 2,
+  "fault_pivot_format": 0.0,
+  "base_draft": 3,
+  "mutant": 1,
+  "filler_rate": 0.0,
+  "mean_words_before_code": 137.125,
+  "mean_words_after_code": 115.9375
+ },
+ "review": {
+  "n": 12,
+  "parse_rate": 0.25,
+  "auroc": 0.37142857142857144,
+  "acc_at_50": 0.08333333333333333,
+  "detected_buggy": 1,
+  "n_buggy": 7,
+  "mean_p_buggy": 0.5714285714285714,
+  "mean_p_ok": 0.7,
+  "zero_on_buggy": 0,
+  "brier": 0.3541666666666667,
+  "filler_rate": 0.0,
+  "mean_words_before_code": 153.41666666666666,
+  "mean_words_after_code": 0.0
+ },
+ "tools": {
+  "pass": 7,
+  "n": 8,
+  "rate": 0.875,
+  "format_ok": 1.0
+ },
+ "seconds": 1761
+}
