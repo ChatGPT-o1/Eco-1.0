@@ -19,6 +19,7 @@ Measured results (4-core CPU, no GPU):
 | Model | Before | After pipeline | HumanEval gate |
 |---|---|---|---|
 | Qwen3.5-2B (manual run of these steps) | 2.27B params, 4.5 GB | 1.50B params (vocab 248k → 64k); Q6_K est. ~1.2 GB | 4/5 spot check after vocab step |
+| Qwen3.5-0.8B (`pipeline.py`; multimodal + MTP) | 853M params, 1.7 GB | 556M (vocab 248k → 56k), **0.46 GB** at Q6_K, 31 tok/s; code bits/byte +2.7%, chat +0.7%, general +30% | 5/10 before and after |
 | SmolLM2-135M-Instruct (`pipeline.py`) | 134.5M, 0.27 GB | 116.4M (vocab 49k → 17.7k), **0.12 GB** at Q6_K, 208 tok/s | 1/10 before and after |
 
 ## Quick start (for an agent)
