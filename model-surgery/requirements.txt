@@ -5,6 +5,7 @@ safetensors
 huggingface_hub
 pyarrow
 numpy
+sentencepiece    # llama.cpp converter imports it for Llama-family models
 # GGUF export/quantization/eval (to_gguf.py, evaluate.py on .gguf): build from source so the
 # vendored llama.cpp (which provides convert_hf_to_gguf.py) matches the bindings:
 #   pip download llama-cpp-python --no-binary :all: --no-deps -d src && tar xf src/llama_cpp_python-*.tar.gz -C src

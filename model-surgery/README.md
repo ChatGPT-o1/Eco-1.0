@@ -8,21 +8,25 @@ under testing**, with a HumanEval gate after every change so a broken model is n
 | 0 | `fetch_data.py` | Download + split a code dataset (counting vs held-out) | — |
 | 1 | `textonly.py` | Drop vision tower and unused MTP/NextN head | None |
 | 2 | `count_tokens.py` | Count token use on your domain data | — |
-| 3 | `prune_vocab.py` | Keep only domain tokens (within an inflation budget), slice embeddings | None on text that uses kept tokens; ~1.5% more tokens elsewhere |
+| 3 | `prune_vocab.py` | Keep only domain tokens (within an inflation budget), slice embeddings | Identical on text that uses only kept tokens; text with a dropped token gets split into unfamiliar pieces, so bits/byte rises a few % (SmolLM2-135M at a 1.5% budget: code +3.9%, chat +7%, HumanEval unchanged). Lower `--max-inflation` to cut less |
 | 4 | `verify.py` | Tokenization identical, logits identical, generation works | Check only |
 | 5 | `evaluate.py` | Bits/byte on code/chat/general + HumanEval pass@1 (PyTorch or GGUF) | Check only |
 | 6 | `to_gguf.py` | Convert to GGUF and quantize (Q6_K default) | ~0.2% bits/byte at Q6_K |
 | all | `pipeline.py` | Steps 1–6 with gates; writes `REPORT.md` | — |
 
-Result on Qwen3.5-2B (4-core CPU, no GPU): 2.27B params / 4.5 GB → **1.50B params**, ~1.2 GB at Q6_K,
-with coding ability unchanged by the vocab step (HumanEval 4/5 before and after on the spot check).
+Measured results (4-core CPU, no GPU):
+
+| Model | Before | After pipeline | HumanEval gate |
+|---|---|---|---|
+| Qwen3.5-2B (manual run of these steps) | 2.27B params, 4.5 GB | 1.50B params (vocab 248k → 64k); Q6_K est. ~1.2 GB | 4/5 spot check after vocab step |
+| SmolLM2-135M-Instruct (`pipeline.py`) | 134.5M, 0.27 GB | 116.4M (vocab 49k → 17.7k), **0.12 GB** at Q6_K, 208 tok/s | 1/10 before and after |
 
 ## Quick start (for an agent)
 
 ```bash
 python -m venv venv && . venv/bin/activate
 pip install torch --index-url https://download.pytorch.org/whl/cpu
-pip install "transformers>=5" tokenizers safetensors huggingface_hub pyarrow numpy
+pip install "transformers>=5" tokenizers safetensors huggingface_hub pyarrow numpy sentencepiece
 # optional, for GGUF: build llama-cpp-python from its sdist (see requirements.txt)
 
 python -I fetch_data.py --out data/                      # ~850 MB on disk
