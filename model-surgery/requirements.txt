@@ -1,0 +1,11 @@
+torch            # CPU wheel is fine: pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers>=5.0
+tokenizers
+safetensors
+huggingface_hub
+pyarrow
+numpy
+# GGUF export/quantization/eval (to_gguf.py, evaluate.py on .gguf): build from source so the
+# vendored llama.cpp (which provides convert_hf_to_gguf.py) matches the bindings:
+#   pip download llama-cpp-python --no-binary :all: --no-deps -d src && tar xf src/llama_cpp_python-*.tar.gz -C src
+#   pip install src/llama_cpp_python-*/        # then --llama-cpp src/llama_cpp_python-*/vendor/llama.cpp
