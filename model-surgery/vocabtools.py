@@ -71,11 +71,14 @@ class Vocab:
         self.n_ids = max(ids) + 1                              # id space covered by the tokenizer
         self.n_model = max(self.vocab.values()) + 1
         self.id2tok = {i: t for t, i in self.vocab.items()}
-        base = bytes_to_unicode().values()
-        missing = [c for c in base if c not in self.vocab]
-        if missing:
-            raise SystemExit(f"{len(missing)} byte-level base tokens missing from vocab; not a standard byte-level BPE")
-        self.base_ids = np.array([self.vocab[c] for c in base])
+        base = list(bytes_to_unicode().values())
+        present = [c for c in base if c in self.vocab]
+        if len(present) < 200:
+            raise SystemExit(f"only {len(present)}/256 byte-level base tokens in vocab; not a byte-level BPE")
+        if len(present) < 256:  # e.g. SmolLM2: unused control bytes were never in the vocab, so nothing changes
+            import sys
+            print(f"note: {256 - len(present)} byte tokens absent from the original vocab (unencodable before and after)", file=sys.stderr)
+        self.base_ids = np.array([self.vocab[c] for c in present])
         self.added_ids = np.array([a["id"] for a in self.added], dtype=np.int64)
         # (parent_a, parent_b, result) ids; merges whose pieces aren't all in vocab can never fire
         trip = []

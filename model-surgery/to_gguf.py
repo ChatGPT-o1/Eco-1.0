@@ -48,11 +48,11 @@ def run_converter(llama_cpp, args, forced_pre=None, record_to=None):
             raise
 
 
-def subrun(*args):
+def subrun(spec):
     """Each conversion gets a fresh interpreter (the converter keeps class-level state)."""
-    r = subprocess.run([sys.executable, "-I", HERE, "_convert", json.dumps(args)])
+    r = subprocess.run([sys.executable, "-I", HERE, "_convert", json.dumps(spec)])
     if r.returncode != 0:
-        raise SystemExit(f"conversion failed: {args}")
+        raise SystemExit(f"conversion failed: {spec}")
 
 
 def needs_no_mtp(model_dir, llama_cpp):
