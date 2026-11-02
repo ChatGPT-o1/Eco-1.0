@@ -30,6 +30,9 @@ def main():
     ap.add_argument("--lr", type=float, default=5e-4)
     ap.add_argument("--corrupt", type=float, default=0.1, help="share of input codes randomised (robustness)")
     ap.add_argument("--level-weight", type=float, default=1.0)
+    ap.add_argument("--mask-draws", type=int, default=1,
+                    help="independent masked copies of each block per step; they share the prefix and codes, so this is "
+                         "more token-loss signal per window for little extra compute (1 = the original single mask)")
     ap.add_argument("--save-every", type=int, default=200)
     ap.add_argument("--val-windows", type=int, default=256, help="held-out windows for the validation loss (was 32: too noisy to compare runs)")
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
@@ -70,7 +73,7 @@ def main():
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1.0, (s + 1) / warm) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
     cfg = {"backbone": backbone, "backbone_note": why, "compressor": os.path.abspath(a.compressor), "model": a.model,
-           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch}
+           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws}
 
     @torch.no_grad()
     def val_loss():
@@ -93,14 +96,14 @@ def main():
     for step in range(1, a.steps + 1):
         b = tr[torch.randint(0, len(tr), (a.batch,))]
         loss, parts = gen.loss(comp.rvq, prefix[b].to(dev), block[b].to(dev), [c[b].to(dev) for c in codes],
-                               corrupt=a.corrupt, level_weight=a.level_weight)
+                               corrupt=a.corrupt, level_weight=a.level_weight, mask_draws=a.mask_draws)
         opt.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(params, 1.0)
         opt.step()
         sched.step()
         if step % 10 == 0:
-            tps = step * a.batch * (prefix.shape[1] + sum(ccfg["scales"]) + ccfg["L"]) / (time.time() - t0)
+            tps = step * a.batch * (prefix.shape[1] + sum(ccfg["scales"]) + ccfg["L"] * a.mask_draws) / (time.time() - t0)
             print(f"step {step} " + " ".join(f"{k} {v:.3f}" for k, v in parts.items()) + f"  {tps:.0f} pos/s", flush=True)
         if step % a.save_every == 0 or step == a.steps:
             print(f"  val step {step}:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)

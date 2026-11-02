@@ -7,7 +7,7 @@ time, so coarse levels carry the most information. Then every window is encoded 
 
   python -I train_compressor.py --model DIR --data work/data.pt --out work/compressor.pt --scales 2,8
 """
-import argparse, json, os, random, sys, time
+import argparse, json, math, os, random, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import torch
@@ -27,9 +27,14 @@ def main():
     ap.add_argument("--steps", type=int, default=1500)
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--lr", type=float, default=1e-3)
+    ap.add_argument("--lr-final", type=float, default=1.0,
+                    help="LR at the last step as a fraction of --lr, cosine decay after the 100-step warmup (1.0 = constant, the old behaviour)")
     ap.add_argument("--val-frac", type=float, default=0.05)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--split-seed", type=int, default=None,
+                    help="seed of the train/validation split (default: follows --seed). Pin it to compare runs with different "
+                         "--seed on the same held-out windows")
     ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
     a = ap.parse_args()
     torch.manual_seed(a.seed)
@@ -47,13 +52,14 @@ def main():
     del lm, head
 
     N = len(d["block"])
-    perm = torch.randperm(N)
+    perm = torch.randperm(N) if a.split_seed is None else torch.randperm(N, generator=torch.Generator().manual_seed(a.split_seed))
     nval = max(16, int(N * a.val_frac))
     val, tr = perm[:nval], perm[nval:]
     hidden, block = d["hidden"], d["block"].long()
     comp = Compressor(H, a.d_lat, L, scales, a.codebook).to(dev)
     opt = torch.optim.AdamW(comp.parameters(), lr=a.lr, weight_decay=0.0)
-    sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1.0, (s + 1) / 100))
+    sched = torch.optim.lr_scheduler.LambdaLR(
+        opt, lambda s: min(1.0, (s + 1) / 100) * (a.lr_final + (1 - a.lr_final) * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
 
     def logits_of(recon):
         z = comp.decode(recon) @ W.t()

@@ -64,9 +64,33 @@ def main():
     small = NCMGenerator(lm, 32, scales, L, K, backbone="small")
     loss, _ = small.loss(comp.rvq, prefix, block, codes)
     loss.backward()
+    loss2, _ = small.loss(comp.rvq, prefix, block, codes, mask_draws=2)
+    loss2.backward()
     toks, _ = small.generate(comp.rvq, prompt, L, refine=2)
     assert len(toks) <= L
     print("5. small backbone loss + generation OK")
+
+    # 6. several independent masked copies of the block per window (--mask-draws)
+    m = block_mask(2, [1, 2, 2], torch.float32, parallel_tail=2)[0, 0] == 0
+    want = torch.tensor([[1, 0, 0, 0, 0, 0, 0], [1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0], [1, 1, 1, 1, 1, 0, 0],
+                         [1, 1, 1, 1, 1, 0, 0], [1, 1, 1, 0, 0, 1, 1], [1, 1, 1, 0, 0, 1, 1]], dtype=torch.bool)
+    assert torch.equal(m, want), m
+    tp = lambda: gen.token_input(comp.rvq, codes, block, torch.rand(B, L) > 0.5)
+    ta, tb, tc = tp(), tp(), tp()
+    with torch.no_grad():
+        h_ab, h_ac = gen.hidden(comp.rvq, prefix, codes, [ta, tb]), gen.hidden(comp.rvq, prefix, codes, [ta, tc])
+        h_a = gen.hidden(comp.rvq, prefix, codes, [ta])
+    end_a = P + sum(scales) + L
+    scale = float(h_a.abs().max())
+    # copy 1 must not see copy 2 at all (exactly equal); next to another copy it equals the single-copy layout up to
+    # float noise from the different sequence length (relative to the activation scale, which grows during training)
+    assert float((h_ab[:, :end_a] - h_ac[:, :end_a]).abs().max()) == 0.0, "copy 1 changed when copy 2 changed"
+    assert float((h_ab[:, :end_a] - h_a).abs().max()) < 1e-4 * scale, "a copy behaves differently next to another copy"
+    assert float((h_ab[:, end_a:] - h_ac[:, end_a:]).abs().max()) > 1e-2 * scale, "copy 2 ignores its own input"
+    gen.train()
+    loss3, parts3 = gen.loss(comp.rvq, prefix, block, codes, mask_draws=3)
+    loss3.backward()
+    print("6. parallel masked copies: mask OK, copies independent, 3-draw loss", {k: round(v, 2) for k, v in parts3.items()})
     print("SELFTEST OK")
 
 

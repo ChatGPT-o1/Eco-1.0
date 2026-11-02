@@ -57,8 +57,8 @@ VARIANTS["sweep-baseline"] = sweep("llm2ncm-sweep-baseline", {"base": {"n": 3200
 ])
 # tiny CPU-sized sweep for LLM2NCM_LOCAL=1 dry runs of the runner itself
 VARIANTS["sweep-local-test"] = sweep("llm2ncm-sweep-local-test", {"base": {"n": 96}}, [
-    job("t_a", 64, 4, ev=["--n", "6"]),
-    job("t_b", 32, 4, "second job", gen=["--batch", "4"], ev=["--n", "6"]),
+    job("t_a", 64, 4, "mask-draws 2, lr-final", comp=["--lr-final", "0.1"], gen=["--mask-draws", "2"], ev=["--n", "6"]),
+    job("t_b", 32, 4, "second job", comp=["--split-seed", "0", "--seed", "1"], gen=["--batch", "4", "--seed", "1"], ev=["--n", "6"]),
 ])
 
 
@@ -101,6 +101,43 @@ def main():
         }
         json.dump(meta, open(os.path.join(out, "kernel-metadata.json"), "w"), indent=2)
         print(f"{variant}: {meta['id']}  {os.path.getsize(os.path.join(out, 'run_llm2ncm.py')) / 1024:.0f} KB")
+
+
+
+
+# ---- GPU smoke of the sweep runner: one tiny job per distinct flag set (catches arg/CUDA errors in ~5 min before a long sweep)
+VARIANTS["sweep-smoke"] = sweep("llm2ncm-sweep-smoke", {
+    "base": {"n": 300}, "distill1": {"n": 300, "args": ["--distill-frac", "1.0"]}, "enc18": {"n": 300, "args": ["--enc-layer", "18"]},
+}, [
+    job("s_ctl", 300, 20, "control seed1", comp=["--split-seed", "0", "--seed", "1"], gen=["--seed", "1"], ev=["--n", "40"]),
+    job("s_mask_lr", 300, 20, "mask-draws 4 + lr-final", comp=["--split-seed", "0", "--lr-final", "0.1"], gen=["--mask-draws", "4"], ev=["--n", "40"]),
+    job("s_slots", 300, 20, "scales 4,16 cb4096", comp=["--split-seed", "0", "--scales", "4,16", "--codebook", "4096"], ev=["--n", "40"]),
+    job("s_dist", 300, 20, "distill 1.0", recipe="distill1", comp=["--split-seed", "0"], ev=["--n", "40"]),
+    job("s_enc", 300, 20, "enc-layer 18", recipe="enc18", comp=["--split-seed", "0"], ev=["--n", "40"]),
+])
+
+
+# ---- improvement sweep: every job is the baseline plus ONE change at n=8000 windows, 2000 steps each, on the SAME
+# held-out windows (--split-seed 0), so differences are due to the change (see ctl_seed* for run-to-run noise)
+def imp(name, note, recipe="base", comp=(), gen=()):
+    return job(name, 8000, 2000, note, recipe=recipe, comp=["--split-seed", "0", *comp], gen=list(gen), ev=["--n", "400"])
+
+
+VARIANTS["sweep-improve"] = sweep("llm2ncm-sweep-improve", {
+    "base": {"n": 8000}, "distill1": {"n": 8000, "args": ["--distill-frac", "1.0"]}, "enc18": {"n": 8000, "args": ["--enc-layer", "18"]},
+}, [
+    imp("mask4", "gen --mask-draws 4", gen=["--mask-draws", "4"]),
+    imp("slots4_16", "comp --scales 4,16", comp=["--scales", "4,16"]),
+    imp("mask2", "gen --mask-draws 2", gen=["--mask-draws", "2"]),
+    imp("ctl_seed0", "control (baseline code)"),
+    imp("ctl_seed1", "control, seed 1 (noise)", comp=["--seed", "1"], gen=["--seed", "1"]),
+    imp("lrdecay", "comp --lr-final 0.1", comp=["--lr-final", "0.1"]),
+    imp("corrupt30", "gen --corrupt 0.3", gen=["--corrupt", "0.3"]),
+    imp("genlr1e3", "gen --lr 1e-3", gen=["--lr", "1e-3"]),
+    imp("cb4096", "comp --codebook 4096", comp=["--codebook", "4096"]),
+    imp("distill100", "build --distill-frac 1.0", recipe="distill1"),
+    imp("enc18", "build --enc-layer 18", recipe="enc18"),
+])
 
 
 if __name__ == "__main__":

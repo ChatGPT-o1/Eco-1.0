@@ -166,14 +166,21 @@ class SmallBackbone(nn.Module):
         return self.out(self.tf(x, mask=mask4d[0, 0]))
 
 
-def block_mask(P, sizes, dtype, device=None):
-    """Additive 4D mask (1, 1, T, T): causal prefix; each slot group sees prefix + earlier groups + itself."""
+def block_mask(P, sizes, dtype, device=None, parallel_tail=1):
+    """Additive 4D mask (1, 1, T, T): causal prefix; each slot group sees prefix + earlier groups + itself.
+    The last `parallel_tail` groups are independent copies (training with several masks per window): each sees
+    everything before the tail and itself, but not the other copies. parallel_tail=1 is the ordinary layout."""
     T = P + sum(sizes)
     allow = torch.zeros(T, T, dtype=torch.bool, device=device)
     allow[:P, :P] = torch.ones(P, P, dtype=torch.bool, device=device).tril()
     start = P
-    for s in sizes:
-        allow[start:start + s, :start + s] = True
+    tail_start = P + sum(sizes[:len(sizes) - parallel_tail])
+    for gi, s in enumerate(sizes):
+        if gi < len(sizes) - parallel_tail:
+            allow[start:start + s, :start + s] = True
+        else:
+            allow[start:start + s, :tail_start] = True
+            allow[start:start + s, start:start + s] = True
         start += s
     m = torch.zeros(T, T, dtype=dtype, device=device)
     m.masked_fill_(~allow, torch.finfo(dtype).min)
@@ -230,32 +237,51 @@ class NCMGenerator(nn.Module):
         return out.last_hidden_state, out.past_key_values
 
     # ---------------------------------------------------------------- training
-    def loss(self, rvq, prefix, block, codes, corrupt=0.1, level_weight=1.0):
+    def slot_inputs(self, rvq, prefix, inp):
+        """Embeddings of the prefix followed by the inputs of every code-level slot group."""
+        B, dev = prefix.shape[0], prefix.device
+        return [self.embed(prefix)] + [self.level_input(rvq, k, inp, B, dev) for k in range(len(self.scales))]
+
+    def hidden(self, rvq, prefix, inp, tok_parts, head=None):
+        """One training forward pass: prefix | level slots | len(tok_parts) independent copies of the token slots.
+        The copies share the prefix and codes but cannot see each other (see block_mask), so each is an
+        independent masked-prediction problem for the price of only the extra token slots.
+        `head` = slot_inputs(...) if the caller already built it (keeps the autograd graph in its original order)."""
+        B, P = prefix.shape
+        dev = prefix.device
+        G = len(tok_parts)
+        x = torch.cat((self.slot_inputs(rvq, prefix, inp) if head is None else head) + list(tok_parts), 1)
+        mask = block_mask(P, self.scales + [self.L] * G, x.dtype, dev, parallel_tail=G).expand(B, -1, -1, -1)
+        pos = list(range(P))
+        for k in range(len(self.scales)):
+            pos += self.level_positions(P, k)
+        pos = torch.tensor(pos + self.token_positions(P) * G, device=dev)[None].expand(B, -1)
+        h, _ = self.run(x, mask, pos)
+        return h
+
+    def loss(self, rvq, prefix, block, codes, corrupt=0.1, level_weight=1.0, mask_draws=1):
         B, P = prefix.shape
         dev = prefix.device
         inp = codes  # inputs see corrupted earlier levels (robustness to own errors); targets stay clean
         if corrupt > 0:
             inp = [torch.where(torch.rand(c.shape, device=dev) < corrupt, torch.randint_like(c, self.K), c) for c in codes]
-        ratio = torch.rand(B, 1, device=dev)
-        masked = torch.rand(B, self.L, device=dev) < ratio
-        masked[torch.arange(B, device=dev), torch.randint(0, self.L, (B,), device=dev)] = True
-        parts = [self.embed(prefix)] + [self.level_input(rvq, k, inp, B, dev) for k in range(len(self.scales))]
-        parts.append(self.token_input(rvq, inp, block, ~masked))
-        x = torch.cat(parts, 1)
-        sizes = self.scales + [self.L]
-        mask = block_mask(P, sizes, x.dtype, dev).expand(B, -1, -1, -1)
-        pos = list(range(P))
-        for k in range(len(self.scales)):
-            pos += self.level_positions(P, k)
-        pos = torch.tensor(pos + self.token_positions(P), device=dev)[None].expand(B, -1)
-        h, _ = self.run(x, mask, pos)
+        head = self.slot_inputs(rvq, prefix, inp)  # built before the token inputs, as in the single-mask original
+        tok_parts, masks = [], []
+        for _ in range(mask_draws):  # each draw: its own mask ratio ~ U(0,1) and pattern (>= 1 masked token)
+            ratio = torch.rand(B, 1, device=dev)
+            masked = torch.rand(B, self.L, device=dev) < ratio
+            masked[torch.arange(B, device=dev), torch.randint(0, self.L, (B,), device=dev)] = True
+            tok_parts.append(self.token_input(rvq, inp, block, ~masked))
+            masks.append(masked)
+        h = self.hidden(rvq, prefix, inp, tok_parts, head)
         losses, off = {}, P
         for k, s in enumerate(self.scales):
             logits = self.heads[k](h[:, off:off + s])
             losses[f"level{k + 1}"] = F.cross_entropy(logits.reshape(-1, self.K).float(), codes[k].reshape(-1))
             off += s
-        tok_logits = self.lm_head(h[:, off:off + self.L][masked]).float()
-        losses["tokens"] = F.cross_entropy(tok_logits, block[masked])
+        tok_h = torch.cat([h[:, off + g * self.L:off + (g + 1) * self.L][m] for g, m in enumerate(masks)])
+        tok_logits = self.lm_head(tok_h).float()
+        losses["tokens"] = F.cross_entropy(tok_logits, torch.cat([block[m] for m in masks]))
         total = level_weight * sum(v for k, v in losses.items() if k != "tokens") + losses["tokens"]
         return total, {k: float(v.detach()) for k, v in losses.items()}
 
