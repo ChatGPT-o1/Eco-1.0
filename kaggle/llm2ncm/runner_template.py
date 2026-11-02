@@ -195,14 +195,15 @@ def fmt(x, nd=3):
 
 
 def write_results(results):
-    rows = ["| job | n | note | comp acc (1 lvl / 2 lvl) | gen val L1 / L2 / tok | agree | oracle agree | judge bits (ref) | real agree | min |",
-            "|---|---|---|---|---|---|---|---|---|---|"]
+    rows = ["| job | n | note | comp acc (1 lvl / 2 lvl) | gen val L1 / L2 / tok | agree | oracle agree | judge bits (ref) | distinct-2 (ref) | real agree | min |",
+            "|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in results:
         c, g, q = r.get("compressor") or {}, r.get("generator_val") or {}, r.get("quick_eval") or {}
         d, rl = q.get("distilled") or {}, q.get("real") or {}
         rows.append(f"| {r['name']} | {r['n']} | {r['note']} | {fmt(c.get('levels_1_token_acc'))} / {fmt(c.get('levels_2_token_acc'))} | "
                     f"{fmt(g.get('level1'), 2)} / {fmt(g.get('level2'), 2)} / {fmt(g.get('tokens'), 2)} | {fmt(d.get('agree'))} | "
-                    f"{fmt(d.get('oracle_agree'))} | {fmt(d.get('judge_bits'), 2)} ({fmt(d.get('ref_bits'), 2)}) | {fmt(rl.get('agree'))} | "
+                    f"{fmt(d.get('oracle_agree'))} | {fmt(d.get('judge_bits'), 2)} ({fmt(d.get('ref_bits'), 2)}) | "
+                    f"{fmt(q.get('distinct2'))} ({fmt(q.get('ref_distinct2'))}) | {fmt(rl.get('agree'))} | "
                     f"{round(r['seconds'].get('total', 0) / 60)}{' ERR' if 'error' in r else ''} |")
     open(f"{OUT}/RESULTS.md", "w").write(
         f"# Sweep: {CONFIG['name']}\n\n`agree` = share of tokens equal to the original LLM's greedy block on held-out distilled windows "

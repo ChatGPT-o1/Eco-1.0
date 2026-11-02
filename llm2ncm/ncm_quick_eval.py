@@ -55,6 +55,7 @@ def main():
     acc = {g: {"n": 0, "match": 0.0, "oracle_match": 0.0, "bits": 0.0, "ref_bits": 0.0, "toks": 0} for g in ("distilled", "real")}
     t0 = time.time()
     passes = 0
+    outs, refs, samples = [], [], []
     for j, i in enumerate(idx):
         prefix = d["prefix"][i].long().tolist()
         ref = d["block"][i].long().tolist()
@@ -64,6 +65,11 @@ def main():
         out_o, _ = gen.generate(comp.rvq, prefix, L, refine=a.refine, oracle_codes=oracle)
         out, out_o = (out + ref)[:L], (out_o + ref)[:L]  # pad (never needed with end_ids=()) so zip is length L
         passes += p
+        outs.append(out)
+        refs.append(ref)
+        if len(samples) < 6:
+            samples.append({"group": "distilled" if bool(d["distilled"][i]) else "real", "prefix_end": tok.decode(prefix[-24:]),
+                            "ncm": tok.decode(out), "reference": tok.decode(ref)})
         g["n"] += 1
         g["match"] += sum(x == y for x, y in zip(out, ref)) / L
         g["oracle_match"] += sum(x == y for x, y in zip(out_o, ref)) / L
@@ -73,12 +79,17 @@ def main():
         if (j + 1) % 64 == 0:
             print(f"  quick_eval {j + 1}/{len(idx)} ({time.time() - t0:.0f}s)", flush=True)
 
-    res = {"n": len(idx), "refine": a.refine, "passes_per_block": round(passes / max(len(idx), 1), 2)}
+    def distinct2(blocks):  # share of distinct token bigrams; collapses toward 0 when the output loops ("add add add ...")
+        grams = [tuple(b[k:k + 2]) for b in blocks for k in range(len(b) - 1)]
+        return round(len(set(grams)) / max(len(grams), 1), 3)
+
+    res = {"n": len(idx), "refine": a.refine, "passes_per_block": round(passes / max(len(idx), 1), 2),
+           "distinct2": distinct2(outs), "ref_distinct2": distinct2(refs), "samples": samples}
     for name, g in acc.items():
         if g["n"]:
             res[name] = {"n": g["n"], "agree": round(g["match"] / g["n"], 4), "oracle_agree": round(g["oracle_match"] / g["n"], 4),
                          "judge_bits": round(g["bits"] / g["toks"], 3), "ref_bits": round(g["ref_bits"] / g["toks"], 3)}
-    print("QUICK_EVAL " + json.dumps(res), flush=True)
+    print("QUICK_EVAL " + json.dumps({k: v for k, v in res.items() if k != "samples"}), flush=True)
     if a.out:
         json.dump(res, open(a.out, "w"), indent=2)
 
