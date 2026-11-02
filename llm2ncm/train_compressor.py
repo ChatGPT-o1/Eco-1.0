@@ -12,7 +12,7 @@ import argparse, json, os, random, sys, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import torch
 import torch.nn.functional as F
-from ncm_io import load_llm, save_compressor
+from ncm_io import load_llm, pick_device, save_compressor
 from ncm_model import Compressor
 
 
@@ -30,18 +30,20 @@ def main():
     ap.add_argument("--val-frac", type=float, default=0.05)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
     a = ap.parse_args()
     torch.manual_seed(a.seed)
     random.seed(a.seed)
     torch.set_num_threads(a.threads)
+    dev = pick_device(a.device)
     d = torch.load(a.data, weights_only=False)
     L, H = d["cfg"]["L"], d["cfg"]["hidden"]
     scales = [int(s) for s in a.scales.split(",")]
     assert all(0 < s < L for s in scales) and scales == sorted(scales), "scales must increase and be < block length"
     _, lm = load_llm(a.model)
     head = lm.get_output_embeddings()
-    W = head.weight.detach().float().clone()
-    bias = head.bias.detach().float().clone() if getattr(head, "bias", None) is not None else None
+    W = head.weight.detach().float().clone().to(dev)
+    bias = head.bias.detach().float().clone().to(dev) if getattr(head, "bias", None) is not None else None
     del lm, head
 
     N = len(d["block"])
@@ -49,7 +51,7 @@ def main():
     nval = max(16, int(N * a.val_frac))
     val, tr = perm[:nval], perm[nval:]
     hidden, block = d["hidden"], d["block"].long()
-    comp = Compressor(H, a.d_lat, L, scales, a.codebook)
+    comp = Compressor(H, a.d_lat, L, scales, a.codebook).to(dev)
     opt = torch.optim.AdamW(comp.parameters(), lr=a.lr, weight_decay=0.0)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1.0, (s + 1) / 100))
 
@@ -66,8 +68,8 @@ def main():
             used = [set() for _ in scales]
             for i in range(0, nval, 64):
                 b = val[i:i + 64]
-                recon, codes, _ = comp.encode(hidden[b].float(), nl)
-                correct += int((logits_of(recon).argmax(-1) == block[b]).sum())
+                recon, codes, _ = comp.encode(hidden[b].float().to(dev), nl)
+                correct += int((logits_of(recon).argmax(-1).cpu() == block[b]).sum())
                 total += block[b].numel()
                 for k, c in enumerate(codes):
                     used[k].update(c.flatten().tolist())
@@ -82,8 +84,8 @@ def main():
     for step in range(1, a.steps + 1):
         b = tr[torch.randint(0, len(tr), (a.batch,))]
         nl = len(scales) if random.random() < 0.5 else random.randint(1, len(scales))
-        recon, codes, commit = comp.encode(hidden[b].float(), nl, update=True)
-        ce = F.cross_entropy(logits_of(recon).reshape(-1, W.shape[0]), block[b].reshape(-1))
+        recon, codes, commit = comp.encode(hidden[b].float().to(dev), nl, update=True)
+        ce = F.cross_entropy(logits_of(recon).reshape(-1, W.shape[0]), block[b].reshape(-1).to(dev))
         loss = ce + commit
         opt.zero_grad()
         loss.backward()
@@ -99,14 +101,15 @@ def main():
             print("  val", r, flush=True)
 
     cfg = {"hidden": H, "d_lat": a.d_lat, "L": L, "scales": scales, "codebook": a.codebook, "P": d["cfg"]["P"]}
-    save_compressor(comp, cfg, a.out)
+    save_compressor(comp.cpu(), cfg, a.out)
+    comp.to(dev)
     comp.eval()
     with torch.no_grad():
         all_codes = [[] for _ in scales]
         for i in range(0, N, 128):
-            _, codes, _ = comp.encode(hidden[i:i + 128].float())
+            _, codes, _ = comp.encode(hidden[i:i + 128].float().to(dev))
             for k, c in enumerate(codes):
-                all_codes[k].append(c)
+                all_codes[k].append(c.cpu())
     d["codes"] = [torch.cat(c) for c in all_codes]
     d["val_idx"] = val
     torch.save(d, a.data)

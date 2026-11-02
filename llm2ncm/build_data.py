@@ -13,7 +13,7 @@ import argparse, json, os, random, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import torch
-from ncm_io import load_llm
+from ncm_io import load_llm, pick_device
 
 
 def read_jsonl(path, limit):
@@ -41,11 +41,13 @@ def main():
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
     a = ap.parse_args()
     rng = random.Random(a.seed)
     torch.manual_seed(a.seed)
     P, L = a.prefix, a.block
-    tok, lm = load_llm(a.model, a.threads)
+    dev = pick_device(a.device)
+    tok, lm = load_llm(a.model, a.threads, dev)
     lm.eval()
     t0 = time.time()
 
@@ -85,9 +87,10 @@ def main():
     with torch.inference_mode():
         for i in range(0, len(idx), a.batch):
             b = idx[i:i + a.batch]
-            out = lm.generate(x[b, :P], attention_mask=torch.ones(len(b), P, dtype=torch.long), max_new_tokens=L,
-                              min_new_tokens=L, do_sample=False, pad_token_id=tok.pad_token_id or tok.eos_token_id)
-            x[b, P:] = out[:, P:P + L]
+            out = lm.generate(x[b, :P].to(dev), attention_mask=torch.ones(len(b), P, dtype=torch.long, device=dev),
+                              max_new_tokens=L, min_new_tokens=L, do_sample=False,
+                              pad_token_id=tok.pad_token_id or tok.eos_token_id)
+            x[b, P:] = out[:, P:P + L].cpu()
             distilled[b] = True
             if (i // a.batch) % 10 == 0:
                 print(f"  distilled {min(i + a.batch, len(idx))}/{len(idx)} ({time.time() - t0:.0f}s)", flush=True)
@@ -95,8 +98,8 @@ def main():
         H = lm.get_input_embeddings().weight.shape[1]
         hidden = torch.empty(len(x), L, H, dtype=torch.float16)
         for i in range(0, len(x), a.batch):
-            hs = lm(x[i:i + a.batch], output_hidden_states=True).hidden_states[a.enc_layer]
-            hidden[i:i + a.batch] = hs[:, P:].to(torch.float16)
+            hs = lm(x[i:i + a.batch].to(dev), output_hidden_states=True).hidden_states[a.enc_layer]
+            hidden[i:i + a.batch] = hs[:, P:].to(torch.float16).cpu()
             if (i // a.batch) % 20 == 0:
                 print(f"  encoded {min(i + a.batch, len(x))}/{len(x)} ({time.time() - t0:.0f}s)", flush=True)
 

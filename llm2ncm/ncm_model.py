@@ -238,7 +238,7 @@ class NCMGenerator(nn.Module):
             inp = [torch.where(torch.rand(c.shape, device=dev) < corrupt, torch.randint_like(c, self.K), c) for c in codes]
         ratio = torch.rand(B, 1, device=dev)
         masked = torch.rand(B, self.L, device=dev) < ratio
-        masked[torch.arange(B), torch.randint(0, self.L, (B,), device=dev)] = True
+        masked[torch.arange(B, device=dev), torch.randint(0, self.L, (B,), device=dev)] = True
         parts = [self.embed(prefix)] + [self.level_input(rvq, k, inp, B, dev) for k in range(len(self.scales))]
         parts.append(self.token_input(rvq, inp, block, ~masked))
         x = torch.cat(parts, 1)

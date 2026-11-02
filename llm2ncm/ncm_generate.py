@@ -6,7 +6,7 @@
 import argparse, os, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ncm_io import end_ids, load_generator
+from ncm_io import end_ids, load_generator, pick_device
 
 
 def main():
@@ -19,8 +19,9 @@ def main():
     ap.add_argument("--temperature", type=float, default=0.0)
     ap.add_argument("--raw", action="store_true", help="treat --prompt as plain text, no chat template")
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
+    ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
     a = ap.parse_args()
-    tok, gen, comp, _ = load_generator(a.model, a.generator, a.threads)
+    tok, gen, comp, _ = load_generator(a.model, a.generator, a.threads, pick_device(a.device))
     text = a.prompt if a.raw else tok.apply_chat_template([{"role": "user", "content": a.prompt}], tokenize=False, add_generation_prompt=True)
     ids = tok(text, add_special_tokens=False)["input_ids"]
     t = time.time()

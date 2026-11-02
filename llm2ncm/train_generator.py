@@ -13,7 +13,7 @@ import argparse, math, os, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import torch
-from ncm_io import load_compressor, load_llm, save_generator
+from ncm_io import load_compressor, load_llm, pick_device, save_generator
 from ncm_model import NCMGenerator, level_attention_support
 
 
@@ -33,9 +33,11 @@ def main():
     ap.add_argument("--save-every", type=int, default=200)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
     a = ap.parse_args()
     torch.manual_seed(a.seed)
-    tok, lm = load_llm(a.model, a.threads)
+    dev = pick_device(a.device)
+    tok, lm = load_llm(a.model, a.threads, dev)
     ok, why = level_attention_support(lm.config)
     backbone = a.backbone if a.backbone != "auto" else ("llm" if ok else "small")
     if backbone == "llm" and not ok:
@@ -48,7 +50,8 @@ def main():
         from peft import LoraConfig, get_peft_model
         lm = get_peft_model(lm, LoraConfig(r=a.lora_r, lora_alpha=2 * a.lora_r, lora_dropout=0.0, target_modules="all-linear"))
     comp, ccfg = load_compressor(a.compressor)
-    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=backbone)
+    comp.to(dev)
+    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=backbone).to(dev)
     gen.train()
     params = [p for p in gen.parameters() if p.requires_grad]
     print(f"backbone={backbone} trainable params: {sum(p.numel() for p in params) / 1e6:.1f}M", flush=True)
@@ -72,7 +75,8 @@ def main():
     def val_loss():
         gen.eval()
         torch.manual_seed(1234)
-        _, parts = gen.loss(comp.rvq, prefix[vb], block[vb], [c[vb] for c in codes], corrupt=0.0, level_weight=a.level_weight)
+        _, parts = gen.loss(comp.rvq, prefix[vb].to(dev), block[vb].to(dev), [c[vb].to(dev) for c in codes], corrupt=0.0,
+                            level_weight=a.level_weight)
         gen.train()
         torch.manual_seed(a.seed + int(time.time()))
         return parts
@@ -81,7 +85,8 @@ def main():
     t0 = time.time()
     for step in range(1, a.steps + 1):
         b = tr[torch.randint(0, len(tr), (a.batch,))]
-        loss, parts = gen.loss(comp.rvq, prefix[b], block[b], [c[b] for c in codes], corrupt=a.corrupt, level_weight=a.level_weight)
+        loss, parts = gen.loss(comp.rvq, prefix[b].to(dev), block[b].to(dev), [c[b].to(dev) for c in codes],
+                               corrupt=a.corrupt, level_weight=a.level_weight)
         opt.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(params, 1.0)

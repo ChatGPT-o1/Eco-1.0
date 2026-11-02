@@ -17,7 +17,7 @@ import argparse, contextlib, importlib.util, json, os, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import torch
-from ncm_io import end_ids, load_generator
+from ncm_io import end_ids, load_generator, pick_device
 
 
 def surgery_eval():
@@ -68,8 +68,10 @@ def main():
     ap.add_argument("--humaneval", type=int, default=0, help="number of HumanEval problems (0 = skip)")
     ap.add_argument("--he-max-new", type=int, default=256)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
+    ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
     a = ap.parse_args()
-    tok, gen, comp, cfg = load_generator(a.model, a.generator, a.threads)
+    dev = pick_device(a.device)
+    tok, gen, comp, cfg = load_generator(a.model, a.generator, a.threads, dev)
     lm = gen.lm
     teacher = lm.disable_adapter if hasattr(lm, "disable_adapter") else contextlib.nullcontext
     stops = end_ids(tok)
@@ -92,14 +94,14 @@ def main():
         if not cont:
             return None
         with teacher(), torch.inference_mode():
-            ids = torch.tensor([prefix + cont])
+            ids = torch.tensor([prefix + cont], device=dev)
             logits = lm(input_ids=ids).logits[0, len(prefix) - 1:-1].float()
-            nll = torch.nn.functional.cross_entropy(logits, torch.tensor(cont), reduction="sum")
+            nll = torch.nn.functional.cross_entropy(logits, torch.tensor(cont, device=dev), reduction="sum")
         return float(nll) / 0.6931471805599453, len(cont)
 
     def ar_generate(prefix, n):
         with teacher(), torch.inference_mode():
-            out = lm.generate(torch.tensor([prefix]), attention_mask=torch.ones(1, len(prefix), dtype=torch.long),
+            out = lm.generate(torch.tensor([prefix], device=dev), attention_mask=torch.ones(1, len(prefix), dtype=torch.long, device=dev),
                               max_new_tokens=n, do_sample=False, eos_token_id=sorted(stops),
                               pad_token_id=tok.pad_token_id or tok.eos_token_id)
         new = out[0, len(prefix):].tolist()
