@@ -24,7 +24,7 @@ def main():
     N = len(d["block"])
     keep = torch.randperm(N, generator=torch.Generator().manual_seed(a.seed))[:min(a.n, N)].sort().values
     out = dict(d)
-    for k in ("prefix", "block", "hidden", "distilled", "prefix_mask"):
+    for k in ("prefix", "block", "hidden", "distilled", "prefix_mask", "ctx", "topk_ids", "topk_p"):
         if k not in d:
             continue
         out[k] = d[k][keep].clone()  # clone: a view would make torch.save write the whole original storage

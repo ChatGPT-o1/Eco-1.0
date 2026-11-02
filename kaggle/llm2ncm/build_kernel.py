@@ -142,8 +142,10 @@ VARIANTS["sweep-improve"] = sweep("llm2ncm-sweep-improve", {
 
 # ---- v2: on-policy answer windows (the original model's own answers to chat prompts, cut where the NCM writes them)
 # + 100% distilled code/chat windows + compressor LR decay. Two variants train side by side, one per T4, on the same data.
-V1_REFERENCE = ("v1 (50,000 windows, original recipe): NCM refine=4 judge 4.768 bits/token, agreement 0.060, distinct-2 0.23, "
-                "HumanEval 0/20; the original model: 0.546 / 1.0 / 0.688 / 2/20")
+V1_REFERENCE = ("NCM refine=4 (judge bits/token / agreement / distinct-2 / HumanEval): v1 (50k windows, original recipe) 4.768 / 0.060 / 0.23 / 0/20; "
+                "v2 (VQ, 2+8 slots) 5.237 / 0.084 / 0.384 / 0/20; v2-wide (VQ, 4+16 slots) 4.920 / 0.083 / 0.439 / 0/20; "
+                "the original model 0.546 / 1.0 / 0.688 / 2/20. Compressor token recovery from codes (1 level / 2 levels): v1 9.6% / 20.4%, "
+                "v2 11.3% / 22.5%, v2-wide 13.5% / 43.1%.")
 
 
 def variants(name, data_args, common_args, vs):
@@ -156,6 +158,16 @@ V2_COMMON = ["--device", "cuda", "--comp-steps", "5000", "--gen-steps", "5000", 
 VARIANTS["v2"] = variants("llm2ncm-v2", V2_DATA, V2_COMMON, [
     {"name": "v2", "note": "v2 data + per-slot embeddings + compressor LR decay (codes 2+8)", "args": []},
     {"name": "v2-wide", "note": "same, with twice the code slots (4+16): 2 tokens per fine code instead of 4", "args": ["--scales", "4,16"]},
+])
+# ---- v3: the four design changes from the v2 diagnosis, all on top of the v2 recipe (same data, plus the teacher's top-8 distribution):
+# FSQ codes (no dead codebook entries), a predictability term in compressor training, an autoregressive first code level, and soft
+# distillation of the teacher's distribution. v3 keeps the 2+8 code slots (apples to apples with v2); v3-wide uses 4+16.
+V3_DATA = ["--n", "24000", "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", "3", "--soft-k", "8"]
+V3_ARGS = ["--comp-extra=--quant fsq --fsq-levels 8,5,5,5 --pred-weight 0.1 --lr-final 0.1",
+           "--gen-extra=--slot-emb --ar-first-level --soft-weight 0.5"]
+VARIANTS["v3"] = variants("llm2ncm-v3", V3_DATA, ["--device", "cuda", "--comp-steps", "5000", "--gen-steps", "5000", "--humaneval", "20"], [
+    {"name": "v3", "note": "FSQ + predictability loss + autoregressive outline + soft distillation (codes 2+8)", "args": V3_ARGS},
+    {"name": "v3-wide", "note": "same, with twice the code slots (4+16)", "args": ["--scales", "4,16", *V3_ARGS]},
 ])
 VARIANTS["v2-local-test"] = variants("llm2ncm-v2-local-test", ["--n", "48", "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", "2"],
                                      ["--device", "cpu", "--comp-steps", "4", "--gen-steps", "4", "--humaneval", "0", "--eval-prompts", "2",

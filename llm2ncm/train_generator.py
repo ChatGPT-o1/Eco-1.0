@@ -41,6 +41,12 @@ def main():
     ap.add_argument("--lr", type=float, default=5e-4)
     ap.add_argument("--corrupt", type=float, default=0.1, help="share of input codes randomised (robustness)")
     ap.add_argument("--level-weight", type=float, default=1.0)
+    ap.add_argument("--ar-first-level", action="store_true",
+                    help="write the first (coarsest) code level one slot at a time instead of in parallel: a coherent outline "
+                         "for a few extra passes")
+    ap.add_argument("--soft-weight", type=float, default=0.0,
+                    help="share of the token loss that is cross-entropy against the original model's top-k distribution "
+                         "(needs data built with build_data.py --soft-k); 0 = hard targets only")
     ap.add_argument("--slot-emb", action="store_true",
                     help="learned per-slot embeddings for code-level and token slots (against neighbour repetition)")
     ap.add_argument("--mask-draws", type=int, default=1,
@@ -72,7 +78,7 @@ def main():
         lm = get_peft_model(lm, LoraConfig(r=a.lora_r, lora_alpha=2 * a.lora_r, lora_dropout=0.0, target_modules="all-linear"))
     comp, ccfg = load_compressor(a.compressor)
     comp.to(dev)
-    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=backbone, slot_emb=a.slot_emb).to(dev)
+    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=backbone, slot_emb=a.slot_emb, ar0=a.ar_first_level).to(dev)
     gen.train()
     params = [p for p in gen.parameters() if p.requires_grad]
     print(f"backbone={backbone} trainable params: {sum(p.numel() for p in params) / 1e6:.1f}M", flush=True)
@@ -81,6 +87,14 @@ def main():
     prefix, block, codes = d["prefix"].long(), d["block"].long(), [c.long() for c in d["codes"]]
     pmask = d.get("prefix_mask")  # left-padded answer windows (build_data --prompt-frac); None for old data
     pm = lambda idx: None if pmask is None else pmask[idx].to(dev)
+    s_ids, s_p = d.get("topk_ids"), d.get("topk_p")
+    assert a.soft_weight <= 0 or s_ids is not None, "--soft-weight needs data built with build_data.py --soft-k"
+
+    def sf(idx):  # soft targets of a batch: top-k ids and renormalised probabilities
+        if a.soft_weight <= 0:
+            return None
+        p = s_p[idx].float()
+        return s_ids[idx].long().to(dev), (p / p.sum(-1, keepdim=True)).to(dev)
     val = d["val_idx"]
     is_val = torch.zeros(len(block), dtype=torch.bool)
     is_val[val] = True
@@ -92,7 +106,7 @@ def main():
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1.0, (s + 1) / warm) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
     cfg = {"backbone": backbone, "backbone_note": why, "compressor": os.path.abspath(a.compressor), "model": a.model,
-           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws, "slot_emb": a.slot_emb}
+           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws, "slot_emb": a.slot_emb, "ar0": a.ar_first_level}
 
     @torch.no_grad()
     def val_loss():
@@ -129,7 +143,8 @@ def main():
     for step in range(1, a.steps + 1):
         b = tr[torch.randint(0, len(tr), (a.batch,))]
         loss, parts = gen.loss(comp.rvq, prefix[b].to(dev), block[b].to(dev), [c[b].to(dev) for c in codes],
-                               corrupt=a.corrupt, level_weight=a.level_weight, mask_draws=a.mask_draws, prefix_mask=pm(b))
+                               corrupt=a.corrupt, level_weight=a.level_weight, mask_draws=a.mask_draws, prefix_mask=pm(b),
+                               soft=sf(b), soft_weight=a.soft_weight)
         opt.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(params, 1.0)

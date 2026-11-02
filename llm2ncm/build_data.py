@@ -82,6 +82,9 @@ def main():
     ap.add_argument("--answer-blocks", type=int, default=3, help="blocks of each answer used as windows")
     ap.add_argument("--max-prompt", type=int, default=256, help="skip prompts longer than this many tokens")
     ap.add_argument("--enc-layer", type=int, default=-1, help="hidden-state layer used as the encoder output")
+    ap.add_argument("--soft-k", type=int, default=0,
+                    help="also store the original model's top-k next-token distribution at every block position (soft "
+                         "distillation targets, train_generator.py --soft-weight); 0 = off")
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--seed", type=int, default=0)
@@ -165,21 +168,32 @@ def main():
 
         H = lm.get_input_embeddings().weight.shape[1]
         hidden = torch.empty(len(x), L, H, dtype=torch.float16)
+        ctx = torch.empty(len(x), H, dtype=torch.float16)  # summary of the prefix: hidden state at its last token
+        if a.soft_k:
+            topk_ids = torch.empty(len(x), L, a.soft_k, dtype=torch.int32)
+            topk_p = torch.empty(len(x), L, a.soft_k, dtype=torch.float16)
         for i in range(0, len(x), a.batch):
             mb = prefix_mask[i:i + a.batch]
             kw = {}
             if not bool(mb.all()):  # left padding: mask the pads (an all-ones mask is left out to keep the old numerics)
                 kw["attention_mask"] = torch.cat([mb, torch.ones(len(mb), L, dtype=torch.bool)], 1).long().to(dev)
-            # logits_to_keep=1: skip the vocabulary projection at every position (only hidden states are needed here)
-            hs = lm(x[i:i + a.batch].to(dev), output_hidden_states=True, logits_to_keep=1, **kw).hidden_states[a.enc_layer]
+            # logits_to_keep: skip the vocabulary projection at positions we do not need (L+1 = the block's predictions)
+            o = lm(x[i:i + a.batch].to(dev), output_hidden_states=True, logits_to_keep=(L + 1 if a.soft_k else 1), **kw)
+            hs = o.hidden_states[a.enc_layer]
             hidden[i:i + a.batch] = hs[:, P:].to(torch.float16).cpu()
+            ctx[i:i + a.batch] = hs[:, P - 1].to(torch.float16).cpu()
+            if a.soft_k:  # logits at position P-1+j predict block token j
+                tp, ti = torch.softmax(o.logits[:, :L].float(), -1).topk(a.soft_k, -1)
+                topk_ids[i:i + a.batch] = ti.int().cpu()
+                topk_p[i:i + a.batch] = (tp / tp.sum(-1, keepdim=True)).half().cpu()
             if (i // a.batch) % 20 == 0:
                 print(f"  encoded {min(i + a.batch, len(x))}/{len(x)} ({time.time() - t0:.0f}s)", flush=True)
 
     torch.save({"prefix": x[:, :P].to(torch.int32), "block": x[:, P:].to(torch.int32), "hidden": hidden,
-                "distilled": distilled, "source": sources, "prefix_mask": prefix_mask,
+                "distilled": distilled, "source": sources, "prefix_mask": prefix_mask, "ctx": ctx,
+                **({"topk_ids": topk_ids, "topk_p": topk_p} if a.soft_k else {}),
                 "cfg": {"model": a.model, "P": P, "L": L, "enc_layer": a.enc_layer, "hidden": H,
-                        "prompt_frac": a.prompt_frac, "answer_blocks": a.answer_blocks}}, a.out)
+                        "prompt_frac": a.prompt_frac, "answer_blocks": a.answer_blocks, "soft_k": a.soft_k}}, a.out)
     print(f"saved {a.out}: {len(x)} windows ({sources.count('answer')} answer), hidden {tuple(hidden.shape)}, {time.time() - t0:.0f}s")
 
 

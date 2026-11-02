@@ -91,7 +91,8 @@ def main():
         f"prefix {a.prefix}, {a.n} training windows ({a.prompt_frac:.0%} are the original model's own answers to chat prompts; "
         f"{a.distill_frac:.0%} of the rest distilled from it).",
         f"Generator backbone: **{g['backbone']}** ({g['backbone_note']}), {g['trained_steps']} steps, batch {g['batch']}.",
-        f"Passes per block = {len(c['cfg']['scales'])} code levels + R token passes (+1 to cache the finished block); "
+        f"Passes per block = {c['cfg']['scales'][0] + len(c['cfg']['scales']) - 1 if g.get('ar0') else len(c['cfg']['scales'])} "
+        f"code passes{' (first level written one slot at a time)' if g.get('ar0') else ''} + R token passes (+1 to cache the finished block); "
         f"the original model needs {c['cfg']['L']} passes per block.", "",
         "## Quality and speed vs the original model", "", e["table"], "",
         "Judge bits/token: the original model's surprise at each output, lower = closer to what it would write. "

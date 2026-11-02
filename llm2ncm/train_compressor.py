@@ -24,6 +24,12 @@ def main():
     ap.add_argument("--scales", default="2,8", help="codes per level, coarse to fine (each < block length)")
     ap.add_argument("--codebook", type=int, default=1024)
     ap.add_argument("--d-lat", type=int, default=256)
+    ap.add_argument("--quant", default="vq", choices=["vq", "fsq"],
+                    help="vq = EMA vector quantiser (original); fsq = finite scalar quantisation (no codebook, every code usable)")
+    ap.add_argument("--fsq-levels", default="8,5,5,5", help="values per FSQ scalar; a code has prod(levels) options (8,5,5,5 = 1000)")
+    ap.add_argument("--pred-weight", type=float, default=0.0,
+                    help="weight of the predictability (rate) term: penalise codes a context model cannot predict from the prefix "
+                         "(fsq only; needs data built by the current build_data.py)")
     ap.add_argument("--steps", type=int, default=1500)
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--lr", type=float, default=1e-3)
@@ -56,7 +62,15 @@ def main():
     nval = max(16, int(N * a.val_frac))
     val, tr = perm[:nval], perm[nval:]
     hidden, block = d["hidden"], d["block"].long()
-    comp = Compressor(H, a.d_lat, L, scales, a.codebook).to(dev)
+    levels = [int(v) for v in a.fsq_levels.split(",")] if a.quant == "fsq" else None
+    if a.quant == "fsq":
+        a.codebook = 1
+        for v in levels:
+            a.codebook *= v
+    use_pred = a.quant == "fsq" and a.pred_weight > 0
+    ctx = d.get("ctx")
+    assert not use_pred or ctx is not None, "--pred-weight needs the prefix summary 'ctx': rebuild data with the current build_data.py"
+    comp = Compressor(H, a.d_lat, L, scales, a.codebook, quant=a.quant, levels=levels, pred=use_pred).to(dev)
     opt = torch.optim.AdamW(comp.parameters(), lr=a.lr, weight_decay=0.0)
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1.0, (s + 1) / 100) * (a.lr_final + (1 - a.lr_final) * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
@@ -81,6 +95,15 @@ def main():
                     used[k].update(c.flatten().tolist())
             res[f"levels_{nl}_token_acc"] = round(correct / total, 4)
         res["codebook_use"] = [round(len(u) / a.codebook, 3) for u in used]
+        if use_pred:  # how predictable are the codes from the prefix? (nats per scalar; uniform guessing = ln(levels))
+            r_sum = r_n = 0
+            for i in range(0, min(nval, 256), 64):
+                b = val[i:i + 64]
+                comp.encode(hidden[b].float().to(dev))
+                r_sum += float(comp.rate_loss(ctx[b].float().to(dev))) * len(b)
+                r_n += len(b)
+            res["pred_rate_nats"] = round(r_sum / r_n, 3)
+            res["uniform_nats"] = round(sum(math.log(v) for v in levels) / len(levels), 3)
         comp.train()
         return res
 
@@ -93,20 +116,26 @@ def main():
         recon, codes, commit = comp.encode(hidden[b].float().to(dev), nl, update=True)
         ce = F.cross_entropy(logits_of(recon).reshape(-1, W.shape[0]), block[b].reshape(-1).to(dev))
         loss = ce + commit
+        rate = None
+        if use_pred:
+            rate = comp.rate_loss(ctx[b].float().to(dev), nl)
+            loss = loss + a.pred_weight * rate
         opt.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(comp.parameters(), 1.0)
         opt.step()
         sched.step()
         if step % 50 == 0:
-            print(f"step {step} ce {ce.item():.3f} commit {commit.item():.4f} levels {nl} ({time.time() - t0:.0f}s)", flush=True)
+            print(f"step {step} ce {ce.item():.3f} commit {commit.item():.4f}" + (f" rate {rate.item():.3f}" if rate is not None else "")
+                  + f" levels {nl} ({time.time() - t0:.0f}s)", flush=True)
         if step % 500 == 0 or step == a.steps:
             r = evaluate()
             r["step"] = step
             hist.append(r)
             print("  val", r, flush=True)
 
-    cfg = {"hidden": H, "d_lat": a.d_lat, "L": L, "scales": scales, "codebook": a.codebook, "P": d["cfg"]["P"]}
+    cfg = {"hidden": H, "d_lat": a.d_lat, "L": L, "scales": scales, "codebook": a.codebook, "P": d["cfg"]["P"],
+           "quant": a.quant, "fsq_levels": levels, "pred": use_pred}
     save_compressor(comp.cpu(), cfg, a.out)
     comp.to(dev)
     comp.eval()

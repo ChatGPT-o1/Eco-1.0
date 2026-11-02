@@ -117,6 +117,10 @@ class MultiScaleRVQ(nn.Module):
             codes.append(idx.view(B, -1))
         return recon, codes, self.beta * commit
 
+    def code_vec(self, k, idx):
+        """Vector of a code at level k, before upsampling: (..., d)."""
+        return self.embed[k][idx]
+
     def recon_from_codes(self, codes, B=None, device=None):
         """Sum of upsampled codebook vectors for the given levels (empty list -> zeros)."""
         if not codes:
@@ -130,13 +134,103 @@ class MultiScaleRVQ(nn.Module):
         return torch.unique(codes_k).numel() / self.K
 
 
+class MultiScaleFSQ(nn.Module):
+    """Multiscale residual FSQ (finite scalar quantisation) in place of the EMA vector quantiser. Level k pools the
+    residual to scales[k] vectors, projects each to len(levels) scalars, bounds them with tanh and rounds scalar j to one
+    of levels[j] equally spaced values (straight-through gradient). A code is the mixed-radix number of those choices, so
+    K = prod(levels) and every code is reachable: there is no codebook and no dead entry (the EMA quantiser used only
+    33-78% of its codebook in our runs). A learned per-level projection maps the chosen values back to d dimensions."""
+
+    def __init__(self, d, L, scales, levels):
+        super().__init__()
+        self.d, self.L, self.scales, self.levels = d, L, list(scales), [int(v) for v in levels]
+        n = len(self.levels)
+        basis, self.K = [], 1
+        for v in self.levels:
+            basis.append(self.K)
+            self.K *= v
+        self.proj_in = nn.ModuleList([nn.Linear(d, n) for _ in scales])
+        self.proj_out = nn.ModuleList([nn.Linear(n, d) for _ in scales])
+        lv = torch.tensor(self.levels, dtype=torch.long)
+        self.register_buffer("lv", lv)
+        self.register_buffer("basis", torch.tensor(basis, dtype=torch.long))
+        self.register_buffer("hlf", (lv.float() - 1) / 2)
+        self.aux = []  # per level (bounded scalars, coarser reconstruction): read by the compressor's predictability loss
+
+    def forward(self, z, n_levels=None, update=False):
+        """z: (B, L, d) -> (reconstruction (B, L, d), codes [ (B, s_k) ], zero commitment loss)."""
+        n = len(self.scales) if n_levels is None else n_levels
+        residual, recon = z, torch.zeros_like(z)
+        codes, self.aux = [], []
+        for k in range(n):
+            r = downsample(residual, self.scales[k])
+            zb = torch.tanh(self.proj_in[k](r)) * self.hlf                      # (B, s, n), within (-half, half)
+            idx = torch.minimum(torch.round(zb + self.hlf).clamp(min=0), (self.lv - 1).to(zb.dtype))
+            qv = zb + ((idx - self.hlf) - zb).detach()                          # straight-through
+            up = upsample(self.proj_out[k](qv / self.hlf), self.L)
+            self.aux.append((zb, downsample(recon.detach(), self.scales[k])))   # context = the coarser levels only
+            recon = recon + up
+            residual = residual - up
+            codes.append((idx.long() * self.basis).sum(-1))
+        return recon, codes, z.new_zeros(())
+
+    def code_vec(self, k, idx):
+        digits = (idx.unsqueeze(-1) // self.basis) % self.lv
+        return self.proj_out[k]((digits.to(self.hlf.dtype) - self.hlf) / self.hlf)
+
+    def recon_from_codes(self, codes, B=None, device=None):
+        if not codes:
+            return torch.zeros(B, self.L, self.d, device=device)
+        out = 0
+        for k, idx in enumerate(codes):
+            out = out + upsample(self.code_vec(k, idx), self.L)
+        return out
+
+    def utilization(self, codes_k, k):
+        return torch.unique(codes_k).numel() / self.K
+
+
+class CodePredictor(nn.Module):
+    """Training-only context model for the compressor's predictability (rate) term. From a summary of the prefix (the
+    frozen LLM's hidden state at its last token) and the coarser levels, it predicts each level's FSQ scalars. The
+    compressor is penalised when its codes are hard to predict from that context, so what the context determines goes
+    into the coarse levels and unpredictable detail is left to the final word-filling step. The reconstruction loss
+    stops the codes from collapsing to nothing."""
+
+    def __init__(self, hidden, d, scales, levels, dm=256):
+        super().__init__()
+        self.n, self.lmax = len(levels), max(levels)
+        self.ctx = nn.Sequential(nn.Linear(hidden, dm), nn.GELU())
+        self.prev = nn.Linear(d, dm)
+        self.slot = nn.ParameterList([nn.Parameter(torch.zeros(s, dm)) for s in scales])
+        self.mlp = nn.ModuleList([nn.Sequential(nn.Linear(dm, dm), nn.GELU(), nn.Linear(dm, self.n * self.lmax)) for _ in scales])
+
+    def rate(self, k, ctx, prev, zb, half, lv, sigma=0.5):
+        """Nats per scalar: cross-entropy between the predictor and the soft assignment of zb to its grid points
+        (differentiable in zb, which is what pushes the encoder toward predictable values)."""
+        B, s, n = zb.shape
+        x = self.ctx(ctx)[:, None] + self.slot[k] + self.prev(prev)
+        logits = self.mlp[k](x).view(B, s, n, self.lmax)
+        grid = torch.arange(self.lmax, device=zb.device, dtype=zb.dtype)
+        valid = grid[None, :] < lv[:, None].to(zb.dtype)                          # (n, lmax)
+        logp = torch.log_softmax(logits.masked_fill(~valid, float("-inf")), -1).masked_fill(~valid, 0.0)
+        t = (zb + half)[..., None]
+        w = torch.softmax((-(t - grid) ** 2 / (2 * sigma ** 2)).masked_fill(~valid, float("-inf")), -1)
+        return -(w * logp).sum(-1).mean()
+
+
 class Compressor(nn.Module):
     """Frozen-LLM hidden states -> code levels -> (training only) token reconstruction."""
 
-    def __init__(self, hidden, d, L, scales, codebook, dec_layers=2, heads=4):
+    def __init__(self, hidden, d, L, scales, codebook, dec_layers=2, heads=4, quant="vq", levels=None, pred=False):
         super().__init__()
         self.inp = nn.Sequential(nn.Linear(hidden, d), nn.LayerNorm(d))
-        self.rvq = MultiScaleRVQ(d, L, scales, codebook)
+        if quant == "fsq":
+            self.rvq = MultiScaleFSQ(d, L, scales, levels)
+            self.pred = CodePredictor(hidden, d, scales, levels) if pred else None
+        else:
+            self.rvq = MultiScaleRVQ(d, L, scales, codebook)
+            self.pred = None
         self.pos = nn.Parameter(torch.zeros(L, d))
         layer = nn.TransformerEncoderLayer(d, heads, 4 * d, dropout=0.0, batch_first=True, norm_first=True)
         self.dec = nn.TransformerEncoder(layer, dec_layers, enable_nested_tensor=False)
@@ -147,6 +241,11 @@ class Compressor(nn.Module):
 
     def decode(self, recon):
         return self.out(self.dec(recon + self.pos))  # hidden-size vectors; apply the LLM's lm_head outside
+
+    def rate_loss(self, ctx, n_levels=None):
+        """Predictability term for the levels of the LAST encode() call (FSQ + pred only): mean nats per scalar."""
+        aux = self.rvq.aux if n_levels is None else self.rvq.aux[:n_levels]
+        return sum(self.pred.rate(k, ctx, prev, zb, self.rvq.hlf, self.rvq.lv) for k, (zb, prev) in enumerate(aux)) / len(aux)
 
 
 class SmallBackbone(nn.Module):
@@ -206,8 +305,9 @@ def mask_padding(mask, prefix_mask):
 
 
 class NCMGenerator(nn.Module):
-    def __init__(self, lm, d_lat, scales, L, codebook, backbone="llm", slot_emb=False):
+    def __init__(self, lm, d_lat, scales, L, codebook, backbone="llm", slot_emb=False, ar0=False):
         super().__init__()
+        self.ar0 = ar0  # first code level is written one slot at a time (causal), the rest in parallel
         self.lm = lm
         causal = lm.get_base_model() if hasattr(lm, "get_base_model") else lm
         # references, not submodules (they already live inside self.lm)
@@ -250,6 +350,19 @@ class NCMGenerator(nn.Module):
         x = self.code_in(downsample(prev, self.scales[k])) + self.level_emb[k]
         return x + self.lvl_slot[k] if self.slot_emb else x
 
+    def ar_input(self, rvq, j, prev, dev, B=1):
+        """Input of first-level slot j when that level is autoregressive: the previous slot's code (none for slot 0)."""
+        v = torch.zeros(B, 1, self.code_in.in_features, device=dev) if prev is None else rvq.code_vec(0, prev)
+        x = self.code_in(v) + self.level_emb[0]
+        return x + self.lvl_slot[0][j] if self.slot_emb else x
+
+    def level0_inputs(self, rvq, c0, B, dev):
+        """Training inputs of the autoregressive first level: the codes shifted right by one slot."""
+        v = rvq.code_vec(0, c0)
+        v = torch.cat([torch.zeros(B, 1, v.shape[-1], device=dev), v[:, :-1]], 1)
+        x = self.code_in(v) + self.level_emb[0]
+        return x + self.lvl_slot[0] if self.slot_emb else x
+
     def token_input(self, rvq, codes, toks, fixed):
         full = rvq.recon_from_codes(codes)
         tok = torch.where(fixed[..., None], self.embed(toks), self.mask_emb.to(full.dtype))
@@ -267,6 +380,9 @@ class NCMGenerator(nn.Module):
     def slot_inputs(self, rvq, prefix, inp):
         """Embeddings of the prefix followed by the inputs of every code-level slot group."""
         B, dev = prefix.shape[0], prefix.device
+        if self.ar0:
+            return [self.embed(prefix), self.level0_inputs(rvq, inp[0], B, dev)] + \
+                   [self.level_input(rvq, k, inp, B, dev) for k in range(1, len(self.scales))]
         return [self.embed(prefix)] + [self.level_input(rvq, k, inp, B, dev) for k in range(len(self.scales))]
 
     def hidden(self, rvq, prefix, inp, tok_parts, head=None, prefix_mask=None):
@@ -278,7 +394,8 @@ class NCMGenerator(nn.Module):
         dev = prefix.device
         G = len(tok_parts)
         x = torch.cat((self.slot_inputs(rvq, prefix, inp) if head is None else head) + list(tok_parts), 1)
-        mask = block_mask(P, self.scales + [self.L] * G, x.dtype, dev, parallel_tail=G).expand(B, -1, -1, -1)
+        groups = ([1] * self.scales[0] + self.scales[1:]) if self.ar0 else self.scales  # size-1 groups == causal
+        mask = block_mask(P, groups + [self.L] * G, x.dtype, dev, parallel_tail=G).expand(B, -1, -1, -1)
         if prefix_mask is not None and not bool(prefix_mask.all()):
             mask = mask_padding(mask, prefix_mask)  # left-padded prompts; RoPE is relative, so positions need no shift
         pos = list(range(P))
@@ -288,7 +405,10 @@ class NCMGenerator(nn.Module):
         h, _ = self.run(x, mask, pos)
         return h
 
-    def loss(self, rvq, prefix, block, codes, corrupt=0.1, level_weight=1.0, mask_draws=1, prefix_mask=None):
+    def loss(self, rvq, prefix, block, codes, corrupt=0.1, level_weight=1.0, mask_draws=1, prefix_mask=None,
+             soft=None, soft_weight=0.0):
+        """soft = (ids (B, L, k), probs (B, L, k)): the teacher's top-k next-token distribution at every block position.
+        With soft_weight > 0 the token loss mixes the usual hard cross-entropy with the cross-entropy against it."""
         B, P = prefix.shape
         dev = prefix.device
         inp = codes  # inputs see corrupted earlier levels (robustness to own errors); targets stay clean
@@ -310,7 +430,13 @@ class NCMGenerator(nn.Module):
             off += s
         tok_h = torch.cat([h[:, off + g * self.L:off + (g + 1) * self.L][m] for g, m in enumerate(masks)])
         tok_logits = self.lm_head(tok_h).float()
-        losses["tokens"] = F.cross_entropy(tok_logits, torch.cat([block[m] for m in masks]))
+        target = torch.cat([block[m] for m in masks])
+        losses["tokens"] = F.cross_entropy(tok_logits, target)
+        if soft is not None and soft_weight > 0:
+            ids = torch.cat([soft[0][m] for m in masks])
+            pr = torch.cat([soft[1][m] for m in masks])
+            soft_ce = -(pr * torch.log_softmax(tok_logits, -1).gather(-1, ids)).sum(-1).mean()
+            losses["tokens"] = (1 - soft_weight) * losses["tokens"] + soft_weight * soft_ce
         total = level_weight * sum(v for k, v in losses.items() if k != "tokens") + losses["tokens"]
         return total, {k: float(v.detach()) for k, v in losses.items()}
 
@@ -335,6 +461,22 @@ class NCMGenerator(nn.Module):
             P = len(seq)
             codes, groups = [], []
             for k, s in enumerate(self.scales):
+                if k == 0 and self.ar0:  # one pass per first-level slot, each seeing the slots before it
+                    cs, prev = [], None
+                    for j in range(s):
+                        xj = self.ar_input(rvq, j, prev, dev)
+                        pj = torch.tensor([self.level_positions(P, 0)[j]], device=dev)[None]
+                        if cached:
+                            mask = torch.zeros(1, 1, 1, cache.get_seq_length() + 1, dtype=dtype, device=dev)
+                            h, cache = self.run(xj, mask, pj, cache, use_cache=True)
+                        else:
+                            h = self._full_pass(seq, groups + [(xj, pj)], dtype, dev)
+                        groups.append((xj, pj))
+                        prev = pick(self.heads[0](h[:, -1:]), temperature) if oracle_codes is None else oracle_codes[0][:, j:j + 1]
+                        cs.append(prev)
+                        passes += 1
+                    codes.append(torch.cat(cs, 1))
+                    continue
                 xk = self.level_input(rvq, k, codes, 1, dev)
                 pos = torch.tensor(self.level_positions(P, k), device=dev)[None]
                 if cached:

@@ -134,6 +134,53 @@ def main():
     b8, _ = gs.generate(comp.rvq, prompt, 2 * L, refine=3, use_cache=False)
     assert a8 == b8, "slot embeddings break cached generation"
     print("8. slot embeddings: zero init == plain layout, trainable, cached == recomputed")
+
+    # 9. v3 pieces: FSQ quantiser, predictability (rate) term, autoregressive first level, soft targets
+    torch.manual_seed(11)
+    compf = Compressor(H, 32, L, scales, 0, quant="fsq", levels=[4, 3, 3], pred=True)
+    compf.train()
+    hf = torch.randn(B, L, H, requires_grad=True)
+    reconf, codesf, _ = compf.encode(hf, update=True)
+    Kf = compf.rvq.K
+    assert Kf == 36 and all(0 <= int(c.min()) and int(c.max()) < Kf for c in codesf), "FSQ codes out of range"
+    again = compf.rvq.recon_from_codes(codesf)
+    assert float((again - reconf).abs().max()) < 1e-4 * float(reconf.abs().max()), "recon_from_codes != forward reconstruction"
+    ctxf = torch.randn(B, H)
+    compf.zero_grad()
+    compf.encode(hf)
+    compf.rate_loss(ctxf).backward()  # the rate term alone must reach the encoder and the predictor
+    assert float(compf.inp[0].weight.grad.abs().sum()) > 0 and float(compf.pred.mlp[0][0].weight.grad.abs().sum()) > 0, "rate term has no gradient"
+    gA = NCMGenerator(lm, 32, scales, L, Kf, ar0=True).eval()
+    codesA = [c.detach() for c in codesf]
+    with torch.no_grad():  # the training layout (shifted inputs + causal mask) must equal step-by-step decoding
+        head = gA.slot_inputs(compf.rvq, prefix, codesA)
+        tp0 = gA.token_input(compf.rvq, codesA, block, torch.rand(B, L) > 0.5)
+        hA = gA.hidden(compf.rvq, prefix, codesA, [tp0], head)
+        logits_train = gA.heads[0](hA[:, P:P + scales[0]])[0]
+        groups, prev, rows = [], None, []
+        for j in range(scales[0]):
+            xj = gA.ar_input(compf.rvq, j, prev, "cpu")
+            pj = torch.tensor([gA.level_positions(P, 0)[j]])[None]
+            h = gA._full_pass(prefix[0].tolist(), groups + [(xj, pj)], torch.float32, "cpu")
+            groups.append((xj, pj))
+            rows.append(gA.heads[0](h[:, -1:])[0, 0])
+            prev = codesA[0][:1, j:j + 1]
+        err = float((logits_train - torch.stack(rows)).abs().max())
+    assert err < 1e-4 * float(logits_train.abs().max()) + 1e-5, f"AR first level: training layout != sequential decoding ({err:.2e})"
+    a9, _ = gA.generate(compf.rvq, prompt, 2 * L, refine=3, use_cache=True)
+    b9, _ = gA.generate(compf.rvq, prompt, 2 * L, refine=3, use_cache=False)
+    assert a9 == b9, "AR first level breaks cached generation"
+    torch.manual_seed(7)
+    l_h, _ = gen.loss(comp.rvq, prefix, block, codes, corrupt=0.0)
+    torch.manual_seed(7)
+    l_s, _ = gen.loss(comp.rvq, prefix, block, codes, corrupt=0.0, soft=(block[..., None], torch.ones(B, L, 1)), soft_weight=0.7)
+    assert abs(float(l_h.detach()) - float(l_s.detach())) < 1e-4, "one-hot soft targets should equal hard cross-entropy"
+    ids9 = torch.randint(0, 2000, (B, L, 4))
+    pr9 = torch.softmax(torch.randn(B, L, 4), -1)
+    gen.train()
+    l9, _ = gen.loss(comp.rvq, prefix, block, codes, soft=(ids9, pr9), soft_weight=0.5)
+    l9.backward()
+    print(f"9. FSQ codes in range and consistent, rate term reaches the encoder, AR first level == step-by-step ({err:.1e}) and cache-exact, soft loss OK")
     print("SELFTEST OK")
 
 
