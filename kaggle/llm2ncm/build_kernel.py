@@ -202,7 +202,7 @@ def final_cfg(name, n, comp_steps, humaneval, eval_prompts, sample_every, batch=
                 reference=V1_REFERENCE + V3_REFERENCE, **extra)
 
 
-VARIANTS["final"] = final_cfg("llm2ncm-final", 80000, 20000, 40, 64, 500, budget_hours=7.0, eval_reserve_min=28, ckpt_every_min=30)
+VARIANTS["final"] = final_cfg("llm2ncm-final", 100000, 20000, 40, 64, 500, budget_hours=7.0, eval_reserve_min=28, ckpt_every_min=30)
 VARIANTS["final-smoke"] = final_cfg("llm2ncm-final-smoke", 1200, 300, 2, 8, 100, gen_time=" --time-budget-min 4", save_every=100, ckpt_every_min=1)
 VARIANTS["final-local-test"] = final_cfg("llm2ncm-final-local-test", 48, 4, 0, 2, 3, batch=4, device="cpu", gen_time=" --time-budget-min 0.4",
                                          save_every=3, ckpt_every_min=0.1)

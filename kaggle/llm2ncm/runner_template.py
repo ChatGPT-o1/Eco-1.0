@@ -151,11 +151,12 @@ def snapshot(wd, od):
                 shutil.copy(f"{wd}/{fn}", f"{od}/{fn}")
         except OSError:
             pass
-    try:
-        if os.path.isdir(f"{wd}/generator"):
-            shutil.copytree(f"{wd}/generator", f"{od}/generator", dirs_exist_ok=True)
-    except OSError:
-        pass
+    for sub in ("generator", "generator_best"):
+        try:
+            if os.path.isdir(f"{wd}/{sub}"):
+                shutil.copytree(f"{wd}/{sub}", f"{od}/{sub}", dirs_exist_ok=True)
+        except OSError:
+            pass
 
 
 def run_variant(v, gpu):

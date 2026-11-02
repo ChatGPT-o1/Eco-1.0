@@ -174,6 +174,7 @@ def main():
         print(f"time budget: {budget / 60:.1f} min (learning rate follows the clock; training stops when it is used up)", flush=True)
 
     print("val before:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)
+    best = float("inf")  # lowest validation loss so far: its checkpoint is kept separately (<out>_best) in case of late overfitting
     t0 = time.time()
     for step in range(1, a.steps + 1):
         if budget:
@@ -199,8 +200,13 @@ def main():
             print(f"step {step} " + " ".join(f"{k} {v:.3f}" for k, v in parts.items()) + f"  {tps:.0f} pos/s"
                   + (f"  {100 * min((time.time() - t0) / budget, 1.0):.0f}% of time" if budget else ""), flush=True)
         if step % a.save_every == 0 or last:
-            print(f"  val step {step}:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)
+            vl = val_loss()
+            print(f"  val step {step}:", {k: round(v, 3) for k, v in vl.items()}, flush=True)
             save_generator(gen, dict(cfg, trained_steps=step), a.out)
+            if sum(vl.values()) < best:
+                best = sum(vl.values())
+                save_generator(gen, dict(cfg, trained_steps=step), a.out + "_best")
+                print(f"  best validation loss so far (step {step}): checkpoint also saved to {a.out}_best", flush=True)
         if a.sample_every and (step % a.sample_every == 0 or last):
             show_samples(step)
         if last:
