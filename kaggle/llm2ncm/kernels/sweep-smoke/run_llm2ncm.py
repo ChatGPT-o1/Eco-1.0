@@ -977,7 +977,7 @@ def write_compare(done):
             lines += [json.load(open(ev))["table"], ""]
         md = f"{OUT}/{name}/chat_samples.md"
         if os.path.exists(md):
-            lines += [l for l in open(md).read().splitlines() if not l.startswith("# Chat samples")], ""
+            lines += [l for l in open(md).read().splitlines() if not l.startswith("# Chat samples")] + [""]
     open(f"{OUT}/COMPARE.md", "w").write("\n".join(lines) + "\n")
 
 
