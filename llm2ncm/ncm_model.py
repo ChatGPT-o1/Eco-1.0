@@ -261,9 +261,12 @@ class NCMGenerator(nn.Module):
 
     # ---------------------------------------------------------------- generation
     @torch.no_grad()
-    def generate(self, rvq, prompt, max_new, refine=4, temperature=0.0, end_ids=(), use_cache=None):
+    def generate(self, rvq, prompt, max_new, refine=4, temperature=0.0, end_ids=(), use_cache=None, oracle_codes=None):
         """Block-by-block NCM decoding. Returns (new token ids, forward passes used).
-        use_cache=False recomputes the whole sequence every pass (reference path for testing)."""
+        use_cache=False recomputes the whole sequence every pass (reference path for testing).
+        oracle_codes (diagnostics only): the TRUE codes [(1, s_k)] of the first block, used instead of the predicted
+        ones, to separate "cannot predict the codes" from "cannot fill in tokens given the codes"."""
+        assert oracle_codes is None or max_new <= self.L, "oracle_codes only describe one block"
         dev = self.code_in.weight.device
         cached = (self.small is None) if use_cache is None else (use_cache and self.small is None)
         seq, out, passes = list(prompt), [], 0
@@ -285,7 +288,7 @@ class NCMGenerator(nn.Module):
                 else:
                     h = self._full_pass(seq, groups + [(xk, pos)], dtype, dev)
                 groups.append((xk, pos))
-                codes.append(pick(self.heads[k](h[:, -s:]), temperature))
+                codes.append(pick(self.heads[k](h[:, -s:]), temperature) if oracle_codes is None else oracle_codes[k])
                 passes += 1
             toks = torch.zeros(1, self.L, dtype=torch.long, device=dev)
             fixed = torch.zeros(1, self.L, dtype=torch.bool, device=dev)

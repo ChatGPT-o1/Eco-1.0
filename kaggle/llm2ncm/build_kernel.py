@@ -27,6 +27,7 @@ COMMON = {
     "chat_refine": 4,
     "chat_new": 128,
     "selftest": True,
+    "mode": "pipeline",
 }
 VARIANTS = {
     "full": dict(COMMON, name="llm2ncm-smollm2-135m", pipeline_args=[
@@ -34,6 +35,31 @@ VARIANTS = {
     "smoke": dict(COMMON, name="llm2ncm-smollm2-135m-smoke", pipeline_args=[
         "--device", "cuda", "--n", "400", "--comp-steps", "30", "--gen-steps", "30", "--humaneval", "2", "--eval-prompts", "2"]),
 }
+
+
+def job(name, n, steps, note="", comp=(), gen=(), ev=(), recipe="base"):
+    """One sweep job: train compressor + generator for `steps` each on n windows, then ncm_quick_eval."""
+    return {"name": name, "recipe": recipe, "n": n, "note": note or f"{steps} steps",
+            "comp": ["--steps", str(steps), *comp], "gen": ["--steps", str(steps), *gen], "eval": list(ev)}
+
+
+def sweep(name, recipes, jobs):
+    return dict(COMMON, name=name, mode="sweep", recipes=recipes, jobs=jobs)
+
+
+# Sweeps A/B training changes at a small budget on both T4s (see README.md). Longest jobs first so the two GPUs stay busy.
+VARIANTS["sweep-baseline"] = sweep("llm2ncm-sweep-baseline", {"base": {"n": 32000}}, [
+    job("base_n8000_s6000", 8000, 6000),
+    job("base_n2000_s6000", 2000, 6000),
+    job("base_n32000_s2000", 32000, 2000),
+    job("base_n8000_s2000", 8000, 2000),
+    job("base_n2000_s2000", 2000, 2000),
+])
+# tiny CPU-sized sweep for LLM2NCM_LOCAL=1 dry runs of the runner itself
+VARIANTS["sweep-local-test"] = sweep("llm2ncm-sweep-local-test", {"base": {"n": 96}}, [
+    job("t_a", 64, 4, ev=["--n", "6"]),
+    job("t_b", 32, 4, "second job", gen=["--batch", "4"], ev=["--n", "6"]),
+])
 
 
 def payload():

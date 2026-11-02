@@ -31,6 +31,7 @@ def main():
     ap.add_argument("--corrupt", type=float, default=0.1, help="share of input codes randomised (robustness)")
     ap.add_argument("--level-weight", type=float, default=1.0)
     ap.add_argument("--save-every", type=int, default=200)
+    ap.add_argument("--val-windows", type=int, default=256, help="held-out windows for the validation loss (was 32: too noisy to compare runs)")
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
@@ -62,7 +63,7 @@ def main():
     is_val = torch.zeros(len(block), dtype=torch.bool)
     is_val[val] = True
     tr = torch.nonzero(~is_val)[:, 0]
-    vb = val[:32]
+    vb = val[:a.val_windows]
 
     opt = torch.optim.AdamW(params, lr=a.lr, weight_decay=0.0)
     warm = 30
@@ -75,11 +76,17 @@ def main():
     def val_loss():
         gen.eval()
         torch.manual_seed(1234)
-        _, parts = gen.loss(comp.rvq, prefix[vb].to(dev), block[vb].to(dev), [c[vb].to(dev) for c in codes], corrupt=0.0,
-                            level_weight=a.level_weight)
+        tot, n = {}, 0
+        for i in range(0, len(vb), 64):
+            c = vb[i:i + 64]
+            _, parts = gen.loss(comp.rvq, prefix[c].to(dev), block[c].to(dev), [x[c].to(dev) for x in codes], corrupt=0.0,
+                                level_weight=a.level_weight)
+            for k, v in parts.items():
+                tot[k] = tot.get(k, 0.0) + v * len(c)
+            n += len(c)
         gen.train()
         torch.manual_seed(a.seed + int(time.time()))
-        return parts
+        return {k: v / n for k, v in tot.items()}
 
     print("val before:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)
     t0 = time.time()

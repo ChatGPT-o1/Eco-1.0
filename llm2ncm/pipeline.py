@@ -44,14 +44,18 @@ def main():
     ap.add_argument("--humaneval", type=int, default=10)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
+    ap.add_argument("--data-batch", type=int, default=0,
+                    help="batch size for distilling/encoding windows in build_data (0 = 16 on cpu, 256 otherwise). "
+                         "A tiny model is launch-overhead bound on a GPU, so a bigger batch is ~free speed")
     a = ap.parse_args()
     W = a.work
+    data_batch = a.data_batch or (16 if a.device == "cpu" else 256)
     os.makedirs(W, exist_ok=True)
     data, comp, gdir, ev = f"{W}/data.pt", f"{W}/compressor.pt", f"{W}/generator", f"{W}/eval.json"
 
     if not os.path.exists(data):
         run("build_data.py", "--model", a.model, "--data", a.data, "--out", data, "--n", a.n, "--prefix", a.prefix,
-            "--block", a.block, "--distill-frac", a.distill_frac, "--threads", a.threads, "--device", a.device)
+            "--block", a.block, "--distill-frac", a.distill_frac, "--batch", data_batch, "--threads", a.threads, "--device", a.device)
     if not os.path.exists(comp + ".json"):
         run("train_compressor.py", "--model", a.model, "--data", data, "--out", comp, "--scales", a.scales,
             "--codebook", a.codebook, "--steps", a.comp_steps, "--threads", a.threads, "--device", a.device)
