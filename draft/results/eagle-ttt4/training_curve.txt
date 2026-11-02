@@ -1,0 +1,14 @@
+  val step 500: {'acc1': 0.1469, 'reg': 0.8641, 'ce': 7.0097, 'acc2': 0.1448, 'acc3': 0.1343, 'acc4': 0.1321, 'est_accepted': 0.171}
+  val step 1000: {'acc1': 0.2339, 'reg': 0.7269, 'ce': 4.8831, 'acc2': 0.2116, 'acc3': 0.2048, 'acc4': 0.2002, 'est_accepted': 0.296}
+  val step 1500: {'acc1': 0.2868, 'reg': 0.6656, 'ce': 4.1617, 'acc2': 0.2563, 'acc3': 0.2463, 'acc4': 0.2389, 'est_accepted': 0.383}
+  val step 2000: {'acc1': 0.3271, 'reg': 0.6226, 'ce': 3.7308, 'acc2': 0.2913, 'acc3': 0.275, 'acc4': 0.2662, 'est_accepted': 0.456}
+  val step 2500: {'acc1': 0.3524, 'reg': 0.5954, 'ce': 3.4512, 'acc2': 0.3102, 'acc3': 0.2939, 'acc4': 0.2864, 'est_accepted': 0.503}
+  val step 3000: {'acc1': 0.3758, 'reg': 0.5732, 'ce': 3.2216, 'acc2': 0.3336, 'acc3': 0.3163, 'acc4': 0.3092, 'est_accepted': 0.553}
+  val step 3500: {'acc1': 0.3941, 'reg': 0.5576, 'ce': 3.0831, 'acc2': 0.3519, 'acc3': 0.3356, 'acc4': 0.3276, 'est_accepted': 0.595}
+  val step 4000: {'acc1': 0.4078, 'reg': 0.5473, 'ce': 2.9723, 'acc2': 0.3629, 'acc3': 0.3459, 'acc4': 0.3401, 'est_accepted': 0.624}
+  val step 4500: {'acc1': 0.4207, 'reg': 0.5384, 'ce': 2.8894, 'acc2': 0.3744, 'acc3': 0.3592, 'acc4': 0.3491, 'est_accepted': 0.655}
+  val step 5000: {'acc1': 0.4292, 'reg': 0.5319, 'ce': 2.8391, 'acc2': 0.3825, 'acc3': 0.3695, 'acc4': 0.3611, 'est_accepted': 0.676}
+  val step 5500: {'acc1': 0.4343, 'reg': 0.5279, 'ce': 2.8019, 'acc2': 0.3882, 'acc3': 0.3748, 'acc4': 0.3657, 'est_accepted': 0.689}
+  val step 6000: {'acc1': 0.437, 'reg': 0.5256, 'ce': 2.7743, 'acc2': 0.3912, 'acc3': 0.3785, 'acc4': 0.3696, 'est_accepted': 0.697}
+  val step 6344: {'acc1': 0.4371, 'reg': 0.5243, 'ce': 2.7703, 'acc2': 0.3903, 'acc3': 0.3784, 'acc4': 0.3683, 'est_accepted': 0.696}
+done after 6344 steps (3005s); best estimated accepted drafts per round 0.697

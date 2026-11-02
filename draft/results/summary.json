@@ -1,0 +1,131 @@
+{
+  "config": {
+    "base_model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "pip_extra": [
+      "transformers==5.19.0",
+      "peft==0.21.2",
+      "accelerate==1.15.0"
+    ],
+    "chat_prompts": [
+      "What is 2 + 2?",
+      "What is the capital of France?",
+      "Write a Python function that adds two numbers."
+    ],
+    "chat_refine": 4,
+    "chat_new": 128,
+    "selftest": true,
+    "mode": "draft",
+    "name": "llm2ncm-draft",
+    "selftest_script": "draft/selftest_draft.py",
+    "data_args": [
+      "--n",
+      "12000",
+      "--max-new",
+      "256",
+      "--batch",
+      "128"
+    ],
+    "train_args": [
+      "--time-budget-min",
+      "50",
+      "--batch",
+      "16",
+      "--eval-every",
+      "500",
+      "--amp"
+    ],
+    "bench_args": [
+      "--n",
+      "40",
+      "--max-new",
+      "192",
+      "--k",
+      "3,5"
+    ],
+    "bench_dtypes": [
+      "float32",
+      "float16"
+    ],
+    "heads": [
+      {
+        "name": "eagle-ttt4",
+        "note": "4-step training-time test (EAGLE-3 style)",
+        "args": [
+          "--steps-ahead",
+          "4"
+        ]
+      },
+      {
+        "name": "eagle-ttt1",
+        "note": "one-step training (EAGLE-1 style), control",
+        "args": [
+          "--steps-ahead",
+          "1"
+        ]
+      }
+    ]
+  },
+  "stages": {
+    "nvidia-smi": {
+      "exit": 0,
+      "seconds": 0
+    },
+    "pip-install": {
+      "exit": 0,
+      "seconds": 17
+    },
+    "pip-uninstall-torchao": {
+      "exit": 0,
+      "seconds": 1
+    },
+    "versions": {
+      "exit": 0,
+      "seconds": 26
+    },
+    "fetch_data": {
+      "exit": 0,
+      "seconds": 16
+    },
+    "textonly": {
+      "exit": 0,
+      "seconds": 12
+    },
+    "selftest": {
+      "exit": 0,
+      "seconds": 362
+    },
+    "fetch_prompts": {
+      "exit": 0,
+      "seconds": 5
+    },
+    "build_draft_data": {
+      "exit": 0,
+      "seconds": 1261
+    },
+    "train:eagle-ttt1": {
+      "exit": 0,
+      "seconds": 3014
+    },
+    "train:eagle-ttt4": {
+      "exit": 0,
+      "seconds": 3016
+    },
+    "bench:eagle-ttt1:float32": {
+      "exit": 0,
+      "seconds": 953
+    },
+    "bench:eagle-ttt4:float32": {
+      "exit": 0,
+      "seconds": 971
+    },
+    "bench:eagle-ttt1:float16": {
+      "exit": 0,
+      "seconds": 1080
+    },
+    "bench:eagle-ttt4:float16": {
+      "exit": 0,
+      "seconds": 1109
+    }
+  },
+  "total_seconds": 6808
+}

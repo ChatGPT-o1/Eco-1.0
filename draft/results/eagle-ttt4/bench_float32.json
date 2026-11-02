@@ -1,0 +1,51 @@
+{
+  "dtype": "float32",
+  "device": "cuda",
+  "prompts": 56,
+  "max_new": 192,
+  "head_step": 6000,
+  "head_val": {
+    "acc1": 0.437,
+    "reg": 0.5256,
+    "ce": 2.7743,
+    "acc2": 0.3912,
+    "acc3": 0.3785,
+    "acc4": 0.3696,
+    "est_accepted": 0.697
+  },
+  "plain_tokens_per_s": 31.3,
+  "hf_generate_tokens_per_s": 31.0,
+  "per_k": {
+    "3": {
+      "exact_match": "56/56",
+      "accepted_per_round": 0.665,
+      "tokens_per_pass": 1.647,
+      "tokens_per_s": 41.4,
+      "speedup_vs_plain": 1.321,
+      "speedup_vs_hf": 1.336
+    },
+    "5": {
+      "exact_match": "56/56",
+      "accepted_per_round": 0.708,
+      "tokens_per_pass": 1.687,
+      "tokens_per_s": 38.2,
+      "speedup_vs_plain": 1.219,
+      "speedup_vs_hf": 1.233
+    }
+  },
+  "answers": [
+    {
+      "question": "What is 2 + 2?",
+      "answer": "2 + 2 is a classic arithmetic operation that can be understood by converting it into a series of simple arithmetic operations. The key to this operation is understanding the relationship between the two numbers.\n\nWhen you add two numbers, you are essentially combining their values. The first number is called the \"base\" and the second number is called the \"mantissa.\" The mantissa is the value of the number, and it is the number of bits that make up the number.\n\nIn the case of 2 + 2, the base is 2, and the mantissa is 2. When you add these two numbers together, you are essentially combining the values of 2 and 2.\n\nSo, 2 + 2 is equivalent to 4, because 2 + 2 = 4. This is a fundamental concept in arithmetic and is used in many mathematical operations."
+    },
+    {
+      "question": "What is the capital of France?",
+      "answer": "The capital of France is Paris."
+    },
+    {
+      "question": "Write a Python function that adds two numbers.",
+      "answer": "Here's a Python function that adds two numbers:\n\n```python\ndef add_numbers(a, b):\n    return a + b\n```\n\nYou can use this function like this:\n\n```python\nprint(add_numbers(10, 20))  # Outputs: 22\n```\n\nThis function uses the built-in `+` operator to add the two numbers and returns the result. If you want to implement it manually without using the `+` operator, you can do so like this:\n\n```python\ndef add_numbers(a, b):\n    return a + b\n```\n\nBoth of these functions will add two numbers together and return the result."
+    }
+  ],
+  "table": "| decoder | exact match | accepted drafts / round | tokens per pass | tokens/s | speed-up vs plain | vs HF generate |\n|---|---|---|---|---|---|---|\n| plain greedy (1 token per pass) | - | - | 1.00 | 31.3 | 1.00x | 1.01x |\n| draft head, k=3 | 56/56 | 0.67 of 3 | 1.65 | 41.4 | **1.32x** | 1.34x |\n| draft head, k=5 | 56/56 | 0.71 of 5 | 1.69 | 38.2 | **1.22x** | 1.23x |"
+}
