@@ -74,3 +74,12 @@ Modest gains only: less repetition (distinct-2 0.23 -> 0.38/0.44) and a much bet
 score is not better (4.9-5.2 vs 4.8 bits/token) and HumanEval stays 0/20. Answers now open correctly ("The capital of France is...",
 "Here's a Python function that adds two numbers") and then degrade into repeated words. The limiting step is predicting the codes
 from the prompt (level-2 code loss ~4.5 nats vs 6.9 for guessing), not turning codes into words.
+
+**v3** (commits `3c9af7e`..`21c8950`; files in `kaggle/llm2ncm/results/v3-smollm2-135m/`): FSQ codes, a predictability term in compressor
+training, an autoregressive first code level, and soft distillation, on the v2 data. No breakthrough. At refine=4 (match with the
+original / judge bits per token / distinct-2): v3 9.7% / 5.33 / 0.35, v3-wide (4+16 slots) 7.8% / 4.43 / 0.37, against v2 8.4% / 5.24 /
+0.38 and v2-wide 8.3% / 4.92 / 0.44. The best judge score so far (4.43, v3-wide) and the best France answer, but agreement did not move
+beyond the noise of 16 prompts and HumanEval stays 0/20. The codes are measurably more predictable (the context model's cost is 1.31
+nats per scalar vs 1.73 for guessing) and FSQ uses 49-96% of its codes (VQ: 33-84%), but the compressor gives up reconstruction for it
+(2-level token recovery 20.4% / 32.9% vs 22.5% / 43.1%), and the generator's code loss did not improve. Passes per block rise to 8-10
+because of the one-slot-at-a-time first level (about 2.2x / 1.8x faster than the original here, v2: 2.5x).
