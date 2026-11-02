@@ -44,6 +44,8 @@ def main():
     ap.add_argument("--humaneval", type=int, default=10)
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
+    ap.add_argument("--sample-every", type=int, default=100,
+                    help="during generator training, print the NCM's answers to a few random questions every N steps (0 = off)")
     ap.add_argument("--data-batch", type=int, default=0,
                     help="batch size for distilling/encoding windows in build_data (0 = 16 on cpu, 256 otherwise). "
                          "A tiny model is launch-overhead bound on a GPU, so a bigger batch is ~free speed")
@@ -62,7 +64,8 @@ def main():
     gcfg = f"{gdir}/config.json"
     if not os.path.exists(gcfg) or json.load(open(gcfg)).get("trained_steps") != a.gen_steps:
         run("train_generator.py", "--model", a.model, "--data", data, "--compressor", comp, "--out", gdir,
-            "--backbone", a.backbone, "--lora-r", a.lora_r, "--steps", a.gen_steps, "--batch", a.batch, "--threads", a.threads, "--device", a.device)
+            "--backbone", a.backbone, "--lora-r", a.lora_r, "--steps", a.gen_steps, "--batch", a.batch, "--sample-every", a.sample_every,
+            "--threads", a.threads, "--device", a.device)
     if not os.path.exists(ev):
         run("ncm_eval.py", "--model", a.model, "--generator", gdir, "--data", a.data, "--out", ev,
             "--n-prompts", a.eval_prompts, "--refine", a.refine, "--humaneval", a.humaneval, "--threads", a.threads, "--device", a.device)

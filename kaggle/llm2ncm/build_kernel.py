@@ -40,7 +40,7 @@ VARIANTS = {
 def job(name, n, steps, note="", comp=(), gen=(), ev=(), recipe="base"):
     """One sweep job: train compressor + generator for `steps` each on n windows, then ncm_quick_eval."""
     return {"name": name, "recipe": recipe, "n": n, "note": note or f"{steps} steps",
-            "comp": ["--steps", str(steps), *comp], "gen": ["--steps", str(steps), *gen], "eval": list(ev)}
+            "comp": ["--steps", str(steps), *comp], "gen": ["--steps", str(steps), "--sample-every", "0", *gen], "eval": list(ev)}
 
 
 def sweep(name, recipes, jobs):

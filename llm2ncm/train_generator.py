@@ -9,12 +9,23 @@ the LLM's own output layer (mask ratio ~ U(0,1), mask-predict style).
 
   python -I train_generator.py --model DIR --data work/data.pt --compressor work/compressor.pt --out work/generator
 """
-import argparse, math, os, sys, time
+import argparse, math, os, random, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import torch
-from ncm_io import load_compressor, load_llm, pick_device, save_generator
+from ncm_io import end_ids, load_compressor, load_llm, pick_device, save_generator
 from ncm_model import NCMGenerator, level_attention_support
+
+# Pool for the live "what does it answer now?" samples (--sample-every). Mixed on purpose: facts, arithmetic, code.
+QUESTIONS = [
+    "What is 2 + 2?", "What is the capital of France?", "Write a Python function that adds two numbers.",
+    "What is 7 times 8?", "Who wrote Romeo and Juliet?", "Name three colors.", "What is the largest planet in our solar system?",
+    "Write a Python function that returns the square of a number.", "How many days are in a week?",
+    "What is the opposite of hot?", "Write a Python function that reverses a string.", "What is the chemical symbol for water?",
+    "What is 100 divided by 4?", "Write a Python function that checks if a number is even.", "What language is spoken in Spain?",
+    "Say hello in one sentence.", "What is the boiling point of water in Celsius?", "Write a Python loop that prints the numbers 1 to 5.",
+    "What is the capital of Japan?", "Give me one tip for learning to code.",
+]
 
 
 def main():
@@ -34,6 +45,10 @@ def main():
                     help="independent masked copies of each block per step; they share the prefix and codes, so this is "
                          "more token-loss signal per window for little extra compute (1 = the original single mask)")
     ap.add_argument("--save-every", type=int, default=200)
+    ap.add_argument("--sample-every", type=int, default=100,
+                    help="every N steps print the NCM's answers to a few random questions, to watch training live (0 = off)")
+    ap.add_argument("--sample-n", type=int, default=3, help="questions per sample round")
+    ap.add_argument("--sample-new", type=int, default=96, help="max new tokens per sampled answer")
     ap.add_argument("--val-windows", type=int, default=256, help="held-out windows for the validation loss (was 32: too noisy to compare runs)")
     ap.add_argument("--threads", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--seed", type=int, default=0)
@@ -91,6 +106,20 @@ def main():
         torch.manual_seed(a.seed + int(time.time()))
         return {k: v / n for k, v in tot.items()}
 
+    stops = end_ids(tok)
+    q_rng = random.Random(a.seed)  # Python RNG only: sampling never touches (or depends on) the training RNG
+
+    @torch.no_grad()
+    def show_samples(step):
+        gen.eval()
+        print(f"--- step {step}: answers to {a.sample_n} random questions ---", flush=True)
+        for q in q_rng.sample(QUESTIONS, a.sample_n):
+            text = tok.apply_chat_template([{"role": "user", "content": q}], tokenize=False, add_generation_prompt=True)
+            out, _ = gen.generate(comp.rvq, tok(text, add_special_tokens=False)["input_ids"], a.sample_new, refine=4, end_ids=stops)
+            ans = tok.decode(out, skip_special_tokens=True).strip()
+            print(f"Q: {q}\nA: {ans[:400] if ans else '(empty) raw token ids: ' + str(out[:12])}", flush=True)
+        gen.train()
+
     print("val before:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)
     t0 = time.time()
     for step in range(1, a.steps + 1):
@@ -108,6 +137,8 @@ def main():
         if step % a.save_every == 0 or step == a.steps:
             print(f"  val step {step}:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)
             save_generator(gen, dict(cfg, trained_steps=step), a.out)
+        if a.sample_every and (step % a.sample_every == 0 or step == a.steps):
+            show_samples(step)
     print(f"saved {a.out} ({time.time() - t0:.0f}s)")
 
 
