@@ -1178,6 +1178,7 @@ def run_draft_head(h, gpu):
 
 
 def run_draft():
+    os.makedirs(WORK, exist_ok=True)
     run("fetch_prompts", py("llm2ncm/fetch_prompts.py", "--out", DATA))
     run("build_draft_data", py("draft/build_draft_data.py", "--model", TEXT, "--data", DATA, "--out", f"{WORK}/draft_data.pt",
                                "--device", DEVICE, *CONFIG["data_args"]))
