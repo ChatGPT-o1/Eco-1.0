@@ -37,6 +37,8 @@ def main():
     ap.add_argument("--prompt-frac", type=float, default=0.0,
                     help="share of windows from the original model's own answers to chat prompts (on-policy; fetches prompts if needed)")
     ap.add_argument("--answer-blocks", type=int, default=3)
+    ap.add_argument("--gen-deadline", type=float, default=0.0,
+                    help="unix time by which generator training must finish (train_generator.py --deadline-ts); 0 = use --gen-steps")
     ap.add_argument("--soft-k", type=int, default=0, help="store the original model's top-k next-token distribution per block position (soft distillation)")
     ap.add_argument("--prompt-code-share", type=float, default=0.3)
     ap.add_argument("--build-extra", default="", help="extra build_data.py arguments, e.g. \"--enc-layer 18\"")
@@ -77,7 +79,8 @@ def main():
     if not os.path.exists(gcfg) or json.load(open(gcfg)).get("trained_steps") != a.gen_steps:
         run("train_generator.py", "--model", a.model, "--data", data, "--compressor", comp, "--out", gdir,
             "--backbone", a.backbone, "--lora-r", a.lora_r, "--steps", a.gen_steps, "--batch", a.batch, "--sample-every", a.sample_every,
-            "--threads", a.threads, "--device", a.device, *shlex.split(a.gen_extra))
+            "--threads", a.threads, "--device", a.device, *(["--deadline-ts", a.gen_deadline] if a.gen_deadline else []),
+            *shlex.split(a.gen_extra))
     if not os.path.exists(ev):
         run("ncm_eval.py", "--model", a.model, "--generator", gdir, "--data", a.data, "--out", ev,
             "--n-prompts", a.eval_prompts, "--refine", a.refine, "--humaneval", a.humaneval, "--threads", a.threads, "--device", a.device)

@@ -128,20 +128,9 @@ def export_pipeline():
 
 
 # ----------------------------------------------------------------------------- mode: variants
-def run_variant(v, gpu):
-    """One full pipeline.py run on its own GPU, on a copy of the shared data; output lines are prefixed [name]."""
-    name = v["name"]
-    wd, od = f"{WORK}/{name}", f"{OUT}/{name}"
-    os.makedirs(wd, exist_ok=True)
-    os.makedirs(od, exist_ok=True)
-    shutil.copy(f"{WORK}/shared/data.pt", f"{wd}/data.pt")
-    env = dict(ENV)
-    if gpu is not None:
-        env["CUDA_VISIBLE_DEVICES"] = str(gpu)
-    cmd = py("llm2ncm/pipeline.py", "--model", TEXT, "--data", DATA, "--work", wd, *CONFIG["data_args"], *CONFIG["common_args"], *v["args"])
-    log(f"=== variant {name} on gpu {gpu}: {' '.join(map(str, cmd))}")
-    t = time.time()
-    with open(f"{od}/pipeline.log", "w") as f:
+def stream(name, cmd, env, logfile):
+    """Run cmd, copy every output line to logfile and, prefixed with [name], to the shared stdout (the live Logs tab)."""
+    with open(logfile, "a") as f:
         p = subprocess.Popen([str(c) for c in cmd], cwd=ROOT if LOCAL else "/tmp", env=env, stdout=subprocess.PIPE,
                              stderr=subprocess.STDOUT, text=True, bufsize=1, errors="replace")
         for line in p.stdout:
@@ -149,16 +138,70 @@ def run_variant(v, gpu):
             with _lock:
                 sys.stdout.write(f"[{name}] {line}")
                 sys.stdout.flush()
-        rc = p.wait()
+        return p.wait()
+
+
+def snapshot(wd, od):
+    """Copy the small artefacts (compressor, generator checkpoint, reports) out of /tmp into the output folder, so that a
+    stop, a crash or a platform time-out still leaves a usable model behind. Best effort: a half-written checkpoint is
+    simply overwritten by the next snapshot."""
+    for fn in ("REPORT.md", "eval.json", "compressor.pt", "compressor.pt.json"):
+        try:
+            if os.path.exists(f"{wd}/{fn}"):
+                shutil.copy(f"{wd}/{fn}", f"{od}/{fn}")
+        except OSError:
+            pass
+    try:
+        if os.path.isdir(f"{wd}/generator"):
+            shutil.copytree(f"{wd}/generator", f"{od}/generator", dirs_exist_ok=True)
+    except OSError:
+        pass
+
+
+def run_variant(v, gpu):
+    """One full pipeline.py run on its own GPU; output lines are prefixed [name]. The variant either builds its own data
+    (v["data_args"], e.g. a different block size) or takes a copy of the shared data."""
+    name = v["name"]
+    wd, od = f"{WORK}/{name}", f"{OUT}/{name}"
+    os.makedirs(wd, exist_ok=True)
+    os.makedirs(od, exist_ok=True)
+    env = dict(ENV)
+    if gpu is not None:
+        env["CUDA_VISIBLE_DEVICES"] = str(gpu)
+    if v.get("data_args"):
+        t = time.time()
+        cmd = py("llm2ncm/build_data.py", "--model", TEXT, "--data", DATA, "--out", f"{wd}/data.pt",
+                 "--batch", 16 if LOCAL else 256, "--threads", 2, "--device", DEVICE, *v["data_args"])
+        log(f"=== variant {name}: building its own data on gpu {gpu}")
+        rc = stream(name, cmd, env, f"{od}/build_data.log")
+        stages[f"build_data:{name}"] = {"exit": rc, "seconds": round(time.time() - t)}
+        if rc != 0:
+            return name, rc
+    else:
+        shutil.copy(f"{WORK}/shared/data.pt", f"{wd}/data.pt")
+    extra = []
+    if CONFIG.get("budget_hours"):  # generator training must end early enough for the evaluation to fit in the budget
+        deadline = T0 + CONFIG["budget_hours"] * 3600 - CONFIG.get("eval_reserve_min", 25) * 60
+        extra = ["--gen-deadline", f"{deadline:.0f}"]
+    cmd = py("llm2ncm/pipeline.py", "--model", TEXT, "--data", DATA, "--work", wd, *CONFIG.get("data_args", []),
+             *v.get("data_args", []), *CONFIG["common_args"], *v["args"], *extra)
+    log(f"=== variant {name} on gpu {gpu}: {' '.join(map(str, cmd))}")
+    t = time.time()
+    stop = threading.Event()
+
+    def periodic():
+        while not stop.wait(CONFIG.get("ckpt_every_min", 30) * 60):
+            snapshot(wd, od)
+            log(f"variant {name}: checkpoint copied to the output folder")
+
+    threading.Thread(target=periodic, daemon=True).start()
+    rc = stream(name, cmd, env, f"{od}/pipeline.log")
+    stop.set()
     stages[f"pipeline:{name}"] = {"exit": rc, "seconds": round(time.time() - t)}
     log(f"=== variant {name}: exit {rc} after {time.time() - t:.0f}s")
     if rc == 0:
         sample_chat(f"{wd}/generator", f"{od}/chat_samples.md", env)
-    for fn in ("REPORT.md", "eval.json", "compressor.pt", "compressor.pt.json"):
-        if os.path.exists(f"{wd}/{fn}"):
-            shutil.copy(f"{wd}/{fn}", f"{od}/{fn}")
-    if os.path.isdir(f"{wd}/generator"):
-        shutil.copytree(f"{wd}/generator", f"{od}/generator", dirs_exist_ok=True)
+    snapshot(wd, od)
     return name, rc
 
 
@@ -180,21 +223,25 @@ def write_compare(done):
 
 
 def run_variants():
-    if any(a == "--prompt-frac" for a in CONFIG["data_args"]):
+    vs = CONFIG["variants"]
+    all_data_args = [*CONFIG.get("data_args", []), *[x for v in vs for x in v.get("data_args", [])]]
+    if "--prompt-frac" in all_data_args:
         run("fetch_prompts", py("llm2ncm/fetch_prompts.py", "--out", DATA))
     os.makedirs(f"{WORK}/shared", exist_ok=True)
-    run("build_data", py("llm2ncm/build_data.py", "--model", TEXT, "--data", DATA, "--out", f"{WORK}/shared/data.pt",
-                         "--batch", 16 if LOCAL else 256, "--threads", 4, "--device", DEVICE, *CONFIG["data_args"]))
+    shared = any(not v.get("data_args") for v in vs)  # only build the shared data if some variant uses it
+    if shared:
+        run("build_data", py("llm2ncm/build_data.py", "--model", TEXT, "--data", DATA, "--out", f"{WORK}/shared/data.pt",
+                             "--batch", 16 if LOCAL else 256, "--threads", 4, "--device", DEVICE, *CONFIG["data_args"]))
     ngpu = 1
     if not LOCAL:
         out = subprocess.run(["nvidia-smi", "-L"], capture_output=True, text=True).stdout
         ngpu = max(1, sum(1 for l in out.splitlines() if l.startswith("GPU ")))
-    vs = CONFIG["variants"]
     assert len(vs) <= ngpu or LOCAL, f"{len(vs)} variants but only {ngpu} GPU(s)"
     with ThreadPoolExecutor(max_workers=len(vs)) as ex:
         futs = [ex.submit(run_variant, v, None if LOCAL else g) for g, v in enumerate(vs)]
         done = [f.result() for f in futs]
-    os.remove(f"{WORK}/shared/data.pt")
+    if shared:
+        os.remove(f"{WORK}/shared/data.pt")
     write_compare(done)
     if any(rc != 0 for _, rc in done):
         raise RuntimeError(f"variant(s) failed: {[n for n, rc in done if rc]}")

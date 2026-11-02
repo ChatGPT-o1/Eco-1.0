@@ -41,6 +41,15 @@ def main():
     ap.add_argument("--lr", type=float, default=5e-4)
     ap.add_argument("--corrupt", type=float, default=0.1, help="share of input codes randomised (robustness)")
     ap.add_argument("--level-weight", type=float, default=1.0)
+    ap.add_argument("--amp", action="store_true",
+                    help="mixed precision (fp16 autocast + loss scaling on a GPU). A start-up check compares one batch against "
+                         "fp32 and falls back to fp32 if the loss differs by more than 3% or is not finite")
+    ap.add_argument("--time-budget-min", type=float, default=0.0,
+                    help="train for this many minutes: the learning-rate cosine follows the CLOCK instead of the step count and "
+                         "training stops when the time is up (--steps is then only an upper bound)")
+    ap.add_argument("--deadline-ts", type=float, default=0.0,
+                    help="like --time-budget-min, but as an absolute unix time to finish by (at least 5 min are always allowed)")
+    ap.add_argument("--log-every", type=int, default=10, help="print the training losses every N steps")
     ap.add_argument("--ar-first-level", action="store_true",
                     help="write the first (coarsest) code level one slot at a time instead of in parallel: a coherent outline "
                          "for a few extra passes")
@@ -106,7 +115,7 @@ def main():
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1.0, (s + 1) / warm) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
     cfg = {"backbone": backbone, "backbone_note": why, "compressor": os.path.abspath(a.compressor), "model": a.model,
-           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws, "slot_emb": a.slot_emb, "ar0": a.ar_first_level}
+           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws, "slot_emb": a.slot_emb, "ar0": a.ar_first_level, "amp": a.amp}
 
     @torch.no_grad()
     def val_loss():
@@ -138,27 +147,65 @@ def main():
             print(f"Q: {q}\nA: {ans[:400] if ans else '(empty) raw token ids: ' + str(out[:12])}", flush=True)
         gen.train()
 
+    # mixed precision (opt-in), verified against fp32 on one batch before it is used
+    use_amp = False
+    amp_dev, amp_dtype = ("cuda", torch.float16) if dev == "cuda" else ("cpu", torch.bfloat16)
+    if a.amp:
+        try:
+            bb = tr[:min(a.batch, 16)]
+            chk = (comp.rvq, prefix[bb].to(dev), block[bb].to(dev), [c[bb].to(dev) for c in codes])
+            gen.eval()
+            with torch.no_grad():
+                torch.manual_seed(1234)
+                l32, _ = gen.loss(*chk, corrupt=0.0, prefix_mask=pm(bb))
+                torch.manual_seed(1234)
+                with torch.autocast(amp_dev, dtype=amp_dtype):
+                    l16, _ = gen.loss(*chk, corrupt=0.0, prefix_mask=pm(bb))
+            gen.train()
+            use_amp = bool(torch.isfinite(l16)) and abs(float(l16) - float(l32)) < 0.03 * abs(float(l32)) + 1e-3
+            print(f"amp check ({amp_dtype}): fp32 loss {float(l32):.4f} vs reduced precision {float(l16):.4f} -> "
+                  f"{'USING reduced precision' if use_amp else 'FALLING BACK to fp32'}", flush=True)
+        except Exception as e:  # never let the optional speed-up kill the run
+            gen.train()
+            print(f"amp check failed ({type(e).__name__}: {str(e)[:120]}) -> FALLING BACK to fp32", flush=True)
+    scaler = torch.amp.GradScaler("cuda" if dev == "cuda" else "cpu", enabled=use_amp and dev == "cuda")
+    budget = a.time_budget_min * 60.0 if a.time_budget_min else (max(a.deadline_ts - time.time(), 300.0) if a.deadline_ts else None)
+    if budget:
+        print(f"time budget: {budget / 60:.1f} min (learning rate follows the clock; training stops when it is used up)", flush=True)
+
     print("val before:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)
     t0 = time.time()
     for step in range(1, a.steps + 1):
+        if budget:
+            frac = min((time.time() - t0) / budget, 1.0)
+            for g_ in opt.param_groups:
+                g_["lr"] = a.lr * min(1.0, step / warm) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * frac)))
         b = tr[torch.randint(0, len(tr), (a.batch,))]
-        loss, parts = gen.loss(comp.rvq, prefix[b].to(dev), block[b].to(dev), [c[b].to(dev) for c in codes],
-                               corrupt=a.corrupt, level_weight=a.level_weight, mask_draws=a.mask_draws, prefix_mask=pm(b),
-                               soft=sf(b), soft_weight=a.soft_weight)
+        with torch.autocast(amp_dev, dtype=amp_dtype, enabled=use_amp):
+            loss, parts = gen.loss(comp.rvq, prefix[b].to(dev), block[b].to(dev), [c[b].to(dev) for c in codes],
+                                   corrupt=a.corrupt, level_weight=a.level_weight, mask_draws=a.mask_draws, prefix_mask=pm(b),
+                                   soft=sf(b), soft_weight=a.soft_weight)
         opt.zero_grad()
-        loss.backward()
+        scaler.scale(loss).backward()  # with the scaler disabled these three calls are exactly loss.backward() / opt.step()
+        scaler.unscale_(opt)
         torch.nn.utils.clip_grad_norm_(params, 1.0)
-        opt.step()
-        sched.step()
-        if step % 10 == 0:
+        scaler.step(opt)
+        scaler.update()
+        if not budget:
+            sched.step()
+        last = step == a.steps or (bool(budget) and time.time() - t0 >= budget)
+        if step % a.log_every == 0:
             tps = step * a.batch * (prefix.shape[1] + sum(ccfg["scales"]) + ccfg["L"] * a.mask_draws) / (time.time() - t0)
-            print(f"step {step} " + " ".join(f"{k} {v:.3f}" for k, v in parts.items()) + f"  {tps:.0f} pos/s", flush=True)
-        if step % a.save_every == 0 or step == a.steps:
+            print(f"step {step} " + " ".join(f"{k} {v:.3f}" for k, v in parts.items()) + f"  {tps:.0f} pos/s"
+                  + (f"  {100 * min((time.time() - t0) / budget, 1.0):.0f}% of time" if budget else ""), flush=True)
+        if step % a.save_every == 0 or last:
             print(f"  val step {step}:", {k: round(v, 3) for k, v in val_loss().items()}, flush=True)
             save_generator(gen, dict(cfg, trained_steps=step), a.out)
-        if a.sample_every and (step % a.sample_every == 0 or step == a.steps):
+        if a.sample_every and (step % a.sample_every == 0 or last):
             show_samples(step)
-    print(f"saved {a.out} ({time.time() - t0:.0f}s)")
+        if last:
+            break
+    print(f"saved {a.out} after {step} steps ({time.time() - t0:.0f}s)")
 
 
 if __name__ == "__main__":

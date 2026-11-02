@@ -177,5 +177,36 @@ VARIANTS["v2-local-test"] = variants("llm2ncm-v2-local-test", ["--n", "48", "--p
 ])
 
 
+# ---- final: the long run. Two models side by side, one per T4, each building its own data:
+#   final-b32  32-word blocks, 4+16 code slots (the best compressor so far: 43% of words recoverable from codes)
+#   final-b16  16-word blocks, 4+8 slots: half as much to predict per block, aimed at the failure every run showed (the codes)
+# Recipe = what measured best: the original model's own answers as data, per-slot embeddings, soft distillation, compressor LR
+# decay; plus 4x the batch, fp16 (self-checked against fp32), 80k windows, and a clock-driven learning-rate schedule so the
+# generator trains until the deadline (7 h after launch minus the evaluation time) instead of for a guessed number of steps.
+V3_REFERENCE = ("; v3 (FSQ, 2+8) 5.331 / 0.097 / 0.351 / 0/20; v3-wide (FSQ, 4+16) 4.425 / 0.078 / 0.366 / 0/20")
+
+
+def final_cfg(name, n, comp_steps, humaneval, eval_prompts, sample_every, batch=32, device="cuda", gen_time="", save_every=2000, **extra):
+    common = ["--device", device, "--comp-steps", str(comp_steps), "--gen-steps", "1000000", "--batch", str(batch),
+              "--humaneval", str(humaneval), "--eval-prompts", str(eval_prompts), "--sample-every", str(sample_every),
+              "--refine", "1,2,4", "--comp-extra=--lr-final 0.1",
+              f"--gen-extra=--slot-emb --soft-weight 0.5 --amp --save-every {save_every} --log-every 50{gen_time}"]
+
+    def data(block, answer_blocks):
+        return ["--n", str(n), "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", str(answer_blocks),
+                "--soft-k", "8", "--block", str(block)]
+
+    vs = [{"name": "final-b32", "note": "32-word blocks, 4+16 code slots", "data_args": data(32, 3), "args": ["--scales", "4,16"]},
+          {"name": "final-b16", "note": "16-word blocks, 4+8 code slots", "data_args": data(16, 6), "args": ["--scales", "4,8"]}]
+    return dict(COMMON, name=name, mode="variants", data_args=[], common_args=common, variants=vs,
+                reference=V1_REFERENCE + V3_REFERENCE, **extra)
+
+
+VARIANTS["final"] = final_cfg("llm2ncm-final", 80000, 20000, 40, 64, 500, budget_hours=7.0, eval_reserve_min=28, ckpt_every_min=30)
+VARIANTS["final-smoke"] = final_cfg("llm2ncm-final-smoke", 1200, 300, 2, 8, 100, gen_time=" --time-budget-min 4", save_every=100, ckpt_every_min=1)
+VARIANTS["final-local-test"] = final_cfg("llm2ncm-final-local-test", 48, 4, 0, 2, 3, batch=4, device="cpu", gen_time=" --time-budget-min 0.4",
+                                         save_every=3, ckpt_every_min=0.1)
+
+
 if __name__ == "__main__":
     main()
