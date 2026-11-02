@@ -1,0 +1,102 @@
+{
+  "results": {
+    "original (token-by-token)": {
+      "judge_bits_per_token": 0.518,
+      "agreement_with_original": 1.0,
+      "distinct2": 0.568,
+      "repeated_lines": 0.078,
+      "tokens_per_s": 29.4,
+      "passes_per_token": 1.016,
+      "tokens": 4090,
+      "humaneval": "11/40"
+    },
+    "NCM refine=1": {
+      "judge_bits_per_token": 5.89,
+      "agreement_with_original": 0.118,
+      "distinct2": 0.502,
+      "repeated_lines": 0.024,
+      "tokens_per_s": 129.2,
+      "passes_per_token": 0.125,
+      "tokens": 4096
+    },
+    "NCM refine=2": {
+      "judge_bits_per_token": 5.695,
+      "agreement_with_original": 0.12,
+      "distinct2": 0.525,
+      "repeated_lines": 0.03,
+      "tokens_per_s": 103.6,
+      "passes_per_token": 0.156,
+      "tokens": 4096
+    },
+    "NCM refine=4": {
+      "judge_bits_per_token": 5.462,
+      "agreement_with_original": 0.114,
+      "distinct2": 0.533,
+      "repeated_lines": 0.047,
+      "tokens_per_s": 73.6,
+      "passes_per_token": 0.219,
+      "tokens": 4087,
+      "humaneval": "0/40"
+    },
+    "real held-out text (reference)": {
+      "judge_bits_per_token": 2.33
+    }
+  },
+  "table": "| system | judge bits/token ↓ | agreement w/ original | distinct-2 | repeated lines | tokens/s | passes/token | HumanEval |\n|---|---|---|---|---|---|---|---|\n| original (token-by-token) | 0.518 | 1.0 | 0.568 | 0.078 | 29.4 | 1.016 | 11/40 |\n| NCM refine=1 | 5.89 | 0.118 | 0.502 | 0.024 | 129.2 | 0.125 | - |\n| NCM refine=2 | 5.695 | 0.12 | 0.525 | 0.03 | 103.6 | 0.156 | - |\n| NCM refine=4 | 5.462 | 0.114 | 0.533 | 0.047 | 73.6 | 0.219 | 0/40 |\n| real held-out text (reference) | 2.33 | - | - | - | - | - | - |",
+  "samples": {
+    "original (token-by-token)": [
+      " get_user_info(user_info):\n    user_info_str = user_info.decode('utf-8')\n    user_info_str = user_info_str.strip()\n    user_info_str = user_info_str.replace(' ', '')\n    user_info_",
+      " the \"index\" prefix)\n    -page:...     name of the page to upload\n    -page_name:...     name of the page to upload\n    -page_type:...     type of page to upload (e.g. \"article\", \"book\", \"article_book\")\n    -page",
+      "option(\n            \"token_type\",\n            \"string\",\n            \"The type of token to use for the token\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",",
+      " the input text.\n    \"\"\"\n\n    def __init__(self, parent, *args, **kwargs):\n        \"\"\"\n        Initialize the Ui class.\n\n        Args:\n            parent (object): The parent window.\n            *args (list): Arguments to pass to the GUI.\n            **kwargs (dict): Arguments to pass"
+    ],
+    "NCM refine=1": [
+      " get_branch(branch__port,,_port_port_port):\n    if_ = parser(branch,branch,branch,branch_port_port, ok_port_port_port_port_port_port):\n        if else\n        if_branch_port_port_port_port",
+      " using with))) - -name...        : The page page of the page pagewithoutwithout first first first page ( page)\n    - page:...     name of name name\n   \n   \n    name name name\n    name name name the first firstfirst page)) - page page_         name the first",
+      "option,(option.option_optionoptionoptionoption(OptionOptionoptionoption.option(\"\n           option(optionOptionOptionoption.option\",\n        option(optionOptionoption_optionOptionOptionOptionOptionOptionOptionOptionOptionOptionoptionoptionoptionOptionOptionOptionOptionOptionOptionOptionOptionOptionoptionoptionoption.option_",
+      " the LaTeX LaTeX text.\n    \"\"\"\n   \n   \n    __ __init__(self__(self,,self,self,text,, texttext)\n        )\n        self.__ __str__(__(self,, text,,text):\n        )\n        )\n\n    def __getattr__(selftext):\n        def __call__("
+    ],
+    "NCM refine=2": [
+      " get_branch(branch_port_, branch_port_port_port):\n    if_ = parser(branch,port,port,branch_port_port, branch_port_port_port,branch, branch_port):\n        if::\n        return\n        else else\n            else\n            else\n            else",
+      " using with index)\n    - -name...         number The page page of the page page (without the the first page ( page.\n    - page:...     name of page of the page) ( the page page\n   \n    - - page:...     number The last page of the page page\n    - -",
+      "option,(option.option.option.optionoption(OptionOption.option.option\n       \n            option(optionOption.option.option)\n        option(optionOptionOption.option.optionOptionOptionOptionOptionOptionOptionOptionOptionOptionOptionOption.OptionOptionOptionOptionOptionOptionOptionOption.option.option.",
+      " the LaTeX LaTeX text.\n    \"\"\" \"\"\"\n    \"\"\" __ __init__(self__(self, self,,self, text,, texttext)\n        )\n        super __init__(self, self, text, text,)\n        )\n        \"\"\"\n        \"\"\"\n\n    def __getattr__(self, texttext,\n        super("
+    ],
+    "NCM refine=4": [
+      " get_branch(branch_portport, port_port_port_port):\n    if_ = parser(branch,port,port,port_port_port):\n        return not_branch_port,port, port_port):\n        else:\n       \n           \n            get_port_portport port port,",
+      " using with index)) - -title...         number The page page of the page page (without without the first page ( page.\n    -number:...     number number the number page of the page page (without without the page (number)     - number number the page page the page page (without.",
+      "option, (option.option_optionoption.option(Option option.option_option,\n            option(optionOption.option.option,\n        option(optionOptionoption.option.Option(Option.option_optionoptionoptionoption.option_option.option.option_option_optionoption.option_",
+      " the LaTeX LaTeX text.\n    \"\"\" \"\"\"\n    \"\"\" __classinit__(self__(self, self, self, text,text, text input,\n        \"\"\"\n        __ __init__(init__(self, text, text,,,text,,text,\n        \"\"\" \"\"\"\n       text,text\n       text\n       \n       \n       text"
+    ]
+  },
+  "prompts": 64,
+  "new_tokens": 64,
+  "generator": {
+    "backbone": "llm",
+    "backbone_note": "full attention",
+    "compressor": "/tmp/work/final-b32/compressor.pt",
+    "model": "/tmp/SmolLM2-135M-Instruct-textonly",
+    "lora_r": 32,
+    "steps": 1000000,
+    "batch": 32,
+    "mask_draws": 1,
+    "slot_emb": true,
+    "ar0": false,
+    "amp": true,
+    "trained_steps": 41163,
+    "compressor_cfg": {
+      "hidden": 576,
+      "d_lat": 256,
+      "L": 32,
+      "scales": [
+        4,
+        16
+      ],
+      "codebook": 1024,
+      "P": 64,
+      "quant": "vq",
+      "fsq_levels": null,
+      "pred": false
+    }
+  }
+}

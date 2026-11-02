@@ -1,0 +1,379 @@
+{
+  "cfg": {
+    "hidden": 576,
+    "d_lat": 256,
+    "L": 16,
+    "scales": [
+      4,
+      8
+    ],
+    "codebook": 1024,
+    "P": 64,
+    "quant": "vq",
+    "fsq_levels": null,
+    "pred": false
+  },
+  "history": [
+    {
+      "levels_1_token_acc": 0.1135,
+      "levels_2_token_acc": 0.2044,
+      "codebook_use": [
+        0.029,
+        0.247
+      ],
+      "step": 500
+    },
+    {
+      "levels_1_token_acc": 0.1473,
+      "levels_2_token_acc": 0.2541,
+      "codebook_use": [
+        0.172,
+        0.493
+      ],
+      "step": 1000
+    },
+    {
+      "levels_1_token_acc": 0.1596,
+      "levels_2_token_acc": 0.2825,
+      "codebook_use": [
+        0.304,
+        0.545
+      ],
+      "step": 1500
+    },
+    {
+      "levels_1_token_acc": 0.1705,
+      "levels_2_token_acc": 0.3077,
+      "codebook_use": [
+        0.389,
+        0.613
+      ],
+      "step": 2000
+    },
+    {
+      "levels_1_token_acc": 0.1731,
+      "levels_2_token_acc": 0.3296,
+      "codebook_use": [
+        0.408,
+        0.64
+      ],
+      "step": 2500
+    },
+    {
+      "levels_1_token_acc": 0.1754,
+      "levels_2_token_acc": 0.3509,
+      "codebook_use": [
+        0.467,
+        0.654
+      ],
+      "step": 3000
+    },
+    {
+      "levels_1_token_acc": 0.1792,
+      "levels_2_token_acc": 0.3712,
+      "codebook_use": [
+        0.521,
+        0.667
+      ],
+      "step": 3500
+    },
+    {
+      "levels_1_token_acc": 0.1719,
+      "levels_2_token_acc": 0.3795,
+      "codebook_use": [
+        0.539,
+        0.705
+      ],
+      "step": 4000
+    },
+    {
+      "levels_1_token_acc": 0.1794,
+      "levels_2_token_acc": 0.3922,
+      "codebook_use": [
+        0.562,
+        0.718
+      ],
+      "step": 4500
+    },
+    {
+      "levels_1_token_acc": 0.1801,
+      "levels_2_token_acc": 0.3973,
+      "codebook_use": [
+        0.6,
+        0.733
+      ],
+      "step": 5000
+    },
+    {
+      "levels_1_token_acc": 0.1821,
+      "levels_2_token_acc": 0.4049,
+      "codebook_use": [
+        0.615,
+        0.73
+      ],
+      "step": 5500
+    },
+    {
+      "levels_1_token_acc": 0.1855,
+      "levels_2_token_acc": 0.4089,
+      "codebook_use": [
+        0.623,
+        0.739
+      ],
+      "step": 6000
+    },
+    {
+      "levels_1_token_acc": 0.1832,
+      "levels_2_token_acc": 0.4168,
+      "codebook_use": [
+        0.654,
+        0.751
+      ],
+      "step": 6500
+    },
+    {
+      "levels_1_token_acc": 0.1825,
+      "levels_2_token_acc": 0.4216,
+      "codebook_use": [
+        0.696,
+        0.768
+      ],
+      "step": 7000
+    },
+    {
+      "levels_1_token_acc": 0.1837,
+      "levels_2_token_acc": 0.4245,
+      "codebook_use": [
+        0.704,
+        0.763
+      ],
+      "step": 7500
+    },
+    {
+      "levels_1_token_acc": 0.1924,
+      "levels_2_token_acc": 0.4281,
+      "codebook_use": [
+        0.721,
+        0.741
+      ],
+      "step": 8000
+    },
+    {
+      "levels_1_token_acc": 0.1865,
+      "levels_2_token_acc": 0.4321,
+      "codebook_use": [
+        0.73,
+        0.776
+      ],
+      "step": 8500
+    },
+    {
+      "levels_1_token_acc": 0.1883,
+      "levels_2_token_acc": 0.4341,
+      "codebook_use": [
+        0.735,
+        0.776
+      ],
+      "step": 9000
+    },
+    {
+      "levels_1_token_acc": 0.194,
+      "levels_2_token_acc": 0.438,
+      "codebook_use": [
+        0.734,
+        0.779
+      ],
+      "step": 9500
+    },
+    {
+      "levels_1_token_acc": 0.1964,
+      "levels_2_token_acc": 0.4428,
+      "codebook_use": [
+        0.764,
+        0.752
+      ],
+      "step": 10000
+    },
+    {
+      "levels_1_token_acc": 0.1892,
+      "levels_2_token_acc": 0.4466,
+      "codebook_use": [
+        0.78,
+        0.768
+      ],
+      "step": 10500
+    },
+    {
+      "levels_1_token_acc": 0.1968,
+      "levels_2_token_acc": 0.4466,
+      "codebook_use": [
+        0.785,
+        0.78
+      ],
+      "step": 11000
+    },
+    {
+      "levels_1_token_acc": 0.1953,
+      "levels_2_token_acc": 0.4499,
+      "codebook_use": [
+        0.774,
+        0.793
+      ],
+      "step": 11500
+    },
+    {
+      "levels_1_token_acc": 0.1981,
+      "levels_2_token_acc": 0.4499,
+      "codebook_use": [
+        0.771,
+        0.767
+      ],
+      "step": 12000
+    },
+    {
+      "levels_1_token_acc": 0.1948,
+      "levels_2_token_acc": 0.4531,
+      "codebook_use": [
+        0.801,
+        0.777
+      ],
+      "step": 12500
+    },
+    {
+      "levels_1_token_acc": 0.2016,
+      "levels_2_token_acc": 0.4559,
+      "codebook_use": [
+        0.804,
+        0.768
+      ],
+      "step": 13000
+    },
+    {
+      "levels_1_token_acc": 0.1981,
+      "levels_2_token_acc": 0.4543,
+      "codebook_use": [
+        0.816,
+        0.741
+      ],
+      "step": 13500
+    },
+    {
+      "levels_1_token_acc": 0.2009,
+      "levels_2_token_acc": 0.4597,
+      "codebook_use": [
+        0.802,
+        0.754
+      ],
+      "step": 14000
+    },
+    {
+      "levels_1_token_acc": 0.1978,
+      "levels_2_token_acc": 0.4595,
+      "codebook_use": [
+        0.809,
+        0.774
+      ],
+      "step": 14500
+    },
+    {
+      "levels_1_token_acc": 0.1979,
+      "levels_2_token_acc": 0.4625,
+      "codebook_use": [
+        0.775,
+        0.763
+      ],
+      "step": 15000
+    },
+    {
+      "levels_1_token_acc": 0.1985,
+      "levels_2_token_acc": 0.4613,
+      "codebook_use": [
+        0.769,
+        0.763
+      ],
+      "step": 15500
+    },
+    {
+      "levels_1_token_acc": 0.2002,
+      "levels_2_token_acc": 0.463,
+      "codebook_use": [
+        0.792,
+        0.755
+      ],
+      "step": 16000
+    },
+    {
+      "levels_1_token_acc": 0.1988,
+      "levels_2_token_acc": 0.4649,
+      "codebook_use": [
+        0.78,
+        0.751
+      ],
+      "step": 16500
+    },
+    {
+      "levels_1_token_acc": 0.2033,
+      "levels_2_token_acc": 0.4668,
+      "codebook_use": [
+        0.792,
+        0.772
+      ],
+      "step": 17000
+    },
+    {
+      "levels_1_token_acc": 0.205,
+      "levels_2_token_acc": 0.4687,
+      "codebook_use": [
+        0.79,
+        0.78
+      ],
+      "step": 17500
+    },
+    {
+      "levels_1_token_acc": 0.2021,
+      "levels_2_token_acc": 0.4703,
+      "codebook_use": [
+        0.788,
+        0.777
+      ],
+      "step": 18000
+    },
+    {
+      "levels_1_token_acc": 0.204,
+      "levels_2_token_acc": 0.4723,
+      "codebook_use": [
+        0.804,
+        0.788
+      ],
+      "step": 18500
+    },
+    {
+      "levels_1_token_acc": 0.2009,
+      "levels_2_token_acc": 0.47,
+      "codebook_use": [
+        0.79,
+        0.772
+      ],
+      "step": 19000
+    },
+    {
+      "levels_1_token_acc": 0.2024,
+      "levels_2_token_acc": 0.4726,
+      "codebook_use": [
+        0.805,
+        0.779
+      ],
+      "step": 19500
+    },
+    {
+      "levels_1_token_acc": 0.2016,
+      "levels_2_token_acc": 0.4709,
+      "codebook_use": [
+        0.798,
+        0.781
+      ],
+      "step": 20000
+    }
+  ],
+  "seconds": 595
+}

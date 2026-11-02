@@ -1,0 +1,27 @@
+amp check (torch.float16): fp32 loss 23.3548 vs reduced precision 23.3553 -> USING reduced precision
+time budget: 311.1 min (learning rate follows the clock; training stops when it is used up)
+  val step 2000: {'level1': 2.815, 'level2': 4.314, 'tokens': 1.564}
+  best validation loss so far (step 2000): checkpoint also saved to /tmp/work/final-b32/generator_best
+  val step 4000: {'level1': 2.717, 'level2': 4.175, 'tokens': 1.427}
+  best validation loss so far (step 4000): checkpoint also saved to /tmp/work/final-b32/generator_best
+  val step 6000: {'level1': 2.678, 'level2': 4.101, 'tokens': 1.358}
+  best validation loss so far (step 6000): checkpoint also saved to /tmp/work/final-b32/generator_best
+  val step 8000: {'level1': 2.893, 'level2': 4.091, 'tokens': 1.322}
+  val step 10000: {'level1': 2.88, 'level2': 4.065, 'tokens': 1.286}
+  val step 12000: {'level1': 3.011, 'level2': 4.044, 'tokens': 1.262}
+  val step 14000: {'level1': 3.099, 'level2': 4.065, 'tokens': 1.282}
+  val step 16000: {'level1': 3.35, 'level2': 4.062, 'tokens': 1.268}
+  val step 18000: {'level1': 3.488, 'level2': 4.082, 'tokens': 1.26}
+  val step 20000: {'level1': 3.685, 'level2': 4.07, 'tokens': 1.248}
+  val step 22000: {'level1': 3.889, 'level2': 4.105, 'tokens': 1.239}
+  val step 24000: {'level1': 4.135, 'level2': 4.138, 'tokens': 1.233}
+  val step 26000: {'level1': 4.117, 'level2': 4.161, 'tokens': 1.217}
+  val step 28000: {'level1': 4.324, 'level2': 4.206, 'tokens': 1.221}
+  val step 30000: {'level1': 4.331, 'level2': 4.246, 'tokens': 1.223}
+  val step 32000: {'level1': 4.452, 'level2': 4.303, 'tokens': 1.232}
+  val step 34000: {'level1': 4.593, 'level2': 4.363, 'tokens': 1.234}
+  val step 36000: {'level1': 4.677, 'level2': 4.414, 'tokens': 1.228}
+  val step 38000: {'level1': 4.743, 'level2': 4.501, 'tokens': 1.223}
+  val step 40000: {'level1': 4.813, 'level2': 4.556, 'tokens': 1.235}
+  val step 41163: {'level1': 4.867, 'level2': 4.628, 'tokens': 1.241}
+saved /tmp/work/final-b32/generator after 41163 steps (18672s)

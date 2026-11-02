@@ -1,0 +1,32 @@
+amp check (torch.float16): fp32 loss 23.3079 vs reduced precision 23.3077 -> USING reduced precision
+time budget: 333.9 min (learning rate follows the clock; training stops when it is used up)
+  val step 2000: {'level1': 3.133, 'level2': 3.665, 'tokens': 1.749}
+  best validation loss so far (step 2000): checkpoint also saved to /tmp/work/final-b16/generator_best
+  val step 4000: {'level1': 3.06, 'level2': 3.489, 'tokens': 1.588}
+  best validation loss so far (step 4000): checkpoint also saved to /tmp/work/final-b16/generator_best
+  val step 6000: {'level1': 3.039, 'level2': 3.413, 'tokens': 1.483}
+  best validation loss so far (step 6000): checkpoint also saved to /tmp/work/final-b16/generator_best
+  val step 8000: {'level1': 3.139, 'level2': 3.433, 'tokens': 1.511}
+  val step 10000: {'level1': 3.19, 'level2': 3.348, 'tokens': 1.439}
+  val step 12000: {'level1': 3.344, 'level2': 3.356, 'tokens': 1.447}
+  val step 14000: {'level1': 3.492, 'level2': 3.415, 'tokens': 1.434}
+  val step 16000: {'level1': 3.587, 'level2': 3.457, 'tokens': 1.42}
+  val step 18000: {'level1': 3.689, 'level2': 3.482, 'tokens': 1.405}
+  val step 20000: {'level1': 3.925, 'level2': 3.533, 'tokens': 1.446}
+  val step 22000: {'level1': 4.082, 'level2': 3.656, 'tokens': 1.436}
+  val step 24000: {'level1': 4.286, 'level2': 3.663, 'tokens': 1.417}
+  val step 26000: {'level1': 4.509, 'level2': 3.778, 'tokens': 1.391}
+  val step 28000: {'level1': 4.614, 'level2': 3.877, 'tokens': 1.396}
+  val step 30000: {'level1': 4.897, 'level2': 4.0, 'tokens': 1.429}
+  val step 32000: {'level1': 5.054, 'level2': 4.111, 'tokens': 1.419}
+  val step 34000: {'level1': 5.152, 'level2': 4.258, 'tokens': 1.433}
+  val step 36000: {'level1': 5.302, 'level2': 4.374, 'tokens': 1.449}
+  val step 38000: {'level1': 5.43, 'level2': 4.514, 'tokens': 1.434}
+  val step 40000: {'level1': 5.504, 'level2': 4.654, 'tokens': 1.451}
+  val step 42000: {'level1': 5.575, 'level2': 4.771, 'tokens': 1.458}
+  val step 44000: {'level1': 5.642, 'level2': 4.886, 'tokens': 1.454}
+  val step 46000: {'level1': 5.741, 'level2': 4.976, 'tokens': 1.465}
+  val step 48000: {'level1': 5.839, 'level2': 5.045, 'tokens': 1.465}
+  val step 50000: {'level1': 5.898, 'level2': 5.114, 'tokens': 1.467}
+  val step 50312: {'level1': 5.905, 'level2': 5.114, 'tokens': 1.468}
+saved /tmp/work/final-b16/generator after 50312 steps (20041s)

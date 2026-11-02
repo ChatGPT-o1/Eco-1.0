@@ -83,3 +83,16 @@ beyond the noise of 16 prompts and HumanEval stays 0/20. The codes are measurabl
 nats per scalar vs 1.73 for guessing) and FSQ uses 49-96% of its codes (VQ: 33-84%), but the compressor gives up reconstruction for it
 (2-level token recovery 20.4% / 32.9% vs 22.5% / 43.1%), and the generator's code loss did not improve. Passes per block rise to 8-10
 because of the one-slot-at-a-time first level (about 2.2x / 1.8x faster than the original here, v2: 2.5x).
+
+**final (7 hours)** (commits `16f281c`..`016d140`; files in `kaggle/llm2ncm/results/final-smollm2-135m/`): VQ codes, the original model's
+own answers as data (100k windows), per-slot embeddings, soft distillation, fp16, batch 32, a clock-driven schedule; two models on the two
+T4s: 32-word blocks with 4+16 code slots (41k steps) and 16-word blocks with 4+8 slots (50k steps). The first run in which a chat
+question is answered cleanly: both write "The capital of France is Paris." and "Here's a Python function that adds two numbers:" (and
+then stop, with no code); "What is 2 + 2?" is still wrong. On 20 code + 20 chat held-out windows (same windows as the v1 diagnosis,
+agreement with the original's greedy block, 4 refine passes): chat 9% (v1) -> 18% (32-word) / 27% (16-word), code 10% -> 9% / 13%; with
+the TRUE codes handed over, 28% -> 63-78%, i.e. filling in words from codes is now good and predicting the codes from the prompt is
+still the weak step. The compressor recovers 52% / 47% of tokens from its codes. HumanEval is 0/40 for both (original 11/40) and the
+full 64-prompt evaluation shows 11-12% agreement. Generation is 2.5x (32-word) / 1.3x (16-word) faster than the original at 4 refine
+passes (4.4x / 2.2x at 1). Validation cross-entropy of the CODES was lowest around step 6,000 and then rose steadily (the generator
+becomes overconfident), but the generated text kept improving: the best-validation checkpoint (step 6,000) is worse than the last one
+on chat (14% vs 18%, 23% vs 27%). Select checkpoints by generation quality, not by validation cross-entropy.

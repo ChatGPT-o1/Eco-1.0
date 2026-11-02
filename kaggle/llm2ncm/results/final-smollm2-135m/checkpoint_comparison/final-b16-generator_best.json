@@ -1,0 +1,184 @@
+{
+ "results": {
+  "fix R4": {
+   "code": {
+    "agree": 0.138,
+    "lead": 1.5,
+    "bits": 5.91,
+    "distinct2": 0.783
+   },
+   "chat": {
+    "agree": 0.228,
+    "lead": 3.0,
+    "bits": 5.52,
+    "distinct2": 0.777
+   }
+  },
+  "ORACLE fix R4": {
+   "code": {
+    "agree": 0.656,
+    "lead": 2.8,
+    "bits": 3.94,
+    "distinct2": 0.847
+   },
+   "chat": {
+    "agree": 0.738,
+    "lead": 6.75,
+    "bits": 3.27,
+    "distinct2": 0.793
+   }
+  },
+  "reference": {
+   "code": {
+    "bits": 0.94
+   },
+   "chat": {
+    "bits": 0.56
+   }
+  }
+ },
+ "examples": [
+  {
+   "group": "chat",
+   "prompt_end": " Face<|im_end|>\n<|im_start|>user\nWhat is 2 + 2?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "2 + 2 is a classic arithmetic operation that can be understood by converting it",
+   "fix R4": "22 + 2,, we can use the of addition of multiplication,",
+   "ORACLE fix R4": "2 + 2 is a common mathematical number that can be easily by adding by"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "ugging Face<|im_end|>\n<|im_start|>user\nWhat is the capital of France?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "The capital of France is Paris. It is a city known for its historical landmarks",
+   "fix R4": "The capital of Paris is is the French of French Kingdom.<|im_end|><|im_end|><|im_end|>system",
+   "ORACLE fix R4": "The capital of France is France. It is a city city with the historic city"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "<|im_end|>\n<|im_start|>user\nWrite a Python function that adds two numbers.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "Here's a Python function that adds two numbers:\n\n```python\ndef",
+   "fix R4": "Here's a Python function that adds two numbers: two two numbers:\n\n",
+   "ORACLE fix R4": "Here's a Python function that adds two numbers:\n\n```python\ndef"
+  },
+  {
+   "group": "chat",
+   "prompt_end": " Face<|im_end|>\n<|im_start|>user\nWhat is 7 times 8?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "To find 7 times 8, we can use the distributive property of",
+   "fix R4": "77 times 88 is 778. The result of multiplication",
+   "ORACLE fix R4": "To find 7 times 8, we need use the distributational formula formula"
+  },
+  {
+   "group": "chat",
+   "prompt_end": " Hugging Face<|im_end|>\n<|im_start|>user\nWho wrote Romeo and Juliet?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "The play \"Romeo and Juliet\" by William Shakespeare is the work of William",
+   "fix R4": "Rome Romeo and Juliet and a play of of play of literature literature Shakespeare Shakespeare.",
+   "ORACLE fix R4": "The play \"Rome and Juliet Juliet\" by Juliet Juliet is the play of the"
+  },
+  {
+   "group": "chat",
+   "prompt_end": " trained by Hugging Face<|im_end|>\n<|im_start|>user\nName three colors.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "Hugging Face:\n\n- Red\n- Blue\n- Green\n\n",
+   "fix R4": "Here are three common colors of colors are blue, green, green, green.",
+   "ORACLE fix R4": "Hugging Face.\n\nRed Red\n Red\nRed\n Blue\n\n"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "\n<|im_start|>user\nWhat is the largest planet in our solar system?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "The largest planet in our solar system is Jupiter, which is approximately 14",
+   "fix R4": "The largest planet in our solar system is Mercury Neptune Neptune, Neptune, which Mercury",
+   "ORACLE fix R4": "The largest planet in our solar system is Neptune, which is approximately 14"
+  },
+  {
+   "group": "chat",
+   "prompt_end": " Face<|im_end|>\n<|im_start|>user\nHow many days are in a week?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "A week is approximately 31 days. However, this is a common and",
+   "fix R4": "A a AI, I's 3 days of 1 day of of day",
+   "ORACLE fix R4": "A week is typically 2 of days. However, a is a a duration"
+  },
+  {
+   "group": "chat",
+   "prompt_end": " Face<|im_end|>\n<|im_start|>user\nWhat is the chemical symbol for water?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "The chemical symbol for water is H2O. This symbol represents the element hydrogen",
+   "fix R4": "The chemical symbol for H is H.H..H.H..",
+   "ORACLE fix R4": "The chemical symbol for water is HHH. This symbol is the chemical molecule"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "ugging Face<|im_end|>\n<|im_start|>user\nWhat is the capital of Japan?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "The capital of Japan is Tokyo. It is a city that has been a major",
+   "fix R4": "The capital of Tokyo capital of country.<|im_end|><|im_end|><|im_end|><|im_end|>system<|im_end|><|im_end|><|im_end|>",
+   "ORACLE fix R4": "The capital of Japan is Japan. It is a city that is is a historical"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "<|im_end|>\n<|im_start|>user\nGive me one tip for learning to code.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "One tip for learning to code is to start with the basics and gradually move on",
+   "fix R4": "One of effective tips to learn to learn code code code is Java Java, Java",
+   "ORACLE fix R4": "One tip for learning to code is to learn in the power to code code code"
+  },
+  {
+   "group": "chat",
+   "prompt_end": " Face<|im_end|>\n<|im_start|>user\nExplain what a variable is in programming.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "In programming, a variable is a container that stores a value that can be used",
+   "fix R4": "A variable is a variable that holds that holds variable that can can values or values",
+   "ORACLE fix R4": "In programming, a variable is a variable that holds a value that can be changed"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "ugging Face<|im_end|>\n<|im_start|>user\nWhat is a list in Python?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "A list in Python is a collection of items that can be of any data type",
+   "fix R4": "A list is a collection of a collection of elements or elements or elements elements.",
+   "ORACLE fix R4": "A list in Python is a collection of elements elements that be of of elements elements"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "\n<|im_start|>user\nWrite a Python function that reverses a string.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "Here's a Python function that reverses a string:\n\n```python\n",
+   "fix R4": "Here's a Python function that reverseses a string a string:\n\n",
+   "ORACLE fix R4": "Here's a Python function that reverses a string:\n\n```python\n"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "user\nWrite a Python function that checks if a number is even.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "Here's a simple Python function that checks if a number is even:\n\n",
+   "fix R4": "Here's a Python function that checks if a number is even: a even:",
+   "ORACLE fix R4": "Here's a Python function that checks if if a number is even:\n\n"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "<|im_end|>\n<|im_start|>user\nHow do I read a file in Python?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "You can read a file in Python using the following methods:\n\n1. **",
+   "fix R4": "To read a in Python, you can use the `read` module to the",
+   "ORACLE fix R4": " You can read a file in Python using the following methods:\n1. Open"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "<|im_start|>user\nWrite a function to compute the factorial of n.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "Here's a Python function that computes the factorial of a given integer n:",
+   "fix R4": "Here's a Python function that computes the factorial of n n n: a",
+   "ORACLE fix R4": "Here's a Python function that computes the factorial of a given integer n:"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "<|im_end|>\n<|im_start|>user\nHow do I sort a list in Python?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "You can sort a list in Python using the built-in `sort()` function",
+   "fix R4": "You sort a list in Python in Python using using the `sort()` method:",
+   "ORACLE fix R4": " You can sort a list in Python using the built-in `sort()` function"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "user\nWrite a SQL query that selects all rows from a table.<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "```sql\nSELECT *\nFROM mytable\nWHERE condition;\n```",
+   "fix R4": "```sql\nSELECT TABLE FROM FROM table\nWHEREEREEREEREEREERE",
+   "ORACLE fix R4": "```sql\nSELECT TABLE\nFROM FROM TABLE\nWHEREERE\n\n\n"
+  },
+  {
+   "group": "chat",
+   "prompt_end": "ugging Face<|im_end|>\n<|im_start|>user\nWhat is a dictionary in Python?<|im_end|>\n<|im_start|>assistant\n",
+   "reference": "In Python, a dictionary is a data structure that stores key-value pairs.",
+   "fix R4": "A dictionary is a dictionary data object that stores keys of or,, values.",
+   "ORACLE fix R4": "In Python, a dictionary is a dictionary that that contains a key key. It"
+  }
+ ],
+ "final": true,
+ "windows_done": 40
+}

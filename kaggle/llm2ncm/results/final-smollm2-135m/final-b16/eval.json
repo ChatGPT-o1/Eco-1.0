@@ -1,0 +1,102 @@
+{
+  "results": {
+    "original (token-by-token)": {
+      "judge_bits_per_token": 0.518,
+      "agreement_with_original": 1.0,
+      "distinct2": 0.568,
+      "repeated_lines": 0.078,
+      "tokens_per_s": 29.5,
+      "passes_per_token": 1.016,
+      "tokens": 4090,
+      "humaneval": "11/40"
+    },
+    "NCM refine=1": {
+      "judge_bits_per_token": 5.689,
+      "agreement_with_original": 0.122,
+      "distinct2": 0.52,
+      "repeated_lines": 0.032,
+      "tokens_per_s": 65.5,
+      "passes_per_token": 0.25,
+      "tokens": 4059
+    },
+    "NCM refine=2": {
+      "judge_bits_per_token": 5.521,
+      "agreement_with_original": 0.115,
+      "distinct2": 0.547,
+      "repeated_lines": 0.058,
+      "tokens_per_s": 51.9,
+      "passes_per_token": 0.313,
+      "tokens": 4059
+    },
+    "NCM refine=4": {
+      "judge_bits_per_token": 5.537,
+      "agreement_with_original": 0.112,
+      "distinct2": 0.57,
+      "repeated_lines": 0.051,
+      "tokens_per_s": 37.2,
+      "passes_per_token": 0.44,
+      "tokens": 4011,
+      "humaneval": "0/40"
+    },
+    "real held-out text (reference)": {
+      "judge_bits_per_token": 2.33
+    }
+  },
+  "table": "| system | judge bits/token ↓ | agreement w/ original | distinct-2 | repeated lines | tokens/s | passes/token | HumanEval |\n|---|---|---|---|---|---|---|---|\n| original (token-by-token) | 0.518 | 1.0 | 0.568 | 0.078 | 29.5 | 1.016 | 11/40 |\n| NCM refine=1 | 5.689 | 0.122 | 0.52 | 0.032 | 65.5 | 0.25 | - |\n| NCM refine=2 | 5.521 | 0.115 | 0.547 | 0.058 | 51.9 | 0.313 | - |\n| NCM refine=4 | 5.537 | 0.112 | 0.57 | 0.051 | 37.2 | 0.44 | 0/40 |\n| real held-out text (reference) | 2.33 | - | - | - | - | - | - |",
+  "samples": {
+    "original (token-by-token)": [
+      " get_user_info(user_info):\n    user_info_str = user_info.decode('utf-8')\n    user_info_str = user_info_str.strip()\n    user_info_str = user_info_str.replace(' ', '')\n    user_info_",
+      " the \"index\" prefix)\n    -page:...     name of the page to upload\n    -page_name:...     name of the page to upload\n    -page_type:...     type of page to upload (e.g. \"article\", \"book\", \"article_book\")\n    -page",
+      "option(\n            \"token_type\",\n            \"string\",\n            \"The type of token to use for the token\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",",
+      " the input text.\n    \"\"\"\n\n    def __init__(self, parent, *args, **kwargs):\n        \"\"\"\n        Initialize the Ui class.\n\n        Args:\n            parent (object): The parent window.\n            *args (list): Arguments to pass to the GUI.\n            **kwargs (dict): Arguments to pass"
+    ],
+    "NCM refine=1": [
+      " get___info(sock____):):\n    if is_is_sock:\n       \n        sock sock:\n       \n        print(\"Errorsock: + \" \"\")\n        if not.is:\n       \n       .: \"Error\"\"\n        except:\n            print(\" \"Errorsock: \" \" \"",
+      " the))) page)\n    -title:         of of the page (\n    -content\n                of of the of the\n   \n    -url\n                page of the page\n   \n    -content\n            page of of the page\n   \n    -content\n    the page of of the page",
+      "option(\"optionsolla(.___olla_update_tokens,\n        make \"optionoption(\"options___.___update_tokens\",\n        makeoptionoption(\"(\"____update_update__tokens_\n       \n       optionoptionoption(\"_____update_update",
+      " the LaTeX text.\n    \"\"\" \"\"\"\n    definit__(object):\n        \"\"\" self init the necessary.\n        definit_object(\n        self.text =()\n        self self.text_text()\n        self.text =\n        self.text_text_() self..texttext.text_text_text"
+    ],
+    "NCM refine=2": [
+      " get_check_func(sock,sock_str):):\n    if is_check_sock):\n        return True\n    else:\n        sock[sock0] = sock + + return[\n\ndef get_checkcheckfunc(sock,sock_str, check_str, \"check):\n    if if",
+      " the))) page)\n    -title:       of of the page (\n    -content\n    -:   of of page of the page\n   \n   contentcontent\n    of of of the page page\n    -content\n      of of page of the page\n   content\n      of of of of the page\n     ",
+      "option(\"optionsolla(.__updateolla_update_tokens,\n       \", \"options_options(\"updateolla_.__updateolla_tokens),\n        \"options_optionsolla\",olla_.olla_update_options)\n       updateolla__olla_.olla_options.update_tokens",
+      " the LaTeX text.\n    \"\"\"/\n    definit__(object):\n        \"\"\" self init the necessary.\n        self_init(self)\n       .. =()\n        def self_init = def ___init__(self):\n        self.init =\n       \n        def.init_ = self.init_late_text"
+    ],
+    "NCM refine=4": [
+      " get_check_func(sock_sock_server):):\n    if is_check_server:\n        return True\n    else:\n        sock_check_func = ' get_check_server\n   def is_check_:\n    if if notsockcheckfunc:\n        return is_check_func_func",
+      " the))) page)\n    -title:       of of the page (\n    -content\n    -:   of of page of the page)\n    -content\n      of of page of the page (\n    -content\n    -: of of of page of the page\n    -content\n    - of page of",
+      "option(\"optionsolla(from__fromolla_update_tokens,\n        optionoptions_olla_from_from_from__from_tokens_options_\n        options_olla_update_from_from_from_from_tokens_tokens_options_options_options_from_from_from",
+      " the LaTeX text.\n    \"\"\"/\n    definit__(object):\n        \"\"\" self init the necessary.\n        self_init(self)\n       .. =()\n        def self_init = def ___init__(self):\n        self.init = self\n        def.initinit = self.init_with_text"
+    ]
+  },
+  "prompts": 64,
+  "new_tokens": 64,
+  "generator": {
+    "backbone": "llm",
+    "backbone_note": "full attention",
+    "compressor": "/tmp/work/final-b16/compressor.pt",
+    "model": "/tmp/SmolLM2-135M-Instruct-textonly",
+    "lora_r": 32,
+    "steps": 1000000,
+    "batch": 32,
+    "mask_draws": 1,
+    "slot_emb": true,
+    "ar0": false,
+    "amp": true,
+    "trained_steps": 50312,
+    "compressor_cfg": {
+      "hidden": 576,
+      "d_lat": 256,
+      "L": 16,
+      "scales": [
+        4,
+        8
+      ],
+      "codebook": 1024,
+      "P": 64,
+      "quant": "vq",
+      "fsq_levels": null,
+      "pred": false
+    }
+  }
+}
