@@ -15,7 +15,7 @@ import argparse, base64, gzip, io, json, os, tarfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-SRC_DIRS = ("llm2ncm", "model-surgery")
+SRC_DIRS = ("llm2ncm", "model-surgery", "draft")
 KEEP = (".py", ".md", ".txt")
 
 BASE_MODEL = "HuggingFaceTB/SmolLM2-135M-Instruct"
@@ -206,6 +206,24 @@ VARIANTS["final"] = final_cfg("llm2ncm-final", 100000, 20000, 40, 64, 500, budge
 VARIANTS["final-smoke"] = final_cfg("llm2ncm-final-smoke", 1200, 300, 2, 8, 100, gen_time=" --time-budget-min 4", save_every=100, ckpt_every_min=1)
 VARIANTS["final-local-test"] = final_cfg("llm2ncm-final-local-test", 48, 4, 0, 2, 3, batch=4, device="cpu", gen_time=" --time-budget-min 0.4",
                                          save_every=3, ckpt_every_min=0.1)
+
+
+# ---- draft head (EAGLE-style): exact output, faster decoding. Two heads side by side, one per T4, same data:
+#   eagle-ttt4  trained with a 4-step rollout ("training-time test", EAGLE-3) so drafts 2..k are trained for real use
+#   eagle-ttt1  plain one-step training (EAGLE-1), the control
+def draft_cfg(name, n, max_new, minutes, bench_n, bench_max_new, ks, device="cuda", batch=16, bench_dtypes=("float32", "float16")):
+    return dict(COMMON, name=name, mode="draft", selftest_script="draft/selftest_draft.py",
+                data_args=["--n", str(n), "--max-new", str(max_new), "--batch", "128" if device == "cuda" else "16"],
+                train_args=["--time-budget-min", str(minutes), "--batch", str(batch), "--eval-every", "500"]
+                           + (["--amp"] if device == "cuda" else []),
+                bench_args=["--n", str(bench_n), "--max-new", str(bench_max_new), "--k", ks],
+                bench_dtypes=list(bench_dtypes),
+                heads=[{"name": "eagle-ttt4", "note": "4-step training-time test (EAGLE-3 style)", "args": ["--steps-ahead", "4"]},
+                       {"name": "eagle-ttt1", "note": "one-step training (EAGLE-1 style), control", "args": ["--steps-ahead", "1"]}])
+
+
+VARIANTS["draft"] = draft_cfg("llm2ncm-draft", 12000, 256, 50, 40, 192, "3,5")
+VARIANTS["draft-local-test"] = draft_cfg("llm2ncm-draft-local-test", 24, 32, 0.5, 2, 24, "2", device="cpu", batch=4, bench_dtypes=("float32",))
 
 
 if __name__ == "__main__":

@@ -93,7 +93,7 @@ def prelude():
         run("fetch_data", py("model-surgery/fetch_data.py", "--out", DATA))
     run("textonly", py("model-surgery/textonly.py", BASE, TEXT))
     if CONFIG.get("selftest"):  # CPU-only mechanics check; non-fatal so a flaky check cannot cost the run, but it is logged
-        run("selftest", ["timeout", "1200", *py("llm2ncm/selftest.py", TEXT)], check=False)
+        run("selftest", ["timeout", "1200", *py(CONFIG.get("selftest_script", "llm2ncm/selftest.py"), TEXT)], check=False)
 
 
 # ----------------------------------------------------------------------------- mode: pipeline
@@ -248,6 +248,57 @@ def run_variants():
         raise RuntimeError(f"variant(s) failed: {[n for n, rc in done if rc]}")
 
 
+# ----------------------------------------------------------------------------- mode: draft
+def run_draft_head(h, gpu):
+    """Train one draft head on its own GPU, then benchmark it (every dtype in CONFIG['bench_dtypes'])."""
+    name = h["name"]
+    wd, od = f"{WORK}/{name}", f"{OUT}/{name}"
+    os.makedirs(wd, exist_ok=True)
+    os.makedirs(od, exist_ok=True)
+    env = dict(ENV)
+    if gpu is not None:
+        env["CUDA_VISIBLE_DEVICES"] = str(gpu)
+    t = time.time()
+    rc = stream(name, py("draft/train_draft.py", "--model", TEXT, "--data", f"{WORK}/draft_data.pt", "--out", f"{wd}/head.pt",
+                         "--device", DEVICE, *CONFIG["train_args"], *h["args"]), env, f"{od}/train.log")
+    stages[f"train:{name}"] = {"exit": rc, "seconds": round(time.time() - t)}
+    if rc != 0 or not os.path.exists(f"{wd}/head.pt"):
+        return name, rc or 1
+    shutil.copy(f"{wd}/head.pt", f"{od}/head.pt")
+    for dt in CONFIG.get("bench_dtypes", ["float32"]):
+        t = time.time()
+        rc = stream(f"{name}/{dt}", py("draft/bench_draft.py", "--model", TEXT, "--head", f"{wd}/head.pt", "--data", DATA,
+                                       "--device", DEVICE, "--dtype", dt, "--out", f"{od}/bench_{dt}.json", *CONFIG["bench_args"]),
+                    env, f"{od}/bench_{dt}.log")
+        stages[f"bench:{name}:{dt}"] = {"exit": rc, "seconds": round(time.time() - t)}
+        if rc != 0:
+            return name, rc
+    return name, 0
+
+
+def run_draft():
+    run("fetch_prompts", py("llm2ncm/fetch_prompts.py", "--out", DATA))
+    run("build_draft_data", py("draft/build_draft_data.py", "--model", TEXT, "--data", DATA, "--out", f"{WORK}/draft_data.pt",
+                               "--device", DEVICE, *CONFIG["data_args"]))
+    heads = CONFIG["heads"]
+    with ThreadPoolExecutor(max_workers=len(heads)) as ex:
+        done = [f.result() for f in [ex.submit(run_draft_head, h, None if LOCAL else g) for g, h in enumerate(heads)]]
+    lines = [f"# {CONFIG['name']}: draft heads for {BASE}", "",
+             "Every speculative output is checked token-for-token against plain greedy decoding ('exact match').", ""]
+    for name, rc in done:
+        h = next(x for x in heads if x["name"] == name)
+        lines += [f"## {name}: {h.get('note', '')} (exit {rc})", ""]
+        for dt in CONFIG.get("bench_dtypes", ["float32"]):
+            bj = f"{OUT}/{name}/bench_{dt}.json"
+            if os.path.exists(bj):
+                b = json.load(open(bj))
+                lines += [f"### {dt} ({b['prompts']} prompts, up to {b['max_new']} new tokens; head from step {b['head_step']})", "",
+                          b["table"], ""]
+    open(f"{OUT}/DRAFT_REPORT.md", "w").write("\n".join(lines) + "\n")
+    if any(rc != 0 for _, rc in done):
+        raise RuntimeError(f"draft head(s) failed: {[n for n, rc in done if rc]}")
+
+
 # ----------------------------------------------------------------------------- mode: sweep
 def last_dict(path, pattern):
     """The dict printed on the last log line matching `pattern` (e.g. '  val step 2000: {...}'), or None."""
@@ -370,7 +421,7 @@ def export_sweep():
 
 # ----------------------------------------------------------------------------- driver
 def export():
-    {"sweep": export_sweep, "variants": lambda: None}.get(CONFIG["mode"], export_pipeline)()
+    {"sweep": export_sweep, "variants": lambda: None, "draft": lambda: None}.get(CONFIG["mode"], export_pipeline)()
     json.dump({"config": CONFIG, "stages": stages, "total_seconds": round(time.time() - T0)},
               open(f"{OUT}/summary.json", "w"), indent=2)
     for root, _, files in os.walk(OUT):
@@ -382,7 +433,7 @@ def export():
 def main():
     log("Kaggle llm2ncm runner:", CONFIG["name"], f"(mode {CONFIG['mode']}{', LOCAL' if LOCAL else ''})")
     prelude()
-    {"sweep": run_sweep, "variants": run_variants}.get(CONFIG["mode"], run_pipeline)()
+    {"sweep": run_sweep, "variants": run_variants, "draft": run_draft}.get(CONFIG["mode"], run_pipeline)()
 
 
 if __name__ == "__main__":
