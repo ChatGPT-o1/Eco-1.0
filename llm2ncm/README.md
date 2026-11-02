@@ -58,3 +58,11 @@ python -I ncm_generate.py --model HuggingFaceTB/SmolLM2-135M-Instruct --generato
   optimized engine such as llama.cpp still beats it. On a GPU the gain should approach the pass reduction.
 - **Fixed blocks:** a 5-token answer still pays for a full block; output appears block by block.
 - The NCM paper reports that names and numbers suffer in compression, which matters for code identifiers.
+
+**Measured** (SmolLM2-135M-Instruct, 50,000 windows, 5,000 compressor + 5,000 generator steps, one Kaggle T4, 47 min
+end to end; files in `kaggle/llm2ncm/results/full-smollm2-135m/`, run from commit `fe2780f`): the NCM is 2.6x faster
+than the original in the same PyTorch runtime (80.7 vs 31.3 tokens/s) but far worse. Judge 4.77 bits/token vs 0.55 for
+the original (real human text scores 2.83), 6% token agreement, HumanEval 0/20 vs 2/20, distinct-2 0.23 vs 0.69. The
+compressor recovers only 20% of tokens from its codes. Answers keep the topic words and the shape of a reply
+("Here's a Python function: ``` def add ...") but the details are garbled. More refine passes did not help
+(4.65 -> 4.77 bits from refine 1 to 4). Treat it as a research artifact, not a usable model.

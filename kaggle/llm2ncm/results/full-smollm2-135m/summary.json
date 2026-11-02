@@ -1,0 +1,67 @@
+{
+  "config": {
+    "base_model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "pip_extra": [
+      "transformers==5.19.0",
+      "peft==0.21.2",
+      "accelerate==1.15.0"
+    ],
+    "chat_prompts": [
+      "What is 2 + 2?",
+      "What is the capital of France?",
+      "Write a Python function that adds two numbers."
+    ],
+    "chat_refine": 4,
+    "chat_new": 128,
+    "selftest": true,
+    "mode": "pipeline",
+    "name": "llm2ncm-smollm2-135m",
+    "pipeline_args": [
+      "--device",
+      "cuda",
+      "--n",
+      "50000",
+      "--comp-steps",
+      "5000",
+      "--gen-steps",
+      "5000",
+      "--humaneval",
+      "20"
+    ]
+  },
+  "stages": {
+    "nvidia-smi": {
+      "exit": 0,
+      "seconds": 0
+    },
+    "pip-install": {
+      "exit": 0,
+      "seconds": 16
+    },
+    "pip-uninstall-torchao": {
+      "exit": 0,
+      "seconds": 1
+    },
+    "versions": {
+      "exit": 0,
+      "seconds": 21
+    },
+    "fetch_data": {
+      "exit": 0,
+      "seconds": 17
+    },
+    "textonly": {
+      "exit": 0,
+      "seconds": 14
+    },
+    "selftest": {
+      "exit": 0,
+      "seconds": 47
+    },
+    "pipeline": {
+      "exit": 0,
+      "seconds": 2660
+    }
+  },
+  "total_seconds": 2824
+}

@@ -1,0 +1,836 @@
+[    0.0s] Kaggle llm2ncm runner: llm2ncm-smollm2-135m (mode pipeline)
+[    0.0s] === nvidia-smi: nvidia-smi --query-gpu=name,memory.total,compute_cap --format=csv,noheader
+Tesla T4, 15360 MiB, 7.5
+Tesla T4, 15360 MiB, 7.5
+[    0.0s] === nvidia-smi: exit 0 after 0s
+[    8.1s] preinstalled torch: 2.11.0+cu128 12.8 True
+[    8.1s] unpacked sources: ['llm2ncm', 'model-surgery']
+[    8.1s] === pip-install: /usr/bin/python3 -m pip install -q -r /tmp/src/model-surgery/requirements.txt transformers==5.19.0 peft==0.21.2 accelerate==1.15.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+gradio 6.26.0 requires pillow<13.0,>=8.0, but you have pillow 13.0.0 which is incompatible.
+[   24.5s] === pip-install: exit 0 after 16s
+[   24.5s] === pip-uninstall-torchao: /usr/bin/python3 -m pip uninstall -y -q torchao
+[   25.2s] === pip-uninstall-torchao: exit 0 after 1s
+[   25.2s] === versions: /usr/bin/python3 -c import torch,transformers,peft,pyarrow; print('torch',torch.__version__,'transformers',transformers.__version__,'peft',peft.__version__,'pyarrow',pyarrow.__version__)
+torch 2.11.0+cu128 transformers 5.19.0 peft 0.21.2 pyarrow 23.0.1
+[   46.6s] === versions: exit 0 after 21s
+[   46.6s] === fetch_data: /usr/bin/python3 -I /tmp/src/model-surgery/fetch_data.py --out /tmp/msdata
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+wrote /tmp/msdata: 113589 counting files, 288 held-out files, 109183 counting chats
+[   63.9s] === fetch_data: exit 0 after 17s
+[   63.9s] === textonly: /usr/bin/python3 -I /tmp/src/model-surgery/textonly.py HuggingFaceTB/SmolLM2-135M-Instruct /tmp/SmolLM2-135M-Instruct-textonly
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights:  97%|█████████▋| 264/272 [00:00<00:00, 2621.84it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 2673.55it/s]
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.75it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  6.74it/s]
+{
+  "src_architectures": [
+    "LlamaForCausalLM"
+  ],
+  "saved_class": "LlamaForCausalLM",
+  "params_M": 134.5,
+  "has_mtp_tensors": false,
+  "config_keys_zeroed": [],
+  "seconds": 5.8,
+  "dst": "/tmp/SmolLM2-135M-Instruct-textonly"
+}
+[   77.9s] === textonly: exit 0 after 14s
+[   77.9s] === selftest: timeout 1200 /usr/bin/python3 -I /tmp/src/llm2ncm/selftest.py /tmp/SmolLM2-135M-Instruct-textonly
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights:  57%|█████▋    | 155/272 [00:00<00:00, 1547.91it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 1540.88it/s]
+backbone level attention: True full attention
+1. block mask OK
+2. RVQ shapes + gradients OK; utilization [0.12, 0.25]
+3. one-batch overfit: {'level1': 5.45, 'level2': 5.02, 'tokens': 12.25} -> {'level1': 0.0, 'level2': 0.06, 'tokens': 0.33}
+4. cached passes=12 tokens=[1548, 955, 955, 955, 1667, 401, 1701, 1674]...  uncached passes=10
+4. cached generation == full recomputation OK
+5. small backbone loss + generation OK
+6. parallel masked copies: mask OK, copies independent, 3-draw loss {'level1': 0.0, 'level2': 0.03, 'tokens': 0.41}
+SELFTEST OK
+[  124.9s] === selftest: exit 0 after 47s
+[  124.9s] === pipeline: /usr/bin/python3 -I /tmp/src/llm2ncm/pipeline.py --model /tmp/SmolLM2-135M-Instruct-textonly --data /tmp/msdata --work /tmp/work --device cuda --n 50000 --comp-steps 5000 --gen-steps 5000 --humaneval 20
+
+$ /usr/bin/python3 -I /tmp/src/llm2ncm/build_data.py --model /tmp/SmolLM2-135M-Instruct-textonly --data /tmp/msdata --out /tmp/work/data.pt --n 50000 --prefix 64 --block 32 --distill-frac 0.5 --batch 256 --threads 4 --device cuda
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights:  53%|█████▎    | 144/272 [00:00<00:00, 1437.12it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 1463.19it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (9408 > 8192). Running this sequence through the model will result in indexing errors
+windows: 50000 (35000 code, 15000 chat) 171s
+  distilled 256/25000 (175s)
+  distilled 2816/25000 (212s)
+  distilled 5376/25000 (250s)
+  distilled 7936/25000 (288s)
+  distilled 10496/25000 (325s)
+  distilled 13056/25000 (363s)
+  distilled 15616/25000 (400s)
+  distilled 18176/25000 (438s)
+  distilled 20736/25000 (476s)
+  distilled 23296/25000 (513s)
+  encoded 256/50000 (541s)
+  encoded 5376/50000 (587s)
+  encoded 10496/50000 (633s)
+  encoded 15616/50000 (680s)
+  encoded 20736/50000 (726s)
+  encoded 25856/50000 (772s)
+  encoded 30976/50000 (818s)
+  encoded 36096/50000 (864s)
+  encoded 41216/50000 (910s)
+  encoded 46336/50000 (956s)
+saved /tmp/work/data.pt: 50000 windows, hidden (50000, 32, 576), 990s
+[build_data.py exit 0, 1001s]
+
+$ /usr/bin/python3 -I /tmp/src/llm2ncm/train_compressor.py --model /tmp/SmolLM2-135M-Instruct-textonly --data /tmp/work/data.pt --out /tmp/work/compressor.pt --scales 2,8 --codebook 1024 --steps 5000 --threads 4 --device cuda
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights:  51%|█████     | 138/272 [00:00<00:00, 1361.67it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 1475.03it/s]
+step 50 ce 7.134 commit 0.0417 levels 1 (2s)
+step 100 ce 6.661 commit 0.1612 levels 2 (3s)
+step 150 ce 6.356 commit 0.1552 levels 2 (5s)
+step 200 ce 6.192 commit 0.1709 levels 2 (6s)
+step 250 ce 6.262 commit 0.1884 levels 2 (7s)
+step 300 ce 6.257 commit 0.1927 levels 2 (8s)
+step 350 ce 6.755 commit 0.1011 levels 1 (10s)
+step 400 ce 6.200 commit 0.2053 levels 2 (11s)
+step 450 ce 6.546 commit 0.2136 levels 2 (12s)
+step 500 ce 5.987 commit 0.2058 levels 2 (13s)
+  val {'levels_1_token_acc': 0.0765, 'levels_2_token_acc': 0.1243, 'codebook_use': [0.016, 0.149], 'step': 500}
+step 550 ce 5.774 commit 0.2265 levels 2 (18s)
+step 600 ce 5.796 commit 0.2626 levels 2 (19s)
+step 650 ce 5.362 commit 0.2448 levels 2 (20s)
+step 700 ce 6.600 commit 0.1227 levels 1 (24s)
+step 750 ce 6.589 commit 0.1264 levels 1 (25s)
+step 800 ce 5.750 commit 0.2905 levels 2 (27s)
+step 850 ce 6.350 commit 0.3084 levels 2 (28s)
+step 900 ce 5.673 commit 0.2781 levels 2 (29s)
+step 950 ce 5.788 commit 0.2846 levels 2 (31s)
+step 1000 ce 5.461 commit 0.3023 levels 2 (32s)
+  val {'levels_1_token_acc': 0.0834, 'levels_2_token_acc': 0.1509, 'codebook_use': [0.111, 0.467], 'step': 1000}
+step 1050 ce 5.815 commit 0.2955 levels 2 (36s)
+step 1100 ce 5.271 commit 0.2949 levels 2 (37s)
+step 1150 ce 5.631 commit 0.3283 levels 2 (39s)
+step 1200 ce 5.590 commit 0.3354 levels 2 (40s)
+step 1250 ce 5.560 commit 0.3047 levels 2 (41s)
+step 1300 ce 5.504 commit 0.3435 levels 2 (43s)
+step 1350 ce 6.624 commit 0.1542 levels 1 (44s)
+step 1400 ce 5.487 commit 0.3811 levels 2 (45s)
+step 1450 ce 5.049 commit 0.3555 levels 2 (47s)
+step 1500 ce 4.863 commit 0.3986 levels 2 (48s)
+  val {'levels_1_token_acc': 0.0861, 'levels_2_token_acc': 0.1661, 'codebook_use': [0.179, 0.6], 'step': 1500}
+step 1550 ce 5.287 commit 0.3883 levels 2 (52s)
+step 1600 ce 5.696 commit 0.3993 levels 2 (53s)
+step 1650 ce 5.092 commit 0.4030 levels 2 (55s)
+step 1700 ce 6.042 commit 0.1871 levels 1 (56s)
+step 1750 ce 5.431 commit 0.4315 levels 2 (57s)
+step 1800 ce 5.290 commit 0.4531 levels 2 (59s)
+step 1850 ce 5.294 commit 0.4744 levels 2 (60s)
+step 1900 ce 5.419 commit 0.4824 levels 2 (61s)
+step 1950 ce 4.913 commit 0.4988 levels 2 (62s)
+step 2000 ce 4.761 commit 0.4806 levels 2 (64s)
+  val {'levels_1_token_acc': 0.0939, 'levels_2_token_acc': 0.1767, 'codebook_use': [0.229, 0.733], 'step': 2000}
+step 2050 ce 4.697 commit 0.5082 levels 2 (68s)
+step 2100 ce 4.933 commit 0.5373 levels 2 (69s)
+step 2150 ce 4.921 commit 0.5516 levels 2 (70s)
+step 2200 ce 5.184 commit 0.5747 levels 2 (72s)
+step 2250 ce 4.810 commit 0.5658 levels 2 (73s)
+step 2300 ce 5.307 commit 0.6226 levels 2 (74s)
+step 2350 ce 6.069 commit 0.2922 levels 1 (76s)
+step 2400 ce 5.047 commit 0.6070 levels 2 (77s)
+step 2450 ce 5.347 commit 0.6195 levels 2 (78s)
+step 2500 ce 5.036 commit 0.6189 levels 2 (79s)
+  val {'levels_1_token_acc': 0.0909, 'levels_2_token_acc': 0.1829, 'codebook_use': [0.246, 0.745], 'step': 2500}
+step 2550 ce 4.846 commit 0.6373 levels 2 (83s)
+step 2600 ce 4.993 commit 0.7100 levels 2 (85s)
+step 2650 ce 4.872 commit 0.6110 levels 2 (86s)
+step 2700 ce 5.279 commit 0.6842 levels 2 (87s)
+step 2750 ce 5.528 commit 0.6720 levels 2 (89s)
+step 2800 ce 6.317 commit 0.3134 levels 1 (90s)
+step 2850 ce 5.077 commit 0.6997 levels 2 (91s)
+step 2900 ce 5.678 commit 0.2670 levels 1 (92s)
+step 2950 ce 4.697 commit 0.7511 levels 2 (94s)
+step 3000 ce 5.624 commit 0.3059 levels 1 (95s)
+  val {'levels_1_token_acc': 0.0969, 'levels_2_token_acc': 0.1915, 'codebook_use': [0.283, 0.793], 'step': 3000}
+step 3050 ce 6.323 commit 0.3624 levels 1 (99s)
+step 3100 ce 6.396 commit 0.2935 levels 1 (100s)
+step 3150 ce 6.239 commit 0.3457 levels 1 (102s)
+step 3200 ce 4.735 commit 0.7935 levels 2 (103s)
+step 3250 ce 4.910 commit 0.8454 levels 2 (104s)
+step 3300 ce 6.296 commit 0.3844 levels 1 (106s)
+step 3350 ce 4.311 commit 0.7826 levels 2 (107s)
+step 3400 ce 5.091 commit 0.8816 levels 2 (108s)
+step 3450 ce 4.479 commit 0.7415 levels 2 (109s)
+step 3500 ce 4.543 commit 0.8479 levels 2 (111s)
+  val {'levels_1_token_acc': 0.0957, 'levels_2_token_acc': 0.1951, 'codebook_use': [0.294, 0.797], 'step': 3500}
+step 3550 ce 6.271 commit 0.3830 levels 1 (115s)
+step 3600 ce 4.580 commit 0.8427 levels 2 (116s)
+step 3650 ce 4.427 commit 0.8221 levels 2 (118s)
+step 3700 ce 4.786 commit 0.8653 levels 2 (119s)
+step 3750 ce 6.032 commit 0.3586 levels 1 (120s)
+step 3800 ce 4.752 commit 0.8882 levels 2 (121s)
+step 3850 ce 5.717 commit 0.3980 levels 1 (123s)
+step 3900 ce 4.599 commit 0.9271 levels 2 (124s)
+step 3950 ce 4.317 commit 0.9179 levels 2 (125s)
+step 4000 ce 4.967 commit 0.9583 levels 2 (127s)
+  val {'levels_1_token_acc': 0.0933, 'levels_2_token_acc': 0.2, 'codebook_use': [0.312, 0.796], 'step': 4000}
+step 4050 ce 4.647 commit 0.9083 levels 2 (131s)
+step 4100 ce 4.669 commit 0.9451 levels 2 (132s)
+step 4150 ce 4.689 commit 0.9851 levels 2 (133s)
+step 4200 ce 4.714 commit 0.9459 levels 2 (135s)
+step 4250 ce 6.122 commit 0.4026 levels 1 (136s)
+step 4300 ce 4.241 commit 0.9028 levels 2 (137s)
+step 4350 ce 4.834 commit 1.0453 levels 2 (139s)
+step 4400 ce 4.965 commit 1.0312 levels 2 (140s)
+step 4450 ce 4.653 commit 1.0533 levels 2 (141s)
+step 4500 ce 4.424 commit 0.9990 levels 2 (143s)
+  val {'levels_1_token_acc': 0.0965, 'levels_2_token_acc': 0.2043, 'codebook_use': [0.318, 0.778], 'step': 4500}
+step 4550 ce 4.798 commit 1.0253 levels 2 (147s)
+step 4600 ce 5.078 commit 1.1056 levels 2 (148s)
+step 4650 ce 5.655 commit 0.3957 levels 1 (149s)
+step 4700 ce 4.368 commit 1.0235 levels 2 (151s)
+step 4750 ce 4.738 commit 1.1260 levels 2 (152s)
+step 4800 ce 4.574 commit 1.0527 levels 2 (153s)
+step 4850 ce 4.974 commit 1.1643 levels 2 (154s)
+step 4900 ce 4.310 commit 1.0485 levels 2 (156s)
+step 4950 ce 5.508 commit 0.4632 levels 1 (157s)
+step 5000 ce 6.073 commit 0.5581 levels 1 (158s)
+  val {'levels_1_token_acc': 0.0956, 'levels_2_token_acc': 0.2036, 'codebook_use': [0.323, 0.781], 'step': 5000}
+saved /tmp/work/compressor.pt; codes for 50000 windows written into /tmp/work/data.pt
+[train_compressor.py exit 0, 177s]
+
+$ /usr/bin/python3 -I /tmp/src/llm2ncm/train_generator.py --model /tmp/SmolLM2-135M-Instruct-textonly --data /tmp/work/data.pt --compressor /tmp/work/compressor.pt --out /tmp/work/generator --backbone auto --lora-r 32 --steps 5000 --batch 8 --threads 4 --device cuda
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights:  55%|█████▌    | 150/272 [00:00<00:00, 1499.21it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 1425.14it/s]
+backbone=llm trainable params: 11.1M
+val before: {'level1': 7.871, 'level2': 7.871, 'tokens': 8.185}
+step 10 level1 7.796 level2 7.739 tokens 6.820  3489 pos/s
+step 20 level1 6.991 level2 7.659 tokens 7.331  3620 pos/s
+step 30 level1 6.799 level2 6.977 tokens 6.188  3661 pos/s
+step 40 level1 6.030 level2 7.237 tokens 5.492  3677 pos/s
+step 50 level1 6.325 level2 6.977 tokens 5.051  3686 pos/s
+step 60 level1 5.634 level2 6.949 tokens 6.597  3686 pos/s
+step 70 level1 4.769 level2 6.544 tokens 5.536  3687 pos/s
+step 80 level1 5.490 level2 6.327 tokens 6.069  3686 pos/s
+step 90 level1 4.972 level2 6.767 tokens 5.796  3683 pos/s
+step 100 level1 4.293 level2 6.162 tokens 6.068  3680 pos/s
+step 110 level1 4.543 level2 6.166 tokens 5.701  3674 pos/s
+step 120 level1 3.797 level2 5.961 tokens 5.774  3670 pos/s
+step 130 level1 4.715 level2 6.206 tokens 5.614  3666 pos/s
+step 140 level1 5.412 level2 6.155 tokens 5.790  3661 pos/s
+step 150 level1 4.825 level2 6.109 tokens 5.178  3657 pos/s
+step 160 level1 4.451 level2 5.937 tokens 5.337  3654 pos/s
+step 170 level1 3.854 level2 5.986 tokens 5.668  3651 pos/s
+step 180 level1 3.722 level2 5.982 tokens 5.475  3649 pos/s
+step 190 level1 2.528 level2 5.725 tokens 5.591  3649 pos/s
+step 200 level1 3.734 level2 6.348 tokens 4.951  3648 pos/s
+  val step 200: {'level1': 3.927, 'level2': 5.846, 'tokens': 4.52}
+step 210 level1 4.570 level2 5.949 tokens 5.266  3438 pos/s
+step 220 level1 3.107 level2 5.922 tokens 5.571  3448 pos/s
+step 230 level1 4.314 level2 6.028 tokens 4.766  3458 pos/s
+step 240 level1 3.426 level2 5.899 tokens 5.213  3468 pos/s
+step 250 level1 3.819 level2 6.189 tokens 5.297  3477 pos/s
+step 260 level1 4.600 level2 5.591 tokens 4.714  3486 pos/s
+step 270 level1 4.089 level2 5.672 tokens 5.302  3493 pos/s
+step 280 level1 4.449 level2 5.755 tokens 4.972  3500 pos/s
+step 290 level1 3.250 level2 5.694 tokens 4.723  3507 pos/s
+step 300 level1 3.032 level2 5.728 tokens 5.767  3514 pos/s
+step 310 level1 3.580 level2 5.860 tokens 4.518  3521 pos/s
+step 320 level1 4.683 level2 5.457 tokens 5.693  3527 pos/s
+step 330 level1 3.358 level2 5.442 tokens 4.632  3533 pos/s
+step 340 level1 2.864 level2 4.987 tokens 5.026  3538 pos/s
+step 350 level1 3.310 level2 5.397 tokens 5.325  3543 pos/s
+step 360 level1 5.344 level2 5.649 tokens 4.948  3548 pos/s
+step 370 level1 2.906 level2 5.322 tokens 5.005  3553 pos/s
+step 380 level1 3.870 level2 5.790 tokens 4.084  3557 pos/s
+step 390 level1 3.607 level2 5.665 tokens 5.761  3561 pos/s
+step 400 level1 2.516 level2 5.766 tokens 5.200  3565 pos/s
+  val step 400: {'level1': 3.302, 'level2': 5.446, 'tokens': 4.101}
+step 410 level1 2.808 level2 5.440 tokens 4.757  3459 pos/s
+step 420 level1 3.050 level2 5.181 tokens 4.268  3465 pos/s
+step 430 level1 4.258 level2 5.877 tokens 4.091  3470 pos/s
+step 440 level1 2.839 level2 5.042 tokens 4.414  3475 pos/s
+step 450 level1 3.593 level2 5.203 tokens 4.625  3479 pos/s
+step 460 level1 3.137 level2 5.591 tokens 4.346  3484 pos/s
+step 470 level1 2.683 level2 5.182 tokens 4.784  3488 pos/s
+step 480 level1 3.561 level2 5.196 tokens 4.154  3492 pos/s
+step 490 level1 3.533 level2 4.854 tokens 4.160  3496 pos/s
+step 500 level1 2.743 level2 4.799 tokens 4.503  3500 pos/s
+step 510 level1 3.573 level2 6.000 tokens 4.716  3503 pos/s
+step 520 level1 3.485 level2 5.830 tokens 4.679  3506 pos/s
+step 530 level1 3.031 level2 4.473 tokens 4.893  3509 pos/s
+step 540 level1 3.586 level2 5.303 tokens 5.635  3513 pos/s
+step 550 level1 3.741 level2 5.639 tokens 5.386  3515 pos/s
+step 560 level1 2.852 level2 5.425 tokens 4.211  3518 pos/s
+step 570 level1 3.717 level2 5.084 tokens 4.463  3521 pos/s
+step 580 level1 2.546 level2 4.998 tokens 4.851  3524 pos/s
+step 590 level1 3.028 level2 5.192 tokens 5.314  3526 pos/s
+step 600 level1 4.565 level2 5.023 tokens 4.463  3529 pos/s
+  val step 600: {'level1': 3.097, 'level2': 5.251, 'tokens': 3.945}
+step 610 level1 2.914 level2 5.095 tokens 4.588  3460 pos/s
+step 620 level1 3.014 level2 5.151 tokens 4.443  3463 pos/s
+step 630 level1 3.016 level2 5.190 tokens 4.518  3467 pos/s
+step 640 level1 3.189 level2 4.852 tokens 3.988  3470 pos/s
+step 650 level1 3.322 level2 5.103 tokens 4.345  3474 pos/s
+step 660 level1 3.163 level2 4.920 tokens 4.652  3477 pos/s
+step 670 level1 3.165 level2 5.786 tokens 4.252  3480 pos/s
+step 680 level1 1.629 level2 5.105 tokens 4.280  3483 pos/s
+step 690 level1 3.243 level2 5.380 tokens 4.458  3486 pos/s
+step 700 level1 3.704 level2 5.228 tokens 3.774  3489 pos/s
+step 710 level1 3.309 level2 5.183 tokens 4.400  3491 pos/s
+step 720 level1 4.727 level2 5.304 tokens 5.171  3494 pos/s
+step 730 level1 4.892 level2 5.654 tokens 4.286  3497 pos/s
+step 740 level1 2.797 level2 5.127 tokens 4.999  3499 pos/s
+step 750 level1 2.401 level2 4.692 tokens 4.288  3502 pos/s
+step 760 level1 3.991 level2 5.284 tokens 4.892  3505 pos/s
+step 770 level1 2.839 level2 4.793 tokens 4.290  3507 pos/s
+step 780 level1 3.907 level2 4.932 tokens 3.895  3509 pos/s
+step 790 level1 2.816 level2 5.194 tokens 5.519  3512 pos/s
+step 800 level1 2.759 level2 5.238 tokens 5.475  3514 pos/s
+  val step 800: {'level1': 2.965, 'level2': 5.144, 'tokens': 3.782}
+step 810 level1 3.191 level2 5.189 tokens 4.022  3464 pos/s
+step 820 level1 2.393 level2 4.622 tokens 4.263  3467 pos/s
+step 830 level1 3.097 level2 4.664 tokens 3.951  3469 pos/s
+step 840 level1 4.305 level2 5.530 tokens 4.322  3472 pos/s
+step 850 level1 3.566 level2 5.214 tokens 4.456  3474 pos/s
+step 860 level1 2.446 level2 5.277 tokens 5.421  3477 pos/s
+step 870 level1 2.565 level2 4.914 tokens 3.754  3480 pos/s
+step 880 level1 3.147 level2 4.926 tokens 4.623  3482 pos/s
+step 890 level1 2.815 level2 5.081 tokens 4.585  3484 pos/s
+step 900 level1 2.665 level2 5.319 tokens 4.746  3487 pos/s
+step 910 level1 3.151 level2 5.059 tokens 4.145  3489 pos/s
+step 920 level1 2.915 level2 4.667 tokens 4.573  3491 pos/s
+step 930 level1 3.116 level2 5.727 tokens 4.757  3493 pos/s
+step 940 level1 2.221 level2 5.269 tokens 4.817  3495 pos/s
+step 950 level1 3.046 level2 4.902 tokens 4.650  3497 pos/s
+step 960 level1 2.388 level2 5.205 tokens 4.437  3499 pos/s
+step 970 level1 2.759 level2 5.685 tokens 5.099  3501 pos/s
+step 980 level1 3.839 level2 4.931 tokens 4.619  3503 pos/s
+step 990 level1 3.850 level2 5.354 tokens 5.014  3505 pos/s
+step 1000 level1 3.018 level2 4.965 tokens 4.467  3507 pos/s
+  val step 1000: {'level1': 2.751, 'level2': 5.068, 'tokens': 3.685}
+step 1010 level1 3.247 level2 4.336 tokens 4.750  3467 pos/s
+step 1020 level1 3.281 level2 5.297 tokens 4.892  3469 pos/s
+step 1030 level1 3.438 level2 5.119 tokens 4.426  3471 pos/s
+step 1040 level1 3.344 level2 5.062 tokens 5.013  3473 pos/s
+step 1050 level1 2.271 level2 5.262 tokens 4.671  3475 pos/s
+step 1060 level1 2.594 level2 5.314 tokens 4.226  3477 pos/s
+step 1070 level1 2.876 level2 4.874 tokens 4.983  3479 pos/s
+step 1080 level1 2.428 level2 4.844 tokens 4.223  3481 pos/s
+step 1090 level1 2.567 level2 4.366 tokens 3.962  3483 pos/s
+step 1100 level1 3.189 level2 5.145 tokens 4.257  3484 pos/s
+step 1110 level1 2.499 level2 5.347 tokens 3.911  3486 pos/s
+step 1120 level1 2.688 level2 5.318 tokens 4.484  3488 pos/s
+step 1130 level1 3.000 level2 4.934 tokens 4.254  3490 pos/s
+step 1140 level1 1.892 level2 5.299 tokens 4.010  3491 pos/s
+step 1150 level1 2.638 level2 4.870 tokens 4.548  3493 pos/s
+step 1160 level1 4.128 level2 5.404 tokens 3.816  3495 pos/s
+step 1170 level1 2.315 level2 4.861 tokens 3.839  3496 pos/s
+step 1180 level1 2.336 level2 5.525 tokens 4.455  3498 pos/s
+step 1190 level1 2.961 level2 5.358 tokens 4.025  3499 pos/s
+step 1200 level1 2.679 level2 4.731 tokens 3.900  3501 pos/s
+  val step 1200: {'level1': 2.813, 'level2': 4.977, 'tokens': 3.59}
+step 1210 level1 1.736 level2 5.417 tokens 3.903  3467 pos/s
+step 1220 level1 2.801 level2 5.334 tokens 4.577  3469 pos/s
+step 1230 level1 2.601 level2 4.470 tokens 4.025  3470 pos/s
+step 1240 level1 2.141 level2 5.090 tokens 4.220  3472 pos/s
+step 1250 level1 2.733 level2 5.041 tokens 4.368  3474 pos/s
+step 1260 level1 1.714 level2 4.834 tokens 4.423  3475 pos/s
+step 1270 level1 3.068 level2 4.944 tokens 4.361  3477 pos/s
+step 1280 level1 2.530 level2 5.180 tokens 5.162  3478 pos/s
+step 1290 level1 2.350 level2 5.190 tokens 3.721  3480 pos/s
+step 1300 level1 3.008 level2 5.348 tokens 4.704  3482 pos/s
+step 1310 level1 2.213 level2 4.950 tokens 4.260  3483 pos/s
+step 1320 level1 2.888 level2 5.332 tokens 4.450  3485 pos/s
+step 1330 level1 2.611 level2 4.793 tokens 4.134  3486 pos/s
+step 1340 level1 2.376 level2 4.687 tokens 4.299  3488 pos/s
+step 1350 level1 2.516 level2 4.139 tokens 4.665  3489 pos/s
+step 1360 level1 4.285 level2 4.823 tokens 4.308  3490 pos/s
+step 1370 level1 2.588 level2 4.678 tokens 4.502  3492 pos/s
+step 1380 level1 2.653 level2 5.039 tokens 4.080  3493 pos/s
+step 1390 level1 1.846 level2 4.519 tokens 4.651  3495 pos/s
+step 1400 level1 3.823 level2 5.206 tokens 4.288  3496 pos/s
+  val step 1400: {'level1': 2.786, 'level2': 4.949, 'tokens': 3.541}
+step 1410 level1 2.173 level2 5.155 tokens 5.185  3467 pos/s
+step 1420 level1 2.591 level2 5.043 tokens 3.942  3468 pos/s
+step 1430 level1 2.797 level2 4.666 tokens 3.359  3470 pos/s
+step 1440 level1 2.933 level2 4.478 tokens 3.382  3471 pos/s
+step 1450 level1 3.029 level2 5.380 tokens 4.785  3473 pos/s
+step 1460 level1 2.769 level2 4.944 tokens 4.344  3474 pos/s
+step 1470 level1 3.173 level2 4.581 tokens 4.544  3476 pos/s
+step 1480 level1 3.176 level2 4.610 tokens 4.019  3477 pos/s
+step 1490 level1 2.246 level2 4.854 tokens 4.263  3478 pos/s
+step 1500 level1 2.927 level2 5.143 tokens 4.000  3480 pos/s
+step 1510 level1 3.040 level2 4.991 tokens 4.951  3481 pos/s
+step 1520 level1 2.031 level2 4.818 tokens 4.291  3482 pos/s
+step 1530 level1 2.715 level2 5.050 tokens 4.736  3484 pos/s
+step 1540 level1 2.648 level2 4.508 tokens 3.281  3485 pos/s
+step 1550 level1 2.750 level2 4.551 tokens 3.904  3486 pos/s
+step 1560 level1 2.931 level2 4.403 tokens 3.100  3487 pos/s
+step 1570 level1 1.986 level2 4.847 tokens 5.187  3489 pos/s
+step 1580 level1 1.938 level2 4.709 tokens 4.118  3490 pos/s
+step 1590 level1 2.416 level2 5.363 tokens 4.093  3491 pos/s
+step 1600 level1 2.800 level2 4.903 tokens 5.115  3492 pos/s
+  val step 1600: {'level1': 2.648, 'level2': 4.919, 'tokens': 3.524}
+step 1610 level1 3.347 level2 5.049 tokens 4.526  3466 pos/s
+step 1620 level1 2.075 level2 5.166 tokens 4.471  3468 pos/s
+step 1630 level1 2.762 level2 4.981 tokens 3.851  3469 pos/s
+step 1640 level1 3.012 level2 5.022 tokens 4.558  3470 pos/s
+step 1650 level1 2.658 level2 4.323 tokens 3.783  3472 pos/s
+step 1660 level1 3.104 level2 5.109 tokens 3.805  3473 pos/s
+step 1670 level1 2.904 level2 4.946 tokens 4.072  3474 pos/s
+step 1680 level1 2.810 level2 5.191 tokens 4.376  3476 pos/s
+step 1690 level1 3.025 level2 4.577 tokens 3.579  3477 pos/s
+step 1700 level1 3.102 level2 5.234 tokens 4.179  3478 pos/s
+step 1710 level1 2.684 level2 4.998 tokens 4.808  3479 pos/s
+step 1720 level1 1.824 level2 4.674 tokens 4.352  3480 pos/s
+step 1730 level1 2.656 level2 5.026 tokens 3.461  3482 pos/s
+step 1740 level1 1.967 level2 4.531 tokens 4.213  3483 pos/s
+step 1750 level1 2.468 level2 4.874 tokens 4.511  3484 pos/s
+step 1760 level1 2.803 level2 4.790 tokens 3.836  3485 pos/s
+step 1770 level1 2.192 level2 4.773 tokens 4.932  3486 pos/s
+step 1780 level1 2.931 level2 5.236 tokens 4.288  3487 pos/s
+step 1790 level1 2.844 level2 5.094 tokens 3.662  3488 pos/s
+step 1800 level1 2.046 level2 4.755 tokens 3.790  3490 pos/s
+  val step 1800: {'level1': 2.627, 'level2': 4.855, 'tokens': 3.398}
+step 1810 level1 2.319 level2 4.817 tokens 3.834  3467 pos/s
+step 1820 level1 2.180 level2 4.342 tokens 3.301  3468 pos/s
+step 1830 level1 3.091 level2 4.367 tokens 3.963  3469 pos/s
+step 1840 level1 2.326 level2 4.516 tokens 4.115  3470 pos/s
+step 1850 level1 2.319 level2 4.468 tokens 4.355  3471 pos/s
+step 1860 level1 2.480 level2 4.257 tokens 3.469  3473 pos/s
+step 1870 level1 2.049 level2 5.019 tokens 4.490  3474 pos/s
+step 1880 level1 2.706 level2 4.796 tokens 4.340  3475 pos/s
+step 1890 level1 3.718 level2 5.061 tokens 4.033  3476 pos/s
+step 1900 level1 2.179 level2 4.441 tokens 3.724  3477 pos/s
+step 1910 level1 2.614 level2 5.209 tokens 4.617  3478 pos/s
+step 1920 level1 2.483 level2 4.705 tokens 4.222  3479 pos/s
+step 1930 level1 2.765 level2 4.994 tokens 4.734  3480 pos/s
+step 1940 level1 2.246 level2 4.893 tokens 4.104  3481 pos/s
+step 1950 level1 2.190 level2 5.097 tokens 4.758  3482 pos/s
+step 1960 level1 2.444 level2 5.172 tokens 3.984  3483 pos/s
+step 1970 level1 1.976 level2 4.711 tokens 4.498  3484 pos/s
+step 1980 level1 2.462 level2 5.012 tokens 5.152  3485 pos/s
+step 1990 level1 3.641 level2 5.215 tokens 4.358  3486 pos/s
+step 2000 level1 3.350 level2 5.088 tokens 4.527  3487 pos/s
+  val step 2000: {'level1': 2.545, 'level2': 4.85, 'tokens': 3.445}
+step 2010 level1 2.136 level2 3.542 tokens 3.861  3466 pos/s
+step 2020 level1 2.824 level2 4.837 tokens 4.298  3468 pos/s
+step 2030 level1 2.702 level2 4.868 tokens 3.874  3469 pos/s
+step 2040 level1 2.385 level2 4.478 tokens 3.959  3470 pos/s
+step 2050 level1 2.303 level2 4.801 tokens 3.930  3471 pos/s
+step 2060 level1 2.106 level2 4.802 tokens 4.332  3472 pos/s
+step 2070 level1 2.006 level2 4.525 tokens 3.241  3473 pos/s
+step 2080 level1 2.125 level2 4.564 tokens 3.701  3474 pos/s
+step 2090 level1 1.772 level2 5.091 tokens 4.151  3475 pos/s
+step 2100 level1 2.913 level2 5.009 tokens 3.968  3476 pos/s
+step 2110 level1 2.172 level2 4.798 tokens 3.978  3477 pos/s
+step 2120 level1 2.687 level2 4.712 tokens 3.840  3478 pos/s
+step 2130 level1 2.323 level2 5.191 tokens 3.660  3479 pos/s
+step 2140 level1 3.923 level2 5.353 tokens 4.057  3480 pos/s
+step 2150 level1 1.312 level2 4.264 tokens 2.887  3481 pos/s
+step 2160 level1 1.547 level2 4.524 tokens 4.257  3482 pos/s
+step 2170 level1 1.926 level2 4.584 tokens 3.112  3483 pos/s
+step 2180 level1 2.259 level2 5.201 tokens 4.926  3484 pos/s
+step 2190 level1 1.710 level2 4.851 tokens 4.590  3485 pos/s
+step 2200 level1 1.683 level2 4.347 tokens 3.973  3486 pos/s
+  val step 2200: {'level1': 2.5, 'level2': 4.819, 'tokens': 3.372}
+step 2210 level1 2.413 level2 4.974 tokens 4.493  3467 pos/s
+step 2220 level1 1.628 level2 4.291 tokens 4.417  3468 pos/s
+step 2230 level1 1.738 level2 4.296 tokens 3.890  3469 pos/s
+step 2240 level1 2.681 level2 4.955 tokens 4.528  3470 pos/s
+step 2250 level1 2.481 level2 4.653 tokens 4.092  3471 pos/s
+step 2260 level1 2.227 level2 4.537 tokens 4.181  3472 pos/s
+step 2270 level1 2.480 level2 4.501 tokens 3.300  3473 pos/s
+step 2280 level1 1.895 level2 4.753 tokens 3.796  3474 pos/s
+step 2290 level1 2.372 level2 4.842 tokens 4.336  3475 pos/s
+step 2300 level1 2.482 level2 4.979 tokens 4.847  3476 pos/s
+step 2310 level1 2.084 level2 4.394 tokens 3.420  3477 pos/s
+step 2320 level1 2.519 level2 5.396 tokens 4.136  3478 pos/s
+step 2330 level1 2.832 level2 4.991 tokens 4.300  3479 pos/s
+step 2340 level1 1.970 level2 4.645 tokens 3.627  3480 pos/s
+step 2350 level1 2.289 level2 4.358 tokens 3.414  3480 pos/s
+step 2360 level1 2.702 level2 4.396 tokens 3.851  3481 pos/s
+step 2370 level1 2.002 level2 4.815 tokens 3.899  3482 pos/s
+step 2380 level1 1.789 level2 4.264 tokens 3.760  3483 pos/s
+step 2390 level1 2.213 level2 3.724 tokens 3.495  3484 pos/s
+step 2400 level1 1.897 level2 3.928 tokens 3.625  3485 pos/s
+  val step 2400: {'level1': 2.554, 'level2': 4.785, 'tokens': 3.339}
+step 2410 level1 1.811 level2 5.197 tokens 4.749  3468 pos/s
+step 2420 level1 3.491 level2 4.267 tokens 3.665  3469 pos/s
+step 2430 level1 2.188 level2 4.972 tokens 3.532  3469 pos/s
+step 2440 level1 2.959 level2 4.621 tokens 4.115  3470 pos/s
+step 2450 level1 1.461 level2 4.372 tokens 4.316  3471 pos/s
+step 2460 level1 3.288 level2 4.627 tokens 3.385  3472 pos/s
+step 2470 level1 1.826 level2 4.457 tokens 4.167  3473 pos/s
+step 2480 level1 1.721 level2 4.907 tokens 4.119  3474 pos/s
+step 2490 level1 2.286 level2 4.895 tokens 4.464  3474 pos/s
+step 2500 level1 2.451 level2 4.610 tokens 4.060  3475 pos/s
+step 2510 level1 1.625 level2 4.374 tokens 3.501  3476 pos/s
+step 2520 level1 1.419 level2 5.114 tokens 4.266  3477 pos/s
+step 2530 level1 2.127 level2 4.423 tokens 3.788  3478 pos/s
+step 2540 level1 2.670 level2 4.691 tokens 3.489  3479 pos/s
+step 2550 level1 2.766 level2 4.665 tokens 4.348  3479 pos/s
+step 2560 level1 3.214 level2 4.063 tokens 3.261  3480 pos/s
+step 2570 level1 2.986 level2 4.768 tokens 4.836  3481 pos/s
+step 2580 level1 1.648 level2 4.233 tokens 3.714  3482 pos/s
+step 2590 level1 2.677 level2 4.565 tokens 3.775  3482 pos/s
+step 2600 level1 1.901 level2 4.993 tokens 4.297  3483 pos/s
+  val step 2600: {'level1': 2.549, 'level2': 4.723, 'tokens': 3.299}
+step 2610 level1 1.450 level2 4.075 tokens 5.077  3468 pos/s
+step 2620 level1 2.353 level2 4.751 tokens 3.423  3468 pos/s
+step 2630 level1 2.130 level2 4.893 tokens 4.549  3469 pos/s
+step 2640 level1 2.059 level2 4.690 tokens 4.191  3470 pos/s
+step 2650 level1 2.635 level2 4.392 tokens 4.489  3471 pos/s
+step 2660 level1 1.919 level2 4.827 tokens 5.282  3472 pos/s
+step 2670 level1 2.195 level2 4.621 tokens 3.791  3472 pos/s
+step 2680 level1 3.010 level2 4.505 tokens 3.427  3473 pos/s
+step 2690 level1 1.438 level2 4.465 tokens 3.527  3474 pos/s
+step 2700 level1 1.649 level2 4.383 tokens 3.646  3475 pos/s
+step 2710 level1 1.528 level2 4.320 tokens 3.819  3476 pos/s
+step 2720 level1 3.613 level2 4.617 tokens 3.040  3476 pos/s
+step 2730 level1 1.997 level2 4.447 tokens 4.004  3477 pos/s
+step 2740 level1 1.882 level2 4.810 tokens 3.714  3478 pos/s
+step 2750 level1 1.141 level2 4.414 tokens 3.399  3478 pos/s
+step 2760 level1 1.975 level2 3.942 tokens 3.082  3479 pos/s
+step 2770 level1 3.089 level2 4.451 tokens 4.060  3480 pos/s
+step 2780 level1 1.849 level2 4.536 tokens 3.510  3481 pos/s
+step 2790 level1 2.833 level2 4.425 tokens 3.387  3481 pos/s
+step 2800 level1 1.340 level2 4.857 tokens 4.328  3482 pos/s
+  val step 2800: {'level1': 2.468, 'level2': 4.717, 'tokens': 3.247}
+step 2810 level1 2.768 level2 4.835 tokens 4.714  3467 pos/s
+step 2820 level1 2.036 level2 4.298 tokens 3.364  3468 pos/s
+step 2830 level1 1.795 level2 4.243 tokens 3.023  3469 pos/s
+step 2840 level1 3.170 level2 4.770 tokens 4.232  3470 pos/s
+step 2850 level1 2.440 level2 4.623 tokens 4.261  3470 pos/s
+step 2860 level1 2.505 level2 4.415 tokens 3.898  3471 pos/s
+step 2870 level1 1.753 level2 3.646 tokens 3.067  3472 pos/s
+step 2880 level1 2.016 level2 5.009 tokens 3.690  3472 pos/s
+step 2890 level1 2.463 level2 4.932 tokens 3.805  3473 pos/s
+step 2900 level1 2.218 level2 3.968 tokens 3.587  3474 pos/s
+step 2910 level1 1.894 level2 4.706 tokens 3.676  3475 pos/s
+step 2920 level1 1.134 level2 4.500 tokens 3.134  3475 pos/s
+step 2930 level1 2.571 level2 4.730 tokens 4.409  3476 pos/s
+step 2940 level1 1.235 level2 4.567 tokens 4.699  3477 pos/s
+step 2950 level1 3.134 level2 4.634 tokens 3.563  3477 pos/s
+step 2960 level1 2.363 level2 5.390 tokens 4.733  3478 pos/s
+step 2970 level1 3.437 level2 5.165 tokens 4.268  3479 pos/s
+step 2980 level1 3.218 level2 4.522 tokens 4.249  3479 pos/s
+step 2990 level1 2.869 level2 5.135 tokens 4.423  3480 pos/s
+step 3000 level1 2.141 level2 4.414 tokens 3.717  3481 pos/s
+  val step 3000: {'level1': 2.393, 'level2': 4.681, 'tokens': 3.217}
+step 3010 level1 1.638 level2 4.294 tokens 4.467  3467 pos/s
+step 3020 level1 1.906 level2 4.635 tokens 4.058  3468 pos/s
+step 3030 level1 1.684 level2 4.579 tokens 4.022  3468 pos/s
+step 3040 level1 2.128 level2 4.828 tokens 4.404  3469 pos/s
+step 3050 level1 2.099 level2 4.239 tokens 3.079  3470 pos/s
+step 3060 level1 1.938 level2 4.520 tokens 4.036  3470 pos/s
+step 3070 level1 2.329 level2 4.681 tokens 3.850  3471 pos/s
+step 3080 level1 2.480 level2 4.833 tokens 4.184  3472 pos/s
+step 3090 level1 2.032 level2 5.170 tokens 3.919  3472 pos/s
+step 3100 level1 2.537 level2 4.434 tokens 3.953  3473 pos/s
+step 3110 level1 2.480 level2 5.169 tokens 3.885  3474 pos/s
+step 3120 level1 1.987 level2 4.561 tokens 3.980  3474 pos/s
+step 3130 level1 2.717 level2 4.142 tokens 4.030  3475 pos/s
+step 3140 level1 1.636 level2 4.803 tokens 4.790  3476 pos/s
+step 3150 level1 2.866 level2 4.770 tokens 4.151  3476 pos/s
+step 3160 level1 1.833 level2 4.939 tokens 4.430  3477 pos/s
+step 3170 level1 2.100 level2 4.664 tokens 3.167  3478 pos/s
+step 3180 level1 2.167 level2 4.350 tokens 3.527  3478 pos/s
+step 3190 level1 2.814 level2 4.755 tokens 3.955  3479 pos/s
+step 3200 level1 2.579 level2 4.917 tokens 3.101  3479 pos/s
+  val step 3200: {'level1': 2.372, 'level2': 4.635, 'tokens': 3.182}
+step 3210 level1 2.408 level2 4.214 tokens 3.311  3467 pos/s
+step 3220 level1 2.477 level2 5.045 tokens 3.875  3467 pos/s
+step 3230 level1 2.358 level2 4.088 tokens 3.590  3468 pos/s
+step 3240 level1 3.063 level2 4.499 tokens 4.077  3469 pos/s
+step 3250 level1 1.492 level2 4.714 tokens 3.715  3469 pos/s
+step 3260 level1 1.745 level2 5.217 tokens 4.200  3470 pos/s
+step 3270 level1 1.846 level2 4.662 tokens 3.261  3470 pos/s
+step 3280 level1 1.477 level2 4.061 tokens 3.179  3471 pos/s
+step 3290 level1 1.681 level2 5.238 tokens 4.377  3472 pos/s
+step 3300 level1 2.046 level2 4.107 tokens 3.180  3472 pos/s
+step 3310 level1 2.127 level2 4.702 tokens 4.461  3473 pos/s
+step 3320 level1 2.700 level2 4.651 tokens 3.175  3473 pos/s
+step 3330 level1 2.593 level2 4.681 tokens 3.604  3474 pos/s
+step 3340 level1 2.084 level2 4.737 tokens 3.631  3475 pos/s
+step 3350 level1 1.340 level2 4.443 tokens 2.981  3475 pos/s
+step 3360 level1 2.511 level2 4.590 tokens 3.422  3476 pos/s
+step 3370 level1 2.889 level2 4.745 tokens 4.409  3477 pos/s
+step 3380 level1 2.124 level2 4.589 tokens 3.869  3477 pos/s
+step 3390 level1 1.852 level2 4.510 tokens 2.977  3478 pos/s
+step 3400 level1 1.472 level2 3.726 tokens 3.846  3478 pos/s
+  val step 3400: {'level1': 2.36, 'level2': 4.614, 'tokens': 3.137}
+step 3410 level1 2.096 level2 4.349 tokens 3.745  3466 pos/s
+step 3420 level1 2.249 level2 4.630 tokens 3.057  3467 pos/s
+step 3430 level1 1.966 level2 4.478 tokens 4.605  3468 pos/s
+step 3440 level1 1.790 level2 4.185 tokens 3.574  3468 pos/s
+step 3450 level1 1.906 level2 5.263 tokens 4.310  3469 pos/s
+step 3460 level1 2.216 level2 4.458 tokens 3.597  3469 pos/s
+step 3470 level1 2.187 level2 4.684 tokens 3.190  3470 pos/s
+step 3480 level1 2.315 level2 4.849 tokens 3.875  3471 pos/s
+step 3490 level1 2.878 level2 5.057 tokens 3.594  3471 pos/s
+step 3500 level1 2.100 level2 4.412 tokens 4.202  3472 pos/s
+step 3510 level1 2.019 level2 4.291 tokens 3.519  3472 pos/s
+step 3520 level1 2.566 level2 4.691 tokens 4.006  3473 pos/s
+step 3530 level1 2.417 level2 4.676 tokens 4.494  3474 pos/s
+step 3540 level1 2.790 level2 4.772 tokens 4.479  3474 pos/s
+step 3550 level1 2.443 level2 4.690 tokens 3.303  3475 pos/s
+step 3560 level1 1.736 level2 4.082 tokens 3.872  3475 pos/s
+step 3570 level1 1.728 level2 4.218 tokens 4.004  3476 pos/s
+step 3580 level1 1.741 level2 3.829 tokens 2.798  3476 pos/s
+step 3590 level1 1.976 level2 4.872 tokens 3.401  3477 pos/s
+step 3600 level1 1.618 level2 4.767 tokens 3.502  3478 pos/s
+  val step 3600: {'level1': 2.334, 'level2': 4.603, 'tokens': 3.126}
+step 3610 level1 2.579 level2 4.916 tokens 3.815  3466 pos/s
+step 3620 level1 1.725 level2 4.496 tokens 4.008  3467 pos/s
+step 3630 level1 1.392 level2 4.554 tokens 3.495  3467 pos/s
+step 3640 level1 1.611 level2 4.490 tokens 3.265  3468 pos/s
+step 3650 level1 1.878 level2 4.534 tokens 3.603  3469 pos/s
+step 3660 level1 1.885 level2 4.257 tokens 3.306  3469 pos/s
+step 3670 level1 1.578 level2 4.086 tokens 3.699  3470 pos/s
+step 3680 level1 1.436 level2 4.364 tokens 4.672  3470 pos/s
+step 3690 level1 1.714 level2 3.780 tokens 3.416  3471 pos/s
+step 3700 level1 2.837 level2 4.236 tokens 2.927  3471 pos/s
+step 3710 level1 2.332 level2 3.704 tokens 3.017  3472 pos/s
+step 3720 level1 2.231 level2 4.331 tokens 3.500  3473 pos/s
+step 3730 level1 1.989 level2 4.834 tokens 4.167  3473 pos/s
+step 3740 level1 2.019 level2 4.876 tokens 3.664  3474 pos/s
+step 3750 level1 2.568 level2 5.016 tokens 3.973  3474 pos/s
+step 3760 level1 2.739 level2 4.767 tokens 4.052  3475 pos/s
+step 3770 level1 3.887 level2 5.138 tokens 3.728  3475 pos/s
+step 3780 level1 2.473 level2 4.470 tokens 4.088  3476 pos/s
+step 3790 level1 1.703 level2 4.991 tokens 4.065  3476 pos/s
+step 3800 level1 1.969 level2 4.530 tokens 3.491  3477 pos/s
+  val step 3800: {'level1': 2.344, 'level2': 4.58, 'tokens': 3.111}
+step 3810 level1 1.979 level2 4.013 tokens 4.182  3466 pos/s
+step 3820 level1 1.745 level2 4.387 tokens 3.183  3467 pos/s
+step 3830 level1 2.111 level2 4.747 tokens 3.347  3468 pos/s
+step 3840 level1 2.715 level2 4.571 tokens 3.382  3468 pos/s
+step 3850 level1 2.433 level2 4.375 tokens 4.590  3469 pos/s
+step 3860 level1 1.844 level2 3.934 tokens 3.438  3469 pos/s
+step 3870 level1 2.246 level2 4.209 tokens 3.749  3470 pos/s
+step 3880 level1 2.458 level2 4.634 tokens 3.404  3470 pos/s
+step 3890 level1 1.134 level2 3.523 tokens 2.710  3471 pos/s
+step 3900 level1 1.160 level2 4.491 tokens 4.327  3472 pos/s
+step 3910 level1 1.451 level2 4.409 tokens 3.088  3472 pos/s
+step 3920 level1 1.131 level2 4.107 tokens 3.242  3473 pos/s
+step 3930 level1 2.979 level2 4.412 tokens 4.188  3473 pos/s
+step 3940 level1 2.341 level2 4.225 tokens 4.145  3474 pos/s
+step 3950 level1 1.571 level2 4.077 tokens 3.966  3474 pos/s
+step 3960 level1 1.698 level2 3.955 tokens 3.281  3475 pos/s
+step 3970 level1 1.801 level2 3.780 tokens 3.067  3475 pos/s
+step 3980 level1 1.643 level2 4.199 tokens 3.541  3476 pos/s
+step 3990 level1 1.712 level2 4.068 tokens 3.327  3476 pos/s
+step 4000 level1 1.551 level2 4.424 tokens 3.629  3477 pos/s
+  val step 4000: {'level1': 2.329, 'level2': 4.575, 'tokens': 3.083}
+step 4010 level1 2.658 level2 4.488 tokens 3.219  3467 pos/s
+step 4020 level1 2.307 level2 4.323 tokens 4.123  3467 pos/s
+step 4030 level1 2.110 level2 4.381 tokens 3.540  3468 pos/s
+step 4040 level1 1.798 level2 4.388 tokens 2.993  3468 pos/s
+step 4050 level1 1.700 level2 4.138 tokens 3.549  3469 pos/s
+step 4060 level1 2.291 level2 4.922 tokens 4.565  3469 pos/s
+step 4070 level1 1.827 level2 4.339 tokens 3.135  3470 pos/s
+step 4080 level1 1.435 level2 4.259 tokens 3.993  3470 pos/s
+step 4090 level1 1.816 level2 4.893 tokens 4.417  3471 pos/s
+step 4100 level1 2.955 level2 4.016 tokens 3.202  3472 pos/s
+step 4110 level1 1.516 level2 4.495 tokens 4.011  3472 pos/s
+step 4120 level1 1.384 level2 4.305 tokens 3.389  3473 pos/s
+step 4130 level1 3.791 level2 4.170 tokens 3.058  3473 pos/s
+step 4140 level1 2.365 level2 4.777 tokens 3.797  3474 pos/s
+step 4150 level1 2.089 level2 5.034 tokens 3.582  3474 pos/s
+step 4160 level1 2.571 level2 4.672 tokens 3.483  3475 pos/s
+step 4170 level1 3.103 level2 4.922 tokens 4.188  3475 pos/s
+step 4180 level1 1.561 level2 3.832 tokens 4.147  3476 pos/s
+step 4190 level1 2.177 level2 4.804 tokens 3.894  3476 pos/s
+step 4200 level1 2.139 level2 4.437 tokens 4.098  3477 pos/s
+  val step 4200: {'level1': 2.316, 'level2': 4.557, 'tokens': 3.067}
+step 4210 level1 2.759 level2 4.577 tokens 4.548  3467 pos/s
+step 4220 level1 1.502 level2 4.991 tokens 3.643  3468 pos/s
+step 4230 level1 2.127 level2 4.505 tokens 3.972  3468 pos/s
+step 4240 level1 1.934 level2 4.341 tokens 4.633  3469 pos/s
+step 4250 level1 1.723 level2 4.754 tokens 3.982  3469 pos/s
+step 4260 level1 2.856 level2 4.212 tokens 3.345  3470 pos/s
+step 4270 level1 2.387 level2 4.742 tokens 3.484  3470 pos/s
+step 4280 level1 1.718 level2 4.655 tokens 3.457  3470 pos/s
+step 4290 level1 3.017 level2 4.706 tokens 4.291  3471 pos/s
+step 4300 level1 1.353 level2 4.086 tokens 3.657  3471 pos/s
+step 4310 level1 1.247 level2 4.016 tokens 2.171  3472 pos/s
+step 4320 level1 1.791 level2 4.832 tokens 3.696  3472 pos/s
+step 4330 level1 2.351 level2 5.083 tokens 3.953  3473 pos/s
+step 4340 level1 2.228 level2 4.232 tokens 3.035  3473 pos/s
+step 4350 level1 1.786 level2 4.579 tokens 3.891  3474 pos/s
+step 4360 level1 1.931 level2 4.284 tokens 3.490  3474 pos/s
+step 4370 level1 1.296 level2 4.231 tokens 3.765  3475 pos/s
+step 4380 level1 1.087 level2 4.784 tokens 3.881  3475 pos/s
+step 4390 level1 2.148 level2 4.322 tokens 4.567  3476 pos/s
+step 4400 level1 2.118 level2 4.583 tokens 3.709  3476 pos/s
+  val step 4400: {'level1': 2.278, 'level2': 4.545, 'tokens': 3.046}
+step 4410 level1 1.150 level2 4.223 tokens 4.236  3467 pos/s
+step 4420 level1 2.558 level2 3.874 tokens 4.440  3468 pos/s
+step 4430 level1 1.778 level2 4.510 tokens 3.281  3468 pos/s
+step 4440 level1 1.592 level2 4.465 tokens 3.739  3469 pos/s
+step 4450 level1 1.683 level2 4.259 tokens 3.162  3469 pos/s
+step 4460 level1 2.121 level2 4.917 tokens 4.165  3470 pos/s
+step 4470 level1 1.717 level2 4.607 tokens 4.093  3470 pos/s
+step 4480 level1 1.407 level2 4.282 tokens 4.041  3471 pos/s
+step 4490 level1 1.786 level2 5.136 tokens 4.496  3471 pos/s
+step 4500 level1 1.663 level2 4.635 tokens 4.214  3471 pos/s
+step 4510 level1 2.037 level2 3.706 tokens 3.502  3472 pos/s
+step 4520 level1 1.971 level2 4.438 tokens 4.037  3472 pos/s
+step 4530 level1 1.944 level2 4.701 tokens 4.359  3473 pos/s
+step 4540 level1 1.507 level2 3.855 tokens 2.864  3473 pos/s
+step 4550 level1 1.734 level2 3.897 tokens 3.922  3474 pos/s
+step 4560 level1 2.792 level2 4.051 tokens 3.248  3474 pos/s
+step 4570 level1 2.652 level2 4.310 tokens 3.425  3475 pos/s
+step 4580 level1 1.633 level2 5.049 tokens 3.560  3475 pos/s
+step 4590 level1 1.792 level2 4.222 tokens 3.903  3476 pos/s
+step 4600 level1 2.577 level2 4.494 tokens 3.914  3476 pos/s
+  val step 4600: {'level1': 2.294, 'level2': 4.547, 'tokens': 3.029}
+step 4610 level1 2.761 level2 4.986 tokens 4.079  3467 pos/s
+step 4620 level1 1.928 level2 4.430 tokens 3.670  3468 pos/s
+step 4630 level1 2.178 level2 4.440 tokens 4.742  3468 pos/s
+step 4640 level1 1.659 level2 3.730 tokens 3.474  3469 pos/s
+step 4650 level1 1.836 level2 4.706 tokens 3.578  3469 pos/s
+step 4660 level1 1.647 level2 4.115 tokens 4.348  3469 pos/s
+step 4670 level1 2.078 level2 4.841 tokens 3.667  3470 pos/s
+step 4680 level1 1.891 level2 4.405 tokens 4.097  3470 pos/s
+step 4690 level1 1.435 level2 4.236 tokens 3.127  3471 pos/s
+step 4700 level1 1.559 level2 4.075 tokens 3.574  3471 pos/s
+step 4710 level1 2.011 level2 5.289 tokens 4.422  3472 pos/s
+step 4720 level1 1.296 level2 4.832 tokens 3.999  3472 pos/s
+step 4730 level1 2.232 level2 4.293 tokens 3.913  3473 pos/s
+step 4740 level1 2.479 level2 5.032 tokens 4.081  3473 pos/s
+step 4750 level1 2.226 level2 4.539 tokens 4.306  3473 pos/s
+step 4760 level1 1.854 level2 4.318 tokens 3.841  3474 pos/s
+step 4770 level1 0.758 level2 4.328 tokens 4.085  3474 pos/s
+step 4780 level1 2.111 level2 3.725 tokens 4.288  3475 pos/s
+step 4790 level1 1.636 level2 4.097 tokens 2.681  3475 pos/s
+step 4800 level1 2.433 level2 3.630 tokens 3.013  3476 pos/s
+  val step 4800: {'level1': 2.295, 'level2': 4.533, 'tokens': 3.037}
+step 4810 level1 2.450 level2 4.554 tokens 3.322  3467 pos/s
+step 4820 level1 2.916 level2 4.576 tokens 3.413  3468 pos/s
+step 4830 level1 0.912 level2 4.509 tokens 3.818  3468 pos/s
+step 4840 level1 1.459 level2 3.949 tokens 3.852  3468 pos/s
+step 4850 level1 2.055 level2 4.475 tokens 3.802  3469 pos/s
+step 4860 level1 2.869 level2 4.104 tokens 3.890  3469 pos/s
+step 4870 level1 1.696 level2 4.445 tokens 4.192  3470 pos/s
+step 4880 level1 2.601 level2 4.658 tokens 3.010  3470 pos/s
+step 4890 level1 2.576 level2 4.792 tokens 3.826  3470 pos/s
+step 4900 level1 1.189 level2 4.540 tokens 3.235  3471 pos/s
+step 4910 level1 1.761 level2 4.201 tokens 4.225  3471 pos/s
+step 4920 level1 2.364 level2 4.567 tokens 3.589  3472 pos/s
+step 4930 level1 1.893 level2 4.349 tokens 2.999  3472 pos/s
+step 4940 level1 2.229 level2 4.512 tokens 4.652  3473 pos/s
+step 4950 level1 3.043 level2 4.659 tokens 3.655  3473 pos/s
+step 4960 level1 2.198 level2 4.185 tokens 3.615  3474 pos/s
+step 4970 level1 1.513 level2 4.094 tokens 3.703  3474 pos/s
+step 4980 level1 1.636 level2 4.253 tokens 3.196  3474 pos/s
+step 4990 level1 2.106 level2 4.399 tokens 3.831  3475 pos/s
+step 5000 level1 2.533 level2 4.607 tokens 3.578  3475 pos/s
+  val step 5000: {'level1': 2.289, 'level2': 4.521, 'tokens': 3.016}
+saved /tmp/work/generator (1223s)
+[train_generator.py exit 0, 1239s]
+
+$ /usr/bin/python3 -I /tmp/src/llm2ncm/ncm_eval.py --model /tmp/SmolLM2-135M-Instruct-textonly --generator /tmp/work/generator --data /tmp/msdata --out /tmp/work/eval.json --n-prompts 16 --refine 1,2,4 --humaneval 20 --threads 4 --device cuda
+
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]
+Loading weights:  54%|█████▍    | 148/272 [00:00<00:00, 1432.23it/s]
+Loading weights: 100%|██████████| 272/272 [00:00<00:00, 1530.80it/s]
+original (token-by-token) {'judge_bits_per_token': 0.546, 'agreement_with_original': 1.0, 'distinct2': 0.688, 'repeated_lines': 0.076, 'tokens_per_s': 31.3, 'passes_per_token': 1.016, 'tokens': 1024}
+NCM refine=1 {'judge_bits_per_token': 4.652, 'agreement_with_original': 0.067, 'distinct2': 0.195, 'repeated_lines': 0.0, 'tokens_per_s': 138.7, 'passes_per_token': 0.125, 'tokens': 1024}
+NCM refine=2 {'judge_bits_per_token': 4.692, 'agreement_with_original': 0.064, 'distinct2': 0.21, 'repeated_lines': 0.0, 'tokens_per_s': 113.6, 'passes_per_token': 0.156, 'tokens': 1024}
+NCM refine=4 {'judge_bits_per_token': 4.768, 'agreement_with_original': 0.06, 'distinct2': 0.23, 'repeated_lines': 0.072, 'tokens_per_s': 80.7, 'passes_per_token': 0.219, 'tokens': 1024}
+original (token-by-token) HumanEval 2/20
+NCM refine=4 HumanEval 0/20
+| system | judge bits/token ↓ | agreement w/ original | distinct-2 | repeated lines | tokens/s | passes/token | HumanEval |
+|---|---|---|---|---|---|---|---|
+| original (token-by-token) | 0.546 | 1.0 | 0.688 | 0.076 | 31.3 | 1.016 | 2/20 |
+| NCM refine=1 | 4.652 | 0.067 | 0.195 | 0.0 | 138.7 | 0.125 | - |
+| NCM refine=2 | 4.692 | 0.064 | 0.21 | 0.0 | 113.6 | 0.156 | - |
+| NCM refine=4 | 4.768 | 0.06 | 0.23 | 0.072 | 80.7 | 0.219 | 0/20 |
+| real held-out text (reference) | 2.832 | - | - | - | - | - | - |
+[ncm_eval.py exit 0, 242s]
+
+# LLM → NCM conversion report: /tmp/SmolLM2-135M-Instruct-textonly
+
+Block = 32 tokens, code levels [2, 8] (codebook 1024), prefix 64, 50000 training windows (50% distilled from the original model).
+Generator backbone: **llm** (full attention), 5000 steps, batch 8.
+Passes per block = 2 code levels + R token passes (+1 to cache the finished block); the original model needs 32 passes per block.
+
+## Quality and speed vs the original model
+
+| system | judge bits/token ↓ | agreement w/ original | distinct-2 | repeated lines | tokens/s | passes/token | HumanEval |
+|---|---|---|---|---|---|---|---|
+| original (token-by-token) | 0.546 | 1.0 | 0.688 | 0.076 | 31.3 | 1.016 | 2/20 |
+| NCM refine=1 | 4.652 | 0.067 | 0.195 | 0.0 | 138.7 | 0.125 | - |
+| NCM refine=2 | 4.692 | 0.064 | 0.21 | 0.0 | 113.6 | 0.156 | - |
+| NCM refine=4 | 4.768 | 0.06 | 0.23 | 0.072 | 80.7 | 0.219 | 0/20 |
+| real held-out text (reference) | 2.832 | - | - | - | - | - | - |
+
+Judge bits/token: the original model's surprise at each output, lower = closer to what it would write. The original's own greedy output is the floor; real held-out text shows what normal human-written text scores.
+
+## Compressor
+
+Token reconstruction accuracy from codes alone (held-out): 1 level(s): 9.6%, 2 level(s): 20.4%; codebook use per level: [0.323, 0.781].
+
+## Sample outputs (first prompt)
+
+**original (token-by-token)**
+
+```
+ get_user_info(user_info):
+    user_info_str = user_info.decode('utf-8')
+    user_info_str = user_info_str.strip()
+    user_info_str = user_info_str.replace(' ', '')
+    user_info_
+```
+
+**NCM refine=1**
+
+```
+ get__((((,((,):):
+   
+    print ' '\\\\nnn\\\\\\\n\\nnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+```
+
+**NCM refine=2**
+
+```
+ get__((branch,,,(,):):
+   
+    print(' '\\\\nn\\\\\\\\n\\\\\\nn\\\\\\\\\\\n\\\\\\n\\\\
+```
+
+**NCM refine=4**
+
+```
+ get__((branch,,((,):):
+   
+    print(' '\\\\nn\\\\\\\\n\\\\\\nn\\n\\\n\\\nn\\nn\\n\\\n
+```
+
+[ 2784.8s] === pipeline: exit 0 after 2660s
+[ 2797.9s] chat: 'What is 2 + 2?' -> exit 0
+[ 2810.7s] chat: 'What is the capital of France?' -> exit 0
+[ 2823.8s] chat: 'Write a Python function that adds two numbers.' -> exit 0
+[ 2823.8s] output REPORT.md  0.00 MB
+[ 2823.8s] output chat_samples.md  0.00 MB
+[ 2823.8s] output compressor.pt  11.75 MB
+[ 2823.8s] output compressor.pt.json  0.00 MB
+[ 2823.8s] output eval.json  0.01 MB
+[ 2823.8s] output run.log  0.05 MB
+[ 2823.8s] output summary.json  0.00 MB
+[ 2823.8s] output generator/config.json  0.00 MB
+[ 2823.8s] output generator/extras.pt  5.33 MB
+[ 2823.8s] output generator/lora/README.md  0.01 MB
+[ 2823.8s] output generator/lora/adapter_config.json  0.00 MB
+[ 2823.8s] output generator/lora/adapter_model.safetensors  39.13 MB

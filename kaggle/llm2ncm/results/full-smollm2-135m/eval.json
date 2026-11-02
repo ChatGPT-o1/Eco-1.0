@@ -1,0 +1,96 @@
+{
+  "results": {
+    "original (token-by-token)": {
+      "judge_bits_per_token": 0.546,
+      "agreement_with_original": 1.0,
+      "distinct2": 0.688,
+      "repeated_lines": 0.076,
+      "tokens_per_s": 31.3,
+      "passes_per_token": 1.016,
+      "tokens": 1024,
+      "humaneval": "2/20"
+    },
+    "NCM refine=1": {
+      "judge_bits_per_token": 4.652,
+      "agreement_with_original": 0.067,
+      "distinct2": 0.195,
+      "repeated_lines": 0.0,
+      "tokens_per_s": 138.7,
+      "passes_per_token": 0.125,
+      "tokens": 1024
+    },
+    "NCM refine=2": {
+      "judge_bits_per_token": 4.692,
+      "agreement_with_original": 0.064,
+      "distinct2": 0.21,
+      "repeated_lines": 0.0,
+      "tokens_per_s": 113.6,
+      "passes_per_token": 0.156,
+      "tokens": 1024
+    },
+    "NCM refine=4": {
+      "judge_bits_per_token": 4.768,
+      "agreement_with_original": 0.06,
+      "distinct2": 0.23,
+      "repeated_lines": 0.072,
+      "tokens_per_s": 80.7,
+      "passes_per_token": 0.219,
+      "tokens": 1024,
+      "humaneval": "0/20"
+    },
+    "real held-out text (reference)": {
+      "judge_bits_per_token": 2.832
+    }
+  },
+  "table": "| system | judge bits/token ↓ | agreement w/ original | distinct-2 | repeated lines | tokens/s | passes/token | HumanEval |\n|---|---|---|---|---|---|---|---|\n| original (token-by-token) | 0.546 | 1.0 | 0.688 | 0.076 | 31.3 | 1.016 | 2/20 |\n| NCM refine=1 | 4.652 | 0.067 | 0.195 | 0.0 | 138.7 | 0.125 | - |\n| NCM refine=2 | 4.692 | 0.064 | 0.21 | 0.0 | 113.6 | 0.156 | - |\n| NCM refine=4 | 4.768 | 0.06 | 0.23 | 0.072 | 80.7 | 0.219 | 0/20 |\n| real held-out text (reference) | 2.832 | - | - | - | - | - | - |",
+  "samples": {
+    "original (token-by-token)": [
+      " get_user_info(user_info):\n    user_info_str = user_info.decode('utf-8')\n    user_info_str = user_info_str.strip()\n    user_info_str = user_info_str.replace(' ', '')\n    user_info_",
+      " the \"index\" prefix)\n    -page:...     name of the page to upload\n    -page_name:...     name of the page to upload\n    -page_type:...     type of page to upload (e.g. \"article\", \"book\", \"article_book\")\n    -page",
+      "option(\n            \"token_type\",\n            \"string\",\n            \"The type of token to use for the token\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",",
+      " the input text.\n    \"\"\"\n\n    def __init__(self, parent, *args, **kwargs):\n        \"\"\"\n        Initialize the Ui class.\n\n        Args:\n            parent (object): The parent window.\n            *args (list): Arguments to pass to the GUI.\n            **kwargs (dict): Arguments to pass"
+    ],
+    "NCM refine=1": [
+      " get__((((,((,):):\n   \n    print ' '\\\\\\\\nnn\\\\\\\\\\\\\\n\\\\nnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+      " prefix))\n   ...:......:::::::::::::::::::::\n   \n   \n   :: the the the the the page::...:::::::::::::::::::::",
+      "____optionsoptions,\n       \n       ___\n       \n       \n       ___\n       \n       \n       \n       \n       \n       \n       \n       \n       \n       ::\n       \n        option__\n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       ",
+      " the the code.\n\n   \n\n    def __((,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+    ],
+    "NCM refine=2": [
+      " get__((branch,,,(,):):\n   \n    print(' '\\\\\\\\nn\\\\\\\\\\\\\\\\n\\\\\\\\\\\\nn\\\\\\\\\\\\\\\\\\\\\\n\\\\\\\\\\\\n\\\\\\\\",
+      " prefix))\n   ...:......:::::...::::::::::::::::\n   \n   ::: the the the the page::...:::::::::::::::::::::",
+      "____optionsoptions,\n       \n       ___\n       \n       \n       ___\n       \n       \n       \n       \n       \n       \n       \n       \n       \n       ::\n       \n        option__\n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       _\n       \n       \n       \n       \n       \n       \n       _\n       \n       ",
+      " the the code.\n\n   \n    def(((,,,,,,,,,,,, self,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+    ],
+    "NCM refine=4": [
+      " get__((branch,,((,):):\n   \n    print(' '\\\\\\\\nn\\\\\\\\\\\\\\\\n\\\\\\\\\\\\nn\\\\n\\\\\\n\\\\\\nn\\\\nn\\\\n\\\\\\n",
+      " prefix)) -::......::::::::::::::::::::::\n   \n   ::: the the the the page::::::::::::::::::::::::",
+      "____optionsoptions,\n       \n       ___\n       \n       \n       __\n       \n       \n       \n       \n       \n        command):\n       \n        command.:\n       \n        command:\n       \n           \n            command.:\n           \n            command.):\n            raise error):\n           \n            command.):\n            raise.::\n           ::\n            raise",
+      " the the code.\n\n   \n    def(((,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+    ]
+  },
+  "prompts": 16,
+  "new_tokens": 64,
+  "generator": {
+    "backbone": "llm",
+    "backbone_note": "full attention",
+    "compressor": "/tmp/work/compressor.pt",
+    "model": "/tmp/SmolLM2-135M-Instruct-textonly",
+    "lora_r": 32,
+    "steps": 5000,
+    "batch": 8,
+    "mask_draws": 1,
+    "trained_steps": 5000,
+    "compressor_cfg": {
+      "hidden": 576,
+      "d_lat": 256,
+      "L": 32,
+      "scales": [
+        2,
+        8
+      ],
+      "codebook": 1024,
+      "P": 64
+    }
+  }
+}
