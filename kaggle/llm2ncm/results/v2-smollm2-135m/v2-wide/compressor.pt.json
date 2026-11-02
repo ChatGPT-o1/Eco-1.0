@@ -1,0 +1,106 @@
+{
+  "cfg": {
+    "hidden": 576,
+    "d_lat": 256,
+    "L": 32,
+    "scales": [
+      4,
+      16
+    ],
+    "codebook": 1024,
+    "P": 64
+  },
+  "history": [
+    {
+      "levels_1_token_acc": 0.1014,
+      "levels_2_token_acc": 0.2241,
+      "codebook_use": [
+        0.024,
+        0.203
+      ],
+      "step": 500
+    },
+    {
+      "levels_1_token_acc": 0.1176,
+      "levels_2_token_acc": 0.2742,
+      "codebook_use": [
+        0.163,
+        0.5
+      ],
+      "step": 1000
+    },
+    {
+      "levels_1_token_acc": 0.1267,
+      "levels_2_token_acc": 0.3151,
+      "codebook_use": [
+        0.272,
+        0.616
+      ],
+      "step": 1500
+    },
+    {
+      "levels_1_token_acc": 0.1285,
+      "levels_2_token_acc": 0.3508,
+      "codebook_use": [
+        0.322,
+        0.686
+      ],
+      "step": 2000
+    },
+    {
+      "levels_1_token_acc": 0.1256,
+      "levels_2_token_acc": 0.3776,
+      "codebook_use": [
+        0.35,
+        0.724
+      ],
+      "step": 2500
+    },
+    {
+      "levels_1_token_acc": 0.1345,
+      "levels_2_token_acc": 0.4001,
+      "codebook_use": [
+        0.395,
+        0.771
+      ],
+      "step": 3000
+    },
+    {
+      "levels_1_token_acc": 0.133,
+      "levels_2_token_acc": 0.4143,
+      "codebook_use": [
+        0.425,
+        0.797
+      ],
+      "step": 3500
+    },
+    {
+      "levels_1_token_acc": 0.1347,
+      "levels_2_token_acc": 0.4226,
+      "codebook_use": [
+        0.468,
+        0.807
+      ],
+      "step": 4000
+    },
+    {
+      "levels_1_token_acc": 0.1366,
+      "levels_2_token_acc": 0.4286,
+      "codebook_use": [
+        0.489,
+        0.819
+      ],
+      "step": 4500
+    },
+    {
+      "levels_1_token_acc": 0.1345,
+      "levels_2_token_acc": 0.4307,
+      "codebook_use": [
+        0.515,
+        0.836
+      ],
+      "step": 5000
+    }
+  ],
+  "seconds": 186
+}

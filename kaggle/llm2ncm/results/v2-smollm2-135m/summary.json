@@ -1,0 +1,105 @@
+{
+  "config": {
+    "base_model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "pip_extra": [
+      "transformers==5.19.0",
+      "peft==0.21.2",
+      "accelerate==1.15.0"
+    ],
+    "chat_prompts": [
+      "What is 2 + 2?",
+      "What is the capital of France?",
+      "Write a Python function that adds two numbers."
+    ],
+    "chat_refine": 4,
+    "chat_new": 128,
+    "selftest": true,
+    "mode": "variants",
+    "name": "llm2ncm-v2",
+    "data_args": [
+      "--n",
+      "24000",
+      "--prompt-frac",
+      "0.5",
+      "--distill-frac",
+      "1.0",
+      "--answer-blocks",
+      "3"
+    ],
+    "common_args": [
+      "--device",
+      "cuda",
+      "--comp-steps",
+      "5000",
+      "--gen-steps",
+      "5000",
+      "--humaneval",
+      "20",
+      "--comp-extra=--lr-final 0.1",
+      "--gen-extra=--slot-emb"
+    ],
+    "variants": [
+      {
+        "name": "v2",
+        "note": "v2 data + per-slot embeddings + compressor LR decay (codes 2+8)",
+        "args": []
+      },
+      {
+        "name": "v2-wide",
+        "note": "same, with twice the code slots (4+16): 2 tokens per fine code instead of 4",
+        "args": [
+          "--scales",
+          "4,16"
+        ]
+      }
+    ],
+    "reference": "v1 (50,000 windows, original recipe): NCM refine=4 judge 4.768 bits/token, agreement 0.060, distinct-2 0.23, HumanEval 0/20; the original model: 0.546 / 1.0 / 0.688 / 2/20"
+  },
+  "stages": {
+    "nvidia-smi": {
+      "exit": 0,
+      "seconds": 0
+    },
+    "pip-install": {
+      "exit": 0,
+      "seconds": 22
+    },
+    "pip-uninstall-torchao": {
+      "exit": 0,
+      "seconds": 1
+    },
+    "versions": {
+      "exit": 0,
+      "seconds": 41
+    },
+    "fetch_data": {
+      "exit": 0,
+      "seconds": 16
+    },
+    "textonly": {
+      "exit": 0,
+      "seconds": 22
+    },
+    "selftest": {
+      "exit": 0,
+      "seconds": 55
+    },
+    "fetch_prompts": {
+      "exit": 0,
+      "seconds": 5
+    },
+    "build_data": {
+      "exit": 0,
+      "seconds": 978
+    },
+    "pipeline:v2": {
+      "exit": 0,
+      "seconds": 1912
+    },
+    "pipeline:v2-wide": {
+      "exit": 0,
+      "seconds": 2001
+    }
+  },
+  "total_seconds": 3204
+}

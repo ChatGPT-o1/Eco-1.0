@@ -66,3 +66,11 @@ the original (real human text scores 2.83), 6% token agreement, HumanEval 0/20 v
 compressor recovers only 20% of tokens from its codes. Answers keep the topic words and the shape of a reply
 ("Here's a Python function: ``` def add ...") but the details are garbled. More refine passes did not help
 (4.65 -> 4.77 bits from refine 1 to 4). Treat it as a research artifact, not a usable model.
+
+**v2** (commits `dff8d51`..`03ca320`; files in `kaggle/llm2ncm/results/v2-smollm2-135m/`): trained on the original model's own
+answers to chat prompts (cut where the NCM writes them), per-slot embeddings, compressor LR decay; two variants side by side.
+Modest gains only: less repetition (distinct-2 0.23 -> 0.38/0.44) and a much better compressor for the wide variant (4+16 code slots:
+43% of tokens recovered from codes vs 20%), but agreement with the original is 8% vs 6% (within the noise of 16 prompts), the judge
+score is not better (4.9-5.2 vs 4.8 bits/token) and HumanEval stays 0/20. Answers now open correctly ("The capital of France is...",
+"Here's a Python function that adds two numbers") and then degrade into repeated words. The limiting step is predicting the codes
+from the prompt (level-2 code loss ~4.5 nats vs 6.9 for guessing), not turning codes into words.

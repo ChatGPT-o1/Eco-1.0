@@ -1,0 +1,97 @@
+{
+  "results": {
+    "original (token-by-token)": {
+      "judge_bits_per_token": 0.546,
+      "agreement_with_original": 1.0,
+      "distinct2": 0.688,
+      "repeated_lines": 0.076,
+      "tokens_per_s": 29.2,
+      "passes_per_token": 1.016,
+      "tokens": 1024,
+      "humaneval": "2/20"
+    },
+    "NCM refine=1": {
+      "judge_bits_per_token": 4.559,
+      "agreement_with_original": 0.087,
+      "distinct2": 0.27,
+      "repeated_lines": 0.0,
+      "tokens_per_s": 125.7,
+      "passes_per_token": 0.127,
+      "tokens": 980
+    },
+    "NCM refine=2": {
+      "judge_bits_per_token": 5.086,
+      "agreement_with_original": 0.098,
+      "distinct2": 0.334,
+      "repeated_lines": 0.059,
+      "tokens_per_s": 100.0,
+      "passes_per_token": 0.158,
+      "tokens": 980
+    },
+    "NCM refine=4": {
+      "judge_bits_per_token": 5.237,
+      "agreement_with_original": 0.084,
+      "distinct2": 0.384,
+      "repeated_lines": 0.032,
+      "tokens_per_s": 73.9,
+      "passes_per_token": 0.221,
+      "tokens": 980,
+      "humaneval": "0/20"
+    },
+    "real held-out text (reference)": {
+      "judge_bits_per_token": 2.832
+    }
+  },
+  "table": "| system | judge bits/token ↓ | agreement w/ original | distinct-2 | repeated lines | tokens/s | passes/token | HumanEval |\n|---|---|---|---|---|---|---|---|\n| original (token-by-token) | 0.546 | 1.0 | 0.688 | 0.076 | 29.2 | 1.016 | 2/20 |\n| NCM refine=1 | 4.559 | 0.087 | 0.27 | 0.0 | 125.7 | 0.127 | - |\n| NCM refine=2 | 5.086 | 0.098 | 0.334 | 0.059 | 100.0 | 0.158 | - |\n| NCM refine=4 | 5.237 | 0.084 | 0.384 | 0.032 | 73.9 | 0.221 | 0/20 |\n| real held-out text (reference) | 2.832 | - | - | - | - | - | - |",
+  "samples": {
+    "original (token-by-token)": [
+      " get_user_info(user_info):\n    user_info_str = user_info.decode('utf-8')\n    user_info_str = user_info_str.strip()\n    user_info_str = user_info_str.replace(' ', '')\n    user_info_",
+      " the \"index\" prefix)\n    -page:...     name of the page to upload\n    -page_name:...     name of the page to upload\n    -page_type:...     type of page to upload (e.g. \"article\", \"book\", \"article_book\")\n    -page",
+      "option(\n            \"token_type\",\n            \"string\",\n            \"The type of token to use for the token\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",",
+      " the input text.\n    \"\"\"\n\n    def __init__(self, parent, *args, **kwargs):\n        \"\"\"\n        Initialize the Ui class.\n\n        Args:\n            parent (object): The parent window.\n            *args (list): Arguments to pass to the GUI.\n            **kwargs (dict): Arguments to pass"
+    ],
+    "NCM refine=1": [
+      "____((,,,,,,,,,,,,,,___,,_,_____,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,",
+      " the page) page page page page page\n    --...: page page page page page page page page page page page page page page page page page page page pagepage_pagepage---:: page page_______________pagepage---",
+      "update_updateupdateupdateupdateupdateupdateupdate_updateupdateupdate,\n       _____tokens,\n       \n       _____token\n       \n        __updateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdate_____",
+      " the LaTeX... \"\"\" \"\"\" \"\"\" \"\"\"\n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n\n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       \n       "
+    ],
+    "NCM refine=2": [
+      "____((branch, name,,,name, name,,,,,___,,,,_____name,,,,,_,,,,,name,,,,,,_name,,,,,,,,,,,",
+      " the page) page the page page page)\n   -text: page the page page of page page page page the page page page the page page page page page page--page:..._ page page page page page page page page page page page page page page page page page page page page page page:: page",
+      "update_updateupdateupdate_update___updateupdateupdate,\n       ______\n       \n       \n        option____token__updateupdateupdateupdateupdateupdateupdate_updateupdateupdateupdateupdate_updateupdateupdateupdateupdate_____updateupdateupdateupdate_update_update",
+      " the LaTeX... \"\"\" \"\"\" \"\"\" def self\n       \n       \n       \n       \n       \n       \n       \n        self.:\n       \n        self::\n       \n       \n       \n       \n       \n        self.\n       :\n       \n       \n        self.:\n       \n       \n       \n        self.:\n       \n       \n       \n       \n       \n       .\n       \n       \n        self..:\n       "
+    ],
+    "NCM refine=4": [
+      "____branch(branch, name,,,name,name, path,,,__):,,__, int___path(name,,,____name,,,name,,,,,name,,,____name,,,",
+      " the page) page the page of page)\n    -text: page the page page of page page page of the page page of the page page page page page of page page page of page page\n    -page: the page page of page of page page page page of page of page page the page of page page page",
+      "update_updateupdateupdate_update_update_updateupdate,\n       \n       __update_update_token\n       \n        option__update_update_\n        update updateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdate",
+      " the LaTeX. LaTeX. \"\"\" \"\"\" \"\"\"\n       ::\n       \n        self.:\n       \n        self.::\n        self..:\n       \n       \n       \n       \n        self..text( self:\n           :::\n           . self.\n       .. self...\n       . self..\n       .\n       .."
+    ]
+  },
+  "prompts": 16,
+  "new_tokens": 64,
+  "generator": {
+    "backbone": "llm",
+    "backbone_note": "full attention",
+    "compressor": "/tmp/work/v2/compressor.pt",
+    "model": "/tmp/SmolLM2-135M-Instruct-textonly",
+    "lora_r": 32,
+    "steps": 5000,
+    "batch": 8,
+    "mask_draws": 1,
+    "slot_emb": true,
+    "trained_steps": 5000,
+    "compressor_cfg": {
+      "hidden": 576,
+      "d_lat": 256,
+      "L": 32,
+      "scales": [
+        2,
+        8
+      ],
+      "codebook": 1024,
+      "P": 64
+    }
+  }
+}
