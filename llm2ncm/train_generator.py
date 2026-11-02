@@ -77,6 +77,8 @@ def main():
 
     d = torch.load(a.data, weights_only=False)
     prefix, block, codes = d["prefix"].long(), d["block"].long(), [c.long() for c in d["codes"]]
+    pmask = d.get("prefix_mask")  # left-padded answer windows (build_data --prompt-frac); None for old data
+    pm = lambda idx: None if pmask is None else pmask[idx].to(dev)
     val = d["val_idx"]
     is_val = torch.zeros(len(block), dtype=torch.bool)
     is_val[val] = True
@@ -98,7 +100,7 @@ def main():
         for i in range(0, len(vb), 64):
             c = vb[i:i + 64]
             _, parts = gen.loss(comp.rvq, prefix[c].to(dev), block[c].to(dev), [x[c].to(dev) for x in codes], corrupt=0.0,
-                                level_weight=a.level_weight)
+                                level_weight=a.level_weight, prefix_mask=pm(c))
             for k, v in parts.items():
                 tot[k] = tot.get(k, 0.0) + v * len(c)
             n += len(c)
@@ -125,7 +127,7 @@ def main():
     for step in range(1, a.steps + 1):
         b = tr[torch.randint(0, len(tr), (a.batch,))]
         loss, parts = gen.loss(comp.rvq, prefix[b].to(dev), block[b].to(dev), [c[b].to(dev) for c in codes],
-                               corrupt=a.corrupt, level_weight=a.level_weight, mask_draws=a.mask_draws)
+                               corrupt=a.corrupt, level_weight=a.level_weight, mask_draws=a.mask_draws, prefix_mask=pm(b))
         opt.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(params, 1.0)

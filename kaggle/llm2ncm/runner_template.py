@@ -97,19 +97,21 @@ def prelude():
 
 
 # ----------------------------------------------------------------------------- mode: pipeline
-def sample_chat():
+def sample_chat(gdir=None, out_md=None, env=None):
     """Ask the trained NCM the configured prompts; answers and stats go to chat_samples.md (non-fatal)."""
+    gdir, out_md, env = gdir or f"{WORK}/generator", out_md or f"{OUT}/chat_samples.md", env or ENV
     parts = [f"# Chat samples from the trained NCM ({BASE})", "",
              f"Generated on Kaggle with `ncm_generate.py --refine {CONFIG['chat_refine']} --new {CONFIG['chat_new']}`.", ""]
     for prompt in CONFIG["chat_prompts"]:
-        cmd = py("llm2ncm/ncm_generate.py", "--model", TEXT, "--generator", f"{WORK}/generator", "--prompt", prompt,
+        cmd = py("llm2ncm/ncm_generate.py", "--model", TEXT, "--generator", gdir, "--prompt", prompt,
                  "--refine", CONFIG["chat_refine"], "--new", CONFIG["chat_new"], "--device", DEVICE)
-        r = subprocess.run([str(c) for c in cmd], cwd="/tmp", env=ENV, capture_output=True, text=True)
+        r = subprocess.run([str(c) for c in cmd], cwd="/tmp", env=env, capture_output=True, text=True)
         stats = [l for l in r.stderr.splitlines() if l.startswith("[") and "forward passes" in l]
         parts += [f"## {prompt}", "", "```", r.stdout.strip() or f"(empty text after decoding, exit {r.returncode})", "```", "",
                   stats[-1] if stats else (r.stderr.strip()[-600:] if r.returncode else ""), ""]
         log(f"chat: {prompt!r} -> exit {r.returncode}")
-    open(f"{OUT}/chat_samples.md", "w").write("\n".join(parts) + "\n")
+    open(out_md, "w").write("\n".join(parts) + "\n")
+    return parts
 
 
 def run_pipeline():
@@ -123,6 +125,79 @@ def export_pipeline():
             shutil.copy(f"{WORK}/{name}", f"{OUT}/{name}")
     if os.path.isdir(f"{WORK}/generator"):
         shutil.copytree(f"{WORK}/generator", f"{OUT}/generator", dirs_exist_ok=True)
+
+
+# ----------------------------------------------------------------------------- mode: variants
+def run_variant(v, gpu):
+    """One full pipeline.py run on its own GPU, on a copy of the shared data; output lines are prefixed [name]."""
+    name = v["name"]
+    wd, od = f"{WORK}/{name}", f"{OUT}/{name}"
+    os.makedirs(wd, exist_ok=True)
+    os.makedirs(od, exist_ok=True)
+    shutil.copy(f"{WORK}/shared/data.pt", f"{wd}/data.pt")
+    env = dict(ENV)
+    if gpu is not None:
+        env["CUDA_VISIBLE_DEVICES"] = str(gpu)
+    cmd = py("llm2ncm/pipeline.py", "--model", TEXT, "--data", DATA, "--work", wd, *CONFIG["data_args"], *CONFIG["common_args"], *v["args"])
+    log(f"=== variant {name} on gpu {gpu}: {' '.join(map(str, cmd))}")
+    t = time.time()
+    with open(f"{od}/pipeline.log", "w") as f:
+        p = subprocess.Popen([str(c) for c in cmd], cwd=ROOT if LOCAL else "/tmp", env=env, stdout=subprocess.PIPE,
+                             stderr=subprocess.STDOUT, text=True, bufsize=1, errors="replace")
+        for line in p.stdout:
+            f.write(line)
+            with _lock:
+                sys.stdout.write(f"[{name}] {line}")
+                sys.stdout.flush()
+        rc = p.wait()
+    stages[f"pipeline:{name}"] = {"exit": rc, "seconds": round(time.time() - t)}
+    log(f"=== variant {name}: exit {rc} after {time.time() - t:.0f}s")
+    if rc == 0:
+        sample_chat(f"{wd}/generator", f"{od}/chat_samples.md", env)
+    for fn in ("REPORT.md", "eval.json", "compressor.pt", "compressor.pt.json"):
+        if os.path.exists(f"{wd}/{fn}"):
+            shutil.copy(f"{wd}/{fn}", f"{od}/{fn}")
+    if os.path.isdir(f"{wd}/generator"):
+        shutil.copytree(f"{wd}/generator", f"{od}/generator", dirs_exist_ok=True)
+    return name, rc
+
+
+def write_compare(done):
+    """COMPARE.md: every variant's quality table and chat answers side by side, plus the reference run (if configured)."""
+    lines = [f"# {CONFIG['name']}: variants compared", ""]
+    if CONFIG.get("reference"):
+        lines += ["Reference (earlier run): " + CONFIG["reference"], ""]
+    for name, rc in done:
+        v = next(x for x in CONFIG["variants"] if x["name"] == name)
+        lines += [f"## {name}: {v.get('note', '')}", "", f"`{' '.join(v['args'])}` (exit {rc})", ""]
+        ev = f"{OUT}/{name}/eval.json"
+        if os.path.exists(ev):
+            lines += [json.load(open(ev))["table"], ""]
+        md = f"{OUT}/{name}/chat_samples.md"
+        if os.path.exists(md):
+            lines += [l for l in open(md).read().splitlines() if not l.startswith("# Chat samples")], ""
+    open(f"{OUT}/COMPARE.md", "w").write("\n".join(lines) + "\n")
+
+
+def run_variants():
+    if any(a == "--prompt-frac" for a in CONFIG["data_args"]):
+        run("fetch_prompts", py("llm2ncm/fetch_prompts.py", "--out", DATA))
+    os.makedirs(f"{WORK}/shared", exist_ok=True)
+    run("build_data", py("llm2ncm/build_data.py", "--model", TEXT, "--data", DATA, "--out", f"{WORK}/shared/data.pt",
+                         "--batch", 16 if LOCAL else 256, "--threads", 4, "--device", DEVICE, *CONFIG["data_args"]))
+    ngpu = 1
+    if not LOCAL:
+        out = subprocess.run(["nvidia-smi", "-L"], capture_output=True, text=True).stdout
+        ngpu = max(1, sum(1 for l in out.splitlines() if l.startswith("GPU ")))
+    vs = CONFIG["variants"]
+    assert len(vs) <= ngpu or LOCAL, f"{len(vs)} variants but only {ngpu} GPU(s)"
+    with ThreadPoolExecutor(max_workers=len(vs)) as ex:
+        futs = [ex.submit(run_variant, v, None if LOCAL else g) for g, v in enumerate(vs)]
+        done = [f.result() for f in futs]
+    os.remove(f"{WORK}/shared/data.pt")
+    write_compare(done)
+    if any(rc != 0 for _, rc in done):
+        raise RuntimeError(f"variant(s) failed: {[n for n, rc in done if rc]}")
 
 
 # ----------------------------------------------------------------------------- mode: sweep
@@ -247,7 +322,7 @@ def export_sweep():
 
 # ----------------------------------------------------------------------------- driver
 def export():
-    (export_sweep if CONFIG["mode"] == "sweep" else export_pipeline)()
+    {"sweep": export_sweep, "variants": lambda: None}.get(CONFIG["mode"], export_pipeline)()
     json.dump({"config": CONFIG, "stages": stages, "total_seconds": round(time.time() - T0)},
               open(f"{OUT}/summary.json", "w"), indent=2)
     for root, _, files in os.walk(OUT):
@@ -259,7 +334,7 @@ def export():
 def main():
     log("Kaggle llm2ncm runner:", CONFIG["name"], f"(mode {CONFIG['mode']}{', LOCAL' if LOCAL else ''})")
     prelude()
-    (run_sweep if CONFIG["mode"] == "sweep" else run_pipeline)()
+    {"sweep": run_sweep, "variants": run_variants}.get(CONFIG["mode"], run_pipeline)()
 
 
 if __name__ == "__main__":

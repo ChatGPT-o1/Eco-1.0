@@ -155,6 +155,7 @@ class SmallBackbone(nn.Module):
 
     def __init__(self, hidden, d=512, layers=6, heads=8, max_pos=8192):
         super().__init__()
+        self.heads = heads
         self.inp = nn.Linear(hidden, d)
         self.pos = nn.Embedding(max_pos, d)
         layer = nn.TransformerEncoderLayer(d, heads, 4 * d, dropout=0.0, batch_first=True, norm_first=True)
@@ -163,7 +164,10 @@ class SmallBackbone(nn.Module):
 
     def forward(self, inputs_embeds, mask4d, position_ids):
         x = self.inp(inputs_embeds) + self.pos(position_ids.clamp(max=self.pos.num_embeddings - 1))
-        return self.out(self.tf(x, mask=mask4d[0, 0]))
+        m = mask4d[:, 0]
+        # one shared mask unless padding makes the masks differ per sample (then one per sample and head)
+        m = m[0] if m.shape[0] == 1 or bool((m == m[:1]).all()) else m.repeat_interleave(self.heads, 0)
+        return self.out(self.tf(x, mask=m))
 
 
 def block_mask(P, sizes, dtype, device=None, parallel_tail=1):
@@ -185,6 +189,20 @@ def block_mask(P, sizes, dtype, device=None, parallel_tail=1):
     m = torch.zeros(T, T, dtype=dtype, device=device)
     m.masked_fill_(~allow, torch.finfo(dtype).min)
     return m[None, None]
+
+
+def mask_padding(mask, prefix_mask):
+    """Per-sample version of a block mask that hides left-padding (prefix_mask False) from every query. Each pad row
+    keeps only its own diagonal: a fully masked row would give NaN, and 0 * NaN poisons the real positions."""
+    B, P = prefix_mask.shape
+    T = mask.shape[-1]
+    pad = torch.zeros(B, T, dtype=torch.bool, device=mask.device)
+    pad[:, :P] = ~prefix_mask
+    m = mask.expand(B, 1, T, T).clone()
+    m.masked_fill_(pad[:, None, None, :], torch.finfo(m.dtype).min)
+    i = torch.arange(P, device=mask.device)
+    m[:, 0, i, i] = torch.where(pad[:, :P], torch.zeros((), dtype=m.dtype, device=m.device), m[:, 0, i, i])
+    return m
 
 
 class NCMGenerator(nn.Module):
@@ -242,7 +260,7 @@ class NCMGenerator(nn.Module):
         B, dev = prefix.shape[0], prefix.device
         return [self.embed(prefix)] + [self.level_input(rvq, k, inp, B, dev) for k in range(len(self.scales))]
 
-    def hidden(self, rvq, prefix, inp, tok_parts, head=None):
+    def hidden(self, rvq, prefix, inp, tok_parts, head=None, prefix_mask=None):
         """One training forward pass: prefix | level slots | len(tok_parts) independent copies of the token slots.
         The copies share the prefix and codes but cannot see each other (see block_mask), so each is an
         independent masked-prediction problem for the price of only the extra token slots.
@@ -252,6 +270,8 @@ class NCMGenerator(nn.Module):
         G = len(tok_parts)
         x = torch.cat((self.slot_inputs(rvq, prefix, inp) if head is None else head) + list(tok_parts), 1)
         mask = block_mask(P, self.scales + [self.L] * G, x.dtype, dev, parallel_tail=G).expand(B, -1, -1, -1)
+        if prefix_mask is not None and not bool(prefix_mask.all()):
+            mask = mask_padding(mask, prefix_mask)  # left-padded prompts; RoPE is relative, so positions need no shift
         pos = list(range(P))
         for k in range(len(self.scales)):
             pos += self.level_positions(P, k)
@@ -259,7 +279,7 @@ class NCMGenerator(nn.Module):
         h, _ = self.run(x, mask, pos)
         return h
 
-    def loss(self, rvq, prefix, block, codes, corrupt=0.1, level_weight=1.0, mask_draws=1):
+    def loss(self, rvq, prefix, block, codes, corrupt=0.1, level_weight=1.0, mask_draws=1, prefix_mask=None):
         B, P = prefix.shape
         dev = prefix.device
         inp = codes  # inputs see corrupted earlier levels (robustness to own errors); targets stay clean
@@ -273,7 +293,7 @@ class NCMGenerator(nn.Module):
             masked[torch.arange(B, device=dev), torch.randint(0, self.L, (B,), device=dev)] = True
             tok_parts.append(self.token_input(rvq, inp, block, ~masked))
             masks.append(masked)
-        h = self.hidden(rvq, prefix, inp, tok_parts, head)
+        h = self.hidden(rvq, prefix, inp, tok_parts, head, prefix_mask)
         losses, off = {}, P
         for k, s in enumerate(self.scales):
             logits = self.heads[k](h[:, off:off + s])

@@ -140,5 +140,29 @@ VARIANTS["sweep-improve"] = sweep("llm2ncm-sweep-improve", {
 ])
 
 
+# ---- v2: on-policy answer windows (the original model's own answers to chat prompts, cut where the NCM writes them)
+# + 100% distilled code/chat windows + compressor LR decay. Two variants train side by side, one per T4, on the same data.
+V1_REFERENCE = ("v1 (50,000 windows, original recipe): NCM refine=4 judge 4.768 bits/token, agreement 0.060, distinct-2 0.23, "
+                "HumanEval 0/20; the original model: 0.546 / 1.0 / 0.688 / 2/20")
+
+
+def variants(name, data_args, common_args, vs):
+    return dict(COMMON, name=name, mode="variants", data_args=data_args, common_args=common_args, variants=vs, reference=V1_REFERENCE)
+
+
+V2_DATA = ["--n", "24000", "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", "3"]
+V2_COMMON = ["--device", "cuda", "--comp-steps", "5000", "--gen-steps", "5000", "--humaneval", "20", "--comp-extra=--lr-final 0.1"]
+VARIANTS["v2"] = variants("llm2ncm-v2", V2_DATA, V2_COMMON, [
+    {"name": "v2", "note": "v2 data recipe, v1 model settings", "args": []},
+    {"name": "v2b", "note": "PLACEHOLDER - set from the diagnosis", "args": []},
+])
+VARIANTS["v2-local-test"] = variants("llm2ncm-v2-local-test", ["--n", "48", "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", "2"],
+                                     ["--device", "cpu", "--comp-steps", "4", "--gen-steps", "4", "--humaneval", "0", "--eval-prompts", "2",
+                                      "--sample-every", "2", "--comp-extra=--lr-final 0.1"], [
+    {"name": "a", "note": "local test a", "args": []},
+    {"name": "b", "note": "local test b", "args": ["--gen-extra=--mask-draws 2"]},
+])
+
+
 if __name__ == "__main__":
     main()

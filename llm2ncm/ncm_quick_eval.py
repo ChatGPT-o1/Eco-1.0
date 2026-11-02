@@ -57,7 +57,10 @@ def main():
     passes = 0
     outs, refs, samples = [], [], []
     for j, i in enumerate(idx):
-        prefix = d["prefix"][i].long().tolist()
+        prefix = d["prefix"][i].long()
+        if "prefix_mask" in d:
+            prefix = prefix[d["prefix_mask"][i]]  # drop left padding: generation sees the real prompt only
+        prefix = prefix.tolist()
         ref = d["block"][i].long().tolist()
         g = acc["distilled" if bool(d["distilled"][i]) else "real"]
         out, p = gen.generate(comp.rvq, prefix, L, refine=a.refine)

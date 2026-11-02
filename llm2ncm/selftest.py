@@ -91,6 +91,27 @@ def main():
     loss3, parts3 = gen.loss(comp.rvq, prefix, block, codes, mask_draws=3)
     loss3.backward()
     print("6. parallel masked copies: mask OK, copies independent, 3-draw loss", {k: round(v, 2) for k, v in parts3.items()})
+
+    # 7. left-padded prefixes (on-policy answer windows): with prefix_mask the padding must be invisible
+    gen.eval()
+    npad, c1 = 3, [c[:1] for c in codes]
+    tp1 = gen.token_input(comp.rvq, c1, block[:1], torch.rand(1, L) > 0.5)
+    padded = torch.cat([torch.full((1, npad), 7), prefix[:1]], 1)
+    pmask = torch.cat([torch.zeros(1, npad, dtype=torch.bool), torch.ones(1, P, dtype=torch.bool)], 1)
+    with torch.no_grad():
+        h_plain = gen.hidden(comp.rvq, prefix[:1], c1, [tp1])
+        h_pad = gen.hidden(comp.rvq, padded, c1, [tp1], prefix_mask=pmask)
+    err = float((h_pad[:, npad:] - h_plain).abs().max())
+    assert torch.isfinite(h_pad).all() and err < 1e-4 * float(h_plain.abs().max()), f"padding leaks into real positions ({err:.2e})"
+    pm_b = torch.ones(B, P, dtype=torch.bool)
+    pm_b[0, :5] = False
+    gen.train()
+    l7, _ = gen.loss(comp.rvq, prefix, block, codes, prefix_mask=pm_b)
+    l7.backward()
+    l7s, _ = small.loss(comp.rvq, prefix, block, codes, prefix_mask=pm_b)
+    l7s.backward()
+    assert torch.isfinite(l7) and torch.isfinite(l7s), "padded batch gives a non-finite loss"
+    print(f"7. left padding invisible to real positions (max err {err:.1e}); padded loss finite (llm + small backbone)")
     print("SELFTEST OK")
 
 
