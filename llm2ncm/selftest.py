@@ -112,6 +112,28 @@ def main():
     l7s.backward()
     assert torch.isfinite(l7) and torch.isfinite(l7s), "padded batch gives a non-finite loss"
     print(f"7. left padding invisible to real positions (max err {err:.1e}); padded loss finite (llm + small backbone)")
+
+    # 8. per-slot embeddings (--slot-emb): zero init == plain layout; then trainable and cache-exact
+    gs = NCMGenerator(lm, 32, scales, L, K, slot_emb=True)
+    gs.load_state_dict(gen.extra_state(), strict=False)  # same code_in / level_emb / mask_emb / heads as gen
+    gen.eval(); gs.eval()
+    torch.manual_seed(5)
+    l_plain, _ = gen.loss(comp.rvq, prefix, block, codes, corrupt=0.0)
+    torch.manual_seed(5)
+    l_slot, _ = gs.loss(comp.rvq, prefix, block, codes, corrupt=0.0)
+    assert float(l_plain.detach()) == float(l_slot.detach()), (float(l_plain.detach()), float(l_slot.detach()))
+    gs.train()
+    l_slot.backward()
+    assert gs.tok_slot.grad is not None and float(gs.tok_slot.grad.abs().sum()) > 0, "slot embeddings get no gradient"
+    with torch.no_grad():
+        gs.tok_slot.normal_(0, 0.05)
+        for p_ in gs.lvl_slot:
+            p_.normal_(0, 0.05)
+    gs.eval()
+    a8, _ = gs.generate(comp.rvq, prompt, 2 * L, refine=3, use_cache=True)
+    b8, _ = gs.generate(comp.rvq, prompt, 2 * L, refine=3, use_cache=False)
+    assert a8 == b8, "slot embeddings break cached generation"
+    print("8. slot embeddings: zero init == plain layout, trainable, cached == recomputed")
     print("SELFTEST OK")
 
 

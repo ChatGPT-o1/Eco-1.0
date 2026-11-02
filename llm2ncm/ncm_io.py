@@ -67,7 +67,8 @@ def load_generator(model_dir, path, threads=None, device="cpu"):
         lm = PeftModel.from_pretrained(lm, os.path.join(path, "lora")).to(device)
     comp, ccfg = load_compressor(cfg["compressor"])
     cfg["compressor_cfg"] = ccfg
-    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=cfg["backbone"])
+    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=cfg["backbone"],
+                       slot_emb=cfg.get("slot_emb", False))
     missing = gen.load_state_dict(torch.load(os.path.join(path, "extras.pt"), map_location="cpu"), strict=False)
     bad = [k for k in missing.missing_keys if not k.startswith("lm.")]
     if bad:

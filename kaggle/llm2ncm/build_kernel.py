@@ -151,16 +151,17 @@ def variants(name, data_args, common_args, vs):
 
 
 V2_DATA = ["--n", "24000", "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", "3"]
-V2_COMMON = ["--device", "cuda", "--comp-steps", "5000", "--gen-steps", "5000", "--humaneval", "20", "--comp-extra=--lr-final 0.1"]
+V2_COMMON = ["--device", "cuda", "--comp-steps", "5000", "--gen-steps", "5000", "--humaneval", "20", "--comp-extra=--lr-final 0.1",
+             "--gen-extra=--slot-emb"]
 VARIANTS["v2"] = variants("llm2ncm-v2", V2_DATA, V2_COMMON, [
-    {"name": "v2", "note": "v2 data recipe, v1 model settings", "args": []},
-    {"name": "v2b", "note": "PLACEHOLDER - set from the diagnosis", "args": []},
+    {"name": "v2", "note": "v2 data + per-slot embeddings + compressor LR decay (codes 2+8)", "args": []},
+    {"name": "v2-wide", "note": "same, with twice the code slots (4+16): 2 tokens per fine code instead of 4", "args": ["--scales", "4,16"]},
 ])
 VARIANTS["v2-local-test"] = variants("llm2ncm-v2-local-test", ["--n", "48", "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", "2"],
                                      ["--device", "cpu", "--comp-steps", "4", "--gen-steps", "4", "--humaneval", "0", "--eval-prompts", "2",
-                                      "--sample-every", "2", "--comp-extra=--lr-final 0.1"], [
+                                      "--sample-every", "2", "--comp-extra=--lr-final 0.1", "--gen-extra=--slot-emb"], [
     {"name": "a", "note": "local test a", "args": []},
-    {"name": "b", "note": "local test b", "args": ["--gen-extra=--mask-draws 2"]},
+    {"name": "b", "note": "local test b", "args": ["--scales", "4,16"]},
 ])
 
 

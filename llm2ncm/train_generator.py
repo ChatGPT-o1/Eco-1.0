@@ -41,6 +41,8 @@ def main():
     ap.add_argument("--lr", type=float, default=5e-4)
     ap.add_argument("--corrupt", type=float, default=0.1, help="share of input codes randomised (robustness)")
     ap.add_argument("--level-weight", type=float, default=1.0)
+    ap.add_argument("--slot-emb", action="store_true",
+                    help="learned per-slot embeddings for code-level and token slots (against neighbour repetition)")
     ap.add_argument("--mask-draws", type=int, default=1,
                     help="independent masked copies of each block per step; they share the prefix and codes, so this is "
                          "more token-loss signal per window for little extra compute (1 = the original single mask)")
@@ -70,7 +72,7 @@ def main():
         lm = get_peft_model(lm, LoraConfig(r=a.lora_r, lora_alpha=2 * a.lora_r, lora_dropout=0.0, target_modules="all-linear"))
     comp, ccfg = load_compressor(a.compressor)
     comp.to(dev)
-    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=backbone).to(dev)
+    gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=backbone, slot_emb=a.slot_emb).to(dev)
     gen.train()
     params = [p for p in gen.parameters() if p.requires_grad]
     print(f"backbone={backbone} trainable params: {sum(p.numel() for p in params) / 1e6:.1f}M", flush=True)
@@ -90,7 +92,7 @@ def main():
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1.0, (s + 1) / warm) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
     cfg = {"backbone": backbone, "backbone_note": why, "compressor": os.path.abspath(a.compressor), "model": a.model,
-           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws}
+           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws, "slot_emb": a.slot_emb}
 
     @torch.no_grad()
     def val_loss():

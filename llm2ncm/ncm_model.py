@@ -206,7 +206,7 @@ def mask_padding(mask, prefix_mask):
 
 
 class NCMGenerator(nn.Module):
-    def __init__(self, lm, d_lat, scales, L, codebook, backbone="llm"):
+    def __init__(self, lm, d_lat, scales, L, codebook, backbone="llm", slot_emb=False):
         super().__init__()
         self.lm = lm
         causal = lm.get_base_model() if hasattr(lm, "get_base_model") else lm
@@ -222,6 +222,13 @@ class NCMGenerator(nn.Module):
         self.level_emb = nn.Parameter(torch.zeros(len(scales) + 1, hidden))
         self.mask_emb = nn.Parameter(self.embed.weight.detach().mean(0).clone())
         self.heads = nn.ModuleList([nn.Linear(hidden, codebook) for _ in scales])
+        # Per-slot embeddings (--slot-emb). Without them neighbouring slots get near-identical inputs (smoothly upsampled
+        # codes + one shared mask embedding) and predict the same token ("capital capital capital"). Zero init: training
+        # starts exactly where the plain layout does.
+        self.slot_emb = slot_emb
+        if slot_emb:
+            self.tok_slot = nn.Parameter(torch.zeros(L, hidden))
+            self.lvl_slot = nn.ParameterList([nn.Parameter(torch.zeros(s, hidden)) for s in scales])
 
     embed = property(lambda self: self._refs[0])
     decoder = property(lambda self: self._refs[1])
@@ -240,12 +247,14 @@ class NCMGenerator(nn.Module):
 
     def level_input(self, rvq, k, codes, B, device):
         prev = rvq.recon_from_codes(codes[:k], B, device)
-        return self.code_in(downsample(prev, self.scales[k])) + self.level_emb[k]
+        x = self.code_in(downsample(prev, self.scales[k])) + self.level_emb[k]
+        return x + self.lvl_slot[k] if self.slot_emb else x
 
     def token_input(self, rvq, codes, toks, fixed):
         full = rvq.recon_from_codes(codes)
         tok = torch.where(fixed[..., None], self.embed(toks), self.mask_emb.to(full.dtype))
-        return self.code_in(full) + self.level_emb[-1] + tok
+        x = self.code_in(full) + self.level_emb[-1] + tok
+        return x + self.tok_slot if self.slot_emb else x
 
     def run(self, x, mask4d, pos, past=None, use_cache=False):
         if self.small is not None:
