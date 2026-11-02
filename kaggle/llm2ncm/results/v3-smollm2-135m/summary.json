@@ -1,0 +1,110 @@
+{
+  "config": {
+    "base_model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "pip_extra": [
+      "transformers==5.19.0",
+      "peft==0.21.2",
+      "accelerate==1.15.0"
+    ],
+    "chat_prompts": [
+      "What is 2 + 2?",
+      "What is the capital of France?",
+      "Write a Python function that adds two numbers."
+    ],
+    "chat_refine": 4,
+    "chat_new": 128,
+    "selftest": true,
+    "mode": "variants",
+    "name": "llm2ncm-v3",
+    "data_args": [
+      "--n",
+      "24000",
+      "--prompt-frac",
+      "0.5",
+      "--distill-frac",
+      "1.0",
+      "--answer-blocks",
+      "3",
+      "--soft-k",
+      "8"
+    ],
+    "common_args": [
+      "--device",
+      "cuda",
+      "--comp-steps",
+      "5000",
+      "--gen-steps",
+      "5000",
+      "--humaneval",
+      "20"
+    ],
+    "variants": [
+      {
+        "name": "v3",
+        "note": "FSQ + predictability loss + autoregressive outline + soft distillation (codes 2+8)",
+        "args": [
+          "--comp-extra=--quant fsq --fsq-levels 8,5,5,5 --pred-weight 0.1 --lr-final 0.1",
+          "--gen-extra=--slot-emb --ar-first-level --soft-weight 0.5"
+        ]
+      },
+      {
+        "name": "v3-wide",
+        "note": "same, with twice the code slots (4+16)",
+        "args": [
+          "--scales",
+          "4,16",
+          "--comp-extra=--quant fsq --fsq-levels 8,5,5,5 --pred-weight 0.1 --lr-final 0.1",
+          "--gen-extra=--slot-emb --ar-first-level --soft-weight 0.5"
+        ]
+      }
+    ],
+    "reference": "NCM refine=4 (judge bits/token / agreement / distinct-2 / HumanEval): v1 (50k windows, original recipe) 4.768 / 0.060 / 0.23 / 0/20; v2 (VQ, 2+8 slots) 5.237 / 0.084 / 0.384 / 0/20; v2-wide (VQ, 4+16 slots) 4.920 / 0.083 / 0.439 / 0/20; the original model 0.546 / 1.0 / 0.688 / 2/20. Compressor token recovery from codes (1 level / 2 levels): v1 9.6% / 20.4%, v2 11.3% / 22.5%, v2-wide 13.5% / 43.1%."
+  },
+  "stages": {
+    "nvidia-smi": {
+      "exit": 0,
+      "seconds": 0
+    },
+    "pip-install": {
+      "exit": 0,
+      "seconds": 18
+    },
+    "pip-uninstall-torchao": {
+      "exit": 0,
+      "seconds": 1
+    },
+    "versions": {
+      "exit": 0,
+      "seconds": 27
+    },
+    "fetch_data": {
+      "exit": 0,
+      "seconds": 15
+    },
+    "textonly": {
+      "exit": 0,
+      "seconds": 13
+    },
+    "selftest": {
+      "exit": 0,
+      "seconds": 63
+    },
+    "fetch_prompts": {
+      "exit": 0,
+      "seconds": 5
+    },
+    "build_data": {
+      "exit": 0,
+      "seconds": 1012
+    },
+    "pipeline:v3": {
+      "exit": 0,
+      "seconds": 1971
+    },
+    "pipeline:v3-wide": {
+      "exit": 0,
+      "seconds": 2298
+    }
+  },
+  "total_seconds": 3505
+}

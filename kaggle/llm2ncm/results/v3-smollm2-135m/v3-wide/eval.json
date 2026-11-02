@@ -1,0 +1,106 @@
+{
+  "results": {
+    "original (token-by-token)": {
+      "judge_bits_per_token": 0.546,
+      "agreement_with_original": 1.0,
+      "distinct2": 0.688,
+      "repeated_lines": 0.076,
+      "tokens_per_s": 30.4,
+      "passes_per_token": 1.016,
+      "tokens": 1024,
+      "humaneval": "2/20"
+    },
+    "NCM refine=1": {
+      "judge_bits_per_token": 4.436,
+      "agreement_with_original": 0.101,
+      "distinct2": 0.283,
+      "repeated_lines": 0.022,
+      "tokens_per_s": 78.5,
+      "passes_per_token": 0.219,
+      "tokens": 1024
+    },
+    "NCM refine=2": {
+      "judge_bits_per_token": 4.796,
+      "agreement_with_original": 0.092,
+      "distinct2": 0.375,
+      "repeated_lines": 0.058,
+      "tokens_per_s": 67.7,
+      "passes_per_token": 0.25,
+      "tokens": 1024
+    },
+    "NCM refine=4": {
+      "judge_bits_per_token": 4.425,
+      "agreement_with_original": 0.078,
+      "distinct2": 0.366,
+      "repeated_lines": 0.018,
+      "tokens_per_s": 55.0,
+      "passes_per_token": 0.312,
+      "tokens": 1024,
+      "humaneval": "0/20"
+    },
+    "real held-out text (reference)": {
+      "judge_bits_per_token": 2.832
+    }
+  },
+  "table": "| system | judge bits/token ↓ | agreement w/ original | distinct-2 | repeated lines | tokens/s | passes/token | HumanEval |\n|---|---|---|---|---|---|---|---|\n| original (token-by-token) | 0.546 | 1.0 | 0.688 | 0.076 | 30.4 | 1.016 | 2/20 |\n| NCM refine=1 | 4.436 | 0.101 | 0.283 | 0.022 | 78.5 | 0.219 | - |\n| NCM refine=2 | 4.796 | 0.092 | 0.375 | 0.058 | 67.7 | 0.25 | - |\n| NCM refine=4 | 4.425 | 0.078 | 0.366 | 0.018 | 55.0 | 0.312 | 0/20 |\n| real held-out text (reference) | 2.832 | - | - | - | - | - | - |",
+  "samples": {
+    "original (token-by-token)": [
+      " get_user_info(user_info):\n    user_info_str = user_info.decode('utf-8')\n    user_info_str = user_info_str.strip()\n    user_info_str = user_info_str.replace(' ', '')\n    user_info_",
+      " the \"index\" prefix)\n    -page:...     name of the page to upload\n    -page_name:...     name of the page to upload\n    -page_type:...     type of page to upload (e.g. \"article\", \"book\", \"article_book\")\n    -page",
+      "option(\n            \"token_type\",\n            \"string\",\n            \"The type of token to use for the token\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",\n            \"default: token_type\",",
+      " the input text.\n    \"\"\"\n\n    def __init__(self, parent, *args, **kwargs):\n        \"\"\"\n        Initialize the Ui class.\n\n        Args:\n            parent (object): The parent window.\n            *args (list): Arguments to pass to the GUI.\n            **kwargs (dict): Arguments to pass"
+    ],
+    "NCM refine=1": [
+      " get__(____________________________________________________________",
+      " \")))))...:     of of of page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page",
+      "option_update_______updateupdate___update_____update_______update__update_updateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdate",
+      " the input..1. \"\"\"\n    is is to to to to display display display\n    Uui.(() to display\n    display display display display display display displaydisplayuiuiui..displaydisplaydisplaydisplaydisplaydisplayuiui...display.displaydisplaydisplaydisplaydisplaydisplaydisplaydisplaydisplaydisplaydisplayui"
+    ],
+    "NCM refine=2": [
+      " is_split(branch__sv_str_________branch_________________branch_branch_branch_branch____________________",
+      " thetext)\n    -::: number of the page page ( page page page ( page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page page",
+      "option_update_tokens______update___update_update_update_update_update_update_update_update__update_updateupdate_update_update_updateupdateupdateupdateupdateupdateupdateupdateupdate_update_update_update_update_update_updateupdateupdate",
+      " the text1.1. \"\"\"\n    \"\"\" is the to to display display display display display Uui.code()\n    display display display display display display the\n    toui.code_display(display(display): \"\"\" displayui)\n    \"\"\" \"\"\"\n    display displayuiuicode.getdisplaydisplaydisplaydisplaydisplay("
+    ],
+    "NCM refine=4": [
+      " is_valid(branch__type_str_____type_type_____branch________branch__________type_type_type_type_type_____type______",
+      " thetext)\n    -page::...     of the page ( page\n    page page page page page page page page page page page page page page page page page page page the page\n    page page page page page page page page page page page page page page page page page page page page page page page page page page",
+      "option(update_tokens(updateupdate_update_update__update_update__update_update_update_update_update_update__update_updateupdateupdate_updateupdate_updateupdateupdateupdateupdate_updateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdateupdate",
+      " the text.\n   1. \"\"\"\n    \"\"\"\n    display display display display display display display display theui.\n   ()\n    display display display display display display the text\n   \n   \n    \"\"\" \"\"\" display display displaydisplay_displaydisplay_display_display_display_display_display_display_displaydisplay_display_displaydisplay"
+    ]
+  },
+  "prompts": 16,
+  "new_tokens": 64,
+  "generator": {
+    "backbone": "llm",
+    "backbone_note": "full attention",
+    "compressor": "/tmp/work/v3-wide/compressor.pt",
+    "model": "/tmp/SmolLM2-135M-Instruct-textonly",
+    "lora_r": 32,
+    "steps": 5000,
+    "batch": 8,
+    "mask_draws": 1,
+    "slot_emb": true,
+    "ar0": true,
+    "trained_steps": 5000,
+    "compressor_cfg": {
+      "hidden": 576,
+      "d_lat": 256,
+      "L": 32,
+      "scales": [
+        4,
+        16
+      ],
+      "codebook": 1000,
+      "P": 64,
+      "quant": "fsq",
+      "fsq_levels": [
+        8,
+        5,
+        5,
+        5
+      ],
+      "pred": true
+    }
+  }
+}

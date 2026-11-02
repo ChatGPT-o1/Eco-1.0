@@ -1,0 +1,134 @@
+{
+  "cfg": {
+    "hidden": 576,
+    "d_lat": 256,
+    "L": 32,
+    "scales": [
+      2,
+      8
+    ],
+    "codebook": 1000,
+    "P": 64,
+    "quant": "fsq",
+    "fsq_levels": [
+      8,
+      5,
+      5,
+      5
+    ],
+    "pred": true
+  },
+  "history": [
+    {
+      "levels_1_token_acc": 0.0809,
+      "levels_2_token_acc": 0.1382,
+      "codebook_use": [
+        0.162,
+        0.914
+      ],
+      "pred_rate_nats": 1.225,
+      "uniform_nats": 1.727,
+      "step": 500
+    },
+    {
+      "levels_1_token_acc": 0.0757,
+      "levels_2_token_acc": 0.1524,
+      "codebook_use": [
+        0.291,
+        0.968
+      ],
+      "pred_rate_nats": 1.292,
+      "uniform_nats": 1.727,
+      "step": 1000
+    },
+    {
+      "levels_1_token_acc": 0.0869,
+      "levels_2_token_acc": 0.164,
+      "codebook_use": [
+        0.332,
+        0.943
+      ],
+      "pred_rate_nats": 1.325,
+      "uniform_nats": 1.727,
+      "step": 1500
+    },
+    {
+      "levels_1_token_acc": 0.0869,
+      "levels_2_token_acc": 0.1725,
+      "codebook_use": [
+        0.396,
+        0.923
+      ],
+      "pred_rate_nats": 1.323,
+      "uniform_nats": 1.727,
+      "step": 2000
+    },
+    {
+      "levels_1_token_acc": 0.0916,
+      "levels_2_token_acc": 0.1842,
+      "codebook_use": [
+        0.432,
+        0.875
+      ],
+      "pred_rate_nats": 1.324,
+      "uniform_nats": 1.727,
+      "step": 2500
+    },
+    {
+      "levels_1_token_acc": 0.0905,
+      "levels_2_token_acc": 0.1875,
+      "codebook_use": [
+        0.457,
+        0.864
+      ],
+      "pred_rate_nats": 1.327,
+      "uniform_nats": 1.727,
+      "step": 3000
+    },
+    {
+      "levels_1_token_acc": 0.0956,
+      "levels_2_token_acc": 0.1925,
+      "codebook_use": [
+        0.458,
+        0.847
+      ],
+      "pred_rate_nats": 1.318,
+      "uniform_nats": 1.727,
+      "step": 3500
+    },
+    {
+      "levels_1_token_acc": 0.0982,
+      "levels_2_token_acc": 0.1977,
+      "codebook_use": [
+        0.461,
+        0.838
+      ],
+      "pred_rate_nats": 1.316,
+      "uniform_nats": 1.727,
+      "step": 4000
+    },
+    {
+      "levels_1_token_acc": 0.0968,
+      "levels_2_token_acc": 0.1995,
+      "codebook_use": [
+        0.469,
+        0.843
+      ],
+      "pred_rate_nats": 1.315,
+      "uniform_nats": 1.727,
+      "step": 4500
+    },
+    {
+      "levels_1_token_acc": 0.0985,
+      "levels_2_token_acc": 0.2039,
+      "codebook_use": [
+        0.485,
+        0.848
+      ],
+      "pred_rate_nats": 1.314,
+      "uniform_nats": 1.727,
+      "step": 5000
+    }
+  ],
+  "seconds": 257
+}
