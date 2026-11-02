@@ -37,6 +37,7 @@ def main():
     ap.add_argument("--prompt-frac", type=float, default=0.0,
                     help="share of windows from the original model's own answers to chat prompts (on-policy; fetches prompts if needed)")
     ap.add_argument("--answer-blocks", type=int, default=3)
+    ap.add_argument("--soft-k", type=int, default=0, help="store the original model's top-k next-token distribution per block position (soft distillation)")
     ap.add_argument("--prompt-code-share", type=float, default=0.3)
     ap.add_argument("--build-extra", default="", help="extra build_data.py arguments, e.g. \"--enc-layer 18\"")
     ap.add_argument("--comp-extra", default="", help="extra train_compressor.py arguments, e.g. \"--lr-final 0.1\"")
@@ -67,7 +68,7 @@ def main():
     if not os.path.exists(data):
         run("build_data.py", "--model", a.model, "--data", a.data, "--out", data, "--n", a.n, "--prefix", a.prefix,
             "--block", a.block, "--distill-frac", a.distill_frac, "--prompt-frac", a.prompt_frac, "--answer-blocks", a.answer_blocks,
-            "--prompt-code-share", a.prompt_code_share, "--batch", data_batch, "--threads", a.threads, "--device", a.device,
+            "--prompt-code-share", a.prompt_code_share, "--soft-k", a.soft_k, "--batch", data_batch, "--threads", a.threads, "--device", a.device,
             *shlex.split(a.build_extra))
     if not os.path.exists(comp + ".json"):
         run("train_compressor.py", "--model", a.model, "--data", data, "--out", comp, "--scales", a.scales,
