@@ -248,5 +248,13 @@ VARIANTS["qwen-collect10"] = dict(QWEN, name="weightedit-qwen-collect10", jobs=[
 ])
 
 
+# Phase C: the same 10 MATH-500 problems (same seed) for my edit and for the released weight-space-programming edit
+VARIANTS["qwen-eval10"] = dict(QWEN, name="weightedit-qwen-eval10", jobs=[
+    dict(collect_job("math500-mine10", "math500", 10, 10, False, 40), args=collect_job("math500-mine10", "math500", 10, 10, False, 40)["args"]
+         + ["--edit", "{SRC}/weightedit/edits/mine10.json"]),
+    collect_job("math500-astra", "math500", 10, 10, False, 40, model="RikiyaT/Qwen3.5-0.8B-weight-space-programming"),
+])
+
+
 if __name__ == "__main__":
     main()

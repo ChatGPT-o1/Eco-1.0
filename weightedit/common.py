@@ -80,3 +80,19 @@ def loop_score(token_ids, n=32, tail=2048):
         rep += g in seen
         seen.add(g)
     return rep / max(total, 1)
+
+
+def apply_edit(lm, spec_path):
+    """Apply an edit from find_edit.py: in each listed layer, remove the direction u from the listed down_proj columns."""
+    import torch
+    spec = json.load(open(spec_path))
+    n = 0
+    with torch.no_grad():
+        for l, e in spec["layers"].items():
+            W = lm.model.layers[int(l)].mlp.down_proj.weight
+            u = torch.tensor(e["direction"], dtype=torch.float32, device=W.device)
+            cols = torch.tensor(e["columns"], device=W.device)
+            Wc = W[:, cols].float()
+            W[:, cols] = (Wc - u[:, None] * (u @ Wc)[None, :]).to(W.dtype)
+            n += Wc.numel()
+    return n

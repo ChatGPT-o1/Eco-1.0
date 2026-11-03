@@ -259,7 +259,7 @@ def run_jobs():
         env = dict(ENV)
         if gpu is not None:
             env["CUDA_VISIBLE_DEVICES"] = str(gpu)
-        args = [str(x).replace("{OUT}", OUT).replace("{TEXT}", TEXT).replace("{DATA}", DATA) for x in job["args"]]
+        args = [str(x).replace("{OUT}", OUT).replace("{TEXT}", TEXT).replace("{DATA}", DATA).replace("{SRC}", SRC) for x in job["args"]]
         t = time.time()
         rc = stream(job["name"], py(job["script"], *args), env, f"{OUT}/{job['name']}.log")
         stages[f"job:{job['name']}"] = {"exit": rc, "seconds": round(time.time() - t)}

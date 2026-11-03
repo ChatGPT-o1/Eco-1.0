@@ -14,7 +14,7 @@ import argparse, json, os, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import torch
-from common import chat_prompt, is_correct, last_boxed, load_problems, loop_score
+from common import apply_edit, chat_prompt, is_correct, last_boxed, load_problems, loop_score
 
 
 def main():
@@ -28,6 +28,7 @@ def main():
     ap.add_argument("--act-tail", type=int, default=1024)
     ap.add_argument("--act-batch", type=int, default=4)
     ap.add_argument("--time-budget-min", type=float, default=0.0, help="stop starting new generation batches after this")
+    ap.add_argument("--edit", help="edit spec from find_edit.py, applied to the weights right after loading")
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", required=True)
     ap.add_argument("--device", default="cuda")
@@ -39,6 +40,8 @@ def main():
     tok.padding_side = "left"
     dt = torch.float16 if a.device == "cuda" else torch.float32
     lm = AutoModelForCausalLM.from_pretrained(a.model, dtype=dt).to(a.device).eval()
+    if a.edit:
+        print(f"applied edit {a.edit}: {apply_edit(lm, a.edit):,} weights changed", flush=True)
     pad = tok.pad_token_id if tok.pad_token_id is not None else tok.eos_token_id
     probs = load_problems(a.split, a.n, a.seed, cache=os.path.join(a.out, "_hf"))
     print(f"{len(probs)} {a.split} problems; generating up to {a.max_new} tokens each", flush=True)
