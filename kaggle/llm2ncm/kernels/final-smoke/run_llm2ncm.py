@@ -1671,6 +1671,9 @@ def export():
 def main():
     log("Kaggle llm2ncm runner:", CONFIG["name"], f"(mode {CONFIG['mode']}{', LOCAL' if LOCAL else ''})")
     prelude()
+    missing = [p for p in CONFIG.get("require", []) if not os.path.exists(p)]
+    if missing:  # fail now, not after the two-hour data build
+        raise SystemExit(f"missing inputs: {missing}")
     {"sweep": run_sweep, "variants": run_variants, "draft": run_draft, "jobs": run_jobs}.get(CONFIG["mode"], run_pipeline)()
 
 

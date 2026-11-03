@@ -40,7 +40,7 @@ CONFIG = json.loads(r'''{
   "cuda",
   "--comp-steps",
   "0",
-  "--comp-extra=--init-compressor /kaggle/input/llm2ncm-final-b32-checkpoint/compressor.pt --steps 0",
+  "--comp-extra=--init-compressor /kaggle/input/datasets/timcook123/llm2ncm-final-b32-checkpoint/compressor.pt --steps 0",
   "--gen-steps",
   "1000000",
   "--batch",
@@ -53,7 +53,7 @@ CONFIG = json.loads(r'''{
   "500",
   "--refine",
   "1,2,4",
-  "--gen-extra=--slot-emb --soft-weight 0.5 --amp --save-every 2000 --log-every 50 --init-from /kaggle/input/llm2ncm-final-b32-checkpoint/generator"
+  "--gen-extra=--slot-emb --soft-weight 0.5 --amp --save-every 2000 --log-every 50 --init-from /kaggle/input/datasets/timcook123/llm2ncm-final-b32-checkpoint/generator"
  ],
  "variants": [
   {
@@ -78,6 +78,11 @@ CONFIG = json.loads(r'''{
     "4,16"
    ]
   }
+ ],
+ "require": [
+  "/kaggle/input/datasets/timcook123/llm2ncm-final-b32-checkpoint/compressor.pt",
+  "/kaggle/input/datasets/timcook123/llm2ncm-final-b32-checkpoint/generator/extras.pt",
+  "/kaggle/input/datasets/timcook123/llm2ncm-final-b32-checkpoint/generator/lora/adapter_model.safetensors"
  ],
  "reference": "NCM refine=4 (judge bits/token / agreement / distinct-2 / HumanEval): v1 (50k windows, original recipe) 4.768 / 0.060 / 0.23 / 0/20; v2 (VQ, 2+8 slots) 5.237 / 0.084 / 0.384 / 0/20; v2-wide (VQ, 4+16 slots) 4.920 / 0.083 / 0.439 / 0/20; the original model 0.546 / 1.0 / 0.688 / 2/20. Compressor token recovery from codes (1 level / 2 levels): v1 9.6% / 20.4%, v2 11.3% / 22.5%, v2-wide 13.5% / 43.1%.; v3 (FSQ, 2+8) 5.331 / 0.097 / 0.351 / 0/20; v3-wide (FSQ, 4+16) 4.425 / 0.078 / 0.366 / 0/20",
  "budget_hours": 7.0,
@@ -1654,6 +1659,9 @@ def export():
 def main():
     log("Kaggle llm2ncm runner:", CONFIG["name"], f"(mode {CONFIG['mode']}{', LOCAL' if LOCAL else ''})")
     prelude()
+    missing = [p for p in CONFIG.get("require", []) if not os.path.exists(p)]
+    if missing:  # fail now, not after the two-hour data build
+        raise SystemExit(f"missing inputs: {missing}")
     {"sweep": run_sweep, "variants": run_variants, "draft": run_draft, "jobs": run_jobs}.get(CONFIG["mode"], run_pipeline)()
 
 

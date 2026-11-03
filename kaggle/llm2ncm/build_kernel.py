@@ -211,7 +211,7 @@ VARIANTS["final-local-test"] = final_cfg("llm2ncm-final-local-test", 48, 4, 0, 2
 # ---- continue the b32 generator from its saved weights (41,163 steps) on fresh windows. The compressor and the
 # generator come from a private Kaggle dataset, mounted read-only under /kaggle/input.
 CKPT_DATASET = "timcook123/llm2ncm-final-b32-checkpoint"
-CKPT_PATH = "/kaggle/input/llm2ncm-final-b32-checkpoint"
+CKPT_PATH = "/kaggle/input/datasets/timcook123/llm2ncm-final-b32-checkpoint"  # where Kaggle mounts the dataset (its archive was unpacked on upload)
 
 
 def continue_cfg(name, n, ckpt, humaneval, eval_prompts, sample_every, batch=32, device="cuda", gen_time="", save_every=2000, **extra):
@@ -225,6 +225,7 @@ def continue_cfg(name, n, ckpt, humaneval, eval_prompts, sample_every, batch=32,
                        "--soft-k", "8", "--block", "32"],
          "args": ["--scales", "4,16"]}
     return dict(COMMON, name=name, mode="variants", data_args=[], common_args=common, variants=[v],
+                require=[f"{ckpt}/compressor.pt", f"{ckpt}/generator/extras.pt", f"{ckpt}/generator/lora/adapter_model.safetensors"],
                 reference=V1_REFERENCE + V3_REFERENCE, **extra)
 
 
