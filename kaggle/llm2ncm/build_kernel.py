@@ -15,7 +15,7 @@ import argparse, base64, gzip, io, json, os, tarfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-SRC_DIRS = ("llm2ncm", "model-surgery", "draft")
+SRC_DIRS = ("llm2ncm", "model-surgery", "draft", "weightedit")
 KEEP = (".py", ".md", ".txt")
 
 BASE_MODEL = "HuggingFaceTB/SmolLM2-135M-Instruct"
@@ -224,6 +224,22 @@ def draft_cfg(name, n, max_new, minutes, bench_n, bench_max_new, ks, device="cud
 
 VARIANTS["draft"] = draft_cfg("llm2ncm-draft", 12000, 256, 50, 40, 192, "3,5")
 VARIANTS["draft-local-test"] = draft_cfg("llm2ncm-draft-local-test", 24, 32, 0.5, 2, 24, "2", device="cpu", batch=4, bench_dtypes=("float32",))
+
+
+# ---- weightedit: remove Qwen3.5-0.8B's thinking loops by editing weights directly (no gradients). Phase A collects the
+# evidence: practice answers (GSM8K/MATH TRAIN sets) with per-layer MLP activations on GPU 0, MATH-500 baseline on GPU 1.
+def collect_job(name, split, n, batch, acts, minutes, max_new=4096, model="{TEXT}"):
+    return {"name": name, "script": "weightedit/collect.py",
+            "args": ["--model", model, "--split", split, "--n", str(n), "--max-new", str(max_new), "--batch", str(batch),
+                     "--time-budget-min", str(minutes), "--out", "{OUT}/" + name, "--device", "cuda", *(["--acts"] if acts else [])]}
+
+
+QWEN = dict(COMMON, mode="jobs", base_model="Qwen/Qwen3.5-0.8B", selftest=False,
+            pip_extra=COMMON["pip_extra"] + ["math-verify", "einops"], pip_nodeps=["flash-linear-attention==0.6.0"])
+VARIANTS["qwen-collect"] = dict(QWEN, name="weightedit-qwen-collect", jobs=[
+    collect_job("practice", "practice", 320, 64, True, 70),
+    collect_job("math500-base", "math500", 120, 60, False, 70),
+])
 
 
 if __name__ == "__main__":

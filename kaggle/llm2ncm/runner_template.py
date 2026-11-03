@@ -88,6 +88,8 @@ def prelude():
         # requirements (+ pins that worked on Kaggle's image; Kaggle's torchao 0.10 breaks peft's LoRA injection)
         run("pip-install", [sys.executable, "-m", "pip", "install", "-q", "-r", f"{SRC}/model-surgery/requirements.txt", *CONFIG["pip_extra"]])
         run("pip-uninstall-torchao", [sys.executable, "-m", "pip", "uninstall", "-y", "-q", "torchao"], check=False)
+        if CONFIG.get("pip_nodeps"):  # e.g. flash-linear-attention, installed exactly as in an earlier working Qwen3.5 Kaggle test
+            run("pip-install-nodeps", [sys.executable, "-m", "pip", "install", "-q", "--no-deps", *CONFIG["pip_nodeps"]], check=False)
         run("versions", [sys.executable, "-c", "import torch,transformers,peft,pyarrow; "
             "print('torch',torch.__version__,'transformers',transformers.__version__,'peft',peft.__version__,'pyarrow',pyarrow.__version__)"])
         run("fetch_data", py("model-surgery/fetch_data.py", "--out", DATA))
@@ -246,6 +248,27 @@ def run_variants():
     write_compare(done)
     if any(rc != 0 for _, rc in done):
         raise RuntimeError(f"variant(s) failed: {[n for n, rc in done if rc]}")
+
+
+# ----------------------------------------------------------------------------- mode: jobs
+def run_jobs():
+    """One script per GPU, in parallel. Arguments may use {OUT}, {TEXT} and {DATA}."""
+    jobs = CONFIG["jobs"]
+
+    def go(job, gpu):
+        env = dict(ENV)
+        if gpu is not None:
+            env["CUDA_VISIBLE_DEVICES"] = str(gpu)
+        args = [str(x).replace("{OUT}", OUT).replace("{TEXT}", TEXT).replace("{DATA}", DATA) for x in job["args"]]
+        t = time.time()
+        rc = stream(job["name"], py(job["script"], *args), env, f"{OUT}/{job['name']}.log")
+        stages[f"job:{job['name']}"] = {"exit": rc, "seconds": round(time.time() - t)}
+        return job["name"], rc
+
+    with ThreadPoolExecutor(max_workers=len(jobs)) as ex:
+        done = [f.result() for f in [ex.submit(go, j, None if LOCAL else g) for g, j in enumerate(jobs)]]
+    if any(rc != 0 for _, rc in done):
+        raise RuntimeError(f"job(s) failed: {[n for n, rc in done if rc]}")
 
 
 # ----------------------------------------------------------------------------- mode: draft
@@ -422,7 +445,7 @@ def export_sweep():
 
 # ----------------------------------------------------------------------------- driver
 def export():
-    {"sweep": export_sweep, "variants": lambda: None, "draft": lambda: None}.get(CONFIG["mode"], export_pipeline)()
+    {"sweep": export_sweep, "variants": lambda: None, "draft": lambda: None, "jobs": lambda: None}.get(CONFIG["mode"], export_pipeline)()
     json.dump({"config": CONFIG, "stages": stages, "total_seconds": round(time.time() - T0)},
               open(f"{OUT}/summary.json", "w"), indent=2)
     for root, _, files in os.walk(OUT):
@@ -434,7 +457,7 @@ def export():
 def main():
     log("Kaggle llm2ncm runner:", CONFIG["name"], f"(mode {CONFIG['mode']}{', LOCAL' if LOCAL else ''})")
     prelude()
-    {"sweep": run_sweep, "variants": run_variants, "draft": run_draft}.get(CONFIG["mode"], run_pipeline)()
+    {"sweep": run_sweep, "variants": run_variants, "draft": run_draft, "jobs": run_jobs}.get(CONFIG["mode"], run_pipeline)()
 
 
 if __name__ == "__main__":
