@@ -22,7 +22,7 @@ def main():
     ap.add_argument("--device", default="cpu", help="cpu, cuda, or auto")
     a = ap.parse_args()
     tok, gen, comp, _ = load_generator(a.model, a.generator, a.threads, pick_device(a.device))
-    text = a.prompt if a.raw else tok.apply_chat_template([{"role": "user", "content": a.prompt}], tokenize=False, add_generation_prompt=True)
+    text = a.prompt if a.raw else tok.apply_chat_template([{"role": "user", "content": a.prompt}], tokenize=False, add_generation_prompt=True, enable_thinking=False)
     ids = tok(text, add_special_tokens=False)["input_ids"]
     t = time.time()
     out, passes = gen.generate(comp.rvq, ids, a.new, refine=a.refine, temperature=a.temperature, end_ids=end_ids(tok))

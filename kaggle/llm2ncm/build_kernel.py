@@ -208,6 +208,24 @@ VARIANTS["final-local-test"] = final_cfg("llm2ncm-final-local-test", 48, 4, 0, 2
                                          save_every=3, ckpt_every_min=0.1)
 
 
+# ---- Qwen3.5-4B as the teacher: the final b32 recipe with a different teacher. Qwen3.5 has linear-attention layers, so
+# the generator uses the small backbone (the LLM-with-LoRA generator needs full attention). Its hidden states are 2560-wide,
+# so the windows are fewer than the 135M run's and the data batch is smaller (the vocabulary is 248k).
+def qwen4_cfg(name, n, comp_steps=20000, humaneval=40, eval_prompts=64, sample_every=500, **extra):
+    c = final_cfg(name, n, comp_steps, humaneval, eval_prompts, sample_every, **extra)
+    c["variants"] = [dict(v, name="qwen4-b32", note="Qwen3.5-4B teacher, 32-word blocks, 4+16 code slots")
+                     for v in c["variants"] if v["name"] == "final-b32"]
+    c.update(base_model="Qwen/Qwen3.5-4B", selftest=False, pip_extra=COMMON["pip_extra"] + ["math-verify", "einops"],
+             pip_nodeps=["flash-linear-attention==0.6.0"])
+    c["common_args"] = c["common_args"] + ["--data-batch", "64"]
+    return c
+
+
+VARIANTS["qwen4-smoke"] = qwen4_cfg("llm2ncm-qwen4-smoke", 600, comp_steps=300, humaneval=2, eval_prompts=8, sample_every=100,
+                                    gen_time=" --time-budget-min 4", save_every=100, ckpt_every_min=1)
+VARIANTS["qwen4"] = qwen4_cfg("llm2ncm-qwen4", 40000, budget_hours=7.0, eval_reserve_min=45, ckpt_every_min=30)
+
+
 # ---- continue the b32 generator from its saved weights (41,163 steps) on fresh windows. The compressor and the
 # generator come from a private Kaggle dataset, mounted read-only under /kaggle/input.
 CKPT_DATASET = "timcook123/llm2ncm-final-b32-checkpoint"

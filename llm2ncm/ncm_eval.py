@@ -86,7 +86,7 @@ def main():
     for r in read_jsonl(os.path.join(a.data, "heldout_chat.jsonl"), 200):
         if len(prompts) >= a.n_prompts:
             break
-        head = tok.apply_chat_template([{"role": "user", "content": r["instruction"]}], tokenize=False, add_generation_prompt=True)
+        head = tok.apply_chat_template([{"role": "user", "content": r["instruction"]}], tokenize=False, add_generation_prompt=True, enable_thinking=False)
         prompts.append(("chat", tok(head, add_special_tokens=False)["input_ids"],
                         tok(r["response"], add_special_tokens=False)["input_ids"][:a.new]))
 

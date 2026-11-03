@@ -121,8 +121,8 @@ def main():
             if len(windows) >= n_rest:
                 break
             user = [{"role": "user", "content": r["instruction"]}]
-            head = tok.apply_chat_template(user, tokenize=False, add_generation_prompt=True)
-            full = tok.apply_chat_template(user + [{"role": "assistant", "content": r["response"]}], tokenize=False)
+            head = tok.apply_chat_template(user, tokenize=False, add_generation_prompt=True, enable_thinking=False)
+            full = tok.apply_chat_template(user + [{"role": "assistant", "content": r["response"]}], tokenize=False, enable_thinking=False)
             ids = tok(full, add_special_tokens=False)["input_ids"]
             resp = len(tok(head, add_special_tokens=False)["input_ids"])
             lo = max(0, resp - P)
@@ -156,7 +156,7 @@ def main():
             rng.shuffle(msgs)
             prompts = []
             for m in msgs:
-                ids = tok(tok.apply_chat_template(m, tokenize=False, add_generation_prompt=True), add_special_tokens=False)["input_ids"]
+                ids = tok(tok.apply_chat_template(m, tokenize=False, add_generation_prompt=True, enable_thinking=False), add_special_tokens=False)["input_ids"]
                 if len(ids) <= a.max_prompt:
                     prompts.append(ids)
             ax, am, used = answer_windows(tok, lm, dev, prompts, n_ans, P, L, a.answer_blocks, a.batch, t0)

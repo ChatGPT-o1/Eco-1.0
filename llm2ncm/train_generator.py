@@ -153,7 +153,7 @@ def main():
         gen.eval()
         print(f"--- step {step}: answers to {a.sample_n} random questions ---", flush=True)
         for q in q_rng.sample(QUESTIONS, a.sample_n):
-            text = tok.apply_chat_template([{"role": "user", "content": q}], tokenize=False, add_generation_prompt=True)
+            text = tok.apply_chat_template([{"role": "user", "content": q}], tokenize=False, add_generation_prompt=True, enable_thinking=False)
             out, _ = gen.generate(comp.rvq, tok(text, add_special_tokens=False)["input_ids"], a.sample_new, refine=4, end_ids=stops)
             ans = tok.decode(out, skip_special_tokens=True).strip()
             print(f"Q: {q}\nA: {ans[:400] if ans else '(empty) raw token ids: ' + str(out[:12])}", flush=True)
