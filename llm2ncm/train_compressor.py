@@ -31,6 +31,8 @@ def main():
                     help="weight of the predictability (rate) term: penalise codes a context model cannot predict from the prefix "
                          "(fsq only; needs data built by the current build_data.py)")
     ap.add_argument("--steps", type=int, default=1500)
+    ap.add_argument("--init-compressor", default="",
+                    help="load this trained compressor (its own architecture) instead of training one; use with --steps 0 to only encode the windows")
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--lr-final", type=float, default=1.0,
@@ -70,10 +72,18 @@ def main():
     use_pred = a.quant == "fsq" and a.pred_weight > 0
     ctx = d.get("ctx")
     assert not use_pred or ctx is not None, "--pred-weight needs the prefix summary 'ctx': rebuild data with the current build_data.py"
-    comp = Compressor(H, a.d_lat, L, scales, a.codebook, quant=a.quant, levels=levels, pred=use_pred).to(dev)
+    saved_cfg = None
+    if a.init_compressor:  # the trained compressor as saved: no training, only the encoding below
+        from ncm_io import load_compressor
+        assert a.steps == 0, "--init-compressor only encodes: pass --steps 0"
+        comp, saved_cfg = load_compressor(a.init_compressor)
+        comp = comp.to(dev)
+        levels, use_pred = saved_cfg.get("fsq_levels"), saved_cfg.get("pred", False)
+    else:
+        comp = Compressor(H, a.d_lat, L, scales, a.codebook, quant=a.quant, levels=levels, pred=use_pred).to(dev)
     opt = torch.optim.AdamW(comp.parameters(), lr=a.lr, weight_decay=0.0)
     sched = torch.optim.lr_scheduler.LambdaLR(
-        opt, lambda s: min(1.0, (s + 1) / 100) * (a.lr_final + (1 - a.lr_final) * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
+        opt, lambda s: min(1.0, (s + 1) / 100) * (a.lr_final + (1 - a.lr_final) * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / max(a.steps, 1)))))
 
     def logits_of(recon):
         z = comp.decode(recon) @ W.t()
@@ -134,7 +144,7 @@ def main():
             hist.append(r)
             print("  val", r, flush=True)
 
-    cfg = {"hidden": H, "d_lat": a.d_lat, "L": L, "scales": scales, "codebook": a.codebook, "P": d["cfg"]["P"],
+    cfg = saved_cfg or {"hidden": H, "d_lat": a.d_lat, "L": L, "scales": scales, "codebook": a.codebook, "P": d["cfg"]["P"],
            "quant": a.quant, "fsq_levels": levels, "pred": use_pred}
     save_compressor(comp.cpu(), cfg, a.out)
     comp.to(dev)

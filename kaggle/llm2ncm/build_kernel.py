@@ -96,7 +96,7 @@ def main():
             "id": f"{a.owner}/{cfg['name']}", "title": cfg["name"], "code_file": "run_llm2ncm.py",
             "language": "python", "kernel_type": "script", "is_private": True,
             "enable_gpu": True, "enable_tpu": False, "enable_internet": True,
-            "dataset_sources": [], "competition_sources": [], "kernel_sources": [], "model_sources": [],
+            "dataset_sources": cfg.get("dataset_sources", []), "competition_sources": [], "kernel_sources": [], "model_sources": [],
             "machine_shape": "NvidiaTeslaT4",
         }
         json.dump(meta, open(os.path.join(out, "kernel-metadata.json"), "w"), indent=2)
@@ -206,6 +206,30 @@ VARIANTS["final"] = final_cfg("llm2ncm-final", 100000, 20000, 40, 64, 500, budge
 VARIANTS["final-smoke"] = final_cfg("llm2ncm-final-smoke", 1200, 300, 2, 8, 100, gen_time=" --time-budget-min 4", save_every=100, ckpt_every_min=1)
 VARIANTS["final-local-test"] = final_cfg("llm2ncm-final-local-test", 48, 4, 0, 2, 3, batch=4, device="cpu", gen_time=" --time-budget-min 0.4",
                                          save_every=3, ckpt_every_min=0.1)
+
+
+# ---- continue the b32 generator from its saved weights (41,163 steps) on fresh windows. The compressor and the
+# generator come from a private Kaggle dataset, mounted read-only under /kaggle/input.
+CKPT_DATASET = "timcook123/llm2ncm-final-b32-checkpoint"
+CKPT_PATH = "/kaggle/input/llm2ncm-final-b32-checkpoint"
+
+
+def continue_cfg(name, n, ckpt, humaneval, eval_prompts, sample_every, batch=32, device="cuda", gen_time="", save_every=2000, **extra):
+    common = ["--device", device, "--comp-steps", "0", f"--comp-extra=--init-compressor {ckpt}/compressor.pt --steps 0",
+              "--gen-steps", "1000000", "--batch", str(batch),
+              "--humaneval", str(humaneval), "--eval-prompts", str(eval_prompts), "--sample-every", str(sample_every),
+              "--refine", "1,2,4",
+              f"--gen-extra=--slot-emb --soft-weight 0.5 --amp --save-every {save_every} --log-every 50 --init-from {ckpt}/generator{gen_time}"]
+    v = {"name": "cont-b32", "note": "continued from the 41,163-step b32 generator, fresh windows",
+         "data_args": ["--n", str(n), "--prompt-frac", "0.5", "--distill-frac", "1.0", "--answer-blocks", "3",
+                       "--soft-k", "8", "--block", "32"],
+         "args": ["--scales", "4,16"]}
+    return dict(COMMON, name=name, mode="variants", data_args=[], common_args=common, variants=[v],
+                reference=V1_REFERENCE + V3_REFERENCE, **extra)
+
+
+VARIANTS["continue"] = continue_cfg("llm2ncm-continue", 200000, CKPT_PATH, 40, 64, 500, budget_hours=7.0, eval_reserve_min=28,
+                                    ckpt_every_min=30, dataset_sources=[CKPT_DATASET])
 
 
 # ---- draft head (EAGLE-style): exact output, faster decoding. Two heads side by side, one per T4, same data:

@@ -62,6 +62,7 @@ def main():
                     help="independent masked copies of each block per step; they share the prefix and codes, so this is "
                          "more token-loss signal per window for little extra compute (1 = the original single mask)")
     ap.add_argument("--save-every", type=int, default=200)
+    ap.add_argument("--init-from", default="", help="continue from a saved generator folder (lora/ and extras.pt), e.g. an earlier run's generator/")
     ap.add_argument("--sample-every", type=int, default=100,
                     help="every N steps print the NCM's answers to a few random questions, to watch training live (0 = off)")
     ap.add_argument("--sample-n", type=int, default=3, help="questions per sample round")
@@ -89,6 +90,17 @@ def main():
     comp.to(dev)
     gen = NCMGenerator(lm, ccfg["d_lat"], ccfg["scales"], ccfg["L"], ccfg["codebook"], backbone=backbone, slot_emb=a.slot_emb, ar0=a.ar_first_level).to(dev)
     gen.train()
+    if a.init_from:  # continue training from saved weights; the optimizer and learning-rate schedule start fresh
+        from safetensors.torch import load_file
+        from peft import set_peft_model_state_dict
+        if backbone == "llm":
+            res = set_peft_model_state_dict(lm, load_file(os.path.join(a.init_from, "lora", "adapter_model.safetensors")))
+            assert not res.unexpected_keys, f"--init-from: LoRA keys do not match the model: {res.unexpected_keys[:3]}"
+        missing = gen.load_state_dict(torch.load(os.path.join(a.init_from, "extras.pt"), map_location="cpu"), strict=False)
+        bad = [k for k in missing.missing_keys if not k.startswith("lm.")]
+        if bad:
+            raise SystemExit(f"--init-from: generator extras missing keys: {bad[:5]}")
+        print(f"continuing from {a.init_from}", flush=True)
     params = [p for p in gen.parameters() if p.requires_grad]
     print(f"backbone={backbone} trainable params: {sum(p.numel() for p in params) / 1e6:.1f}M", flush=True)
 
@@ -115,7 +127,7 @@ def main():
     sched = torch.optim.lr_scheduler.LambdaLR(
         opt, lambda s: min(1.0, (s + 1) / warm) * (0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * min(s, a.steps) / a.steps))))
     cfg = {"backbone": backbone, "backbone_note": why, "compressor": os.path.abspath(a.compressor), "model": a.model,
-           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws, "slot_emb": a.slot_emb, "ar0": a.ar_first_level, "amp": a.amp}
+           "lora_r": a.lora_r if backbone == "llm" else None, "steps": a.steps, "batch": a.batch, "mask_draws": a.mask_draws, "slot_emb": a.slot_emb, "ar0": a.ar_first_level, "amp": a.amp, "init_from": a.init_from or None}
 
     @torch.no_grad()
     def val_loss():
