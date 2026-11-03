@@ -242,5 +242,11 @@ VARIANTS["qwen-collect"] = dict(QWEN, name="weightedit-qwen-collect", jobs=[
 ])
 
 
+VARIANTS["qwen-collect10"] = dict(QWEN, name="weightedit-qwen-collect10", jobs=[
+    collect_job("practice", "practice", 10, 10, True, 40),
+    collect_job("math500-base", "math500", 10, 10, False, 40),
+])
+
+
 if __name__ == "__main__":
     main()
