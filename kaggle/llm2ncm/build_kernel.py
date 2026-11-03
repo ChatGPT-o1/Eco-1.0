@@ -16,7 +16,7 @@ import argparse, base64, gzip, io, json, os, tarfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 SRC_DIRS = ("llm2ncm", "model-surgery", "draft", "weightedit")
-KEEP = (".py", ".md", ".txt")
+KEEP = (".py", ".md", ".txt", ".json")
 
 BASE_MODEL = "HuggingFaceTB/SmolLM2-135M-Instruct"
 COMMON = {
@@ -254,6 +254,7 @@ VARIANTS["qwen-eval10"] = dict(QWEN, name="weightedit-qwen-eval10", jobs=[
          + ["--edit", "{SRC}/weightedit/edits/mine10.json"]),
     collect_job("math500-astra", "math500", 10, 10, False, 40, model="RikiyaT/Qwen3.5-0.8B-weight-space-programming"),
 ])
+VARIANTS["qwen-eval10-mine"] = dict(VARIANTS["qwen-eval10"], name="weightedit-qwen-eval10-mine", jobs=VARIANTS["qwen-eval10"]["jobs"][:1])
 
 
 if __name__ == "__main__":
