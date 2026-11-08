@@ -18,6 +18,8 @@ def main():
     R = {f: json.load(open(f)) for f in files}
     names = [f.rsplit("/", 1)[-1].replace(".json", "") for f in files]
     for task in ("mbpp_test", "humaneval"):
+        if not all(task in R[f] for f in files):
+            continue
         print(f"\n{task}")
         for f, nm in zip(files, names):
             r = R[f][task]

@@ -20,7 +20,7 @@ sys.path.insert(0, CRL)
 import smol_code as sc  # noqa: E402
 from evaluate import HE_INSTR, build_program, extract_code, run_program  # noqa: E402  (path added by smol_code)
 
-PKG = os.path.dirname(CRL)                          # the v14/ folder
+PKG = os.path.dirname(CRL)                          # the GrandeRL-1.0/ folder
 SCR = os.environ.get("ENGINE_SCR", os.path.join(PKG, "scr"))          # holds local/msdata/heldout_prompts.jsonl
 MODEL = os.environ.get("ENGINE_MODEL", "HuggingFaceTB/SmolLM2-135M-Instruct")
 DEV = os.environ.get("ENGINE_DEVICE", "cpu")       # "cuda" on Kaggle; everything then runs in float32 on the GPU

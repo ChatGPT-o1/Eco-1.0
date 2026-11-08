@@ -830,7 +830,8 @@ def selfcheck(a):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--method", choices=["grpo", "v8", "v9", "v10", "v14"])
+    ap.add_argument("--method", choices=["granderl", "grpo", "v8", "v9", "v10", "v14"],
+                    help="granderl = GrandeRL-1.0 (the method developed as V14); grpo = plain RL baseline")
     ap.add_argument("--out")
     ap.add_argument("--budget-min", type=float, default=240)
     ap.add_argument("--threads", type=int, default=2)
@@ -887,6 +888,8 @@ def main():
     ap.add_argument("--jump-n", type=int, default=8, help="v14: answers per held-out problem when choosing the end jump")
     ap.add_argument("--selfcheck", action="store_true")
     a = ap.parse_args()
+    if a.method == "granderl":            # GrandeRL-1.0 is the method developed as V14
+        a.method = "v14"
     global NO_TEACHER
     NO_TEACHER = bool(a.no_teacher)
     if a.method == "v14":                 # V14 defaults: V10's update with larger steps, gentler recovery
