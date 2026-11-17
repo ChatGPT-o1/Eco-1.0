@@ -1,0 +1,34 @@
+# --- operation: div (typed by hand from the add pattern in core3_code.txt) ---
+E divide tok:divide 1
+E division tok:division 1
+E quotient tok:quotient 1
+B divide -1000000000
+B division -1000000000
+B quotient -1000000000
+V tok:divide cg.div 3
+V tok:division cg.div 3
+V tok:quotient cg.div 3
+V tok:function cg.div 1
+V tok:write cg.div 0.5
+O cg.div top:cg.div 100
+W1 top:cg.div n:cg.div 1
+W2 n:cg.div out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.div tok:name.div 1
+E op.div tok:op.div 1
+S name.div divide(a,
+S op.div /
+U out:name.div name.div 1
+U out:op.div op.div 1
+W1 tok:c.def n:g.div.name 1
+W1 top:cg.div n:g.div.name 0.004
+G n:g.div.name -1
+W2 n:g.div.name out:name.div 1000
+W1 tok:name.div n:g.div.nb 1
+W2 n:g.div.nb out:c.b 1000
+W1 tok:c.a n:g.div.op 1
+W1 top:cg.div n:g.div.op 0.004
+G n:g.div.op -1
+W2 n:g.div.op out:op.div 1000
+W1 tok:op.div n:g.div.ob 1
+W2 n:g.div.ob out:c.endb 1000

@@ -1,0 +1,34 @@
+# --- operation: gt (typed by hand, same pattern as the add example) ---
+E greater tok:greater 1
+E bigger tok:bigger 1
+E larger tok:larger 1
+B greater -1000000000
+B bigger -1000000000
+B larger -1000000000
+V tok:greater cg.gt 3
+V tok:bigger cg.gt 3
+V tok:larger cg.gt 3
+V tok:function cg.gt 1
+V tok:write cg.gt 0.5
+O cg.gt top:cg.gt 100
+W1 top:cg.gt n:cg.gt 1
+W2 n:cg.gt out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.gt tok:name.gt 1
+E op.gt tok:op.gt 1
+S name.gt is_greater(a,
+S op.gt >
+U out:name.gt name.gt 1
+U out:op.gt op.gt 1
+W1 tok:c.def n:g.gt.name 1
+W1 top:cg.gt n:g.gt.name 0.004
+G n:g.gt.name -1
+W2 n:g.gt.name out:name.gt 1000
+W1 tok:name.gt n:g.gt.nb 1
+W2 n:g.gt.nb out:c.b 1000
+W1 tok:c.a n:g.gt.op 1
+W1 top:cg.gt n:g.gt.op 0.004
+G n:g.gt.op -1
+W2 n:g.gt.op out:op.gt 1000
+W1 tok:op.gt n:g.gt.ob 1
+W2 n:g.gt.ob out:c.endb 1000

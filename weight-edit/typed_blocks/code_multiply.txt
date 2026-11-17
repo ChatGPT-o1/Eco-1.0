@@ -1,0 +1,34 @@
+# --- operation: mul (typed by hand, same pattern as the add example) ---
+E multiply tok:multiply 1
+E times tok:times 1
+E product tok:product 1
+B multiply -1000000000
+B times -1000000000
+B product -1000000000
+V tok:multiply cg.mul 3
+V tok:times cg.mul 3
+V tok:product cg.mul 3
+V tok:function cg.mul 1
+V tok:write cg.mul 0.5
+O cg.mul top:cg.mul 100
+W1 top:cg.mul n:cg.mul 1
+W2 n:cg.mul out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.mul tok:name.mul 1
+E op.mul tok:op.mul 1
+S name.mul multiply(a,
+S op.mul *
+U out:name.mul name.mul 1
+U out:op.mul op.mul 1
+W1 tok:c.def n:g.mul.name 1
+W1 top:cg.mul n:g.mul.name 0.004
+G n:g.mul.name -1
+W2 n:g.mul.name out:name.mul 1000
+W1 tok:name.mul n:g.mul.nb 1
+W2 n:g.mul.nb out:c.b 1000
+W1 tok:c.a n:g.mul.op 1
+W1 top:cg.mul n:g.mul.op 0.004
+G n:g.mul.op -1
+W2 n:g.mul.op out:op.mul 1000
+W1 tok:op.mul n:g.mul.ob 1
+W2 n:g.mul.ob out:c.endb 1000

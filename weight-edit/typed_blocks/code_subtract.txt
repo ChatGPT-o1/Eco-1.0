@@ -1,0 +1,36 @@
+# code_subtract.txt - typed by hand: the same pattern as core3_code.txt, for SUBTRACT.
+# Shared template (E/B lines for write and function, and the c.* chain) comes from core3_code.txt.
+# --- operation: sub ---
+E subtract tok:subtract 1
+E minus tok:minus 1
+E difference tok:difference 1
+B subtract -1000000000
+B minus -1000000000
+B difference -1000000000
+V tok:subtract cg.sub 3
+V tok:minus cg.sub 3
+V tok:difference cg.sub 3
+V tok:function cg.sub 1
+V tok:write cg.sub 0.5
+O cg.sub top:cg.sub 100
+W1 top:cg.sub n:cg.sub 1
+W2 n:cg.sub out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.sub tok:name.sub 1
+E op.sub tok:op.sub 1
+S name.sub subtract(a,
+S op.sub -
+U out:name.sub name.sub 1
+U out:op.sub op.sub 1
+W1 tok:c.def n:g.sub.name 1
+W1 top:cg.sub n:g.sub.name 0.004
+G n:g.sub.name -1
+W2 n:g.sub.name out:name.sub 1000
+W1 tok:name.sub n:g.sub.nb 1
+W2 n:g.sub.nb out:c.b 1000
+W1 tok:c.a n:g.sub.op 1
+W1 top:cg.sub n:g.sub.op 0.004
+G n:g.sub.op -1
+W2 n:g.sub.op out:op.sub 1000
+W1 tok:op.sub n:g.sub.ob 1
+W2 n:g.sub.ob out:c.endb 1000

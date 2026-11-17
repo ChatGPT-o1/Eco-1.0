@@ -1,0 +1,34 @@
+# --- operation: eq (equality; typed by hand, same pattern as the add example) ---
+E equal tok:equal 1
+E equals tok:equals 1
+E same tok:same 1
+B equal -1000000000
+B equals -1000000000
+B same -1000000000
+V tok:equal cg.eq 3
+V tok:equals cg.eq 3
+V tok:same cg.eq 2
+V tok:function cg.eq 1
+V tok:write cg.eq 0.5
+O cg.eq top:cg.eq 100
+W1 top:cg.eq n:cg.eq 1
+W2 n:cg.eq out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.eq tok:name.eq 1
+E op.eq tok:op.eq 1
+S name.eq is_equal(a,
+S op.eq ==
+U out:name.eq name.eq 1
+U out:op.eq op.eq 1
+W1 tok:c.def n:g.eq.name 1
+W1 top:cg.eq n:g.eq.name 0.004
+G n:g.eq.name -1
+W2 n:g.eq.name out:name.eq 1000
+W1 tok:name.eq n:g.eq.nb 1
+W2 n:g.eq.nb out:c.b 1000
+W1 tok:c.a n:g.eq.op 1
+W1 top:cg.eq n:g.eq.op 0.004
+G n:g.eq.op -1
+W2 n:g.eq.op out:op.eq 1000
+W1 tok:op.eq n:g.eq.ob 1
+W2 n:g.eq.ob out:c.endb 1000

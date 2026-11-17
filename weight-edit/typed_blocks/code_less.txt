@@ -1,0 +1,34 @@
+# --- operation: lt (less-than; typed by hand, same pattern as the add example) ---
+E less tok:less 1
+E smaller tok:smaller 1
+E lesser tok:lesser 1
+B less -1000000000
+B smaller -1000000000
+B lesser -1000000000
+V tok:less cg.lt 3
+V tok:smaller cg.lt 3
+V tok:lesser cg.lt 3
+V tok:function cg.lt 1
+V tok:write cg.lt 0.5
+O cg.lt top:cg.lt 100
+W1 top:cg.lt n:cg.lt 1
+W2 n:cg.lt out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.lt tok:name.lt 1
+E op.lt tok:op.lt 1
+S name.lt is_less(a,
+S op.lt <
+U out:name.lt name.lt 1
+U out:op.lt op.lt 1
+W1 tok:c.def n:g.lt.name 1
+W1 top:cg.lt n:g.lt.name 0.004
+G n:g.lt.name -1
+W2 n:g.lt.name out:name.lt 1000
+W1 tok:name.lt n:g.lt.nb 1
+W2 n:g.lt.nb out:c.b 1000
+W1 tok:c.a n:g.lt.op 1
+W1 top:cg.lt n:g.lt.op 0.004
+G n:g.lt.op -1
+W2 n:g.lt.op out:op.lt 1000
+W1 tok:op.lt n:g.lt.ob 1
+W2 n:g.lt.ob out:c.endb 1000

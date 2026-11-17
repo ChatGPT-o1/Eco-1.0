@@ -1,0 +1,34 @@
+# --- operation: pow (typed by hand, same pattern as the add example) ---
+E power tok:power 1
+E exponent tok:exponent 1
+E raised tok:raised 1
+B power -1000000000
+B exponent -1000000000
+B raised -1000000000
+V tok:power cg.pow 3
+V tok:exponent cg.pow 3
+V tok:raised cg.pow 2
+V tok:function cg.pow 1
+V tok:write cg.pow 0.5
+O cg.pow top:cg.pow 100
+W1 top:cg.pow n:cg.pow 1
+W2 n:cg.pow out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.pow tok:name.pow 1
+E op.pow tok:op.pow 1
+S name.pow power(a,
+S op.pow **
+U out:name.pow name.pow 1
+U out:op.pow op.pow 1
+W1 tok:c.def n:g.pow.name 1
+W1 top:cg.pow n:g.pow.name 0.004
+G n:g.pow.name -1
+W2 n:g.pow.name out:name.pow 1000
+W1 tok:name.pow n:g.pow.nb 1
+W2 n:g.pow.nb out:c.b 1000
+W1 tok:c.a n:g.pow.op 1
+W1 top:cg.pow n:g.pow.op 0.004
+G n:g.pow.op -1
+W2 n:g.pow.op out:op.pow 1000
+W1 tok:op.pow n:g.pow.ob 1
+W2 n:g.pow.ob out:c.endb 1000

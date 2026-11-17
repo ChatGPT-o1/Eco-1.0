@@ -1,0 +1,34 @@
+# --- operation: floor division (fdv) ---
+E floor tok:floor 1
+E integer tok:integer 1
+E whole tok:whole 1
+B floor -1000000000
+B integer -1000000000
+B whole -1000000000
+V tok:floor cg.fdv 3
+V tok:integer cg.fdv 2
+V tok:whole cg.fdv 2
+V tok:function cg.fdv 1
+V tok:write cg.fdv 0.5
+O cg.fdv top:cg.fdv 100
+W1 top:cg.fdv n:cg.fdv 1
+W2 n:cg.fdv out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.fdv tok:name.fdv 1
+E op.fdv tok:op.fdv 1
+S name.fdv floor_divide(a,
+S op.fdv //
+U out:name.fdv name.fdv 1
+U out:op.fdv op.fdv 1
+W1 tok:c.def n:g.fdv.name 1
+W1 top:cg.fdv n:g.fdv.name 0.004
+G n:g.fdv.name -1
+W2 n:g.fdv.name out:name.fdv 1000
+W1 tok:name.fdv n:g.fdv.nb 1
+W2 n:g.fdv.nb out:c.b 1000
+W1 tok:c.a n:g.fdv.op 1
+W1 top:cg.fdv n:g.fdv.op 0.004
+G n:g.fdv.op -1
+W2 n:g.fdv.op out:op.fdv 1000
+W1 tok:op.fdv n:g.fdv.ob 1
+W2 n:g.fdv.ob out:c.endb 1000

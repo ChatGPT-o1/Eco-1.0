@@ -1,0 +1,34 @@
+# --- operation: mod (typed by hand, same pattern as the add example) ---
+E modulo tok:modulo 1
+E remainder tok:remainder 1
+E mod tok:mod 1
+B modulo -1000000000
+B remainder -1000000000
+B mod -1000000000
+V tok:modulo cg.mod 3
+V tok:remainder cg.mod 3
+V tok:mod cg.mod 3
+V tok:function cg.mod 1
+V tok:write cg.mod 0.5
+O cg.mod top:cg.mod 100
+W1 top:cg.mod n:cg.mod 1
+W2 n:cg.mod out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.mod tok:name.mod 1
+E op.mod tok:op.mod 1
+S name.mod remainder(a,
+S op.mod %
+U out:name.mod name.mod 1
+U out:op.mod op.mod 1
+W1 tok:c.def n:g.mod.name 1
+W1 top:cg.mod n:g.mod.name 0.004
+G n:g.mod.name -1
+W2 n:g.mod.name out:name.mod 1000
+W1 tok:name.mod n:g.mod.nb 1
+W2 n:g.mod.nb out:c.b 1000
+W1 tok:c.a n:g.mod.op 1
+W1 top:cg.mod n:g.mod.op 0.004
+G n:g.mod.op -1
+W2 n:g.mod.op out:op.mod 1000
+W1 tok:op.mod n:g.mod.ob 1
+W2 n:g.mod.ob out:c.endb 1000

@@ -1,0 +1,34 @@
+# --- operation: ne (typed by hand, same pattern as the add example) ---
+E different tok:different 1
+E unequal tok:unequal 1
+E differ tok:differ 1
+B different -1000000000
+B unequal -1000000000
+B differ -1000000000
+V tok:different cg.ne 3
+V tok:unequal cg.ne 3
+V tok:differ cg.ne 2
+V tok:function cg.ne 1
+V tok:write cg.ne 0.5
+O cg.ne top:cg.ne 100
+W1 top:cg.ne n:cg.ne 1
+W2 n:cg.ne out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.ne tok:name.ne 1
+E op.ne tok:op.ne 1
+S name.ne is_different(a,
+S op.ne !=
+U out:name.ne name.ne 1
+U out:op.ne op.ne 1
+W1 tok:c.def n:g.ne.name 1
+W1 top:cg.ne n:g.ne.name 0.004
+G n:g.ne.name -1
+W2 n:g.ne.name out:name.ne 1000
+W1 tok:name.ne n:g.ne.nb 1
+W2 n:g.ne.nb out:c.b 1000
+W1 tok:c.a n:g.ne.op 1
+W1 top:cg.ne n:g.ne.op 0.004
+G n:g.ne.op -1
+W2 n:g.ne.op out:op.ne 1000
+W1 tok:op.ne n:g.ne.ob 1
+W2 n:g.ne.ob out:c.endb 1000
