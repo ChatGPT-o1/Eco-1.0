@@ -1,0 +1,65 @@
+# core3_code.txt - typed by hand: the bot writes Python code, composed word by word.
+# Shared template: def NAME(a, b): return a OP b  -- every operation reuses these pieces.
+E c.def tok:c.def 1
+E c.b tok:c.b 1
+E c.ret tok:c.ret 1
+E c.a tok:c.a 1
+E c.endb tok:c.endb 1
+S c.def def
+S c.b b):
+S c.ret return
+S c.a a
+S c.endb b
+U out:c.def c.def 1
+U out:c.b c.b 1
+U out:c.ret c.ret 1
+U out:c.a c.a 1
+U out:c.endb c.endb 1
+# Shared template chain (every operation passes through these).
+W1 tok:c.b n:g.bret 1
+W2 n:g.bret out:c.ret 1000
+W1 tok:c.ret n:g.reta 1
+W2 n:g.reta out:c.a 1000
+W1 tok:c.endb n:g.end 1
+W2 n:g.end out:<end> 1000
+# Listening words shared by all code requests.
+E write tok:write 1
+E function tok:function 1
+E make tok:make 1
+B write -1000000000
+B function -1000000000
+B make -1000000000
+# --- operation: add (typed here as the worked example; agents add the others) ---
+E add tok:add 1
+E sum tok:sum 1
+E plus tok:plus 1
+B add -1000000000
+B sum -1000000000
+B plus -1000000000
+V tok:add cg.add 3
+V tok:sum cg.add 3
+V tok:plus cg.add 2
+V tok:function cg.add 1
+V tok:write cg.add 0.5
+O cg.add top:cg.add 100
+W1 top:cg.add n:cg.add 1
+W2 n:cg.add out:c.def 1
+# fill-ins: the name and the operator (AND-gates on the detected operation).
+E name.add tok:name.add 1
+E op.add tok:op.add 1
+S name.add add(a,
+S op.add +
+U out:name.add name.add 1
+U out:op.add op.add 1
+W1 tok:c.def n:g.add.name 1
+W1 top:cg.add n:g.add.name 0.004
+G n:g.add.name -1
+W2 n:g.add.name out:name.add 1000
+W1 tok:name.add n:g.add.nb 1
+W2 n:g.add.nb out:c.b 1000
+W1 tok:c.a n:g.add.op 1
+W1 top:cg.add n:g.add.op 0.004
+G n:g.add.op -1
+W2 n:g.add.op out:op.add 1000
+W1 tok:op.add n:g.add.ob 1
+W2 n:g.add.ob out:c.endb 1000
