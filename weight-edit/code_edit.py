@@ -26,7 +26,8 @@ from edit_model import Lab, log, reencode, bake, write_gguf
 F = torch.nn.functional
 torch.set_grad_enabled(False)
 FINAL_RMS = 32.0        # measured: typical size of the final residual stream in this model
-GATE_AT = 5.0           # the gate's input when the neuron sees its token (SiLU is ~linear and ~5 there)
+MAX_NEURONS = 256       # at most this many of layer 0's 1,536 neurons are replaced
+GATE_AT = 5.0          # the gate's input when the neuron sees its token (SiLU is ~linear and ~5 there)
 
 # (token A, [tokens B that should follow], strength in logits). Written by hand from knowledge of Python.
 RULES = [
@@ -45,6 +46,42 @@ RULES = [
  (" yield", [" "], 2), (" raise", [" ValueError", " "], 3), (" with", [" open"], 2), (" open", ["("], 5),
 ]
 
+# ---- upgrade: a much larger hand-written rule book, generated from lists the editor wrote ----
+BUILTINS = ["abs", "all", "any", "bool", "dict", "enumerate", "filter", "float", "format", "getattr", "hasattr", "input", "int",
+            "isinstance", "iter", "len", "list", "map", "max", "min", "next", "open", "ord", "chr", "pow", "print", "range",
+            "repr", "reversed", "round", "set", "sorted", "str", "sum", "super", "tuple", "type", "zip"]
+CALL_METHODS = ["append", "extend", "insert", "remove", "pop", "index", "count", "sort", "reverse", "copy", "join", "split",
+                "replace", "startswith", "endswith", "find", "format", "get", "update", "add", "setdefault", "encode", "decode"]
+NOARG_METHODS = ["lower", "upper", "strip", "lstrip", "rstrip", "items", "keys", "values", "isdigit", "isalpha", "isupper",
+                 "islower", "title", "capitalize", "clear", "splitlines", "isspace", "isalnum"]
+MODULES = {"math": [".sqrt", ".floor", ".ceil", ".pi"], "re": [".sub", ".findall", ".match", ".search"], "os": [".path"],
+           "sys": [".argv"], "random": [".randint", ".choice"], "json": [".loads", ".dumps"], "collections": [".Counter", ".defaultdict"],
+           "itertools": [".permutations", ".combinations"], "typing": [" import"], "heapq": [".heappush", ".heappop"]}
+TYPES = ["List", "Dict", "Tuple", "Optional", "Set", "Any"]
+EXCEPTIONS = ["ValueError", "TypeError", "KeyError", "IndexError", "Exception", "ZeroDivisionError"]
+for b in BUILTINS: RULES += [(" " + b, ["("], 4), (b, ["("], 3), ("(" + b, ["("], 4)]
+for m in CALL_METHODS: RULES.append(("." + m, ["("], 6))
+for m in NOARG_METHODS: RULES.append(("." + m, ["()"], 5))
+for mod, nxt in MODULES.items(): RULES += [(" " + mod, nxt, 2), (mod, nxt, 2)]
+for t in TYPES: RULES.append((" " + t, ["["], 5))
+for e in EXCEPTIONS: RULES += [(" " + e, ["(", ":"], 3)]
+RULES += [
+ # structure
+ (":\n", ["    "], 4), ("\n\n", ["def", "```", "    "], 1), ('"""', ["\n"], 1), (" ->", [" int", " str", " bool", " List", " float"], 3),
+ (" __", ["name", "init"], 3), ("__", ["("], 1), (" @", ["staticmethod", "property"], 2), (" async", [" def"], 5), (" await", [" "], 2),
+ (" global", [" "], 2), (" assert", [" "], 2), (" del", [" "], 2), (" pass", ["\n"], 4), (" break", ["\n"], 4), (" continue", ["\n"], 4),
+ # operators
+ (" +=", [" 1", " "], 3), (" -=", [" 1", " "], 3), (" *=", [" "], 2), (" //", [" 2", " "], 2), (" %", [" 2", " "], 2), (" **", [" 2", " "], 2),
+ (" <=", [" "], 2), (" >=", [" "], 2), (" and", [" "], 1), (" or", [" "], 1), (" =", [" "], 2),
+ # comprehension and iteration
+ (" [", ["x"], 1), ("[::-", ["1"], 6), ("[-", ["1"], 4), (" key", ["="], 4), (" reverse", ["="], 5), ("=lambda", [" x"], 4),
+ (" i", [" in"], 1), (" x", [" in"], 1), (" item", [" in"], 2), (" _", [" in"], 3),
+ # values
+ (" ==", [" 0", " "], 1), (" return", [" result", " True", " False", " None", " "], 1), (" result", [" ="], 2), (" count", [" ="], 1),
+ # suppress chatty prose inside a code block: after the opening fence, do not start a sentence
+ ("```python", ["\n"], 5),
+]
+
 def single(tok, s):
     ids = tok.encode(s, add_special_tokens=False)
     return ids[0] if len(ids) == 1 else None
@@ -58,10 +95,11 @@ def write_rules(lab):
     unit = lambda v: v / v.norm()
     # least-used neurons, judged from the weights alone: small input rows and a small output column
     spare = (G.norm(dim=1) * U.norm(dim=1) * D.norm(dim=0)).argsort().tolist()
-    used = skipped = 0
+    used = skipped = 0; seen = set()
     for a, bs, strength in RULES:
         ta = single(lab.tok, a); tbs = [t for t in (single(lab.tok, b) for b in bs) if t is not None]
-        if ta is None or not tbs: skipped += 1; continue
+        if ta is None or not tbs or ta in seen or used >= MAX_NEURONS: skipped += 1; continue
+        seen.add(ta)                                                       # one neuron per trigger token; the first rule wins
         x = g_in * E[ta] / torch.sqrt((E[ta] ** 2).mean() + 1e-5)          # what the layer sees on token A (to first order)
         d = unit(g_in * (E[ta] - Ebar)); proj = float(x @ d)               # the token's own direction, and how strongly it shows
         u = g_out * (E[tbs].mean(0) - Ebar)                                # direction that raises the B tokens at the output
