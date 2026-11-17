@@ -1115,3 +1115,282 @@ U out:ani.t16.w4 ani.t16.w4 1
 U out:ani.t16.w5 ani.t16.w5 1
 U out:ani.t16.w6 ani.t16.w6 1
 U out:ani.t16.w7 ani.t16.w7 1
+
+# topic ani.t17
+E rainforest tok:rainforest 1
+E rainforests tok:rainforests 1
+E jungle tok:jungle 1
+E ecosystem tok:ecosystem 1
+E biodiversity tok:biodiversity 1
+E tropical tok:tropical 1
+B rainforest -1000000000
+B rainforests -1000000000
+B jungle -1000000000
+B ecosystem -1000000000
+B biodiversity -1000000000
+B tropical -1000000000
+V tok:rainforest ani.t17 3
+V tok:rainforests ani.t17 3
+V tok:jungle ani.t17 2
+V tok:ecosystem ani.t17 2
+V tok:biodiversity ani.t17 3
+V tok:tropical ani.t17 1
+O ani.t17 top:ani.t17 100
+W1 top:ani.t17 n:ani.t17 1
+W2 n:ani.t17 out:ani.t17.w0 1
+E ani.t17.w0 tok:ani.t17.w0 1
+E ani.t17.w1 tok:ani.t17.w1 1
+E ani.t17.w2 tok:ani.t17.w2 1
+E ani.t17.w3 tok:ani.t17.w3 1
+E ani.t17.w4 tok:ani.t17.w4 1
+E ani.t17.w5 tok:ani.t17.w5 1
+E ani.t17.w6 tok:ani.t17.w6 1
+E ani.t17.w7 tok:ani.t17.w7 1
+E ani.t17.w8 tok:ani.t17.w8 1
+E ani.t17.w9 tok:ani.t17.w9 1
+E ani.t17.w10 tok:ani.t17.w10 1
+E ani.t17.w11 tok:ani.t17.w11 1
+S ani.t17.w0 Tropical
+S ani.t17.w1 rainforests
+S ani.t17.w2 are
+S ani.t17.w3 home
+S ani.t17.w4 to
+S ani.t17.w5 a
+S ani.t17.w6 huge
+S ani.t17.w7 share
+S ani.t17.w8 of
+S ani.t17.w9 the
+S ani.t17.w10 world's
+S ani.t17.w11 species.
+W1 tok:ani.t17.w0 n:ani.t17.w0 1
+W2 n:ani.t17.w0 out:ani.t17.w1 1000
+W1 tok:ani.t17.w1 n:ani.t17.w1 1
+W2 n:ani.t17.w1 out:ani.t17.w2 1000
+W1 tok:ani.t17.w2 n:ani.t17.w2 1
+W2 n:ani.t17.w2 out:ani.t17.w3 1000
+W1 tok:ani.t17.w3 n:ani.t17.w3 1
+W2 n:ani.t17.w3 out:ani.t17.w4 1000
+W1 tok:ani.t17.w4 n:ani.t17.w4 1
+W2 n:ani.t17.w4 out:ani.t17.w5 1000
+W1 tok:ani.t17.w5 n:ani.t17.w5 1
+W2 n:ani.t17.w5 out:ani.t17.w6 1000
+W1 tok:ani.t17.w6 n:ani.t17.w6 1
+W2 n:ani.t17.w6 out:ani.t17.w7 1000
+W1 tok:ani.t17.w7 n:ani.t17.w7 1
+W2 n:ani.t17.w7 out:ani.t17.w8 1000
+W1 tok:ani.t17.w8 n:ani.t17.w8 1
+W2 n:ani.t17.w8 out:ani.t17.w9 1000
+W1 tok:ani.t17.w9 n:ani.t17.w9 1
+W2 n:ani.t17.w9 out:ani.t17.w10 1000
+W1 tok:ani.t17.w10 n:ani.t17.w10 1
+W2 n:ani.t17.w10 out:ani.t17.w11 1000
+W1 tok:ani.t17.w11 n:ani.t17.w11 1
+W2 n:ani.t17.w11 out:<end> 1000
+U out:ani.t17.w0 ani.t17.w0 1
+U out:ani.t17.w1 ani.t17.w1 1
+U out:ani.t17.w2 ani.t17.w2 1
+U out:ani.t17.w3 ani.t17.w3 1
+U out:ani.t17.w4 ani.t17.w4 1
+U out:ani.t17.w5 ani.t17.w5 1
+U out:ani.t17.w6 ani.t17.w6 1
+U out:ani.t17.w7 ani.t17.w7 1
+U out:ani.t17.w8 ani.t17.w8 1
+U out:ani.t17.w9 ani.t17.w9 1
+U out:ani.t17.w10 ani.t17.w10 1
+U out:ani.t17.w11 ani.t17.w11 1
+
+# topic ani.t18
+E wolf tok:wolf 1
+E wolves tok:wolves 1
+E howl tok:howl 1
+E pack tok:pack 1
+E alpha tok:alpha 1
+E gray tok:gray 1
+B wolf -1000000000
+B wolves -1000000000
+B howl -1000000000
+B pack -1000000000
+B alpha -1000000000
+B gray -1000000000
+V tok:wolf ani.t18 3
+V tok:wolves ani.t18 3
+V tok:howl ani.t18 2
+V tok:pack ani.t18 1
+V tok:alpha ani.t18 1
+V tok:gray ani.t18 0.5
+O ani.t18 top:ani.t18 100
+W1 top:ani.t18 n:ani.t18 1
+W2 n:ani.t18 out:ani.t18.w0 1
+E ani.t18.w0 tok:ani.t18.w0 1
+E ani.t18.w1 tok:ani.t18.w1 1
+E ani.t18.w2 tok:ani.t18.w2 1
+E ani.t18.w3 tok:ani.t18.w3 1
+E ani.t18.w4 tok:ani.t18.w4 1
+E ani.t18.w5 tok:ani.t18.w5 1
+E ani.t18.w6 tok:ani.t18.w6 1
+S ani.t18.w0 Wolves
+S ani.t18.w1 howl
+S ani.t18.w2 to
+S ani.t18.w3 communicate
+S ani.t18.w4 across
+S ani.t18.w5 long
+S ani.t18.w6 distances.
+W1 tok:ani.t18.w0 n:ani.t18.w0 1
+W2 n:ani.t18.w0 out:ani.t18.w1 1000
+W1 tok:ani.t18.w1 n:ani.t18.w1 1
+W2 n:ani.t18.w1 out:ani.t18.w2 1000
+W1 tok:ani.t18.w2 n:ani.t18.w2 1
+W2 n:ani.t18.w2 out:ani.t18.w3 1000
+W1 tok:ani.t18.w3 n:ani.t18.w3 1
+W2 n:ani.t18.w3 out:ani.t18.w4 1000
+W1 tok:ani.t18.w4 n:ani.t18.w4 1
+W2 n:ani.t18.w4 out:ani.t18.w5 1000
+W1 tok:ani.t18.w5 n:ani.t18.w5 1
+W2 n:ani.t18.w5 out:ani.t18.w6 1000
+W1 tok:ani.t18.w6 n:ani.t18.w6 1
+W2 n:ani.t18.w6 out:<end> 1000
+U out:ani.t18.w0 ani.t18.w0 1
+U out:ani.t18.w1 ani.t18.w1 1
+U out:ani.t18.w2 ani.t18.w2 1
+U out:ani.t18.w3 ani.t18.w3 1
+U out:ani.t18.w4 ani.t18.w4 1
+U out:ani.t18.w5 ani.t18.w5 1
+U out:ani.t18.w6 ani.t18.w6 1
+
+# topic ani.t19
+E bat tok:bat 1
+E bats tok:bats 1
+E echolocation tok:echolocation 1
+E nocturnal tok:nocturnal 1
+E flying tok:flying 1
+B bat -1000000000
+B bats -1000000000
+B echolocation -1000000000
+B nocturnal -1000000000
+B flying -1000000000
+V tok:bat ani.t19 3
+V tok:bats ani.t19 3
+V tok:echolocation ani.t19 3
+V tok:nocturnal ani.t19 2
+V tok:flying ani.t19 1
+O ani.t19 top:ani.t19 100
+W1 top:ani.t19 n:ani.t19 1
+W2 n:ani.t19 out:ani.t19.w0 1
+E ani.t19.w0 tok:ani.t19.w0 1
+E ani.t19.w1 tok:ani.t19.w1 1
+E ani.t19.w2 tok:ani.t19.w2 1
+E ani.t19.w3 tok:ani.t19.w3 1
+E ani.t19.w4 tok:ani.t19.w4 1
+E ani.t19.w5 tok:ani.t19.w5 1
+E ani.t19.w6 tok:ani.t19.w6 1
+E ani.t19.w7 tok:ani.t19.w7 1
+E ani.t19.w8 tok:ani.t19.w8 1
+S ani.t19.w0 Bats
+S ani.t19.w1 use
+S ani.t19.w2 echolocation
+S ani.t19.w3 to
+S ani.t19.w4 find
+S ani.t19.w5 food
+S ani.t19.w6 in
+S ani.t19.w7 the
+S ani.t19.w8 dark.
+W1 tok:ani.t19.w0 n:ani.t19.w0 1
+W2 n:ani.t19.w0 out:ani.t19.w1 1000
+W1 tok:ani.t19.w1 n:ani.t19.w1 1
+W2 n:ani.t19.w1 out:ani.t19.w2 1000
+W1 tok:ani.t19.w2 n:ani.t19.w2 1
+W2 n:ani.t19.w2 out:ani.t19.w3 1000
+W1 tok:ani.t19.w3 n:ani.t19.w3 1
+W2 n:ani.t19.w3 out:ani.t19.w4 1000
+W1 tok:ani.t19.w4 n:ani.t19.w4 1
+W2 n:ani.t19.w4 out:ani.t19.w5 1000
+W1 tok:ani.t19.w5 n:ani.t19.w5 1
+W2 n:ani.t19.w5 out:ani.t19.w6 1000
+W1 tok:ani.t19.w6 n:ani.t19.w6 1
+W2 n:ani.t19.w6 out:ani.t19.w7 1000
+W1 tok:ani.t19.w7 n:ani.t19.w7 1
+W2 n:ani.t19.w7 out:ani.t19.w8 1000
+W1 tok:ani.t19.w8 n:ani.t19.w8 1
+W2 n:ani.t19.w8 out:<end> 1000
+U out:ani.t19.w0 ani.t19.w0 1
+U out:ani.t19.w1 ani.t19.w1 1
+U out:ani.t19.w2 ani.t19.w2 1
+U out:ani.t19.w3 ani.t19.w3 1
+U out:ani.t19.w4 ani.t19.w4 1
+U out:ani.t19.w5 ani.t19.w5 1
+U out:ani.t19.w6 ani.t19.w6 1
+U out:ani.t19.w7 ani.t19.w7 1
+U out:ani.t19.w8 ani.t19.w8 1
+
+# topic ani.t20
+E frog tok:frog 1
+E frogs tok:frogs 1
+E tadpole tok:tadpole 1
+E tadpoles tok:tadpoles 1
+E amphibian tok:amphibian 1
+E toad tok:toad 1
+B frog -1000000000
+B frogs -1000000000
+B tadpole -1000000000
+B tadpoles -1000000000
+B amphibian -1000000000
+B toad -1000000000
+V tok:frog ani.t20 3
+V tok:frogs ani.t20 3
+V tok:tadpole ani.t20 3
+V tok:tadpoles ani.t20 3
+V tok:amphibian ani.t20 3
+V tok:toad ani.t20 2
+O ani.t20 top:ani.t20 100
+W1 top:ani.t20 n:ani.t20 1
+W2 n:ani.t20 out:ani.t20.w0 1
+E ani.t20.w0 tok:ani.t20.w0 1
+E ani.t20.w1 tok:ani.t20.w1 1
+E ani.t20.w2 tok:ani.t20.w2 1
+E ani.t20.w3 tok:ani.t20.w3 1
+E ani.t20.w4 tok:ani.t20.w4 1
+E ani.t20.w5 tok:ani.t20.w5 1
+E ani.t20.w6 tok:ani.t20.w6 1
+E ani.t20.w7 tok:ani.t20.w7 1
+E ani.t20.w8 tok:ani.t20.w8 1
+E ani.t20.w9 tok:ani.t20.w9 1
+S ani.t20.w0 Frogs
+S ani.t20.w1 start
+S ani.t20.w2 life
+S ani.t20.w3 as
+S ani.t20.w4 tadpoles
+S ani.t20.w5 and
+S ani.t20.w6 breathe
+S ani.t20.w7 through
+S ani.t20.w8 gills
+S ani.t20.w9 first.
+W1 tok:ani.t20.w0 n:ani.t20.w0 1
+W2 n:ani.t20.w0 out:ani.t20.w1 1000
+W1 tok:ani.t20.w1 n:ani.t20.w1 1
+W2 n:ani.t20.w1 out:ani.t20.w2 1000
+W1 tok:ani.t20.w2 n:ani.t20.w2 1
+W2 n:ani.t20.w2 out:ani.t20.w3 1000
+W1 tok:ani.t20.w3 n:ani.t20.w3 1
+W2 n:ani.t20.w3 out:ani.t20.w4 1000
+W1 tok:ani.t20.w4 n:ani.t20.w4 1
+W2 n:ani.t20.w4 out:ani.t20.w5 1000
+W1 tok:ani.t20.w5 n:ani.t20.w5 1
+W2 n:ani.t20.w5 out:ani.t20.w6 1000
+W1 tok:ani.t20.w6 n:ani.t20.w6 1
+W2 n:ani.t20.w6 out:ani.t20.w7 1000
+W1 tok:ani.t20.w7 n:ani.t20.w7 1
+W2 n:ani.t20.w7 out:ani.t20.w8 1000
+W1 tok:ani.t20.w8 n:ani.t20.w8 1
+W2 n:ani.t20.w8 out:ani.t20.w9 1000
+W1 tok:ani.t20.w9 n:ani.t20.w9 1
+W2 n:ani.t20.w9 out:<end> 1000
+U out:ani.t20.w0 ani.t20.w0 1
+U out:ani.t20.w1 ani.t20.w1 1
+U out:ani.t20.w2 ani.t20.w2 1
+U out:ani.t20.w3 ani.t20.w3 1
+U out:ani.t20.w4 ani.t20.w4 1
+U out:ani.t20.w5 ani.t20.w5 1
+U out:ani.t20.w6 ani.t20.w6 1
+U out:ani.t20.w7 ani.t20.w7 1
+U out:ani.t20.w8 ani.t20.w8 1
+U out:ani.t20.w9 ani.t20.w9 1

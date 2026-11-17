@@ -803,3 +803,314 @@ U out:chat.t11.w7 chat.t11.w7 1
 U out:chat.t11.w8 chat.t11.w8 1
 U out:chat.t11.w9 chat.t11.w9 1
 U out:chat.t11.w10 chat.t11.w10 1
+
+# topic chat.t12
+E happy tok:happy 1
+E glad tok:glad 1
+E excited tok:excited 1
+E joyful tok:joyful 1
+E wonderful tok:wonderful 1
+E fantastic tok:fantastic 1
+B happy -1000000000
+B glad -1000000000
+B excited -1000000000
+B joyful -1000000000
+B wonderful -1000000000
+B fantastic -1000000000
+V tok:happy chat.t12 3.0
+V tok:glad chat.t12 2.5
+V tok:excited chat.t12 2.5
+V tok:joyful chat.t12 2.5
+V tok:wonderful chat.t12 1.5
+V tok:fantastic chat.t12 1.5
+O chat.t12 top:chat.t12 100
+W1 top:chat.t12 n:chat.t12 1
+W2 n:chat.t12 out:chat.t12.w0 1
+E chat.t12.w0 tok:chat.t12.w0 1
+E chat.t12.w1 tok:chat.t12.w1 1
+E chat.t12.w2 tok:chat.t12.w2 1
+E chat.t12.w3 tok:chat.t12.w3 1
+E chat.t12.w4 tok:chat.t12.w4 1
+E chat.t12.w5 tok:chat.t12.w5 1
+E chat.t12.w6 tok:chat.t12.w6 1
+E chat.t12.w7 tok:chat.t12.w7 1
+S chat.t12.w0 That's
+S chat.t12.w1 wonderful
+S chat.t12.w2 to
+S chat.t12.w3 hear!
+S chat.t12.w4 What
+S chat.t12.w5 made
+S chat.t12.w6 your
+S chat.t12.w7 day?
+W1 tok:chat.t12.w0 n:chat.t12.w0 1
+W2 n:chat.t12.w0 out:chat.t12.w1 1000
+W1 tok:chat.t12.w1 n:chat.t12.w1 1
+W2 n:chat.t12.w1 out:chat.t12.w2 1000
+W1 tok:chat.t12.w2 n:chat.t12.w2 1
+W2 n:chat.t12.w2 out:chat.t12.w3 1000
+W1 tok:chat.t12.w3 n:chat.t12.w3 1
+W2 n:chat.t12.w3 out:chat.t12.w4 1000
+W1 tok:chat.t12.w4 n:chat.t12.w4 1
+W2 n:chat.t12.w4 out:chat.t12.w5 1000
+W1 tok:chat.t12.w5 n:chat.t12.w5 1
+W2 n:chat.t12.w5 out:chat.t12.w6 1000
+W1 tok:chat.t12.w6 n:chat.t12.w6 1
+W2 n:chat.t12.w6 out:chat.t12.w7 1000
+W1 tok:chat.t12.w7 n:chat.t12.w7 1
+W2 n:chat.t12.w7 out:<end> 1000
+U out:chat.t12.w0 chat.t12.w0 1
+U out:chat.t12.w1 chat.t12.w1 1
+U out:chat.t12.w2 chat.t12.w2 1
+U out:chat.t12.w3 chat.t12.w3 1
+U out:chat.t12.w4 chat.t12.w4 1
+U out:chat.t12.w5 chat.t12.w5 1
+U out:chat.t12.w6 chat.t12.w6 1
+U out:chat.t12.w7 chat.t12.w7 1
+
+# topic chat.t13
+E angry tok:angry 1
+E mad tok:mad 1
+E annoyed tok:annoyed 1
+E furious tok:furious 1
+E frustrated tok:frustrated 1
+B angry -1000000000
+B mad -1000000000
+B annoyed -1000000000
+B furious -1000000000
+B frustrated -1000000000
+V tok:angry chat.t13 3.0
+V tok:mad chat.t13 2.5
+V tok:annoyed chat.t13 2.5
+V tok:furious chat.t13 2.5
+V tok:frustrated chat.t13 2.0
+O chat.t13 top:chat.t13 100
+W1 top:chat.t13 n:chat.t13 1
+W2 n:chat.t13 out:chat.t13.w0 1
+E chat.t13.w0 tok:chat.t13.w0 1
+E chat.t13.w1 tok:chat.t13.w1 1
+E chat.t13.w2 tok:chat.t13.w2 1
+E chat.t13.w3 tok:chat.t13.w3 1
+E chat.t13.w4 tok:chat.t13.w4 1
+E chat.t13.w5 tok:chat.t13.w5 1
+E chat.t13.w6 tok:chat.t13.w6 1
+E chat.t13.w7 tok:chat.t13.w7 1
+E chat.t13.w8 tok:chat.t13.w8 1
+E chat.t13.w9 tok:chat.t13.w9 1
+S chat.t13.w0 I
+S chat.t13.w1 hear
+S chat.t13.w2 you.
+S chat.t13.w3 Would
+S chat.t13.w4 you
+S chat.t13.w5 like
+S chat.t13.w6 to
+S chat.t13.w7 tell
+S chat.t13.w8 me
+S chat.t13.w9 more?
+W1 tok:chat.t13.w0 n:chat.t13.w0 1
+W2 n:chat.t13.w0 out:chat.t13.w1 1000
+W1 tok:chat.t13.w1 n:chat.t13.w1 1
+W2 n:chat.t13.w1 out:chat.t13.w2 1000
+W1 tok:chat.t13.w2 n:chat.t13.w2 1
+W2 n:chat.t13.w2 out:chat.t13.w3 1000
+W1 tok:chat.t13.w3 n:chat.t13.w3 1
+W2 n:chat.t13.w3 out:chat.t13.w4 1000
+W1 tok:chat.t13.w4 n:chat.t13.w4 1
+W2 n:chat.t13.w4 out:chat.t13.w5 1000
+W1 tok:chat.t13.w5 n:chat.t13.w5 1
+W2 n:chat.t13.w5 out:chat.t13.w6 1000
+W1 tok:chat.t13.w6 n:chat.t13.w6 1
+W2 n:chat.t13.w6 out:chat.t13.w7 1000
+W1 tok:chat.t13.w7 n:chat.t13.w7 1
+W2 n:chat.t13.w7 out:chat.t13.w8 1000
+W1 tok:chat.t13.w8 n:chat.t13.w8 1
+W2 n:chat.t13.w8 out:chat.t13.w9 1000
+W1 tok:chat.t13.w9 n:chat.t13.w9 1
+W2 n:chat.t13.w9 out:<end> 1000
+U out:chat.t13.w0 chat.t13.w0 1
+U out:chat.t13.w1 chat.t13.w1 1
+U out:chat.t13.w2 chat.t13.w2 1
+U out:chat.t13.w3 chat.t13.w3 1
+U out:chat.t13.w4 chat.t13.w4 1
+U out:chat.t13.w5 chat.t13.w5 1
+U out:chat.t13.w6 chat.t13.w6 1
+U out:chat.t13.w7 chat.t13.w7 1
+U out:chat.t13.w8 chat.t13.w8 1
+U out:chat.t13.w9 chat.t13.w9 1
+
+# topic chat.t14
+E pleasure tok:pleasure 1
+E meet tok:meet 1
+E introduce tok:introduce 1
+E nice tok:nice 1
+B pleasure -1000000000
+B meet -1000000000
+B introduce -1000000000
+B nice -1000000000
+V tok:pleasure chat.t14 2.5
+V tok:meet chat.t14 2.0
+V tok:introduce chat.t14 1.5
+V tok:nice chat.t14 1.0
+O chat.t14 top:chat.t14 100
+W1 top:chat.t14 n:chat.t14 1
+W2 n:chat.t14 out:chat.t14.w0 1
+E chat.t14.w0 tok:chat.t14.w0 1
+E chat.t14.w1 tok:chat.t14.w1 1
+E chat.t14.w2 tok:chat.t14.w2 1
+E chat.t14.w3 tok:chat.t14.w3 1
+E chat.t14.w4 tok:chat.t14.w4 1
+S chat.t14.w0 Nice
+S chat.t14.w1 to
+S chat.t14.w2 meet
+S chat.t14.w3 you
+S chat.t14.w4 too!
+W1 tok:chat.t14.w0 n:chat.t14.w0 1
+W2 n:chat.t14.w0 out:chat.t14.w1 1000
+W1 tok:chat.t14.w1 n:chat.t14.w1 1
+W2 n:chat.t14.w1 out:chat.t14.w2 1000
+W1 tok:chat.t14.w2 n:chat.t14.w2 1
+W2 n:chat.t14.w2 out:chat.t14.w3 1000
+W1 tok:chat.t14.w3 n:chat.t14.w3 1
+W2 n:chat.t14.w3 out:chat.t14.w4 1000
+W1 tok:chat.t14.w4 n:chat.t14.w4 1
+W2 n:chat.t14.w4 out:<end> 1000
+U out:chat.t14.w0 chat.t14.w0 1
+U out:chat.t14.w1 chat.t14.w1 1
+U out:chat.t14.w2 chat.t14.w2 1
+U out:chat.t14.w3 chat.t14.w3 1
+U out:chat.t14.w4 chat.t14.w4 1
+
+# topic chat.t15
+E age tok:age 1
+E born tok:born 1
+E birthday tok:birthday 1
+E old tok:old 1
+B age -1000000000
+B born -1000000000
+B birthday -1000000000
+B old -1000000000
+V tok:age chat.t15 2.5
+V tok:born chat.t15 2.5
+V tok:birthday chat.t15 2.5
+V tok:old chat.t15 2.0
+O chat.t15 top:chat.t15 100
+W1 top:chat.t15 n:chat.t15 1
+W2 n:chat.t15 out:chat.t15.w0 1
+E chat.t15.w0 tok:chat.t15.w0 1
+E chat.t15.w1 tok:chat.t15.w1 1
+E chat.t15.w2 tok:chat.t15.w2 1
+E chat.t15.w3 tok:chat.t15.w3 1
+E chat.t15.w4 tok:chat.t15.w4 1
+E chat.t15.w5 tok:chat.t15.w5 1
+E chat.t15.w6 tok:chat.t15.w6 1
+E chat.t15.w7 tok:chat.t15.w7 1
+E chat.t15.w8 tok:chat.t15.w8 1
+S chat.t15.w0 I
+S chat.t15.w1 was
+S chat.t15.w2 made
+S chat.t15.w3 recently,
+S chat.t15.w4 so
+S chat.t15.w5 I
+S chat.t15.w6 am
+S chat.t15.w7 very
+S chat.t15.w8 young.
+W1 tok:chat.t15.w0 n:chat.t15.w0 1
+W2 n:chat.t15.w0 out:chat.t15.w1 1000
+W1 tok:chat.t15.w1 n:chat.t15.w1 1
+W2 n:chat.t15.w1 out:chat.t15.w2 1000
+W1 tok:chat.t15.w2 n:chat.t15.w2 1
+W2 n:chat.t15.w2 out:chat.t15.w3 1000
+W1 tok:chat.t15.w3 n:chat.t15.w3 1
+W2 n:chat.t15.w3 out:chat.t15.w4 1000
+W1 tok:chat.t15.w4 n:chat.t15.w4 1
+W2 n:chat.t15.w4 out:chat.t15.w5 1000
+W1 tok:chat.t15.w5 n:chat.t15.w5 1
+W2 n:chat.t15.w5 out:chat.t15.w6 1000
+W1 tok:chat.t15.w6 n:chat.t15.w6 1
+W2 n:chat.t15.w6 out:chat.t15.w7 1000
+W1 tok:chat.t15.w7 n:chat.t15.w7 1
+W2 n:chat.t15.w7 out:chat.t15.w8 1000
+W1 tok:chat.t15.w8 n:chat.t15.w8 1
+W2 n:chat.t15.w8 out:<end> 1000
+U out:chat.t15.w0 chat.t15.w0 1
+U out:chat.t15.w1 chat.t15.w1 1
+U out:chat.t15.w2 chat.t15.w2 1
+U out:chat.t15.w3 chat.t15.w3 1
+U out:chat.t15.w4 chat.t15.w4 1
+U out:chat.t15.w5 chat.t15.w5 1
+U out:chat.t15.w6 chat.t15.w6 1
+U out:chat.t15.w7 chat.t15.w7 1
+U out:chat.t15.w8 chat.t15.w8 1
+
+# topic chat.t16
+E goodnight tok:goodnight 1
+E sleep tok:sleep 1
+E night tok:night 1
+E tonight tok:tonight 1
+B goodnight -1000000000
+B sleep -1000000000
+B night -1000000000
+B tonight -1000000000
+V tok:goodnight chat.t16 3.0
+V tok:sleep chat.t16 2.5
+V tok:night chat.t16 2.0
+V tok:tonight chat.t16 0.5
+O chat.t16 top:chat.t16 100
+W1 top:chat.t16 n:chat.t16 1
+W2 n:chat.t16 out:chat.t16.w0 1
+E chat.t16.w0 tok:chat.t16.w0 1
+E chat.t16.w1 tok:chat.t16.w1 1
+E chat.t16.w2 tok:chat.t16.w2 1
+E chat.t16.w3 tok:chat.t16.w3 1
+S chat.t16.w0 Good
+S chat.t16.w1 night!
+S chat.t16.w2 Sleep
+S chat.t16.w3 well.
+W1 tok:chat.t16.w0 n:chat.t16.w0 1
+W2 n:chat.t16.w0 out:chat.t16.w1 1000
+W1 tok:chat.t16.w1 n:chat.t16.w1 1
+W2 n:chat.t16.w1 out:chat.t16.w2 1000
+W1 tok:chat.t16.w2 n:chat.t16.w2 1
+W2 n:chat.t16.w2 out:chat.t16.w3 1000
+W1 tok:chat.t16.w3 n:chat.t16.w3 1
+W2 n:chat.t16.w3 out:<end> 1000
+U out:chat.t16.w0 chat.t16.w0 1
+U out:chat.t16.w1 chat.t16.w1 1
+U out:chat.t16.w2 chat.t16.w2 1
+U out:chat.t16.w3 chat.t16.w3 1
+
+# topic chat.t17
+E sorry tok:sorry 1
+E apologize tok:apologize 1
+E oops tok:oops 1
+E mistake tok:mistake 1
+B sorry -1000000000
+B apologize -1000000000
+B oops -1000000000
+B mistake -1000000000
+V tok:sorry chat.t17 3.0
+V tok:apologize chat.t17 3.0
+V tok:oops chat.t17 2.0
+V tok:mistake chat.t17 1.0
+O chat.t17 top:chat.t17 100
+W1 top:chat.t17 n:chat.t17 1
+W2 n:chat.t17 out:chat.t17.w0 1
+E chat.t17.w0 tok:chat.t17.w0 1
+E chat.t17.w1 tok:chat.t17.w1 1
+E chat.t17.w2 tok:chat.t17.w2 1
+E chat.t17.w3 tok:chat.t17.w3 1
+S chat.t17.w0 No
+S chat.t17.w1 problem
+S chat.t17.w2 at
+S chat.t17.w3 all.
+W1 tok:chat.t17.w0 n:chat.t17.w0 1
+W2 n:chat.t17.w0 out:chat.t17.w1 1000
+W1 tok:chat.t17.w1 n:chat.t17.w1 1
+W2 n:chat.t17.w1 out:chat.t17.w2 1000
+W1 tok:chat.t17.w2 n:chat.t17.w2 1
+W2 n:chat.t17.w2 out:chat.t17.w3 1000
+W1 tok:chat.t17.w3 n:chat.t17.w3 1
+W2 n:chat.t17.w3 out:<end> 1000
+U out:chat.t17.w0 chat.t17.w0 1
+U out:chat.t17.w1 chat.t17.w1 1
+U out:chat.t17.w2 chat.t17.w2 1
+U out:chat.t17.w3 chat.t17.w3 1

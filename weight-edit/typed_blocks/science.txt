@@ -747,3 +747,695 @@ U out:sci.t9.w6 sci.t9.w6 1
 U out:sci.t9.w7 sci.t9.w7 1
 U out:sci.t9.w8 sci.t9.w8 1
 U out:sci.t9.w9 sci.t9.w9 1
+
+# topic sci.t10
+E newton tok:newton 1
+E momentum tok:momentum 1
+E velocity tok:velocity 1
+E acceleration tok:acceleration 1
+E gravity tok:gravity 1
+E force tok:force 1
+B newton -1000000000
+B momentum -1000000000
+B velocity -1000000000
+B acceleration -1000000000
+B gravity -1000000000
+B force -1000000000
+V tok:newton sci.t10 2
+V tok:momentum sci.t10 2.5
+V tok:velocity sci.t10 2.5
+V tok:acceleration sci.t10 2.5
+V tok:gravity sci.t10 2
+V tok:force sci.t10 1.5
+O sci.t10 top:sci.t10 100
+W1 top:sci.t10 n:sci.t10 1
+W2 n:sci.t10 out:sci.t10.w0 1
+E sci.t10.w0 tok:sci.t10.w0 1
+E sci.t10.w1 tok:sci.t10.w1 1
+E sci.t10.w2 tok:sci.t10.w2 1
+E sci.t10.w3 tok:sci.t10.w3 1
+E sci.t10.w4 tok:sci.t10.w4 1
+E sci.t10.w5 tok:sci.t10.w5 1
+E sci.t10.w6 tok:sci.t10.w6 1
+E sci.t10.w7 tok:sci.t10.w7 1
+S sci.t10.w0 Gravity
+S sci.t10.w1 pulls
+S sci.t10.w2 objects
+S sci.t10.w3 with
+S sci.t10.w4 mass
+S sci.t10.w5 toward
+S sci.t10.w6 each
+S sci.t10.w7 other.
+W1 tok:sci.t10.w0 n:sci.t10.w0 1
+W2 n:sci.t10.w0 out:sci.t10.w1 1000
+W1 tok:sci.t10.w1 n:sci.t10.w1 1
+W2 n:sci.t10.w1 out:sci.t10.w2 1000
+W1 tok:sci.t10.w2 n:sci.t10.w2 1
+W2 n:sci.t10.w2 out:sci.t10.w3 1000
+W1 tok:sci.t10.w3 n:sci.t10.w3 1
+W2 n:sci.t10.w3 out:sci.t10.w4 1000
+W1 tok:sci.t10.w4 n:sci.t10.w4 1
+W2 n:sci.t10.w4 out:sci.t10.w5 1000
+W1 tok:sci.t10.w5 n:sci.t10.w5 1
+W2 n:sci.t10.w5 out:sci.t10.w6 1000
+W1 tok:sci.t10.w6 n:sci.t10.w6 1
+W2 n:sci.t10.w6 out:sci.t10.w7 1000
+W1 tok:sci.t10.w7 n:sci.t10.w7 1
+W2 n:sci.t10.w7 out:<end> 1000
+U out:sci.t10.w0 sci.t10.w0 1
+U out:sci.t10.w1 sci.t10.w1 1
+U out:sci.t10.w2 sci.t10.w2 1
+U out:sci.t10.w3 sci.t10.w3 1
+U out:sci.t10.w4 sci.t10.w4 1
+U out:sci.t10.w5 sci.t10.w5 1
+U out:sci.t10.w6 sci.t10.w6 1
+U out:sci.t10.w7 sci.t10.w7 1
+
+# topic sci.t11
+E catalyst tok:catalyst 1
+E oxidation tok:oxidation 1
+E molecule tok:molecule 1
+E molecular tok:molecular 1
+E reaction tok:reaction 1
+E acid tok:acid 1
+B catalyst -1000000000
+B oxidation -1000000000
+B molecule -1000000000
+B molecular -1000000000
+B reaction -1000000000
+B acid -1000000000
+V tok:catalyst sci.t11 3
+V tok:oxidation sci.t11 3
+V tok:molecule sci.t11 2.5
+V tok:molecular sci.t11 2
+V tok:reaction sci.t11 2
+V tok:acid sci.t11 2
+O sci.t11 top:sci.t11 100
+W1 top:sci.t11 n:sci.t11 1
+W2 n:sci.t11 out:sci.t11.w0 1
+E sci.t11.w0 tok:sci.t11.w0 1
+E sci.t11.w1 tok:sci.t11.w1 1
+E sci.t11.w2 tok:sci.t11.w2 1
+E sci.t11.w3 tok:sci.t11.w3 1
+E sci.t11.w4 tok:sci.t11.w4 1
+E sci.t11.w5 tok:sci.t11.w5 1
+E sci.t11.w6 tok:sci.t11.w6 1
+E sci.t11.w7 tok:sci.t11.w7 1
+E sci.t11.w8 tok:sci.t11.w8 1
+E sci.t11.w9 tok:sci.t11.w9 1
+E sci.t11.w10 tok:sci.t11.w10 1
+S sci.t11.w0 A
+S sci.t11.w1 catalyst
+S sci.t11.w2 speeds
+S sci.t11.w3 up
+S sci.t11.w4 a
+S sci.t11.w5 chemical
+S sci.t11.w6 reaction
+S sci.t11.w7 without
+S sci.t11.w8 being
+S sci.t11.w9 used
+S sci.t11.w10 up.
+W1 tok:sci.t11.w0 n:sci.t11.w0 1
+W2 n:sci.t11.w0 out:sci.t11.w1 1000
+W1 tok:sci.t11.w1 n:sci.t11.w1 1
+W2 n:sci.t11.w1 out:sci.t11.w2 1000
+W1 tok:sci.t11.w2 n:sci.t11.w2 1
+W2 n:sci.t11.w2 out:sci.t11.w3 1000
+W1 tok:sci.t11.w3 n:sci.t11.w3 1
+W2 n:sci.t11.w3 out:sci.t11.w4 1000
+W1 tok:sci.t11.w4 n:sci.t11.w4 1
+W2 n:sci.t11.w4 out:sci.t11.w5 1000
+W1 tok:sci.t11.w5 n:sci.t11.w5 1
+W2 n:sci.t11.w5 out:sci.t11.w6 1000
+W1 tok:sci.t11.w6 n:sci.t11.w6 1
+W2 n:sci.t11.w6 out:sci.t11.w7 1000
+W1 tok:sci.t11.w7 n:sci.t11.w7 1
+W2 n:sci.t11.w7 out:sci.t11.w8 1000
+W1 tok:sci.t11.w8 n:sci.t11.w8 1
+W2 n:sci.t11.w8 out:sci.t11.w9 1000
+W1 tok:sci.t11.w9 n:sci.t11.w9 1
+W2 n:sci.t11.w9 out:sci.t11.w10 1000
+W1 tok:sci.t11.w10 n:sci.t11.w10 1
+W2 n:sci.t11.w10 out:<end> 1000
+U out:sci.t11.w0 sci.t11.w0 1
+U out:sci.t11.w1 sci.t11.w1 1
+U out:sci.t11.w2 sci.t11.w2 1
+U out:sci.t11.w3 sci.t11.w3 1
+U out:sci.t11.w4 sci.t11.w4 1
+U out:sci.t11.w5 sci.t11.w5 1
+U out:sci.t11.w6 sci.t11.w6 1
+U out:sci.t11.w7 sci.t11.w7 1
+U out:sci.t11.w8 sci.t11.w8 1
+U out:sci.t11.w9 sci.t11.w9 1
+U out:sci.t11.w10 sci.t11.w10 1
+
+# topic sci.t12
+E brain tok:brain 1
+E neurons tok:neurons 1
+E neuron tok:neuron 1
+E cortex tok:cortex 1
+E synapse tok:synapse 1
+E nervous tok:nervous 1
+B brain -1000000000
+B neurons -1000000000
+B neuron -1000000000
+B cortex -1000000000
+B synapse -1000000000
+B nervous -1000000000
+V tok:brain sci.t12 3
+V tok:neurons sci.t12 3
+V tok:neuron sci.t12 3
+V tok:cortex sci.t12 3
+V tok:synapse sci.t12 3
+V tok:nervous sci.t12 2.5
+O sci.t12 top:sci.t12 100
+W1 top:sci.t12 n:sci.t12 1
+W2 n:sci.t12 out:sci.t12.w0 1
+E sci.t12.w0 tok:sci.t12.w0 1
+E sci.t12.w1 tok:sci.t12.w1 1
+E sci.t12.w2 tok:sci.t12.w2 1
+E sci.t12.w3 tok:sci.t12.w3 1
+E sci.t12.w4 tok:sci.t12.w4 1
+E sci.t12.w5 tok:sci.t12.w5 1
+E sci.t12.w6 tok:sci.t12.w6 1
+E sci.t12.w7 tok:sci.t12.w7 1
+E sci.t12.w8 tok:sci.t12.w8 1
+E sci.t12.w9 tok:sci.t12.w9 1
+E sci.t12.w10 tok:sci.t12.w10 1
+E sci.t12.w11 tok:sci.t12.w11 1
+S sci.t12.w0 The
+S sci.t12.w1 brain
+S sci.t12.w2 contains
+S sci.t12.w3 billions
+S sci.t12.w4 of
+S sci.t12.w5 neurons
+S sci.t12.w6 that
+S sci.t12.w7 send
+S sci.t12.w8 signals
+S sci.t12.w9 to
+S sci.t12.w10 each
+S sci.t12.w11 other.
+W1 tok:sci.t12.w0 n:sci.t12.w0 1
+W2 n:sci.t12.w0 out:sci.t12.w1 1000
+W1 tok:sci.t12.w1 n:sci.t12.w1 1
+W2 n:sci.t12.w1 out:sci.t12.w2 1000
+W1 tok:sci.t12.w2 n:sci.t12.w2 1
+W2 n:sci.t12.w2 out:sci.t12.w3 1000
+W1 tok:sci.t12.w3 n:sci.t12.w3 1
+W2 n:sci.t12.w3 out:sci.t12.w4 1000
+W1 tok:sci.t12.w4 n:sci.t12.w4 1
+W2 n:sci.t12.w4 out:sci.t12.w5 1000
+W1 tok:sci.t12.w5 n:sci.t12.w5 1
+W2 n:sci.t12.w5 out:sci.t12.w6 1000
+W1 tok:sci.t12.w6 n:sci.t12.w6 1
+W2 n:sci.t12.w6 out:sci.t12.w7 1000
+W1 tok:sci.t12.w7 n:sci.t12.w7 1
+W2 n:sci.t12.w7 out:sci.t12.w8 1000
+W1 tok:sci.t12.w8 n:sci.t12.w8 1
+W2 n:sci.t12.w8 out:sci.t12.w9 1000
+W1 tok:sci.t12.w9 n:sci.t12.w9 1
+W2 n:sci.t12.w9 out:sci.t12.w10 1000
+W1 tok:sci.t12.w10 n:sci.t12.w10 1
+W2 n:sci.t12.w10 out:sci.t12.w11 1000
+W1 tok:sci.t12.w11 n:sci.t12.w11 1
+W2 n:sci.t12.w11 out:<end> 1000
+U out:sci.t12.w0 sci.t12.w0 1
+U out:sci.t12.w1 sci.t12.w1 1
+U out:sci.t12.w2 sci.t12.w2 1
+U out:sci.t12.w3 sci.t12.w3 1
+U out:sci.t12.w4 sci.t12.w4 1
+U out:sci.t12.w5 sci.t12.w5 1
+U out:sci.t12.w6 sci.t12.w6 1
+U out:sci.t12.w7 sci.t12.w7 1
+U out:sci.t12.w8 sci.t12.w8 1
+U out:sci.t12.w9 sci.t12.w9 1
+U out:sci.t12.w10 sci.t12.w10 1
+U out:sci.t12.w11 sci.t12.w11 1
+
+# topic sci.t13
+E immune tok:immune 1
+E antibodies tok:antibodies 1
+E pathogen tok:pathogen 1
+E vaccine tok:vaccine 1
+E virus tok:virus 1
+E bacteria tok:bacteria 1
+B immune -1000000000
+B antibodies -1000000000
+B pathogen -1000000000
+B vaccine -1000000000
+B virus -1000000000
+B bacteria -1000000000
+V tok:immune sci.t13 3
+V tok:antibodies sci.t13 3
+V tok:pathogen sci.t13 2.5
+V tok:vaccine sci.t13 2
+V tok:virus sci.t13 1.5
+V tok:bacteria sci.t13 1.5
+O sci.t13 top:sci.t13 100
+W1 top:sci.t13 n:sci.t13 1
+W2 n:sci.t13 out:sci.t13.w0 1
+E sci.t13.w0 tok:sci.t13.w0 1
+E sci.t13.w1 tok:sci.t13.w1 1
+E sci.t13.w2 tok:sci.t13.w2 1
+E sci.t13.w3 tok:sci.t13.w3 1
+E sci.t13.w4 tok:sci.t13.w4 1
+E sci.t13.w5 tok:sci.t13.w5 1
+E sci.t13.w6 tok:sci.t13.w6 1
+E sci.t13.w7 tok:sci.t13.w7 1
+E sci.t13.w8 tok:sci.t13.w8 1
+E sci.t13.w9 tok:sci.t13.w9 1
+E sci.t13.w10 tok:sci.t13.w10 1
+S sci.t13.w0 Your
+S sci.t13.w1 immune
+S sci.t13.w2 system
+S sci.t13.w3 fights
+S sci.t13.w4 infections
+S sci.t13.w5 using
+S sci.t13.w6 white
+S sci.t13.w7 blood
+S sci.t13.w8 cells
+S sci.t13.w9 and
+S sci.t13.w10 antibodies.
+W1 tok:sci.t13.w0 n:sci.t13.w0 1
+W2 n:sci.t13.w0 out:sci.t13.w1 1000
+W1 tok:sci.t13.w1 n:sci.t13.w1 1
+W2 n:sci.t13.w1 out:sci.t13.w2 1000
+W1 tok:sci.t13.w2 n:sci.t13.w2 1
+W2 n:sci.t13.w2 out:sci.t13.w3 1000
+W1 tok:sci.t13.w3 n:sci.t13.w3 1
+W2 n:sci.t13.w3 out:sci.t13.w4 1000
+W1 tok:sci.t13.w4 n:sci.t13.w4 1
+W2 n:sci.t13.w4 out:sci.t13.w5 1000
+W1 tok:sci.t13.w5 n:sci.t13.w5 1
+W2 n:sci.t13.w5 out:sci.t13.w6 1000
+W1 tok:sci.t13.w6 n:sci.t13.w6 1
+W2 n:sci.t13.w6 out:sci.t13.w7 1000
+W1 tok:sci.t13.w7 n:sci.t13.w7 1
+W2 n:sci.t13.w7 out:sci.t13.w8 1000
+W1 tok:sci.t13.w8 n:sci.t13.w8 1
+W2 n:sci.t13.w8 out:sci.t13.w9 1000
+W1 tok:sci.t13.w9 n:sci.t13.w9 1
+W2 n:sci.t13.w9 out:sci.t13.w10 1000
+W1 tok:sci.t13.w10 n:sci.t13.w10 1
+W2 n:sci.t13.w10 out:<end> 1000
+U out:sci.t13.w0 sci.t13.w0 1
+U out:sci.t13.w1 sci.t13.w1 1
+U out:sci.t13.w2 sci.t13.w2 1
+U out:sci.t13.w3 sci.t13.w3 1
+U out:sci.t13.w4 sci.t13.w4 1
+U out:sci.t13.w5 sci.t13.w5 1
+U out:sci.t13.w6 sci.t13.w6 1
+U out:sci.t13.w7 sci.t13.w7 1
+U out:sci.t13.w8 sci.t13.w8 1
+U out:sci.t13.w9 sci.t13.w9 1
+U out:sci.t13.w10 sci.t13.w10 1
+
+# topic sci.t14
+E volcano tok:volcano 1
+E magma tok:magma 1
+E volcanic tok:volcanic 1
+E lava tok:lava 1
+E eruption tok:eruption 1
+E crater tok:crater 1
+B volcano -1000000000
+B magma -1000000000
+B volcanic -1000000000
+B lava -1000000000
+B eruption -1000000000
+B crater -1000000000
+V tok:volcano sci.t14 3
+V tok:magma sci.t14 3
+V tok:volcanic sci.t14 3
+V tok:lava sci.t14 2.5
+V tok:eruption sci.t14 2.5
+V tok:crater sci.t14 2
+O sci.t14 top:sci.t14 100
+W1 top:sci.t14 n:sci.t14 1
+W2 n:sci.t14 out:sci.t14.w0 1
+E sci.t14.w0 tok:sci.t14.w0 1
+E sci.t14.w1 tok:sci.t14.w1 1
+E sci.t14.w2 tok:sci.t14.w2 1
+E sci.t14.w3 tok:sci.t14.w3 1
+E sci.t14.w4 tok:sci.t14.w4 1
+E sci.t14.w5 tok:sci.t14.w5 1
+E sci.t14.w6 tok:sci.t14.w6 1
+E sci.t14.w7 tok:sci.t14.w7 1
+E sci.t14.w8 tok:sci.t14.w8 1
+E sci.t14.w9 tok:sci.t14.w9 1
+E sci.t14.w10 tok:sci.t14.w10 1
+E sci.t14.w11 tok:sci.t14.w11 1
+E sci.t14.w12 tok:sci.t14.w12 1
+E sci.t14.w13 tok:sci.t14.w13 1
+S sci.t14.w0 Magma
+S sci.t14.w1 is
+S sci.t14.w2 molten
+S sci.t14.w3 rock
+S sci.t14.w4 below
+S sci.t14.w5 the
+S sci.t14.w6 surface,
+S sci.t14.w7 while
+S sci.t14.w8 lava
+S sci.t14.w9 is
+S sci.t14.w10 molten
+S sci.t14.w11 rock
+S sci.t14.w12 above
+S sci.t14.w13 it.
+W1 tok:sci.t14.w0 n:sci.t14.w0 1
+W2 n:sci.t14.w0 out:sci.t14.w1 1000
+W1 tok:sci.t14.w1 n:sci.t14.w1 1
+W2 n:sci.t14.w1 out:sci.t14.w2 1000
+W1 tok:sci.t14.w2 n:sci.t14.w2 1
+W2 n:sci.t14.w2 out:sci.t14.w3 1000
+W1 tok:sci.t14.w3 n:sci.t14.w3 1
+W2 n:sci.t14.w3 out:sci.t14.w4 1000
+W1 tok:sci.t14.w4 n:sci.t14.w4 1
+W2 n:sci.t14.w4 out:sci.t14.w5 1000
+W1 tok:sci.t14.w5 n:sci.t14.w5 1
+W2 n:sci.t14.w5 out:sci.t14.w6 1000
+W1 tok:sci.t14.w6 n:sci.t14.w6 1
+W2 n:sci.t14.w6 out:sci.t14.w7 1000
+W1 tok:sci.t14.w7 n:sci.t14.w7 1
+W2 n:sci.t14.w7 out:sci.t14.w8 1000
+W1 tok:sci.t14.w8 n:sci.t14.w8 1
+W2 n:sci.t14.w8 out:sci.t14.w9 1000
+W1 tok:sci.t14.w9 n:sci.t14.w9 1
+W2 n:sci.t14.w9 out:sci.t14.w10 1000
+W1 tok:sci.t14.w10 n:sci.t14.w10 1
+W2 n:sci.t14.w10 out:sci.t14.w11 1000
+W1 tok:sci.t14.w11 n:sci.t14.w11 1
+W2 n:sci.t14.w11 out:sci.t14.w12 1000
+W1 tok:sci.t14.w12 n:sci.t14.w12 1
+W2 n:sci.t14.w12 out:sci.t14.w13 1000
+W1 tok:sci.t14.w13 n:sci.t14.w13 1
+W2 n:sci.t14.w13 out:<end> 1000
+U out:sci.t14.w0 sci.t14.w0 1
+U out:sci.t14.w1 sci.t14.w1 1
+U out:sci.t14.w2 sci.t14.w2 1
+U out:sci.t14.w3 sci.t14.w3 1
+U out:sci.t14.w4 sci.t14.w4 1
+U out:sci.t14.w5 sci.t14.w5 1
+U out:sci.t14.w6 sci.t14.w6 1
+U out:sci.t14.w7 sci.t14.w7 1
+U out:sci.t14.w8 sci.t14.w8 1
+U out:sci.t14.w9 sci.t14.w9 1
+U out:sci.t14.w10 sci.t14.w10 1
+U out:sci.t14.w11 sci.t14.w11 1
+U out:sci.t14.w12 sci.t14.w12 1
+U out:sci.t14.w13 sci.t14.w13 1
+
+# topic sci.t15
+E fusion tok:fusion 1
+E supernova tok:supernova 1
+E stellar tok:stellar 1
+E star tok:star 1
+E sun tok:sun 1
+E nuclear tok:nuclear 1
+B fusion -1000000000
+B supernova -1000000000
+B stellar -1000000000
+B star -1000000000
+B sun -1000000000
+B nuclear -1000000000
+V tok:fusion sci.t15 3
+V tok:supernova sci.t15 3
+V tok:stellar sci.t15 3
+V tok:star sci.t15 1.5
+V tok:sun sci.t15 1.5
+V tok:nuclear sci.t15 1.5
+O sci.t15 top:sci.t15 100
+W1 top:sci.t15 n:sci.t15 1
+W2 n:sci.t15 out:sci.t15.w0 1
+E sci.t15.w0 tok:sci.t15.w0 1
+E sci.t15.w1 tok:sci.t15.w1 1
+E sci.t15.w2 tok:sci.t15.w2 1
+E sci.t15.w3 tok:sci.t15.w3 1
+E sci.t15.w4 tok:sci.t15.w4 1
+E sci.t15.w5 tok:sci.t15.w5 1
+E sci.t15.w6 tok:sci.t15.w6 1
+E sci.t15.w7 tok:sci.t15.w7 1
+E sci.t15.w8 tok:sci.t15.w8 1
+S sci.t15.w0 The
+S sci.t15.w1 Sun
+S sci.t15.w2 fuses
+S sci.t15.w3 hydrogen
+S sci.t15.w4 into
+S sci.t15.w5 helium
+S sci.t15.w6 in
+S sci.t15.w7 its
+S sci.t15.w8 core.
+W1 tok:sci.t15.w0 n:sci.t15.w0 1
+W2 n:sci.t15.w0 out:sci.t15.w1 1000
+W1 tok:sci.t15.w1 n:sci.t15.w1 1
+W2 n:sci.t15.w1 out:sci.t15.w2 1000
+W1 tok:sci.t15.w2 n:sci.t15.w2 1
+W2 n:sci.t15.w2 out:sci.t15.w3 1000
+W1 tok:sci.t15.w3 n:sci.t15.w3 1
+W2 n:sci.t15.w3 out:sci.t15.w4 1000
+W1 tok:sci.t15.w4 n:sci.t15.w4 1
+W2 n:sci.t15.w4 out:sci.t15.w5 1000
+W1 tok:sci.t15.w5 n:sci.t15.w5 1
+W2 n:sci.t15.w5 out:sci.t15.w6 1000
+W1 tok:sci.t15.w6 n:sci.t15.w6 1
+W2 n:sci.t15.w6 out:sci.t15.w7 1000
+W1 tok:sci.t15.w7 n:sci.t15.w7 1
+W2 n:sci.t15.w7 out:sci.t15.w8 1000
+W1 tok:sci.t15.w8 n:sci.t15.w8 1
+W2 n:sci.t15.w8 out:<end> 1000
+U out:sci.t15.w0 sci.t15.w0 1
+U out:sci.t15.w1 sci.t15.w1 1
+U out:sci.t15.w2 sci.t15.w2 1
+U out:sci.t15.w3 sci.t15.w3 1
+U out:sci.t15.w4 sci.t15.w4 1
+U out:sci.t15.w5 sci.t15.w5 1
+U out:sci.t15.w6 sci.t15.w6 1
+U out:sci.t15.w7 sci.t15.w7 1
+U out:sci.t15.w8 sci.t15.w8 1
+
+# topic sci.t16
+E tides tok:tides 1
+E tide tok:tide 1
+E lunar tok:lunar 1
+E waves tok:waves 1
+E moon tok:moon 1
+E ocean tok:ocean 1
+B tides -1000000000
+B tide -1000000000
+B lunar -1000000000
+B waves -1000000000
+B moon -1000000000
+B ocean -1000000000
+V tok:tides sci.t16 3
+V tok:tide sci.t16 3
+V tok:lunar sci.t16 2
+V tok:waves sci.t16 1.5
+V tok:moon sci.t16 1
+V tok:ocean sci.t16 1
+O sci.t16 top:sci.t16 100
+W1 top:sci.t16 n:sci.t16 1
+W2 n:sci.t16 out:sci.t16.w0 1
+E sci.t16.w0 tok:sci.t16.w0 1
+E sci.t16.w1 tok:sci.t16.w1 1
+E sci.t16.w2 tok:sci.t16.w2 1
+E sci.t16.w3 tok:sci.t16.w3 1
+E sci.t16.w4 tok:sci.t16.w4 1
+E sci.t16.w5 tok:sci.t16.w5 1
+E sci.t16.w6 tok:sci.t16.w6 1
+E sci.t16.w7 tok:sci.t16.w7 1
+E sci.t16.w8 tok:sci.t16.w8 1
+E sci.t16.w9 tok:sci.t16.w9 1
+E sci.t16.w10 tok:sci.t16.w10 1
+E sci.t16.w11 tok:sci.t16.w11 1
+S sci.t16.w0 Ocean
+S sci.t16.w1 tides
+S sci.t16.w2 are
+S sci.t16.w3 mainly
+S sci.t16.w4 caused
+S sci.t16.w5 by
+S sci.t16.w6 the
+S sci.t16.w7 gravitational
+S sci.t16.w8 pull
+S sci.t16.w9 of
+S sci.t16.w10 the
+S sci.t16.w11 Moon.
+W1 tok:sci.t16.w0 n:sci.t16.w0 1
+W2 n:sci.t16.w0 out:sci.t16.w1 1000
+W1 tok:sci.t16.w1 n:sci.t16.w1 1
+W2 n:sci.t16.w1 out:sci.t16.w2 1000
+W1 tok:sci.t16.w2 n:sci.t16.w2 1
+W2 n:sci.t16.w2 out:sci.t16.w3 1000
+W1 tok:sci.t16.w3 n:sci.t16.w3 1
+W2 n:sci.t16.w3 out:sci.t16.w4 1000
+W1 tok:sci.t16.w4 n:sci.t16.w4 1
+W2 n:sci.t16.w4 out:sci.t16.w5 1000
+W1 tok:sci.t16.w5 n:sci.t16.w5 1
+W2 n:sci.t16.w5 out:sci.t16.w6 1000
+W1 tok:sci.t16.w6 n:sci.t16.w6 1
+W2 n:sci.t16.w6 out:sci.t16.w7 1000
+W1 tok:sci.t16.w7 n:sci.t16.w7 1
+W2 n:sci.t16.w7 out:sci.t16.w8 1000
+W1 tok:sci.t16.w8 n:sci.t16.w8 1
+W2 n:sci.t16.w8 out:sci.t16.w9 1000
+W1 tok:sci.t16.w9 n:sci.t16.w9 1
+W2 n:sci.t16.w9 out:sci.t16.w10 1000
+W1 tok:sci.t16.w10 n:sci.t16.w10 1
+W2 n:sci.t16.w10 out:sci.t16.w11 1000
+W1 tok:sci.t16.w11 n:sci.t16.w11 1
+W2 n:sci.t16.w11 out:<end> 1000
+U out:sci.t16.w0 sci.t16.w0 1
+U out:sci.t16.w1 sci.t16.w1 1
+U out:sci.t16.w2 sci.t16.w2 1
+U out:sci.t16.w3 sci.t16.w3 1
+U out:sci.t16.w4 sci.t16.w4 1
+U out:sci.t16.w5 sci.t16.w5 1
+U out:sci.t16.w6 sci.t16.w6 1
+U out:sci.t16.w7 sci.t16.w7 1
+U out:sci.t16.w8 sci.t16.w8 1
+U out:sci.t16.w9 sci.t16.w9 1
+U out:sci.t16.w10 sci.t16.w10 1
+U out:sci.t16.w11 sci.t16.w11 1
+
+# topic sci.t17
+E relativity tok:relativity 1
+E einstein tok:einstein 1
+E photon tok:photon 1
+E spacetime tok:spacetime 1
+E quantum tok:quantum 1
+E wavelength tok:wavelength 1
+B relativity -1000000000
+B einstein -1000000000
+B photon -1000000000
+B spacetime -1000000000
+B quantum -1000000000
+B wavelength -1000000000
+V tok:relativity sci.t17 3
+V tok:einstein sci.t17 2
+V tok:photon sci.t17 3
+V tok:spacetime sci.t17 3
+V tok:quantum sci.t17 2.5
+V tok:wavelength sci.t17 2.5
+O sci.t17 top:sci.t17 100
+W1 top:sci.t17 n:sci.t17 1
+W2 n:sci.t17 out:sci.t17.w0 1
+E sci.t17.w0 tok:sci.t17.w0 1
+E sci.t17.w1 tok:sci.t17.w1 1
+E sci.t17.w2 tok:sci.t17.w2 1
+E sci.t17.w3 tok:sci.t17.w3 1
+E sci.t17.w4 tok:sci.t17.w4 1
+E sci.t17.w5 tok:sci.t17.w5 1
+E sci.t17.w6 tok:sci.t17.w6 1
+E sci.t17.w7 tok:sci.t17.w7 1
+E sci.t17.w8 tok:sci.t17.w8 1
+E sci.t17.w9 tok:sci.t17.w9 1
+E sci.t17.w10 tok:sci.t17.w10 1
+S sci.t17.w0 Nothing
+S sci.t17.w1 with
+S sci.t17.w2 mass
+S sci.t17.w3 can
+S sci.t17.w4 travel
+S sci.t17.w5 faster
+S sci.t17.w6 than
+S sci.t17.w7 the
+S sci.t17.w8 speed
+S sci.t17.w9 of
+S sci.t17.w10 light.
+W1 tok:sci.t17.w0 n:sci.t17.w0 1
+W2 n:sci.t17.w0 out:sci.t17.w1 1000
+W1 tok:sci.t17.w1 n:sci.t17.w1 1
+W2 n:sci.t17.w1 out:sci.t17.w2 1000
+W1 tok:sci.t17.w2 n:sci.t17.w2 1
+W2 n:sci.t17.w2 out:sci.t17.w3 1000
+W1 tok:sci.t17.w3 n:sci.t17.w3 1
+W2 n:sci.t17.w3 out:sci.t17.w4 1000
+W1 tok:sci.t17.w4 n:sci.t17.w4 1
+W2 n:sci.t17.w4 out:sci.t17.w5 1000
+W1 tok:sci.t17.w5 n:sci.t17.w5 1
+W2 n:sci.t17.w5 out:sci.t17.w6 1000
+W1 tok:sci.t17.w6 n:sci.t17.w6 1
+W2 n:sci.t17.w6 out:sci.t17.w7 1000
+W1 tok:sci.t17.w7 n:sci.t17.w7 1
+W2 n:sci.t17.w7 out:sci.t17.w8 1000
+W1 tok:sci.t17.w8 n:sci.t17.w8 1
+W2 n:sci.t17.w8 out:sci.t17.w9 1000
+W1 tok:sci.t17.w9 n:sci.t17.w9 1
+W2 n:sci.t17.w9 out:sci.t17.w10 1000
+W1 tok:sci.t17.w10 n:sci.t17.w10 1
+W2 n:sci.t17.w10 out:<end> 1000
+U out:sci.t17.w0 sci.t17.w0 1
+U out:sci.t17.w1 sci.t17.w1 1
+U out:sci.t17.w2 sci.t17.w2 1
+U out:sci.t17.w3 sci.t17.w3 1
+U out:sci.t17.w4 sci.t17.w4 1
+U out:sci.t17.w5 sci.t17.w5 1
+U out:sci.t17.w6 sci.t17.w6 1
+U out:sci.t17.w7 sci.t17.w7 1
+U out:sci.t17.w8 sci.t17.w8 1
+U out:sci.t17.w9 sci.t17.w9 1
+U out:sci.t17.w10 sci.t17.w10 1
+
+# topic sci.t18
+E mitochondria tok:mitochondria 1
+E organelle tok:organelle 1
+E cytoplasm tok:cytoplasm 1
+E membrane tok:membrane 1
+E nucleus tok:nucleus 1
+E cell tok:cell 1
+B mitochondria -1000000000
+B organelle -1000000000
+B cytoplasm -1000000000
+B membrane -1000000000
+B nucleus -1000000000
+B cell -1000000000
+V tok:mitochondria sci.t18 3
+V tok:organelle sci.t18 3
+V tok:cytoplasm sci.t18 3
+V tok:membrane sci.t18 2
+V tok:nucleus sci.t18 1.5
+V tok:cell sci.t18 1
+O sci.t18 top:sci.t18 100
+W1 top:sci.t18 n:sci.t18 1
+W2 n:sci.t18 out:sci.t18.w0 1
+E sci.t18.w0 tok:sci.t18.w0 1
+E sci.t18.w1 tok:sci.t18.w1 1
+E sci.t18.w2 tok:sci.t18.w2 1
+E sci.t18.w3 tok:sci.t18.w3 1
+E sci.t18.w4 tok:sci.t18.w4 1
+E sci.t18.w5 tok:sci.t18.w5 1
+E sci.t18.w6 tok:sci.t18.w6 1
+E sci.t18.w7 tok:sci.t18.w7 1
+E sci.t18.w8 tok:sci.t18.w8 1
+S sci.t18.w0 Mitochondria
+S sci.t18.w1 release
+S sci.t18.w2 energy
+S sci.t18.w3 from
+S sci.t18.w4 food
+S sci.t18.w5 to
+S sci.t18.w6 power
+S sci.t18.w7 the
+S sci.t18.w8 cell.
+W1 tok:sci.t18.w0 n:sci.t18.w0 1
+W2 n:sci.t18.w0 out:sci.t18.w1 1000
+W1 tok:sci.t18.w1 n:sci.t18.w1 1
+W2 n:sci.t18.w1 out:sci.t18.w2 1000
+W1 tok:sci.t18.w2 n:sci.t18.w2 1
+W2 n:sci.t18.w2 out:sci.t18.w3 1000
+W1 tok:sci.t18.w3 n:sci.t18.w3 1
+W2 n:sci.t18.w3 out:sci.t18.w4 1000
+W1 tok:sci.t18.w4 n:sci.t18.w4 1
+W2 n:sci.t18.w4 out:sci.t18.w5 1000
+W1 tok:sci.t18.w5 n:sci.t18.w5 1
+W2 n:sci.t18.w5 out:sci.t18.w6 1000
+W1 tok:sci.t18.w6 n:sci.t18.w6 1
+W2 n:sci.t18.w6 out:sci.t18.w7 1000
+W1 tok:sci.t18.w7 n:sci.t18.w7 1
+W2 n:sci.t18.w7 out:sci.t18.w8 1000
+W1 tok:sci.t18.w8 n:sci.t18.w8 1
+W2 n:sci.t18.w8 out:<end> 1000
+U out:sci.t18.w0 sci.t18.w0 1
+U out:sci.t18.w1 sci.t18.w1 1
+U out:sci.t18.w2 sci.t18.w2 1
+U out:sci.t18.w3 sci.t18.w3 1
+U out:sci.t18.w4 sci.t18.w4 1
+U out:sci.t18.w5 sci.t18.w5 1
+U out:sci.t18.w6 sci.t18.w6 1
+U out:sci.t18.w7 sci.t18.w7 1
+U out:sci.t18.w8 sci.t18.w8 1
