@@ -1,0 +1,129 @@
+# core2_order.txt - typed by hand: word order and composed replies.
+# Position embeddings: each position gets its own slot.
+P 0 pos:0 1
+P 1 pos:1 1
+P 2 pos:2 1
+P 3 pos:3 1
+P 4 pos:4 1
+P 5 pos:5 1
+P 6 pos:6 1
+P 7 pos:7 1
+P 8 pos:8 1
+P 9 pos:9 1
+P 10 pos:10 1
+P 11 pos:11 1
+P 12 pos:12 1
+P 13 pos:13 1
+P 14 pos:14 1
+P 15 pos:15 1
+# Head B: every word looks at the word just before it.
+QB pos:1 d:1 20
+QB pos:2 d:2 20
+QB pos:3 d:3 20
+QB pos:4 d:4 20
+QB pos:5 d:5 20
+QB pos:6 d:6 20
+QB pos:7 d:7 20
+QB pos:8 d:8 20
+QB pos:9 d:9 20
+QB pos:10 d:10 20
+QB pos:11 d:11 20
+QB pos:12 d:12 20
+QB pos:13 d:13 20
+QB pos:14 d:14 20
+QB pos:15 d:15 20
+KB pos:0 d:1 20
+KB pos:1 d:2 20
+KB pos:2 d:3 20
+KB pos:3 d:4 20
+KB pos:4 d:5 20
+KB pos:5 d:6 20
+KB pos:6 d:7 20
+KB pos:7 d:8 20
+KB pos:8 d:9 20
+KB pos:9 d:10 20
+KB pos:10 d:11 20
+KB pos:11 d:12 20
+KB pos:12 d:13 20
+KB pos:13 d:14 20
+KB pos:14 d:15 20
+# Head B carries the previous word's identity for dog/man.
+VB tok:dog hb:dog 1
+VB tok:man hb:man 1
+OB hb:dog prev:dog 1
+OB hb:man prev:man 1
+# The three words.
+E dog tok:dog 1
+E bites tok:bites 1
+E bit tok:bites 1
+E man tok:man 1
+B dog -1000000000
+B bites -1000000000
+B bit -1000000000
+B man -1000000000
+# Layer-1 bigram neurons: who bit whom. Fires only when "bites" follows that word.
+W1 tok:bites n:db 1
+W1 prev:dog n:db 1
+G n:db -1.5
+W2 n:db ord:db 8
+W1 tok:bites n:mb 1
+W1 prev:man n:mb 1
+G n:mb -1.5
+W2 n:mb ord:mb 8
+# Layer 2: collect the order flag into a topic.
+L2 V ord:db ordb 1
+L2 V ord:mb ormb 1
+L2 O ordb top:ordb 100
+L2 O ormb top:ormb 100
+# Both orders start the same composed sentence.
+L2 W1 top:ordb n2:ordb 1
+L2 W2 n2:ordb out:sh.The 1
+L2 W1 top:ormb n2:ormb 1
+L2 W2 n2:ormb out:sh.The 1
+# Shared sentence pieces.
+E sh.The tok:sh.The 1
+E sh.bit tok:sh.bit 1
+E w.dog tok:w.dog 1
+E w.man tok:w.man 1
+E end.dogp tok:end.dogp 1
+E end.manp tok:end.manp 1
+S sh.The The
+S sh.bit bit
+S w.dog dog
+S w.man man
+S end.dogp the dog.
+S end.manp the man.
+# After "The": pick the subject from the order flag (AND-gate).
+L2 W1 tok:sh.The n2:thedog 1
+L2 W1 top:ordb n2:thedog 0.004
+L2 G n2:thedog -1
+L2 W2 n2:thedog out:w.dog 1000
+L2 W1 tok:sh.The n2:theman 1
+L2 W1 top:ormb n2:theman 0.004
+L2 G n2:theman -1
+L2 W2 n2:theman out:w.man 1000
+# Subject -> "bit".
+W1 tok:w.dog n:wdog 1
+W2 n:wdog out:sh.bit 1000
+W1 tok:w.man n:wman 1
+W2 n:wman out:sh.bit 1000
+# After "bit": the object is the other one (AND-gate).
+L2 W1 tok:sh.bit n2:bitman 1
+L2 W1 top:ordb n2:bitman 0.004
+L2 G n2:bitman -1
+L2 W2 n2:bitman out:end.manp 1000
+L2 W1 tok:sh.bit n2:bitdog 1
+L2 W1 top:ormb n2:bitdog 0.004
+L2 G n2:bitdog -1
+L2 W2 n2:bitdog out:end.dogp 1000
+# Close the sentence.
+W1 tok:end.dogp n:edp 1
+W2 n:edp out:<end> 1000
+W1 tok:end.manp n:emp 1
+W2 n:emp out:<end> 1000
+U out:sh.The sh.The 1
+U out:sh.bit sh.bit 1
+U out:w.dog w.dog 1
+U out:w.man w.man 1
+U out:end.dogp end.dogp 1
+U out:end.manp end.manp 1
