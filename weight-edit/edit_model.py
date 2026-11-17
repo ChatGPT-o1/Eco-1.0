@@ -4,6 +4,7 @@
     python edit_model.py --out smol-edited.gguf
 
 What it does, in order (everything is closed form: averages, covariances and linear solves; no gradients):
+  0. Code rules  ~300 hand-written Python rules as first-layer neurons (from code_edit.py; --no-code-rules to skip).
   1. Re-encode   every weight to 4-bit with error-compensated rounding, so less is lost than with plain rounding.
   2. Read        record the model's last-layer activity on the example prompts in packs/ (behaviors.json, capitals.json).
   3. Write       behaviors: four hand-built neurons (direct yes/no answers decided by the model's own possible/impossible
@@ -643,7 +644,7 @@ def main():
     ap.add_argument('--llama-cpp', default='/home/user/ggml-org/llama.cpp')
     ap.add_argument('--cache', default=os.path.join(HERE, 'cache'))
     ap.add_argument('--no-facts', action='store_true'); ap.add_argument('--no-behaviors', action='store_true')
-    ap.add_argument('--no-report', action='store_true')
+    ap.add_argument('--no-report', action='store_true'); ap.add_argument('--no-code-rules', action='store_true')
     ap.add_argument('--threads', type=int, default=os.cpu_count() or 4)
     a = ap.parse_args()
     torch.set_num_threads(a.threads)
@@ -652,10 +653,16 @@ def main():
     lab = Lab(a)
     cached = lambda name: os.path.join(a.cache, name)
 
+    # 0. hand-written Python rules: one first-layer neuron per rule (see code_edit.py)
+    rc = 'reencoded.pt'
+    if not a.no_code_rules:
+        import code_edit
+        used, skipped = code_edit.write_rules(lab); rc = 'reencoded_rules.pt'
+        log(f'0. code rules: wrote {used} hand-written rule neurons into layer 0 ({skipped} skipped)')
     # 1. re-encode
-    if os.path.exists(cached('reencoded.pt')): codes = torch.load(cached('reencoded.pt')); log('1. re-encode: cached')
+    if os.path.exists(cached(rc)): codes = torch.load(cached(rc)); log('1. re-encode: cached')
     else:
-        log('1. re-encode: error-compensated 4-bit rounding, layer by layer'); codes = reencode(lab); torch.save(codes, cached('reencoded.pt'))
+        log('1. re-encode: error-compensated 4-bit rounding, layer by layer'); codes = reencode(lab); torch.save(codes, cached(rc))
     lab.set_weights(codes, last_mlp=lab.last_fp())
 
     # 2. read
