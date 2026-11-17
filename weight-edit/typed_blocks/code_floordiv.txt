@@ -5,11 +5,9 @@ E whole tok:whole 1
 B floor -1000000000
 B integer -1000000000
 B whole -1000000000
-V tok:floor cg.fdv 3
-V tok:integer cg.fdv 2
-V tok:whole cg.fdv 2
-V tok:function cg.fdv 1
-V tok:write cg.fdv 0.5
+V tok:floor cg.fdv 9
+V tok:integer cg.fdv 6
+V tok:whole cg.fdv 6
 O cg.fdv top:cg.fdv 100
 W1 top:cg.fdv n:cg.fdv 1
 W2 n:cg.fdv out:c.def 1

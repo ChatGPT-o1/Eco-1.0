@@ -5,11 +5,9 @@ E raised tok:raised 1
 B power -1000000000
 B exponent -1000000000
 B raised -1000000000
-V tok:power cg.pow 3
-V tok:exponent cg.pow 3
-V tok:raised cg.pow 2
-V tok:function cg.pow 1
-V tok:write cg.pow 0.5
+V tok:power cg.pow 8
+V tok:exponent cg.pow 8
+V tok:raised cg.pow 6
 O cg.pow top:cg.pow 100
 W1 top:cg.pow n:cg.pow 1
 W2 n:cg.pow out:c.def 1

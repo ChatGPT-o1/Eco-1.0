@@ -5,11 +5,9 @@ E mod tok:mod 1
 B modulo -1000000000
 B remainder -1000000000
 B mod -1000000000
-V tok:modulo cg.mod 3
-V tok:remainder cg.mod 3
-V tok:mod cg.mod 3
-V tok:function cg.mod 1
-V tok:write cg.mod 0.5
+V tok:modulo cg.mod 8
+V tok:remainder cg.mod 8
+V tok:mod cg.mod 8
 O cg.mod top:cg.mod 100
 W1 top:cg.mod n:cg.mod 1
 W2 n:cg.mod out:c.def 1

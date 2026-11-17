@@ -5,11 +5,9 @@ E lesser tok:lesser 1
 B less -1000000000
 B smaller -1000000000
 B lesser -1000000000
-V tok:less cg.lt 3
-V tok:smaller cg.lt 3
-V tok:lesser cg.lt 3
-V tok:function cg.lt 1
-V tok:write cg.lt 0.5
+V tok:less cg.lt 8
+V tok:smaller cg.lt 8
+V tok:lesser cg.lt 8
 O cg.lt top:cg.lt 100
 W1 top:cg.lt n:cg.lt 1
 W2 n:cg.lt out:c.def 1

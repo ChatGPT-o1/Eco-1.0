@@ -5,11 +5,9 @@ E quotient tok:quotient 1
 B divide -1000000000
 B division -1000000000
 B quotient -1000000000
-V tok:divide cg.div 3
-V tok:division cg.div 3
-V tok:quotient cg.div 3
-V tok:function cg.div 1
-V tok:write cg.div 0.5
+V tok:divide cg.div 8
+V tok:division cg.div 8
+V tok:quotient cg.div 8
 O cg.div top:cg.div 100
 W1 top:cg.div n:cg.div 1
 W2 n:cg.div out:c.def 1

@@ -7,11 +7,9 @@ E difference tok:difference 1
 B subtract -1000000000
 B minus -1000000000
 B difference -1000000000
-V tok:subtract cg.sub 3
-V tok:minus cg.sub 3
-V tok:difference cg.sub 3
-V tok:function cg.sub 1
-V tok:write cg.sub 0.5
+V tok:subtract cg.sub 8
+V tok:minus cg.sub 8
+V tok:difference cg.sub 8
 O cg.sub top:cg.sub 100
 W1 top:cg.sub n:cg.sub 1
 W2 n:cg.sub out:c.def 1

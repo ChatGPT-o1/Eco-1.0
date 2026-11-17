@@ -36,11 +36,9 @@ E plus tok:plus 1
 B add -1000000000
 B sum -1000000000
 B plus -1000000000
-V tok:add cg.add 3
-V tok:sum cg.add 3
-V tok:plus cg.add 2
-V tok:function cg.add 1
-V tok:write cg.add 0.5
+V tok:add cg.add 8
+V tok:sum cg.add 8
+V tok:plus cg.add 6
 O cg.add top:cg.add 100
 W1 top:cg.add n:cg.add 1
 W2 n:cg.add out:c.def 1

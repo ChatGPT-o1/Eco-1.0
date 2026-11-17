@@ -5,11 +5,9 @@ E product tok:product 1
 B multiply -1000000000
 B times -1000000000
 B product -1000000000
-V tok:multiply cg.mul 3
-V tok:times cg.mul 3
-V tok:product cg.mul 3
-V tok:function cg.mul 1
-V tok:write cg.mul 0.5
+V tok:multiply cg.mul 8
+V tok:times cg.mul 8
+V tok:product cg.mul 8
 O cg.mul top:cg.mul 100
 W1 top:cg.mul n:cg.mul 1
 W2 n:cg.mul out:c.def 1

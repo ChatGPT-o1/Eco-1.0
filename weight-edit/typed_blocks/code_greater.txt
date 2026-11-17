@@ -5,11 +5,9 @@ E larger tok:larger 1
 B greater -1000000000
 B bigger -1000000000
 B larger -1000000000
-V tok:greater cg.gt 3
-V tok:bigger cg.gt 3
-V tok:larger cg.gt 3
-V tok:function cg.gt 1
-V tok:write cg.gt 0.5
+V tok:greater cg.gt 8
+V tok:bigger cg.gt 8
+V tok:larger cg.gt 8
 O cg.gt top:cg.gt 100
 W1 top:cg.gt n:cg.gt 1
 W2 n:cg.gt out:c.def 1

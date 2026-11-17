@@ -5,11 +5,9 @@ E same tok:same 1
 B equal -1000000000
 B equals -1000000000
 B same -1000000000
-V tok:equal cg.eq 3
-V tok:equals cg.eq 3
-V tok:same cg.eq 2
-V tok:function cg.eq 1
-V tok:write cg.eq 0.5
+V tok:equal cg.eq 8
+V tok:equals cg.eq 8
+V tok:same cg.eq 6
 O cg.eq top:cg.eq 100
 W1 top:cg.eq n:cg.eq 1
 W2 n:cg.eq out:c.def 1

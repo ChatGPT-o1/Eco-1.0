@@ -5,11 +5,9 @@ E differ tok:differ 1
 B different -1000000000
 B unequal -1000000000
 B differ -1000000000
-V tok:different cg.ne 3
-V tok:unequal cg.ne 3
-V tok:differ cg.ne 2
-V tok:function cg.ne 1
-V tok:write cg.ne 0.5
+V tok:different cg.ne 8
+V tok:unequal cg.ne 8
+V tok:differ cg.ne 6
 O cg.ne top:cg.ne 100
 W1 top:cg.ne n:cg.ne 1
 W2 n:cg.ne out:c.def 1
