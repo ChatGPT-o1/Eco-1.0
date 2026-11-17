@@ -41,3 +41,23 @@ U out:sci.t0.w2 sci.t0.w2 1
 U out:sci.t0.w3 sci.t0.w3 1
 U out:sci.t0.w4 sci.t0.w4 1
 U out:sci.t0.w5 sci.t0.w5 1
+
+Meaning columns (round 2). A word can also carry hand-typed MEANING, in a slot shared by many words:
+
+E hungry sem:food 3
+E lunch sem:food 3
+E tasty sem:food 2
+B hungry -1000000000
+B lunch -1000000000
+B tasty -1000000000
+
+and a catch-all topic for the subject listens to that slot:
+
+# topic food.g (catch-all)
+V sem:food food.g 1
+O food.g top:food.g 100
+W1 top:food.g n:food.g 1
+W2 n:food.g out:food.g.w0 1
+...reply chain exactly like any other topic...
+
+So a message full of food words with no exact match still lands on a food answer.
