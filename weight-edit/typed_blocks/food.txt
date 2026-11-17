@@ -1123,4 +1123,547 @@ U out:food.t11.w9 food.t11.w9 1
 U out:food.t11.w10 food.t11.w10 1
 U out:food.t11.w11 food.t11.w11 1
 
-@@APPEND@@
+# topic food.t12
+E chicken tok:chicken 1
+E poultry tok:poultry 1
+E undercooked tok:undercooked 1
+E thaw tok:thaw 1
+E thawing tok:thawing 1
+E raw tok:raw 1
+B chicken -1000000000
+B poultry -1000000000
+B undercooked -1000000000
+B thaw -1000000000
+B thawing -1000000000
+B raw -1000000000
+V tok:chicken food.t12 2.5
+V tok:poultry food.t12 2.5
+V tok:undercooked food.t12 2.5
+V tok:thaw food.t12 2.0
+V tok:thawing food.t12 2.0
+V tok:raw food.t12 1.0
+O food.t12 top:food.t12 100
+W1 top:food.t12 n:food.t12 1
+W2 n:food.t12 out:food.t12.w0 1
+E food.t12.w0 tok:food.t12.w0 1
+E food.t12.w1 tok:food.t12.w1 1
+E food.t12.w2 tok:food.t12.w2 1
+E food.t12.w3 tok:food.t12.w3 1
+E food.t12.w4 tok:food.t12.w4 1
+E food.t12.w5 tok:food.t12.w5 1
+E food.t12.w6 tok:food.t12.w6 1
+E food.t12.w7 tok:food.t12.w7 1
+E food.t12.w8 tok:food.t12.w8 1
+E food.t12.w9 tok:food.t12.w9 1
+E food.t12.w10 tok:food.t12.w10 1
+E food.t12.w11 tok:food.t12.w11 1
+E food.t12.w12 tok:food.t12.w12 1
+E food.t12.w13 tok:food.t12.w13 1
+E food.t12.w14 tok:food.t12.w14 1
+E food.t12.w15 tok:food.t12.w15 1
+S food.t12.w0 Cook
+S food.t12.w1 chicken
+S food.t12.w2 until
+S food.t12.w3 its
+S food.t12.w4 thickest
+S food.t12.w5 part
+S food.t12.w6 reaches
+S food.t12.w7 an
+S food.t12.w8 internal
+S food.t12.w9 temperature
+S food.t12.w10 of
+S food.t12.w11 at
+S food.t12.w12 least
+S food.t12.w13 74
+S food.t12.w14 degrees
+S food.t12.w15 Celsius.
+W1 tok:food.t12.w0 n:food.t12.w0 1
+W2 n:food.t12.w0 out:food.t12.w1 1000
+W1 tok:food.t12.w1 n:food.t12.w1 1
+W2 n:food.t12.w1 out:food.t12.w2 1000
+W1 tok:food.t12.w2 n:food.t12.w2 1
+W2 n:food.t12.w2 out:food.t12.w3 1000
+W1 tok:food.t12.w3 n:food.t12.w3 1
+W2 n:food.t12.w3 out:food.t12.w4 1000
+W1 tok:food.t12.w4 n:food.t12.w4 1
+W2 n:food.t12.w4 out:food.t12.w5 1000
+W1 tok:food.t12.w5 n:food.t12.w5 1
+W2 n:food.t12.w5 out:food.t12.w6 1000
+W1 tok:food.t12.w6 n:food.t12.w6 1
+W2 n:food.t12.w6 out:food.t12.w7 1000
+W1 tok:food.t12.w7 n:food.t12.w7 1
+W2 n:food.t12.w7 out:food.t12.w8 1000
+W1 tok:food.t12.w8 n:food.t12.w8 1
+W2 n:food.t12.w8 out:food.t12.w9 1000
+W1 tok:food.t12.w9 n:food.t12.w9 1
+W2 n:food.t12.w9 out:food.t12.w10 1000
+W1 tok:food.t12.w10 n:food.t12.w10 1
+W2 n:food.t12.w10 out:food.t12.w11 1000
+W1 tok:food.t12.w11 n:food.t12.w11 1
+W2 n:food.t12.w11 out:food.t12.w12 1000
+W1 tok:food.t12.w12 n:food.t12.w12 1
+W2 n:food.t12.w12 out:food.t12.w13 1000
+W1 tok:food.t12.w13 n:food.t12.w13 1
+W2 n:food.t12.w13 out:food.t12.w14 1000
+W1 tok:food.t12.w14 n:food.t12.w14 1
+W2 n:food.t12.w14 out:food.t12.w15 1000
+W1 tok:food.t12.w15 n:food.t12.w15 1
+W2 n:food.t12.w15 out:<end> 1000
+U out:food.t12.w0 food.t12.w0 1
+U out:food.t12.w1 food.t12.w1 1
+U out:food.t12.w2 food.t12.w2 1
+U out:food.t12.w3 food.t12.w3 1
+U out:food.t12.w4 food.t12.w4 1
+U out:food.t12.w5 food.t12.w5 1
+U out:food.t12.w6 food.t12.w6 1
+U out:food.t12.w7 food.t12.w7 1
+U out:food.t12.w8 food.t12.w8 1
+U out:food.t12.w9 food.t12.w9 1
+U out:food.t12.w10 food.t12.w10 1
+U out:food.t12.w11 food.t12.w11 1
+U out:food.t12.w12 food.t12.w12 1
+U out:food.t12.w13 food.t12.w13 1
+U out:food.t12.w14 food.t12.w14 1
+U out:food.t12.w15 food.t12.w15 1
+
+# topic food.t13
+E soup tok:soup 1
+E broth tok:broth 1
+E stock tok:stock 1
+E simmer tok:simmer 1
+E bouillon tok:bouillon 1
+B soup -1000000000
+B broth -1000000000
+B stock -1000000000
+B simmer -1000000000
+B bouillon -1000000000
+V tok:soup food.t13 3.0
+V tok:broth food.t13 2.0
+V tok:stock food.t13 2.5
+V tok:simmer food.t13 1.5
+V tok:bouillon food.t13 2.5
+O food.t13 top:food.t13 100
+W1 top:food.t13 n:food.t13 1
+W2 n:food.t13 out:food.t13.w0 1
+E food.t13.w0 tok:food.t13.w0 1
+E food.t13.w1 tok:food.t13.w1 1
+E food.t13.w2 tok:food.t13.w2 1
+E food.t13.w3 tok:food.t13.w3 1
+E food.t13.w4 tok:food.t13.w4 1
+E food.t13.w5 tok:food.t13.w5 1
+E food.t13.w6 tok:food.t13.w6 1
+E food.t13.w7 tok:food.t13.w7 1
+E food.t13.w8 tok:food.t13.w8 1
+E food.t13.w9 tok:food.t13.w9 1
+E food.t13.w10 tok:food.t13.w10 1
+E food.t13.w11 tok:food.t13.w11 1
+S food.t13.w0 Simmer
+S food.t13.w1 the
+S food.t13.w2 stock
+S food.t13.w3 gently
+S food.t13.w4 for
+S food.t13.w5 an
+S food.t13.w6 hour
+S food.t13.w7 so
+S food.t13.w8 the
+S food.t13.w9 flavor
+S food.t13.w10 develops
+S food.t13.w11 slowly.
+W1 tok:food.t13.w0 n:food.t13.w0 1
+W2 n:food.t13.w0 out:food.t13.w1 1000
+W1 tok:food.t13.w1 n:food.t13.w1 1
+W2 n:food.t13.w1 out:food.t13.w2 1000
+W1 tok:food.t13.w2 n:food.t13.w2 1
+W2 n:food.t13.w2 out:food.t13.w3 1000
+W1 tok:food.t13.w3 n:food.t13.w3 1
+W2 n:food.t13.w3 out:food.t13.w4 1000
+W1 tok:food.t13.w4 n:food.t13.w4 1
+W2 n:food.t13.w4 out:food.t13.w5 1000
+W1 tok:food.t13.w5 n:food.t13.w5 1
+W2 n:food.t13.w5 out:food.t13.w6 1000
+W1 tok:food.t13.w6 n:food.t13.w6 1
+W2 n:food.t13.w6 out:food.t13.w7 1000
+W1 tok:food.t13.w7 n:food.t13.w7 1
+W2 n:food.t13.w7 out:food.t13.w8 1000
+W1 tok:food.t13.w8 n:food.t13.w8 1
+W2 n:food.t13.w8 out:food.t13.w9 1000
+W1 tok:food.t13.w9 n:food.t13.w9 1
+W2 n:food.t13.w9 out:food.t13.w10 1000
+W1 tok:food.t13.w10 n:food.t13.w10 1
+W2 n:food.t13.w10 out:food.t13.w11 1000
+W1 tok:food.t13.w11 n:food.t13.w11 1
+W2 n:food.t13.w11 out:<end> 1000
+U out:food.t13.w0 food.t13.w0 1
+U out:food.t13.w1 food.t13.w1 1
+U out:food.t13.w2 food.t13.w2 1
+U out:food.t13.w3 food.t13.w3 1
+U out:food.t13.w4 food.t13.w4 1
+U out:food.t13.w5 food.t13.w5 1
+U out:food.t13.w6 food.t13.w6 1
+U out:food.t13.w7 food.t13.w7 1
+U out:food.t13.w8 food.t13.w8 1
+U out:food.t13.w9 food.t13.w9 1
+U out:food.t13.w10 food.t13.w10 1
+U out:food.t13.w11 food.t13.w11 1
+
+# topic food.t14
+E cumin tok:cumin 1
+E paprika tok:paprika 1
+E oregano tok:oregano 1
+E spice tok:spice 1
+E seasoning tok:seasoning 1
+E herbs tok:herbs 1
+B cumin -1000000000
+B paprika -1000000000
+B oregano -1000000000
+B spice -1000000000
+B seasoning -1000000000
+B herbs -1000000000
+V tok:cumin food.t14 3.0
+V tok:paprika food.t14 3.0
+V tok:oregano food.t14 3.0
+V tok:spice food.t14 2.0
+V tok:seasoning food.t14 2.0
+V tok:herbs food.t14 2.0
+O food.t14 top:food.t14 100
+W1 top:food.t14 n:food.t14 1
+W2 n:food.t14 out:food.t14.w0 1
+E food.t14.w0 tok:food.t14.w0 1
+E food.t14.w1 tok:food.t14.w1 1
+E food.t14.w2 tok:food.t14.w2 1
+E food.t14.w3 tok:food.t14.w3 1
+E food.t14.w4 tok:food.t14.w4 1
+E food.t14.w5 tok:food.t14.w5 1
+E food.t14.w6 tok:food.t14.w6 1
+E food.t14.w7 tok:food.t14.w7 1
+E food.t14.w8 tok:food.t14.w8 1
+E food.t14.w9 tok:food.t14.w9 1
+E food.t14.w10 tok:food.t14.w10 1
+E food.t14.w11 tok:food.t14.w11 1
+E food.t14.w12 tok:food.t14.w12 1
+E food.t14.w13 tok:food.t14.w13 1
+S food.t14.w0 Toast
+S food.t14.w1 whole
+S food.t14.w2 spices
+S food.t14.w3 in
+S food.t14.w4 a
+S food.t14.w5 dry
+S food.t14.w6 pan
+S food.t14.w7 briefly
+S food.t14.w8 to
+S food.t14.w9 release
+S food.t14.w10 their
+S food.t14.w11 oils
+S food.t14.w12 before
+S food.t14.w13 grinding.
+W1 tok:food.t14.w0 n:food.t14.w0 1
+W2 n:food.t14.w0 out:food.t14.w1 1000
+W1 tok:food.t14.w1 n:food.t14.w1 1
+W2 n:food.t14.w1 out:food.t14.w2 1000
+W1 tok:food.t14.w2 n:food.t14.w2 1
+W2 n:food.t14.w2 out:food.t14.w3 1000
+W1 tok:food.t14.w3 n:food.t14.w3 1
+W2 n:food.t14.w3 out:food.t14.w4 1000
+W1 tok:food.t14.w4 n:food.t14.w4 1
+W2 n:food.t14.w4 out:food.t14.w5 1000
+W1 tok:food.t14.w5 n:food.t14.w5 1
+W2 n:food.t14.w5 out:food.t14.w6 1000
+W1 tok:food.t14.w6 n:food.t14.w6 1
+W2 n:food.t14.w6 out:food.t14.w7 1000
+W1 tok:food.t14.w7 n:food.t14.w7 1
+W2 n:food.t14.w7 out:food.t14.w8 1000
+W1 tok:food.t14.w8 n:food.t14.w8 1
+W2 n:food.t14.w8 out:food.t14.w9 1000
+W1 tok:food.t14.w9 n:food.t14.w9 1
+W2 n:food.t14.w9 out:food.t14.w10 1000
+W1 tok:food.t14.w10 n:food.t14.w10 1
+W2 n:food.t14.w10 out:food.t14.w11 1000
+W1 tok:food.t14.w11 n:food.t14.w11 1
+W2 n:food.t14.w11 out:food.t14.w12 1000
+W1 tok:food.t14.w12 n:food.t14.w12 1
+W2 n:food.t14.w12 out:food.t14.w13 1000
+W1 tok:food.t14.w13 n:food.t14.w13 1
+W2 n:food.t14.w13 out:<end> 1000
+U out:food.t14.w0 food.t14.w0 1
+U out:food.t14.w1 food.t14.w1 1
+U out:food.t14.w2 food.t14.w2 1
+U out:food.t14.w3 food.t14.w3 1
+U out:food.t14.w4 food.t14.w4 1
+U out:food.t14.w5 food.t14.w5 1
+U out:food.t14.w6 food.t14.w6 1
+U out:food.t14.w7 food.t14.w7 1
+U out:food.t14.w8 food.t14.w8 1
+U out:food.t14.w9 food.t14.w9 1
+U out:food.t14.w10 food.t14.w10 1
+U out:food.t14.w11 food.t14.w11 1
+U out:food.t14.w12 food.t14.w12 1
+U out:food.t14.w13 food.t14.w13 1
+
+# topic food.t15
+E cake tok:cake 1
+E frosting tok:frosting 1
+E sponge tok:sponge 1
+E dessert tok:dessert 1
+E cupcakes tok:cupcakes 1
+E sweet tok:sweet 1
+B cake -1000000000
+B frosting -1000000000
+B sponge -1000000000
+B dessert -1000000000
+B cupcakes -1000000000
+B sweet -1000000000
+V tok:cake food.t15 3.0
+V tok:frosting food.t15 2.5
+V tok:sponge food.t15 2.0
+V tok:dessert food.t15 2.0
+V tok:cupcakes food.t15 3.0
+V tok:sweet food.t15 1.0
+O food.t15 top:food.t15 100
+W1 top:food.t15 n:food.t15 1
+W2 n:food.t15 out:food.t15.w0 1
+E food.t15.w0 tok:food.t15.w0 1
+E food.t15.w1 tok:food.t15.w1 1
+E food.t15.w2 tok:food.t15.w2 1
+E food.t15.w3 tok:food.t15.w3 1
+E food.t15.w4 tok:food.t15.w4 1
+E food.t15.w5 tok:food.t15.w5 1
+E food.t15.w6 tok:food.t15.w6 1
+E food.t15.w7 tok:food.t15.w7 1
+E food.t15.w8 tok:food.t15.w8 1
+E food.t15.w9 tok:food.t15.w9 1
+E food.t15.w10 tok:food.t15.w10 1
+E food.t15.w11 tok:food.t15.w11 1
+E food.t15.w12 tok:food.t15.w12 1
+S food.t15.w0 Let
+S food.t15.w1 cakes
+S food.t15.w2 cool
+S food.t15.w3 completely
+S food.t15.w4 before
+S food.t15.w5 frosting
+S food.t15.w6 them,
+S food.t15.w7 or
+S food.t15.w8 the
+S food.t15.w9 frosting
+S food.t15.w10 will
+S food.t15.w11 slide
+S food.t15.w12 off.
+W1 tok:food.t15.w0 n:food.t15.w0 1
+W2 n:food.t15.w0 out:food.t15.w1 1000
+W1 tok:food.t15.w1 n:food.t15.w1 1
+W2 n:food.t15.w1 out:food.t15.w2 1000
+W1 tok:food.t15.w2 n:food.t15.w2 1
+W2 n:food.t15.w2 out:food.t15.w3 1000
+W1 tok:food.t15.w3 n:food.t15.w3 1
+W2 n:food.t15.w3 out:food.t15.w4 1000
+W1 tok:food.t15.w4 n:food.t15.w4 1
+W2 n:food.t15.w4 out:food.t15.w5 1000
+W1 tok:food.t15.w5 n:food.t15.w5 1
+W2 n:food.t15.w5 out:food.t15.w6 1000
+W1 tok:food.t15.w6 n:food.t15.w6 1
+W2 n:food.t15.w6 out:food.t15.w7 1000
+W1 tok:food.t15.w7 n:food.t15.w7 1
+W2 n:food.t15.w7 out:food.t15.w8 1000
+W1 tok:food.t15.w8 n:food.t15.w8 1
+W2 n:food.t15.w8 out:food.t15.w9 1000
+W1 tok:food.t15.w9 n:food.t15.w9 1
+W2 n:food.t15.w9 out:food.t15.w10 1000
+W1 tok:food.t15.w10 n:food.t15.w10 1
+W2 n:food.t15.w10 out:food.t15.w11 1000
+W1 tok:food.t15.w11 n:food.t15.w11 1
+W2 n:food.t15.w11 out:food.t15.w12 1000
+W1 tok:food.t15.w12 n:food.t15.w12 1
+W2 n:food.t15.w12 out:<end> 1000
+U out:food.t15.w0 food.t15.w0 1
+U out:food.t15.w1 food.t15.w1 1
+U out:food.t15.w2 food.t15.w2 1
+U out:food.t15.w3 food.t15.w3 1
+U out:food.t15.w4 food.t15.w4 1
+U out:food.t15.w5 food.t15.w5 1
+U out:food.t15.w6 food.t15.w6 1
+U out:food.t15.w7 food.t15.w7 1
+U out:food.t15.w8 food.t15.w8 1
+U out:food.t15.w9 food.t15.w9 1
+U out:food.t15.w10 food.t15.w10 1
+U out:food.t15.w11 food.t15.w11 1
+U out:food.t15.w12 food.t15.w12 1
+
+# topic food.t16
+E freeze tok:freeze 1
+E freezer tok:freezer 1
+E refrigerator tok:refrigerator 1
+E fridge tok:fridge 1
+E store tok:store 1
+E airtight tok:airtight 1
+B freeze -1000000000
+B freezer -1000000000
+B refrigerator -1000000000
+B fridge -1000000000
+B store -1000000000
+B airtight -1000000000
+V tok:freeze food.t16 2.5
+V tok:freezer food.t16 2.0
+V tok:refrigerator food.t16 2.0
+V tok:fridge food.t16 2.0
+V tok:store food.t16 1.5
+V tok:airtight food.t16 2.0
+O food.t16 top:food.t16 100
+W1 top:food.t16 n:food.t16 1
+W2 n:food.t16 out:food.t16.w0 1
+E food.t16.w0 tok:food.t16.w0 1
+E food.t16.w1 tok:food.t16.w1 1
+E food.t16.w2 tok:food.t16.w2 1
+E food.t16.w3 tok:food.t16.w3 1
+E food.t16.w4 tok:food.t16.w4 1
+E food.t16.w5 tok:food.t16.w5 1
+E food.t16.w6 tok:food.t16.w6 1
+E food.t16.w7 tok:food.t16.w7 1
+E food.t16.w8 tok:food.t16.w8 1
+E food.t16.w9 tok:food.t16.w9 1
+E food.t16.w10 tok:food.t16.w10 1
+E food.t16.w11 tok:food.t16.w11 1
+S food.t16.w0 Freeze
+S food.t16.w1 cooked
+S food.t16.w2 soup
+S food.t16.w3 in
+S food.t16.w4 airtight
+S food.t16.w5 containers,
+S food.t16.w6 leaving
+S food.t16.w7 space
+S food.t16.w8 for
+S food.t16.w9 it
+S food.t16.w10 to
+S food.t16.w11 expand.
+W1 tok:food.t16.w0 n:food.t16.w0 1
+W2 n:food.t16.w0 out:food.t16.w1 1000
+W1 tok:food.t16.w1 n:food.t16.w1 1
+W2 n:food.t16.w1 out:food.t16.w2 1000
+W1 tok:food.t16.w2 n:food.t16.w2 1
+W2 n:food.t16.w2 out:food.t16.w3 1000
+W1 tok:food.t16.w3 n:food.t16.w3 1
+W2 n:food.t16.w3 out:food.t16.w4 1000
+W1 tok:food.t16.w4 n:food.t16.w4 1
+W2 n:food.t16.w4 out:food.t16.w5 1000
+W1 tok:food.t16.w5 n:food.t16.w5 1
+W2 n:food.t16.w5 out:food.t16.w6 1000
+W1 tok:food.t16.w6 n:food.t16.w6 1
+W2 n:food.t16.w6 out:food.t16.w7 1000
+W1 tok:food.t16.w7 n:food.t16.w7 1
+W2 n:food.t16.w7 out:food.t16.w8 1000
+W1 tok:food.t16.w8 n:food.t16.w8 1
+W2 n:food.t16.w8 out:food.t16.w9 1000
+W1 tok:food.t16.w9 n:food.t16.w9 1
+W2 n:food.t16.w9 out:food.t16.w10 1000
+W1 tok:food.t16.w10 n:food.t16.w10 1
+W2 n:food.t16.w10 out:food.t16.w11 1000
+W1 tok:food.t16.w11 n:food.t16.w11 1
+W2 n:food.t16.w11 out:<end> 1000
+U out:food.t16.w0 food.t16.w0 1
+U out:food.t16.w1 food.t16.w1 1
+U out:food.t16.w2 food.t16.w2 1
+U out:food.t16.w3 food.t16.w3 1
+U out:food.t16.w4 food.t16.w4 1
+U out:food.t16.w5 food.t16.w5 1
+U out:food.t16.w6 food.t16.w6 1
+U out:food.t16.w7 food.t16.w7 1
+U out:food.t16.w8 food.t16.w8 1
+U out:food.t16.w9 food.t16.w9 1
+U out:food.t16.w10 food.t16.w10 1
+U out:food.t16.w11 food.t16.w11 1
+
+# topic food.t17
+E sauce tok:sauce 1
+E gravy tok:gravy 1
+E roux tok:roux 1
+E hollandaise tok:hollandaise 1
+E emulsify tok:emulsify 1
+E bechamel tok:bechamel 1
+B sauce -1000000000
+B gravy -1000000000
+B roux -1000000000
+B hollandaise -1000000000
+B emulsify -1000000000
+B bechamel -1000000000
+V tok:sauce food.t17 2.5
+V tok:gravy food.t17 3.0
+V tok:roux food.t17 3.0
+V tok:hollandaise food.t17 3.0
+V tok:emulsify food.t17 2.5
+V tok:bechamel food.t17 3.0
+O food.t17 top:food.t17 100
+W1 top:food.t17 n:food.t17 1
+W2 n:food.t17 out:food.t17.w0 1
+E food.t17.w0 tok:food.t17.w0 1
+E food.t17.w1 tok:food.t17.w1 1
+E food.t17.w2 tok:food.t17.w2 1
+E food.t17.w3 tok:food.t17.w3 1
+E food.t17.w4 tok:food.t17.w4 1
+E food.t17.w5 tok:food.t17.w5 1
+E food.t17.w6 tok:food.t17.w6 1
+E food.t17.w7 tok:food.t17.w7 1
+E food.t17.w8 tok:food.t17.w8 1
+E food.t17.w9 tok:food.t17.w9 1
+E food.t17.w10 tok:food.t17.w10 1
+E food.t17.w11 tok:food.t17.w11 1
+E food.t17.w12 tok:food.t17.w12 1
+E food.t17.w13 tok:food.t17.w13 1
+E food.t17.w14 tok:food.t17.w14 1
+S food.t17.w0 Cook
+S food.t17.w1 equal
+S food.t17.w2 parts
+S food.t17.w3 flour
+S food.t17.w4 and
+S food.t17.w5 butter
+S food.t17.w6 into
+S food.t17.w7 a
+S food.t17.w8 roux,
+S food.t17.w9 then
+S food.t17.w10 whisk
+S food.t17.w11 in
+S food.t17.w12 warm
+S food.t17.w13 milk
+S food.t17.w14 slowly.
+W1 tok:food.t17.w0 n:food.t17.w0 1
+W2 n:food.t17.w0 out:food.t17.w1 1000
+W1 tok:food.t17.w1 n:food.t17.w1 1
+W2 n:food.t17.w1 out:food.t17.w2 1000
+W1 tok:food.t17.w2 n:food.t17.w2 1
+W2 n:food.t17.w2 out:food.t17.w3 1000
+W1 tok:food.t17.w3 n:food.t17.w3 1
+W2 n:food.t17.w3 out:food.t17.w4 1000
+W1 tok:food.t17.w4 n:food.t17.w4 1
+W2 n:food.t17.w4 out:food.t17.w5 1000
+W1 tok:food.t17.w5 n:food.t17.w5 1
+W2 n:food.t17.w5 out:food.t17.w6 1000
+W1 tok:food.t17.w6 n:food.t17.w6 1
+W2 n:food.t17.w6 out:food.t17.w7 1000
+W1 tok:food.t17.w7 n:food.t17.w7 1
+W2 n:food.t17.w7 out:food.t17.w8 1000
+W1 tok:food.t17.w8 n:food.t17.w8 1
+W2 n:food.t17.w8 out:food.t17.w9 1000
+W1 tok:food.t17.w9 n:food.t17.w9 1
+W2 n:food.t17.w9 out:food.t17.w10 1000
+W1 tok:food.t17.w10 n:food.t17.w10 1
+W2 n:food.t17.w10 out:food.t17.w11 1000
+W1 tok:food.t17.w11 n:food.t17.w11 1
+W2 n:food.t17.w11 out:food.t17.w12 1000
+W1 tok:food.t17.w12 n:food.t17.w12 1
+W2 n:food.t17.w12 out:food.t17.w13 1000
+W1 tok:food.t17.w13 n:food.t17.w13 1
+W2 n:food.t17.w13 out:food.t17.w14 1000
+W1 tok:food.t17.w14 n:food.t17.w14 1
+W2 n:food.t17.w14 out:<end> 1000
+U out:food.t17.w0 food.t17.w0 1
+U out:food.t17.w1 food.t17.w1 1
+U out:food.t17.w2 food.t17.w2 1
+U out:food.t17.w3 food.t17.w3 1
+U out:food.t17.w4 food.t17.w4 1
+U out:food.t17.w5 food.t17.w5 1
+U out:food.t17.w6 food.t17.w6 1
+U out:food.t17.w7 food.t17.w7 1
+U out:food.t17.w8 food.t17.w8 1
+U out:food.t17.w9 food.t17.w9 1
+U out:food.t17.w10 food.t17.w10 1
+U out:food.t17.w11 food.t17.w11 1
+U out:food.t17.w12 food.t17.w12 1
+U out:food.t17.w13 food.t17.w13 1
+U out:food.t17.w14 food.t17.w14 1
