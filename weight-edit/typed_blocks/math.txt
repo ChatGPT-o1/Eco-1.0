@@ -912,3 +912,432 @@ U out:mat.t11.w8 mat.t11.w8 1
 U out:mat.t11.w9 mat.t11.w9 1
 U out:mat.t11.w10 mat.t11.w10 1
 U out:mat.t11.w11 mat.t11.w11 1
+# topic mat.t12
+E rectangle tok:rectangle 1
+E area tok:area 1
+E length tok:length 1
+E width tok:width 1
+E perimeter tok:perimeter 1
+B rectangle -1000000000
+B area -1000000000
+B length -1000000000
+B width -1000000000
+B perimeter -1000000000
+V tok:rectangle mat.t12 2
+V tok:area mat.t12 1
+V tok:length mat.t12 1
+V tok:width mat.t12 1.5
+V tok:perimeter mat.t12 1
+O mat.t12 top:mat.t12 100
+W1 top:mat.t12 n:mat.t12 1
+W2 n:mat.t12 out:mat.t12.w0 1
+E mat.t12.w0 tok:mat.t12.w0 1
+E mat.t12.w1 tok:mat.t12.w1 1
+E mat.t12.w2 tok:mat.t12.w2 1
+E mat.t12.w3 tok:mat.t12.w3 1
+E mat.t12.w4 tok:mat.t12.w4 1
+E mat.t12.w5 tok:mat.t12.w5 1
+E mat.t12.w6 tok:mat.t12.w6 1
+E mat.t12.w7 tok:mat.t12.w7 1
+E mat.t12.w8 tok:mat.t12.w8 1
+S mat.t12.w0 The
+S mat.t12.w1 area
+S mat.t12.w2 of
+S mat.t12.w3 a
+S mat.t12.w4 rectangle
+S mat.t12.w5 is
+S mat.t12.w6 length
+S mat.t12.w7 times
+S mat.t12.w8 width.
+W1 tok:mat.t12.w0 n:mat.t12.w0 1
+W2 n:mat.t12.w0 out:mat.t12.w1 1000
+W1 tok:mat.t12.w1 n:mat.t12.w1 1
+W2 n:mat.t12.w1 out:mat.t12.w2 1000
+W1 tok:mat.t12.w2 n:mat.t12.w2 1
+W2 n:mat.t12.w2 out:mat.t12.w3 1000
+W1 tok:mat.t12.w3 n:mat.t12.w3 1
+W2 n:mat.t12.w3 out:mat.t12.w4 1000
+W1 tok:mat.t12.w4 n:mat.t12.w4 1
+W2 n:mat.t12.w4 out:mat.t12.w5 1000
+W1 tok:mat.t12.w5 n:mat.t12.w5 1
+W2 n:mat.t12.w5 out:mat.t12.w6 1000
+W1 tok:mat.t12.w6 n:mat.t12.w6 1
+W2 n:mat.t12.w6 out:mat.t12.w7 1000
+W1 tok:mat.t12.w7 n:mat.t12.w7 1
+W2 n:mat.t12.w7 out:mat.t12.w8 1000
+W1 tok:mat.t12.w8 n:mat.t12.w8 1
+W2 n:mat.t12.w8 out:<end> 1000
+U out:mat.t12.w0 mat.t12.w0 1
+U out:mat.t12.w1 mat.t12.w1 1
+U out:mat.t12.w2 mat.t12.w2 1
+U out:mat.t12.w3 mat.t12.w3 1
+U out:mat.t12.w4 mat.t12.w4 1
+U out:mat.t12.w5 mat.t12.w5 1
+U out:mat.t12.w6 mat.t12.w6 1
+U out:mat.t12.w7 mat.t12.w7 1
+U out:mat.t12.w8 mat.t12.w8 1
+# topic mat.t13
+E average tok:average 1
+E mean tok:mean 1
+E median tok:median 1
+E sum tok:sum 1
+E values tok:values 1
+B average -1000000000
+B mean -1000000000
+B median -1000000000
+B sum -1000000000
+B values -1000000000
+V tok:average mat.t13 2
+V tok:mean mat.t13 2
+V tok:median mat.t13 1.5
+V tok:sum mat.t13 1
+V tok:values mat.t13 0.5
+O mat.t13 top:mat.t13 100
+W1 top:mat.t13 n:mat.t13 1
+W2 n:mat.t13 out:mat.t13.w0 1
+E mat.t13.w0 tok:mat.t13.w0 1
+E mat.t13.w1 tok:mat.t13.w1 1
+E mat.t13.w2 tok:mat.t13.w2 1
+E mat.t13.w3 tok:mat.t13.w3 1
+E mat.t13.w4 tok:mat.t13.w4 1
+E mat.t13.w5 tok:mat.t13.w5 1
+E mat.t13.w6 tok:mat.t13.w6 1
+E mat.t13.w7 tok:mat.t13.w7 1
+E mat.t13.w8 tok:mat.t13.w8 1
+E mat.t13.w9 tok:mat.t13.w9 1
+E mat.t13.w10 tok:mat.t13.w10 1
+E mat.t13.w11 tok:mat.t13.w11 1
+E mat.t13.w12 tok:mat.t13.w12 1
+E mat.t13.w13 tok:mat.t13.w13 1
+S mat.t13.w0 The
+S mat.t13.w1 mean
+S mat.t13.w2 is
+S mat.t13.w3 the
+S mat.t13.w4 sum
+S mat.t13.w5 of
+S mat.t13.w6 the
+S mat.t13.w7 values
+S mat.t13.w8 divided
+S mat.t13.w9 by
+S mat.t13.w10 how
+S mat.t13.w11 many
+S mat.t13.w12 there
+S mat.t13.w13 are.
+W1 tok:mat.t13.w0 n:mat.t13.w0 1
+W2 n:mat.t13.w0 out:mat.t13.w1 1000
+W1 tok:mat.t13.w1 n:mat.t13.w1 1
+W2 n:mat.t13.w1 out:mat.t13.w2 1000
+W1 tok:mat.t13.w2 n:mat.t13.w2 1
+W2 n:mat.t13.w2 out:mat.t13.w3 1000
+W1 tok:mat.t13.w3 n:mat.t13.w3 1
+W2 n:mat.t13.w3 out:mat.t13.w4 1000
+W1 tok:mat.t13.w4 n:mat.t13.w4 1
+W2 n:mat.t13.w4 out:mat.t13.w5 1000
+W1 tok:mat.t13.w5 n:mat.t13.w5 1
+W2 n:mat.t13.w5 out:mat.t13.w6 1000
+W1 tok:mat.t13.w6 n:mat.t13.w6 1
+W2 n:mat.t13.w6 out:mat.t13.w7 1000
+W1 tok:mat.t13.w7 n:mat.t13.w7 1
+W2 n:mat.t13.w7 out:mat.t13.w8 1000
+W1 tok:mat.t13.w8 n:mat.t13.w8 1
+W2 n:mat.t13.w8 out:mat.t13.w9 1000
+W1 tok:mat.t13.w9 n:mat.t13.w9 1
+W2 n:mat.t13.w9 out:mat.t13.w10 1000
+W1 tok:mat.t13.w10 n:mat.t13.w10 1
+W2 n:mat.t13.w10 out:mat.t13.w11 1000
+W1 tok:mat.t13.w11 n:mat.t13.w11 1
+W2 n:mat.t13.w11 out:mat.t13.w12 1000
+W1 tok:mat.t13.w12 n:mat.t13.w12 1
+W2 n:mat.t13.w12 out:mat.t13.w13 1000
+W1 tok:mat.t13.w13 n:mat.t13.w13 1
+W2 n:mat.t13.w13 out:<end> 1000
+U out:mat.t13.w0 mat.t13.w0 1
+U out:mat.t13.w1 mat.t13.w1 1
+U out:mat.t13.w2 mat.t13.w2 1
+U out:mat.t13.w3 mat.t13.w3 1
+U out:mat.t13.w4 mat.t13.w4 1
+U out:mat.t13.w5 mat.t13.w5 1
+U out:mat.t13.w6 mat.t13.w6 1
+U out:mat.t13.w7 mat.t13.w7 1
+U out:mat.t13.w8 mat.t13.w8 1
+U out:mat.t13.w9 mat.t13.w9 1
+U out:mat.t13.w10 mat.t13.w10 1
+U out:mat.t13.w11 mat.t13.w11 1
+U out:mat.t13.w12 mat.t13.w12 1
+U out:mat.t13.w13 mat.t13.w13 1
+# topic mat.t14
+E derivative tok:derivative 1
+E differentiate tok:differentiate 1
+E slope tok:slope 1
+E calculus tok:calculus 1
+E tangent tok:tangent 1
+B derivative -1000000000
+B differentiate -1000000000
+B slope -1000000000
+B calculus -1000000000
+B tangent -1000000000
+V tok:derivative mat.t14 3
+V tok:differentiate mat.t14 3
+V tok:slope mat.t14 1
+V tok:calculus mat.t14 2
+V tok:tangent mat.t14 1.5
+O mat.t14 top:mat.t14 100
+W1 top:mat.t14 n:mat.t14 1
+W2 n:mat.t14 out:mat.t14.w0 1
+E mat.t14.w0 tok:mat.t14.w0 1
+E mat.t14.w1 tok:mat.t14.w1 1
+E mat.t14.w2 tok:mat.t14.w2 1
+E mat.t14.w3 tok:mat.t14.w3 1
+E mat.t14.w4 tok:mat.t14.w4 1
+E mat.t14.w5 tok:mat.t14.w5 1
+E mat.t14.w6 tok:mat.t14.w6 1
+S mat.t14.w0 The
+S mat.t14.w1 derivative
+S mat.t14.w2 of
+S mat.t14.w3 x
+S mat.t14.w4 squared
+S mat.t14.w5 is
+S mat.t14.w6 2x.
+W1 tok:mat.t14.w0 n:mat.t14.w0 1
+W2 n:mat.t14.w0 out:mat.t14.w1 1000
+W1 tok:mat.t14.w1 n:mat.t14.w1 1
+W2 n:mat.t14.w1 out:mat.t14.w2 1000
+W1 tok:mat.t14.w2 n:mat.t14.w2 1
+W2 n:mat.t14.w2 out:mat.t14.w3 1000
+W1 tok:mat.t14.w3 n:mat.t14.w3 1
+W2 n:mat.t14.w3 out:mat.t14.w4 1000
+W1 tok:mat.t14.w4 n:mat.t14.w4 1
+W2 n:mat.t14.w4 out:mat.t14.w5 1000
+W1 tok:mat.t14.w5 n:mat.t14.w5 1
+W2 n:mat.t14.w5 out:mat.t14.w6 1000
+W1 tok:mat.t14.w6 n:mat.t14.w6 1
+W2 n:mat.t14.w6 out:<end> 1000
+U out:mat.t14.w0 mat.t14.w0 1
+U out:mat.t14.w1 mat.t14.w1 1
+U out:mat.t14.w2 mat.t14.w2 1
+U out:mat.t14.w3 mat.t14.w3 1
+U out:mat.t14.w4 mat.t14.w4 1
+U out:mat.t14.w5 mat.t14.w5 1
+U out:mat.t14.w6 mat.t14.w6 1
+# topic mat.t15
+E gauss tok:gauss 1
+E integers tok:integers 1
+E consecutive tok:consecutive 1
+E summation tok:summation 1
+E sum tok:sum 1
+B gauss -1000000000
+B integers -1000000000
+B consecutive -1000000000
+B summation -1000000000
+B sum -1000000000
+V tok:gauss mat.t15 2
+V tok:integers mat.t15 1
+V tok:consecutive mat.t15 1
+V tok:summation mat.t15 2
+V tok:sum mat.t15 0.5
+O mat.t15 top:mat.t15 100
+W1 top:mat.t15 n:mat.t15 1
+W2 n:mat.t15 out:mat.t15.w0 1
+E mat.t15.w0 tok:mat.t15.w0 1
+E mat.t15.w1 tok:mat.t15.w1 1
+E mat.t15.w2 tok:mat.t15.w2 1
+E mat.t15.w3 tok:mat.t15.w3 1
+E mat.t15.w4 tok:mat.t15.w4 1
+E mat.t15.w5 tok:mat.t15.w5 1
+E mat.t15.w6 tok:mat.t15.w6 1
+E mat.t15.w7 tok:mat.t15.w7 1
+E mat.t15.w8 tok:mat.t15.w8 1
+E mat.t15.w9 tok:mat.t15.w9 1
+E mat.t15.w10 tok:mat.t15.w10 1
+S mat.t15.w0 The
+S mat.t15.w1 sum
+S mat.t15.w2 of
+S mat.t15.w3 the
+S mat.t15.w4 integers
+S mat.t15.w5 from
+S mat.t15.w6 1
+S mat.t15.w7 to
+S mat.t15.w8 100
+S mat.t15.w9 is
+S mat.t15.w10 5050.
+W1 tok:mat.t15.w0 n:mat.t15.w0 1
+W2 n:mat.t15.w0 out:mat.t15.w1 1000
+W1 tok:mat.t15.w1 n:mat.t15.w1 1
+W2 n:mat.t15.w1 out:mat.t15.w2 1000
+W1 tok:mat.t15.w2 n:mat.t15.w2 1
+W2 n:mat.t15.w2 out:mat.t15.w3 1000
+W1 tok:mat.t15.w3 n:mat.t15.w3 1
+W2 n:mat.t15.w3 out:mat.t15.w4 1000
+W1 tok:mat.t15.w4 n:mat.t15.w4 1
+W2 n:mat.t15.w4 out:mat.t15.w5 1000
+W1 tok:mat.t15.w5 n:mat.t15.w5 1
+W2 n:mat.t15.w5 out:mat.t15.w6 1000
+W1 tok:mat.t15.w6 n:mat.t15.w6 1
+W2 n:mat.t15.w6 out:mat.t15.w7 1000
+W1 tok:mat.t15.w7 n:mat.t15.w7 1
+W2 n:mat.t15.w7 out:mat.t15.w8 1000
+W1 tok:mat.t15.w8 n:mat.t15.w8 1
+W2 n:mat.t15.w8 out:mat.t15.w9 1000
+W1 tok:mat.t15.w9 n:mat.t15.w9 1
+W2 n:mat.t15.w9 out:mat.t15.w10 1000
+W1 tok:mat.t15.w10 n:mat.t15.w10 1
+W2 n:mat.t15.w10 out:<end> 1000
+U out:mat.t15.w0 mat.t15.w0 1
+U out:mat.t15.w1 mat.t15.w1 1
+U out:mat.t15.w2 mat.t15.w2 1
+U out:mat.t15.w3 mat.t15.w3 1
+U out:mat.t15.w4 mat.t15.w4 1
+U out:mat.t15.w5 mat.t15.w5 1
+U out:mat.t15.w6 mat.t15.w6 1
+U out:mat.t15.w7 mat.t15.w7 1
+U out:mat.t15.w8 mat.t15.w8 1
+U out:mat.t15.w9 mat.t15.w9 1
+U out:mat.t15.w10 mat.t15.w10 1
+# topic mat.t16
+E logarithm tok:logarithm 1
+E logarithms tok:logarithms 1
+E log tok:log 1
+E exponent tok:exponent 1
+E base tok:base 1
+B logarithm -1000000000
+B logarithms -1000000000
+B log -1000000000
+B exponent -1000000000
+B base -1000000000
+V tok:logarithm mat.t16 3
+V tok:logarithms mat.t16 3
+V tok:log mat.t16 2
+V tok:exponent mat.t16 1
+V tok:base mat.t16 1
+O mat.t16 top:mat.t16 100
+W1 top:mat.t16 n:mat.t16 1
+W2 n:mat.t16 out:mat.t16.w0 1
+E mat.t16.w0 tok:mat.t16.w0 1
+E mat.t16.w1 tok:mat.t16.w1 1
+E mat.t16.w2 tok:mat.t16.w2 1
+E mat.t16.w3 tok:mat.t16.w3 1
+E mat.t16.w4 tok:mat.t16.w4 1
+E mat.t16.w5 tok:mat.t16.w5 1
+E mat.t16.w6 tok:mat.t16.w6 1
+E mat.t16.w7 tok:mat.t16.w7 1
+E mat.t16.w8 tok:mat.t16.w8 1
+E mat.t16.w9 tok:mat.t16.w9 1
+E mat.t16.w10 tok:mat.t16.w10 1
+E mat.t16.w11 tok:mat.t16.w11 1
+E mat.t16.w12 tok:mat.t16.w12 1
+S mat.t16.w0 The
+S mat.t16.w1 log
+S mat.t16.w2 base
+S mat.t16.w3 10
+S mat.t16.w4 of
+S mat.t16.w5 1000
+S mat.t16.w6 is
+S mat.t16.w7 3,
+S mat.t16.w8 because
+S mat.t16.w9 10
+S mat.t16.w10 cubed
+S mat.t16.w11 is
+S mat.t16.w12 1000.
+W1 tok:mat.t16.w0 n:mat.t16.w0 1
+W2 n:mat.t16.w0 out:mat.t16.w1 1000
+W1 tok:mat.t16.w1 n:mat.t16.w1 1
+W2 n:mat.t16.w1 out:mat.t16.w2 1000
+W1 tok:mat.t16.w2 n:mat.t16.w2 1
+W2 n:mat.t16.w2 out:mat.t16.w3 1000
+W1 tok:mat.t16.w3 n:mat.t16.w3 1
+W2 n:mat.t16.w3 out:mat.t16.w4 1000
+W1 tok:mat.t16.w4 n:mat.t16.w4 1
+W2 n:mat.t16.w4 out:mat.t16.w5 1000
+W1 tok:mat.t16.w5 n:mat.t16.w5 1
+W2 n:mat.t16.w5 out:mat.t16.w6 1000
+W1 tok:mat.t16.w6 n:mat.t16.w6 1
+W2 n:mat.t16.w6 out:mat.t16.w7 1000
+W1 tok:mat.t16.w7 n:mat.t16.w7 1
+W2 n:mat.t16.w7 out:mat.t16.w8 1000
+W1 tok:mat.t16.w8 n:mat.t16.w8 1
+W2 n:mat.t16.w8 out:mat.t16.w9 1000
+W1 tok:mat.t16.w9 n:mat.t16.w9 1
+W2 n:mat.t16.w9 out:mat.t16.w10 1000
+W1 tok:mat.t16.w10 n:mat.t16.w10 1
+W2 n:mat.t16.w10 out:mat.t16.w11 1000
+W1 tok:mat.t16.w11 n:mat.t16.w11 1
+W2 n:mat.t16.w11 out:mat.t16.w12 1000
+W1 tok:mat.t16.w12 n:mat.t16.w12 1
+W2 n:mat.t16.w12 out:<end> 1000
+U out:mat.t16.w0 mat.t16.w0 1
+U out:mat.t16.w1 mat.t16.w1 1
+U out:mat.t16.w2 mat.t16.w2 1
+U out:mat.t16.w3 mat.t16.w3 1
+U out:mat.t16.w4 mat.t16.w4 1
+U out:mat.t16.w5 mat.t16.w5 1
+U out:mat.t16.w6 mat.t16.w6 1
+U out:mat.t16.w7 mat.t16.w7 1
+U out:mat.t16.w8 mat.t16.w8 1
+U out:mat.t16.w9 mat.t16.w9 1
+U out:mat.t16.w10 mat.t16.w10 1
+U out:mat.t16.w11 mat.t16.w11 1
+U out:mat.t16.w12 mat.t16.w12 1
+# topic mat.t17
+E probability tok:probability 1
+E coin tok:coin 1
+E odds tok:odds 1
+E chance tok:chance 1
+E dice tok:dice 1
+B probability -1000000000
+B coin -1000000000
+B odds -1000000000
+B chance -1000000000
+B dice -1000000000
+V tok:probability mat.t17 3
+V tok:coin mat.t17 1
+V tok:odds mat.t17 1.5
+V tok:chance mat.t17 1
+V tok:dice mat.t17 1
+O mat.t17 top:mat.t17 100
+W1 top:mat.t17 n:mat.t17 1
+W2 n:mat.t17 out:mat.t17.w0 1
+E mat.t17.w0 tok:mat.t17.w0 1
+E mat.t17.w1 tok:mat.t17.w1 1
+E mat.t17.w2 tok:mat.t17.w2 1
+E mat.t17.w3 tok:mat.t17.w3 1
+E mat.t17.w4 tok:mat.t17.w4 1
+E mat.t17.w5 tok:mat.t17.w5 1
+E mat.t17.w6 tok:mat.t17.w6 1
+E mat.t17.w7 tok:mat.t17.w7 1
+E mat.t17.w8 tok:mat.t17.w8 1
+S mat.t17.w0 A
+S mat.t17.w1 fair
+S mat.t17.w2 coin
+S mat.t17.w3 lands
+S mat.t17.w4 heads
+S mat.t17.w5 with
+S mat.t17.w6 probability
+S mat.t17.w7 one
+S mat.t17.w8 half.
+W1 tok:mat.t17.w0 n:mat.t17.w0 1
+W2 n:mat.t17.w0 out:mat.t17.w1 1000
+W1 tok:mat.t17.w1 n:mat.t17.w1 1
+W2 n:mat.t17.w1 out:mat.t17.w2 1000
+W1 tok:mat.t17.w2 n:mat.t17.w2 1
+W2 n:mat.t17.w2 out:mat.t17.w3 1000
+W1 tok:mat.t17.w3 n:mat.t17.w3 1
+W2 n:mat.t17.w3 out:mat.t17.w4 1000
+W1 tok:mat.t17.w4 n:mat.t17.w4 1
+W2 n:mat.t17.w4 out:mat.t17.w5 1000
+W1 tok:mat.t17.w5 n:mat.t17.w5 1
+W2 n:mat.t17.w5 out:mat.t17.w6 1000
+W1 tok:mat.t17.w6 n:mat.t17.w6 1
+W2 n:mat.t17.w6 out:mat.t17.w7 1000
+W1 tok:mat.t17.w7 n:mat.t17.w7 1
+W2 n:mat.t17.w7 out:mat.t17.w8 1000
+W1 tok:mat.t17.w8 n:mat.t17.w8 1
+W2 n:mat.t17.w8 out:<end> 1000
+U out:mat.t17.w0 mat.t17.w0 1
+U out:mat.t17.w1 mat.t17.w1 1
+U out:mat.t17.w2 mat.t17.w2 1
+U out:mat.t17.w3 mat.t17.w3 1
+U out:mat.t17.w4 mat.t17.w4 1
+U out:mat.t17.w5 mat.t17.w5 1
+U out:mat.t17.w6 mat.t17.w6 1
+U out:mat.t17.w7 mat.t17.w7 1
+U out:mat.t17.w8 mat.t17.w8 1
