@@ -1,0 +1,162 @@
+E ancient sem:his 3
+B ancient -1000000000
+E empire sem:his 3
+B empire -1000000000
+E king sem:his 3
+B king -1000000000
+E queen sem:his 3
+B queen -1000000000
+E battle sem:his 3
+B battle -1000000000
+E revolution sem:his 3
+B revolution -1000000000
+E century sem:his 2
+B century -1000000000
+E medieval sem:his 3
+B medieval -1000000000
+E pharaoh sem:his 3
+B pharaoh -1000000000
+E soldier sem:his 2
+B soldier -1000000000
+E dynasty sem:his 3
+B dynasty -1000000000
+E historical sem:his 3
+B historical -1000000000
+E past sem:his 2
+B past -1000000000
+E emperor sem:his 3
+B emperor -1000000000
+E war sem:his 3
+B war -1000000000
+E kingdom sem:his 2
+B kingdom -1000000000
+E throne sem:his 2
+B throne -1000000000
+E conquest sem:his 3
+B conquest -1000000000
+E colony sem:his 2
+B colony -1000000000
+E republic sem:his 2
+B republic -1000000000
+E monarchy sem:his 3
+B monarchy -1000000000
+E ruins sem:his 2
+B ruins -1000000000
+E artifact sem:his 2
+B artifact -1000000000
+E chronicle sem:his 2
+B chronicle -1000000000
+E era sem:his 2
+B era -1000000000
+E epoch sem:his 2
+B epoch -1000000000
+E treaty sem:his 3
+B treaty -1000000000
+E siege sem:his 3
+B siege -1000000000
+E knight sem:his 2
+B knight -1000000000
+E castle sem:his 1
+B castle -1000000000
+E crusade sem:his 3
+B crusade -1000000000
+E viking sem:his 3
+B viking -1000000000
+E roman sem:his 3
+B roman -1000000000
+E greek sem:his 2
+B greek -1000000000
+E gladiator sem:his 3
+B gladiator -1000000000
+E legion sem:his 3
+B legion -1000000000
+E pyramid sem:his 2
+B pyramid -1000000000
+E archaeology sem:his 3
+B archaeology -1000000000
+E archaeologist sem:his 3
+B archaeologist -1000000000
+E dictator sem:his 2
+B dictator -1000000000
+E parliament sem:his 2
+B parliament -1000000000
+E colonial sem:his 2
+B colonial -1000000000
+E tomb sem:his 2
+B tomb -1000000000
+E hieroglyphs sem:his 3
+B hieroglyphs -1000000000
+E samurai sem:his 3
+B samurai -1000000000
+E feudal sem:his 3
+B feudal -1000000000
+E renaissance sem:his 3
+B renaissance -1000000000
+E industrial sem:his 1
+B industrial -1000000000
+
+# topic his.g (catch-all)
+V sem:his his.g 1
+O his.g top:his.g 100
+W1 top:his.g n:his.g 1
+W2 n:his.g out:his.g.w0 1
+E his.g.w0 tok:his.g.w0 1
+E his.g.w1 tok:his.g.w1 1
+E his.g.w2 tok:his.g.w2 1
+E his.g.w3 tok:his.g.w3 1
+E his.g.w4 tok:his.g.w4 1
+E his.g.w5 tok:his.g.w5 1
+E his.g.w6 tok:his.g.w6 1
+E his.g.w7 tok:his.g.w7 1
+E his.g.w8 tok:his.g.w8 1
+E his.g.w9 tok:his.g.w9 1
+E his.g.w10 tok:his.g.w10 1
+E his.g.w11 tok:his.g.w11 1
+S his.g.w0 That
+S his.g.w1 sounds
+S his.g.w2 like
+S his.g.w3 history!
+S his.g.w4 Ask
+S his.g.w5 me
+S his.g.w6 about
+S his.g.w7 wars,
+S his.g.w8 inventions
+S his.g.w9 or
+S his.g.w10 ancient
+S his.g.w11 Egypt.
+W1 tok:his.g.w0 n:his.g.w0 1
+W2 n:his.g.w0 out:his.g.w1 1000
+W1 tok:his.g.w1 n:his.g.w1 1
+W2 n:his.g.w1 out:his.g.w2 1000
+W1 tok:his.g.w2 n:his.g.w2 1
+W2 n:his.g.w2 out:his.g.w3 1000
+W1 tok:his.g.w3 n:his.g.w3 1
+W2 n:his.g.w3 out:his.g.w4 1000
+W1 tok:his.g.w4 n:his.g.w4 1
+W2 n:his.g.w4 out:his.g.w5 1000
+W1 tok:his.g.w5 n:his.g.w5 1
+W2 n:his.g.w5 out:his.g.w6 1000
+W1 tok:his.g.w6 n:his.g.w6 1
+W2 n:his.g.w6 out:his.g.w7 1000
+W1 tok:his.g.w7 n:his.g.w7 1
+W2 n:his.g.w7 out:his.g.w8 1000
+W1 tok:his.g.w8 n:his.g.w8 1
+W2 n:his.g.w8 out:his.g.w9 1000
+W1 tok:his.g.w9 n:his.g.w9 1
+W2 n:his.g.w9 out:his.g.w10 1000
+W1 tok:his.g.w10 n:his.g.w10 1
+W2 n:his.g.w10 out:his.g.w11 1000
+W1 tok:his.g.w11 n:his.g.w11 1
+W2 n:his.g.w11 out:<end> 1000
+U out:his.g.w0 his.g.w0 1
+U out:his.g.w1 his.g.w1 1
+U out:his.g.w2 his.g.w2 1
+U out:his.g.w3 his.g.w3 1
+U out:his.g.w4 his.g.w4 1
+U out:his.g.w5 his.g.w5 1
+U out:his.g.w6 his.g.w6 1
+U out:his.g.w7 his.g.w7 1
+U out:his.g.w8 his.g.w8 1
+U out:his.g.w9 his.g.w9 1
+U out:his.g.w10 his.g.w10 1
+U out:his.g.w11 his.g.w11 1

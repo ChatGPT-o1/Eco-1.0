@@ -1,0 +1,184 @@
+E doctor sem:hea 3
+E medicine sem:hea 3
+E sick sem:hea 3
+E pain sem:hea 3
+E fever sem:hea 3
+E healthy sem:hea 3
+E body sem:hea 2
+E muscle sem:hea 2
+E vitamin sem:hea 3
+E injury sem:hea 3
+E rest sem:hea 1
+E headache sem:hea 3
+E nurse sem:hea 3
+E hospital sem:hea 3
+E clinic sem:hea 3
+E pill sem:hea 2
+E symptom sem:hea 3
+E cough sem:hea 3
+E cold sem:hea 1
+E flu sem:hea 3
+E infection sem:hea 3
+E bandage sem:hea 2
+E surgery sem:hea 3
+E therapy sem:hea 2
+E immune sem:hea 2
+E heart sem:hea 2
+E blood sem:hea 2
+E bone sem:hea 2
+E stomach sem:hea 2
+E allergy sem:hea 2
+E dentist sem:hea 3
+E checkup sem:hea 3
+E recovery sem:hea 2
+E wellness sem:hea 2
+E diet sem:hea 1
+E exercise sem:hea 1
+E sleep sem:hea 1
+E hydration sem:hea 2
+E pharmacy sem:hea 2
+E prescription sem:hea 3
+E ache sem:hea 2
+E nausea sem:hea 2
+E dizzy sem:hea 2
+E injection sem:hea 2
+E vaccine sem:hea 3
+E wound sem:hea 2
+E ill sem:hea 3
+E patient sem:hea 2
+E health sem:hea 3
+B doctor -1000000000
+B medicine -1000000000
+B sick -1000000000
+B pain -1000000000
+B fever -1000000000
+B healthy -1000000000
+B body -1000000000
+B muscle -1000000000
+B vitamin -1000000000
+B injury -1000000000
+B rest -1000000000
+B headache -1000000000
+B nurse -1000000000
+B hospital -1000000000
+B clinic -1000000000
+B pill -1000000000
+B symptom -1000000000
+B cough -1000000000
+B cold -1000000000
+B flu -1000000000
+B infection -1000000000
+B bandage -1000000000
+B surgery -1000000000
+B therapy -1000000000
+B immune -1000000000
+B heart -1000000000
+B blood -1000000000
+B bone -1000000000
+B stomach -1000000000
+B allergy -1000000000
+B dentist -1000000000
+B checkup -1000000000
+B recovery -1000000000
+B wellness -1000000000
+B diet -1000000000
+B exercise -1000000000
+B sleep -1000000000
+B hydration -1000000000
+B pharmacy -1000000000
+B prescription -1000000000
+B ache -1000000000
+B nausea -1000000000
+B dizzy -1000000000
+B injection -1000000000
+B vaccine -1000000000
+B wound -1000000000
+B ill -1000000000
+B patient -1000000000
+B health -1000000000
+
+# topic hea.g (catch-all)
+V sem:hea hea.g 1
+O hea.g top:hea.g 100
+W1 top:hea.g n:hea.g 1
+W2 n:hea.g out:hea.g.w0 1
+E hea.g.w0 tok:hea.g.w0 1
+E hea.g.w1 tok:hea.g.w1 1
+E hea.g.w2 tok:hea.g.w2 1
+E hea.g.w3 tok:hea.g.w3 1
+E hea.g.w4 tok:hea.g.w4 1
+E hea.g.w5 tok:hea.g.w5 1
+E hea.g.w6 tok:hea.g.w6 1
+E hea.g.w7 tok:hea.g.w7 1
+E hea.g.w8 tok:hea.g.w8 1
+E hea.g.w9 tok:hea.g.w9 1
+E hea.g.w10 tok:hea.g.w10 1
+E hea.g.w11 tok:hea.g.w11 1
+E hea.g.w12 tok:hea.g.w12 1
+E hea.g.w13 tok:hea.g.w13 1
+E hea.g.w14 tok:hea.g.w14 1
+E hea.g.w15 tok:hea.g.w15 1
+S hea.g.w0 Sounds
+S hea.g.w1 health-related!
+S hea.g.w2 Ask
+S hea.g.w3 me
+S hea.g.w4 about
+S hea.g.w5 sleep,
+S hea.g.w6 water
+S hea.g.w7 or
+S hea.g.w8 exercise,
+S hea.g.w9 and
+S hea.g.w10 see
+S hea.g.w11 a
+S hea.g.w12 doctor
+S hea.g.w13 for
+S hea.g.w14 anything
+S hea.g.w15 serious.
+W1 tok:hea.g.w0 n:hea.g.w0 1
+W2 n:hea.g.w0 out:hea.g.w1 1000
+W1 tok:hea.g.w1 n:hea.g.w1 1
+W2 n:hea.g.w1 out:hea.g.w2 1000
+W1 tok:hea.g.w2 n:hea.g.w2 1
+W2 n:hea.g.w2 out:hea.g.w3 1000
+W1 tok:hea.g.w3 n:hea.g.w3 1
+W2 n:hea.g.w3 out:hea.g.w4 1000
+W1 tok:hea.g.w4 n:hea.g.w4 1
+W2 n:hea.g.w4 out:hea.g.w5 1000
+W1 tok:hea.g.w5 n:hea.g.w5 1
+W2 n:hea.g.w5 out:hea.g.w6 1000
+W1 tok:hea.g.w6 n:hea.g.w6 1
+W2 n:hea.g.w6 out:hea.g.w7 1000
+W1 tok:hea.g.w7 n:hea.g.w7 1
+W2 n:hea.g.w7 out:hea.g.w8 1000
+W1 tok:hea.g.w8 n:hea.g.w8 1
+W2 n:hea.g.w8 out:hea.g.w9 1000
+W1 tok:hea.g.w9 n:hea.g.w9 1
+W2 n:hea.g.w9 out:hea.g.w10 1000
+W1 tok:hea.g.w10 n:hea.g.w10 1
+W2 n:hea.g.w10 out:hea.g.w11 1000
+W1 tok:hea.g.w11 n:hea.g.w11 1
+W2 n:hea.g.w11 out:hea.g.w12 1000
+W1 tok:hea.g.w12 n:hea.g.w12 1
+W2 n:hea.g.w12 out:hea.g.w13 1000
+W1 tok:hea.g.w13 n:hea.g.w13 1
+W2 n:hea.g.w13 out:hea.g.w14 1000
+W1 tok:hea.g.w14 n:hea.g.w14 1
+W2 n:hea.g.w14 out:hea.g.w15 1000
+W1 tok:hea.g.w15 n:hea.g.w15 1
+W2 n:hea.g.w15 out:<end> 1000
+U out:hea.g.w0 hea.g.w0 1
+U out:hea.g.w1 hea.g.w1 1
+U out:hea.g.w2 hea.g.w2 1
+U out:hea.g.w3 hea.g.w3 1
+U out:hea.g.w4 hea.g.w4 1
+U out:hea.g.w5 hea.g.w5 1
+U out:hea.g.w6 hea.g.w6 1
+U out:hea.g.w7 hea.g.w7 1
+U out:hea.g.w8 hea.g.w8 1
+U out:hea.g.w9 hea.g.w9 1
+U out:hea.g.w10 hea.g.w10 1
+U out:hea.g.w11 hea.g.w11 1
+U out:hea.g.w12 hea.g.w12 1
+U out:hea.g.w13 hea.g.w13 1
+U out:hea.g.w14 hea.g.w14 1
+U out:hea.g.w15 hea.g.w15 1

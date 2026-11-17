@@ -1,0 +1,161 @@
+E country sem:geo 3
+B country -1000000000
+E city sem:geo 3
+B city -1000000000
+E map sem:geo 3
+B map -1000000000
+E continent sem:geo 3
+B continent -1000000000
+E border sem:geo 3
+B border -1000000000
+E island sem:geo 3
+B island -1000000000
+E desert sem:geo 3
+B desert -1000000000
+E travel sem:geo 2
+B travel -1000000000
+E nation sem:geo 3
+B nation -1000000000
+E region sem:geo 2
+B region -1000000000
+E lake sem:geo 3
+B lake -1000000000
+E valley sem:geo 3
+B valley -1000000000
+E coast sem:geo 3
+B coast -1000000000
+E river sem:geo 3
+B river -1000000000
+E mountain sem:geo 3
+B mountain -1000000000
+E ocean sem:geo 3
+B ocean -1000000000
+E sea sem:geo 3
+B sea -1000000000
+E capital sem:geo 3
+B capital -1000000000
+E equator sem:geo 3
+B equator -1000000000
+E hemisphere sem:geo 3
+B hemisphere -1000000000
+E latitude sem:geo 3
+B latitude -1000000000
+E longitude sem:geo 3
+B longitude -1000000000
+E peninsula sem:geo 3
+B peninsula -1000000000
+E plateau sem:geo 3
+B plateau -1000000000
+E forest sem:geo 2
+B forest -1000000000
+E jungle sem:geo 2
+B jungle -1000000000
+E glacier sem:geo 3
+B glacier -1000000000
+E volcano sem:geo 3
+B volcano -1000000000
+E canyon sem:geo 3
+B canyon -1000000000
+E delta sem:geo 3
+B delta -1000000000
+E archipelago sem:geo 3
+B archipelago -1000000000
+E savanna sem:geo 3
+B savanna -1000000000
+E tundra sem:geo 3
+B tundra -1000000000
+E climate sem:geo 2
+B climate -1000000000
+E terrain sem:geo 3
+B terrain -1000000000
+E atlas sem:geo 3
+B atlas -1000000000
+E globe sem:geo 3
+B globe -1000000000
+E compass sem:geo 2
+B compass -1000000000
+E territory sem:geo 3
+B territory -1000000000
+E province sem:geo 3
+B province -1000000000
+E village sem:geo 2
+B village -1000000000
+E town sem:geo 2
+B town -1000000000
+E highland sem:geo 3
+B highland -1000000000
+E prairie sem:geo 3
+B prairie -1000000000
+E shoreline sem:geo 3
+B shoreline -1000000000
+E bay sem:geo 3
+B bay -1000000000
+E strait sem:geo 3
+B strait -1000000000
+E gulf sem:geo 3
+B gulf -1000000000
+E reef sem:geo 3
+B reef -1000000000
+E cape sem:geo 3
+B cape -1000000000
+
+# topic geo.g (catch-all)
+V sem:geo geo.g 1
+O geo.g top:geo.g 100
+W1 top:geo.g n:geo.g 1
+W2 n:geo.g out:geo.g.w0 1
+E geo.g.w0 tok:geo.g.w0 1
+E geo.g.w1 tok:geo.g.w1 1
+E geo.g.w2 tok:geo.g.w2 1
+E geo.g.w3 tok:geo.g.w3 1
+E geo.g.w4 tok:geo.g.w4 1
+E geo.g.w5 tok:geo.g.w5 1
+E geo.g.w6 tok:geo.g.w6 1
+E geo.g.w7 tok:geo.g.w7 1
+E geo.g.w8 tok:geo.g.w8 1
+E geo.g.w9 tok:geo.g.w9 1
+E geo.g.w10 tok:geo.g.w10 1
+S geo.g.w0 That
+S geo.g.w1 sounds
+S geo.g.w2 like
+S geo.g.w3 geography!
+S geo.g.w4 Ask
+S geo.g.w5 me
+S geo.g.w6 about
+S geo.g.w7 capitals,
+S geo.g.w8 oceans
+S geo.g.w9 or
+S geo.g.w10 mountains.
+W1 tok:geo.g.w0 n:geo.g.w0 1
+W2 n:geo.g.w0 out:geo.g.w1 1000
+W1 tok:geo.g.w1 n:geo.g.w1 1
+W2 n:geo.g.w1 out:geo.g.w2 1000
+W1 tok:geo.g.w2 n:geo.g.w2 1
+W2 n:geo.g.w2 out:geo.g.w3 1000
+W1 tok:geo.g.w3 n:geo.g.w3 1
+W2 n:geo.g.w3 out:geo.g.w4 1000
+W1 tok:geo.g.w4 n:geo.g.w4 1
+W2 n:geo.g.w4 out:geo.g.w5 1000
+W1 tok:geo.g.w5 n:geo.g.w5 1
+W2 n:geo.g.w5 out:geo.g.w6 1000
+W1 tok:geo.g.w6 n:geo.g.w6 1
+W2 n:geo.g.w6 out:geo.g.w7 1000
+W1 tok:geo.g.w7 n:geo.g.w7 1
+W2 n:geo.g.w7 out:geo.g.w8 1000
+W1 tok:geo.g.w8 n:geo.g.w8 1
+W2 n:geo.g.w8 out:geo.g.w9 1000
+W1 tok:geo.g.w9 n:geo.g.w9 1
+W2 n:geo.g.w9 out:geo.g.w10 1000
+W1 tok:geo.g.w10 n:geo.g.w10 1
+W2 n:geo.g.w10 out:<end> 1000
+U out:geo.g.w0 geo.g.w0 1
+U out:geo.g.w1 geo.g.w1 1
+U out:geo.g.w2 geo.g.w2 1
+U out:geo.g.w3 geo.g.w3 1
+U out:geo.g.w4 geo.g.w4 1
+U out:geo.g.w5 geo.g.w5 1
+U out:geo.g.w6 geo.g.w6 1
+U out:geo.g.w7 geo.g.w7 1
+U out:geo.g.w8 geo.g.w8 1
+U out:geo.g.w9 geo.g.w9 1
+U out:geo.g.w10 geo.g.w10 1

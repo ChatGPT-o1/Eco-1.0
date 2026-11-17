@@ -1,0 +1,196 @@
+E feel sem:chat 3
+E feeling sem:chat 3
+E feels sem:chat 3
+E love sem:chat 3
+E loved sem:chat 2
+E hate sem:chat 3
+E enjoy sem:chat 3
+E enjoyed sem:chat 2
+E prefer sem:chat 3
+E prefers sem:chat 2
+E favorite sem:chat 3
+E favourite sem:chat 2
+E want sem:chat 2
+E wish sem:chat 3
+E dream sem:chat 2
+E think sem:chat 2
+E thought sem:chat 1
+E opinion sem:chat 3
+E friend sem:chat 2
+E talk sem:chat 2
+E chat sem:chat 3
+E chatting sem:chat 2
+E conversation sem:chat 2
+E lonely sem:chat 3
+E excited sem:chat 3
+E happy sem:chat 2
+E sad sem:chat 2
+E proud sem:chat 2
+E mood sem:chat 2
+E emotion sem:chat 2
+E adore sem:chat 3
+E dislike sem:chat 3
+E fond sem:chat 2
+E care sem:chat 2
+E bored sem:chat 2
+E nervous sem:chat 2
+E glad sem:chat 2
+E curious sem:chat 1
+E hope sem:chat 2
+E desire sem:chat 2
+E craving sem:chat 2
+E delight sem:chat 2
+E grateful sem:chat 2
+E believe sem:chat 1
+E companion sem:chat 2
+E buddy sem:chat 1
+E pal sem:chat 1
+E personality sem:chat 1
+E myself sem:chat 1
+E yourself sem:chat 1
+B feel -1000000000
+B feeling -1000000000
+B feels -1000000000
+B love -1000000000
+B loved -1000000000
+B hate -1000000000
+B enjoy -1000000000
+B enjoyed -1000000000
+B prefer -1000000000
+B prefers -1000000000
+B favorite -1000000000
+B favourite -1000000000
+B want -1000000000
+B wish -1000000000
+B dream -1000000000
+B think -1000000000
+B thought -1000000000
+B opinion -1000000000
+B friend -1000000000
+B talk -1000000000
+B chat -1000000000
+B chatting -1000000000
+B conversation -1000000000
+B lonely -1000000000
+B excited -1000000000
+B happy -1000000000
+B sad -1000000000
+B proud -1000000000
+B mood -1000000000
+B emotion -1000000000
+B adore -1000000000
+B dislike -1000000000
+B fond -1000000000
+B care -1000000000
+B bored -1000000000
+B nervous -1000000000
+B glad -1000000000
+B curious -1000000000
+B hope -1000000000
+B desire -1000000000
+B craving -1000000000
+B delight -1000000000
+B grateful -1000000000
+B believe -1000000000
+B companion -1000000000
+B buddy -1000000000
+B pal -1000000000
+B personality -1000000000
+B myself -1000000000
+B yourself -1000000000
+
+# topic chat.g (catch-all)
+V sem:chat chat.g 1
+O chat.g top:chat.g 100
+W1 top:chat.g n:chat.g 1
+W2 n:chat.g out:chat.g.w0 1
+E chat.g.w0 tok:chat.g.w0 1
+E chat.g.w1 tok:chat.g.w1 1
+E chat.g.w2 tok:chat.g.w2 1
+E chat.g.w3 tok:chat.g.w3 1
+E chat.g.w4 tok:chat.g.w4 1
+E chat.g.w5 tok:chat.g.w5 1
+E chat.g.w6 tok:chat.g.w6 1
+E chat.g.w7 tok:chat.g.w7 1
+E chat.g.w8 tok:chat.g.w8 1
+E chat.g.w9 tok:chat.g.w9 1
+E chat.g.w10 tok:chat.g.w10 1
+E chat.g.w11 tok:chat.g.w11 1
+E chat.g.w12 tok:chat.g.w12 1
+E chat.g.w13 tok:chat.g.w13 1
+E chat.g.w14 tok:chat.g.w14 1
+E chat.g.w15 tok:chat.g.w15 1
+E chat.g.w16 tok:chat.g.w16 1
+E chat.g.w17 tok:chat.g.w17 1
+S chat.g.w0 I'm
+S chat.g.w1 a
+S chat.g.w2 tiny
+S chat.g.w3 hand-typed
+S chat.g.w4 network,
+S chat.g.w5 so
+S chat.g.w6 I
+S chat.g.w7 don't
+S chat.g.w8 really
+S chat.g.w9 feel
+S chat.g.w10 or
+S chat.g.w11 eat,
+S chat.g.w12 but
+S chat.g.w13 I
+S chat.g.w14 love
+S chat.g.w15 a
+S chat.g.w16 good
+S chat.g.w17 question!
+W1 tok:chat.g.w0 n:chat.g.w0 1
+W2 n:chat.g.w0 out:chat.g.w1 1000
+W1 tok:chat.g.w1 n:chat.g.w1 1
+W2 n:chat.g.w1 out:chat.g.w2 1000
+W1 tok:chat.g.w2 n:chat.g.w2 1
+W2 n:chat.g.w2 out:chat.g.w3 1000
+W1 tok:chat.g.w3 n:chat.g.w3 1
+W2 n:chat.g.w3 out:chat.g.w4 1000
+W1 tok:chat.g.w4 n:chat.g.w4 1
+W2 n:chat.g.w4 out:chat.g.w5 1000
+W1 tok:chat.g.w5 n:chat.g.w5 1
+W2 n:chat.g.w5 out:chat.g.w6 1000
+W1 tok:chat.g.w6 n:chat.g.w6 1
+W2 n:chat.g.w6 out:chat.g.w7 1000
+W1 tok:chat.g.w7 n:chat.g.w7 1
+W2 n:chat.g.w7 out:chat.g.w8 1000
+W1 tok:chat.g.w8 n:chat.g.w8 1
+W2 n:chat.g.w8 out:chat.g.w9 1000
+W1 tok:chat.g.w9 n:chat.g.w9 1
+W2 n:chat.g.w9 out:chat.g.w10 1000
+W1 tok:chat.g.w10 n:chat.g.w10 1
+W2 n:chat.g.w10 out:chat.g.w11 1000
+W1 tok:chat.g.w11 n:chat.g.w11 1
+W2 n:chat.g.w11 out:chat.g.w12 1000
+W1 tok:chat.g.w12 n:chat.g.w12 1
+W2 n:chat.g.w12 out:chat.g.w13 1000
+W1 tok:chat.g.w13 n:chat.g.w13 1
+W2 n:chat.g.w13 out:chat.g.w14 1000
+W1 tok:chat.g.w14 n:chat.g.w14 1
+W2 n:chat.g.w14 out:chat.g.w15 1000
+W1 tok:chat.g.w15 n:chat.g.w15 1
+W2 n:chat.g.w15 out:chat.g.w16 1000
+W1 tok:chat.g.w16 n:chat.g.w16 1
+W2 n:chat.g.w16 out:chat.g.w17 1000
+W1 tok:chat.g.w17 n:chat.g.w17 1
+W2 n:chat.g.w17 out:<end> 1000
+U out:chat.g.w0 chat.g.w0 1
+U out:chat.g.w1 chat.g.w1 1
+U out:chat.g.w2 chat.g.w2 1
+U out:chat.g.w3 chat.g.w3 1
+U out:chat.g.w4 chat.g.w4 1
+U out:chat.g.w5 chat.g.w5 1
+U out:chat.g.w6 chat.g.w6 1
+U out:chat.g.w7 chat.g.w7 1
+U out:chat.g.w8 chat.g.w8 1
+U out:chat.g.w9 chat.g.w9 1
+U out:chat.g.w10 chat.g.w10 1
+U out:chat.g.w11 chat.g.w11 1
+U out:chat.g.w12 chat.g.w12 1
+U out:chat.g.w13 chat.g.w13 1
+U out:chat.g.w14 chat.g.w14 1
+U out:chat.g.w15 chat.g.w15 1
+U out:chat.g.w16 chat.g.w16 1
+U out:chat.g.w17 chat.g.w17 1

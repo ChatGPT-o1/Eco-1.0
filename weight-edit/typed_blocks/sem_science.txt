@@ -1,0 +1,171 @@
+E atom sem:sci 3
+E energy sem:sci 3
+E experiment sem:sci 3
+E physics sem:sci 3
+E chemistry sem:sci 3
+E telescope sem:sci 3
+E orbit sem:sci 3
+E molecule sem:sci 3
+E cell sem:sci 2
+E universe sem:sci 3
+E galaxy sem:sci 3
+E electron sem:sci 3
+E laboratory sem:sci 3
+E gravity sem:sci 3
+E biology sem:sci 3
+E scientist sem:sci 3
+E hypothesis sem:sci 3
+E microscope sem:sci 3
+E proton sem:sci 3
+E neutron sem:sci 3
+E quantum sem:sci 3
+E planet sem:sci 3
+E star sem:sci 2
+E comet sem:sci 2
+E asteroid sem:sci 2
+E nebula sem:sci 2
+E chemical sem:sci 2
+E element sem:sci 2
+E fossil sem:sci 2
+E evolution sem:sci 2
+E genetics sem:sci 3
+E dna sem:sci 3
+E gene sem:sci 3
+E photon sem:sci 3
+E magnet sem:sci 2
+E velocity sem:sci 2
+E force sem:sci 2
+E particle sem:sci 2
+E lab sem:sci 2
+E formula sem:sci 1
+E reaction sem:sci 2
+E bacteria sem:sci 2
+E virus sem:sci 1
+E ecosystem sem:sci 2
+E climate sem:sci 1
+E data sem:sci 1
+E theory sem:sci 2
+E mass sem:sci 2
+E cosmos sem:sci 2
+E research sem:sci 1
+B atom -1000000000
+B energy -1000000000
+B experiment -1000000000
+B physics -1000000000
+B chemistry -1000000000
+B telescope -1000000000
+B orbit -1000000000
+B molecule -1000000000
+B cell -1000000000
+B universe -1000000000
+B galaxy -1000000000
+B electron -1000000000
+B laboratory -1000000000
+B gravity -1000000000
+B biology -1000000000
+B scientist -1000000000
+B hypothesis -1000000000
+B microscope -1000000000
+B proton -1000000000
+B neutron -1000000000
+B quantum -1000000000
+B planet -1000000000
+B star -1000000000
+B comet -1000000000
+B asteroid -1000000000
+B nebula -1000000000
+B chemical -1000000000
+B element -1000000000
+B fossil -1000000000
+B evolution -1000000000
+B genetics -1000000000
+B dna -1000000000
+B gene -1000000000
+B photon -1000000000
+B magnet -1000000000
+B velocity -1000000000
+B force -1000000000
+B particle -1000000000
+B lab -1000000000
+B formula -1000000000
+B reaction -1000000000
+B bacteria -1000000000
+B virus -1000000000
+B ecosystem -1000000000
+B climate -1000000000
+B data -1000000000
+B theory -1000000000
+B mass -1000000000
+B cosmos -1000000000
+B research -1000000000
+
+# topic sci.g (catch-all)
+V sem:sci sci.g 1
+O sci.g top:sci.g 100
+W1 top:sci.g n:sci.g 1
+W2 n:sci.g out:sci.g.w0 1
+E sci.g.w0 tok:sci.g.w0 1
+E sci.g.w1 tok:sci.g.w1 1
+E sci.g.w2 tok:sci.g.w2 1
+E sci.g.w3 tok:sci.g.w3 1
+E sci.g.w4 tok:sci.g.w4 1
+E sci.g.w5 tok:sci.g.w5 1
+E sci.g.w6 tok:sci.g.w6 1
+E sci.g.w7 tok:sci.g.w7 1
+E sci.g.w8 tok:sci.g.w8 1
+E sci.g.w9 tok:sci.g.w9 1
+E sci.g.w10 tok:sci.g.w10 1
+E sci.g.w11 tok:sci.g.w11 1
+E sci.g.w12 tok:sci.g.w12 1
+S sci.g.w0 That
+S sci.g.w1 sounds
+S sci.g.w2 like
+S sci.g.w3 science!
+S sci.g.w4 Ask
+S sci.g.w5 me
+S sci.g.w6 about
+S sci.g.w7 space,
+S sci.g.w8 gravity,
+S sci.g.w9 atoms
+S sci.g.w10 or
+S sci.g.w11 the
+S sci.g.w12 body.
+W1 tok:sci.g.w0 n:sci.g.w0 1
+W2 n:sci.g.w0 out:sci.g.w1 1000
+W1 tok:sci.g.w1 n:sci.g.w1 1
+W2 n:sci.g.w1 out:sci.g.w2 1000
+W1 tok:sci.g.w2 n:sci.g.w2 1
+W2 n:sci.g.w2 out:sci.g.w3 1000
+W1 tok:sci.g.w3 n:sci.g.w3 1
+W2 n:sci.g.w3 out:sci.g.w4 1000
+W1 tok:sci.g.w4 n:sci.g.w4 1
+W2 n:sci.g.w4 out:sci.g.w5 1000
+W1 tok:sci.g.w5 n:sci.g.w5 1
+W2 n:sci.g.w5 out:sci.g.w6 1000
+W1 tok:sci.g.w6 n:sci.g.w6 1
+W2 n:sci.g.w6 out:sci.g.w7 1000
+W1 tok:sci.g.w7 n:sci.g.w7 1
+W2 n:sci.g.w7 out:sci.g.w8 1000
+W1 tok:sci.g.w8 n:sci.g.w8 1
+W2 n:sci.g.w8 out:sci.g.w9 1000
+W1 tok:sci.g.w9 n:sci.g.w9 1
+W2 n:sci.g.w9 out:sci.g.w10 1000
+W1 tok:sci.g.w10 n:sci.g.w10 1
+W2 n:sci.g.w10 out:sci.g.w11 1000
+W1 tok:sci.g.w11 n:sci.g.w11 1
+W2 n:sci.g.w11 out:sci.g.w12 1000
+W1 tok:sci.g.w12 n:sci.g.w12 1
+W2 n:sci.g.w12 out:<end> 1000
+U out:sci.g.w0 sci.g.w0 1
+U out:sci.g.w1 sci.g.w1 1
+U out:sci.g.w2 sci.g.w2 1
+U out:sci.g.w3 sci.g.w3 1
+U out:sci.g.w4 sci.g.w4 1
+U out:sci.g.w5 sci.g.w5 1
+U out:sci.g.w6 sci.g.w6 1
+U out:sci.g.w7 sci.g.w7 1
+U out:sci.g.w8 sci.g.w8 1
+U out:sci.g.w9 sci.g.w9 1
+U out:sci.g.w10 sci.g.w10 1
+U out:sci.g.w11 sci.g.w11 1
+U out:sci.g.w12 sci.g.w12 1

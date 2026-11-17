@@ -1,0 +1,171 @@
+E number sem:mat 2
+E equation sem:mat 3
+E calculate sem:mat 3
+E algebra sem:mat 3
+E geometry sem:mat 3
+E fraction sem:mat 3
+E decimal sem:mat 3
+E multiply sem:mat 3
+E divide sem:mat 3
+E subtract sem:mat 3
+E add sem:mat 2
+E graph sem:mat 1
+E angle sem:mat 3
+E formula sem:mat 2
+E integer sem:mat 3
+E prime sem:mat 3
+E theorem sem:mat 3
+E triangle sem:mat 3
+E circle sem:mat 1
+E sum sem:mat 1
+E product sem:mat 2
+E quotient sem:mat 3
+E variable sem:mat 2
+E function sem:mat 2
+E derivative sem:mat 3
+E integral sem:mat 3
+E matrix sem:mat 3
+E vector sem:mat 3
+E probability sem:mat 2
+E statistics sem:mat 2
+E percentage sem:mat 2
+E ratio sem:mat 1
+E proportion sem:mat 2
+E exponent sem:mat 3
+E logarithm sem:mat 3
+E sine sem:mat 3
+E cosine sem:mat 3
+E tangent sem:mat 3
+E polygon sem:mat 3
+E perimeter sem:mat 3
+E area sem:mat 2
+E volume sem:mat 2
+E radius sem:mat 2
+E diameter sem:mat 2
+E pi sem:mat 3
+E pythagorean sem:mat 3
+E arithmetic sem:mat 3
+E calculus sem:mat 3
+E digit sem:mat 1
+E square sem:mat 1
+B number -1000000000
+B equation -1000000000
+B calculate -1000000000
+B algebra -1000000000
+B geometry -1000000000
+B fraction -1000000000
+B decimal -1000000000
+B multiply -1000000000
+B divide -1000000000
+B subtract -1000000000
+B add -1000000000
+B graph -1000000000
+B angle -1000000000
+B formula -1000000000
+B integer -1000000000
+B prime -1000000000
+B theorem -1000000000
+B triangle -1000000000
+B circle -1000000000
+B sum -1000000000
+B product -1000000000
+B quotient -1000000000
+B variable -1000000000
+B function -1000000000
+B derivative -1000000000
+B integral -1000000000
+B matrix -1000000000
+B vector -1000000000
+B probability -1000000000
+B statistics -1000000000
+B percentage -1000000000
+B ratio -1000000000
+B proportion -1000000000
+B exponent -1000000000
+B logarithm -1000000000
+B sine -1000000000
+B cosine -1000000000
+B tangent -1000000000
+B polygon -1000000000
+B perimeter -1000000000
+B area -1000000000
+B volume -1000000000
+B radius -1000000000
+B diameter -1000000000
+B pi -1000000000
+B pythagorean -1000000000
+B arithmetic -1000000000
+B calculus -1000000000
+B digit -1000000000
+B square -1000000000
+
+# topic mat.g (catch-all)
+V sem:mat mat.g 1
+O mat.g top:mat.g 100
+W1 top:mat.g n:mat.g 1
+W2 n:mat.g out:mat.g.w0 1
+E mat.g.w0 tok:mat.g.w0 1
+E mat.g.w1 tok:mat.g.w1 1
+E mat.g.w2 tok:mat.g.w2 1
+E mat.g.w3 tok:mat.g.w3 1
+E mat.g.w4 tok:mat.g.w4 1
+E mat.g.w5 tok:mat.g.w5 1
+E mat.g.w6 tok:mat.g.w6 1
+E mat.g.w7 tok:mat.g.w7 1
+E mat.g.w8 tok:mat.g.w8 1
+E mat.g.w9 tok:mat.g.w9 1
+E mat.g.w10 tok:mat.g.w10 1
+E mat.g.w11 tok:mat.g.w11 1
+E mat.g.w12 tok:mat.g.w12 1
+S mat.g.w0 That
+S mat.g.w1 sounds
+S mat.g.w2 like
+S mat.g.w3 math!
+S mat.g.w4 Ask
+S mat.g.w5 me
+S mat.g.w6 about
+S mat.g.w7 pi,
+S mat.g.w8 primes
+S mat.g.w9 or
+S mat.g.w10 the
+S mat.g.w11 Pythagorean
+S mat.g.w12 theorem.
+W1 tok:mat.g.w0 n:mat.g.w0 1
+W2 n:mat.g.w0 out:mat.g.w1 1000
+W1 tok:mat.g.w1 n:mat.g.w1 1
+W2 n:mat.g.w1 out:mat.g.w2 1000
+W1 tok:mat.g.w2 n:mat.g.w2 1
+W2 n:mat.g.w2 out:mat.g.w3 1000
+W1 tok:mat.g.w3 n:mat.g.w3 1
+W2 n:mat.g.w3 out:mat.g.w4 1000
+W1 tok:mat.g.w4 n:mat.g.w4 1
+W2 n:mat.g.w4 out:mat.g.w5 1000
+W1 tok:mat.g.w5 n:mat.g.w5 1
+W2 n:mat.g.w5 out:mat.g.w6 1000
+W1 tok:mat.g.w6 n:mat.g.w6 1
+W2 n:mat.g.w6 out:mat.g.w7 1000
+W1 tok:mat.g.w7 n:mat.g.w7 1
+W2 n:mat.g.w7 out:mat.g.w8 1000
+W1 tok:mat.g.w8 n:mat.g.w8 1
+W2 n:mat.g.w8 out:mat.g.w9 1000
+W1 tok:mat.g.w9 n:mat.g.w9 1
+W2 n:mat.g.w9 out:mat.g.w10 1000
+W1 tok:mat.g.w10 n:mat.g.w10 1
+W2 n:mat.g.w10 out:mat.g.w11 1000
+W1 tok:mat.g.w11 n:mat.g.w11 1
+W2 n:mat.g.w11 out:mat.g.w12 1000
+W1 tok:mat.g.w12 n:mat.g.w12 1
+W2 n:mat.g.w12 out:<end> 1000
+U out:mat.g.w0 mat.g.w0 1
+U out:mat.g.w1 mat.g.w1 1
+U out:mat.g.w2 mat.g.w2 1
+U out:mat.g.w3 mat.g.w3 1
+U out:mat.g.w4 mat.g.w4 1
+U out:mat.g.w5 mat.g.w5 1
+U out:mat.g.w6 mat.g.w6 1
+U out:mat.g.w7 mat.g.w7 1
+U out:mat.g.w8 mat.g.w8 1
+U out:mat.g.w9 mat.g.w9 1
+U out:mat.g.w10 mat.g.w10 1
+U out:mat.g.w11 mat.g.w11 1
+U out:mat.g.w12 mat.g.w12 1

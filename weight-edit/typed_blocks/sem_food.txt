@@ -1,0 +1,171 @@
+E eat sem:food 3
+E hungry sem:food 3
+E lunch sem:food 3
+E dinner sem:food 3
+E snack sem:food 3
+E tasty sem:food 2
+E meal sem:food 3
+E breakfast sem:food 3
+E delicious sem:food 3
+E yummy sem:food 3
+E cooking sem:food 2
+E kitchen sem:food 1
+E flavors sem:food 2
+E dish sem:food 2
+E recipe sem:food 3
+E appetite sem:food 3
+E feast sem:food 3
+E buffet sem:food 2
+E bite sem:food 1
+E munch sem:food 2
+E nibble sem:food 2
+E chew sem:food 1
+E soup sem:food 3
+E sandwich sem:food 3
+E salad sem:food 3
+E dessert sem:food 3
+E pizza sem:food 3
+E burger sem:food 3
+E cookies sem:food 3
+E fruit sem:food 2
+E vegetables sem:food 2
+E bread sem:food 2
+E cheese sem:food 2
+E sauce sem:food 2
+E spicy sem:food 2
+E savory sem:food 2
+E grill sem:food 1
+E bake sem:food 2
+E roast sem:food 1
+E fork sem:food 1
+E spoon sem:food 1
+E plate sem:food 1
+E chef sem:food 2
+E menu sem:food 1
+E restaurant sem:food 1
+E taste sem:food 1
+E edible sem:food 2
+E ingredients sem:food 2
+E nutrition sem:food 1
+E gourmet sem:food 2
+B eat -1000000000
+B hungry -1000000000
+B lunch -1000000000
+B dinner -1000000000
+B snack -1000000000
+B tasty -1000000000
+B meal -1000000000
+B breakfast -1000000000
+B delicious -1000000000
+B yummy -1000000000
+B cooking -1000000000
+B kitchen -1000000000
+B flavors -1000000000
+B dish -1000000000
+B recipe -1000000000
+B appetite -1000000000
+B feast -1000000000
+B buffet -1000000000
+B bite -1000000000
+B munch -1000000000
+B nibble -1000000000
+B chew -1000000000
+B soup -1000000000
+B sandwich -1000000000
+B salad -1000000000
+B dessert -1000000000
+B pizza -1000000000
+B burger -1000000000
+B cookies -1000000000
+B fruit -1000000000
+B vegetables -1000000000
+B bread -1000000000
+B cheese -1000000000
+B sauce -1000000000
+B spicy -1000000000
+B savory -1000000000
+B grill -1000000000
+B bake -1000000000
+B roast -1000000000
+B fork -1000000000
+B spoon -1000000000
+B plate -1000000000
+B chef -1000000000
+B menu -1000000000
+B restaurant -1000000000
+B taste -1000000000
+B edible -1000000000
+B ingredients -1000000000
+B nutrition -1000000000
+B gourmet -1000000000
+
+# topic food.g (catch-all)
+V sem:food food.g 1
+O food.g top:food.g 100
+W1 top:food.g n:food.g 1
+W2 n:food.g out:food.g.w0 1
+E food.g.w0 tok:food.g.w0 1
+E food.g.w1 tok:food.g.w1 1
+E food.g.w2 tok:food.g.w2 1
+E food.g.w3 tok:food.g.w3 1
+E food.g.w4 tok:food.g.w4 1
+E food.g.w5 tok:food.g.w5 1
+E food.g.w6 tok:food.g.w6 1
+E food.g.w7 tok:food.g.w7 1
+E food.g.w8 tok:food.g.w8 1
+E food.g.w9 tok:food.g.w9 1
+E food.g.w10 tok:food.g.w10 1
+E food.g.w11 tok:food.g.w11 1
+E food.g.w12 tok:food.g.w12 1
+S food.g.w0 Sounds
+S food.g.w1 like
+S food.g.w2 a
+S food.g.w3 food
+S food.g.w4 question!
+S food.g.w5 Ask
+S food.g.w6 me
+S food.g.w7 about
+S food.g.w8 eggs,
+S food.g.w9 rice,
+S food.g.w10 pasta
+S food.g.w11 or
+S food.g.w12 baking.
+W1 tok:food.g.w0 n:food.g.w0 1
+W2 n:food.g.w0 out:food.g.w1 1000
+W1 tok:food.g.w1 n:food.g.w1 1
+W2 n:food.g.w1 out:food.g.w2 1000
+W1 tok:food.g.w2 n:food.g.w2 1
+W2 n:food.g.w2 out:food.g.w3 1000
+W1 tok:food.g.w3 n:food.g.w3 1
+W2 n:food.g.w3 out:food.g.w4 1000
+W1 tok:food.g.w4 n:food.g.w4 1
+W2 n:food.g.w4 out:food.g.w5 1000
+W1 tok:food.g.w5 n:food.g.w5 1
+W2 n:food.g.w5 out:food.g.w6 1000
+W1 tok:food.g.w6 n:food.g.w6 1
+W2 n:food.g.w6 out:food.g.w7 1000
+W1 tok:food.g.w7 n:food.g.w7 1
+W2 n:food.g.w7 out:food.g.w8 1000
+W1 tok:food.g.w8 n:food.g.w8 1
+W2 n:food.g.w8 out:food.g.w9 1000
+W1 tok:food.g.w9 n:food.g.w9 1
+W2 n:food.g.w9 out:food.g.w10 1000
+W1 tok:food.g.w10 n:food.g.w10 1
+W2 n:food.g.w10 out:food.g.w11 1000
+W1 tok:food.g.w11 n:food.g.w11 1
+W2 n:food.g.w11 out:food.g.w12 1000
+W1 tok:food.g.w12 n:food.g.w12 1
+W2 n:food.g.w12 out:<end> 1000
+U out:food.g.w0 food.g.w0 1
+U out:food.g.w1 food.g.w1 1
+U out:food.g.w2 food.g.w2 1
+U out:food.g.w3 food.g.w3 1
+U out:food.g.w4 food.g.w4 1
+U out:food.g.w5 food.g.w5 1
+U out:food.g.w6 food.g.w6 1
+U out:food.g.w7 food.g.w7 1
+U out:food.g.w8 food.g.w8 1
+U out:food.g.w9 food.g.w9 1
+U out:food.g.w10 food.g.w10 1
+U out:food.g.w11 food.g.w11 1
+U out:food.g.w12 food.g.w12 1

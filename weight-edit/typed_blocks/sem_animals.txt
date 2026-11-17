@@ -1,0 +1,172 @@
+# meaning slot sem:ani (animals and nature)
+E animal sem:ani 3
+E pet sem:ani 3
+E wild sem:ani 2
+E zoo sem:ani 3
+E forest sem:ani 3
+E jungle sem:ani 3
+E bird sem:ani 3
+E fish sem:ani 3
+E fur sem:ani 3
+E paw sem:ani 3
+E tail sem:ani 2
+E wings sem:ani 3
+E nest sem:ani 3
+E flower sem:ani 3
+E leaf sem:ani 3
+E tree sem:ani 3
+E cat sem:ani 3
+E dog sem:ani 3
+E dolphin sem:ani 3
+E bee sem:ani 3
+E horse sem:ani 3
+E lion sem:ani 3
+E tiger sem:ani 3
+E whale sem:ani 3
+E snake sem:ani 3
+E frog sem:ani 3
+E insect sem:ani 3
+E mammal sem:ani 3
+E reptile sem:ani 3
+E feather sem:ani 2
+E claw sem:ani 2
+E hoof sem:ani 2
+E mane sem:ani 2
+E grass sem:ani 2
+E river sem:ani 2
+E ocean sem:ani 2
+E mountain sem:ani 2
+E garden sem:ani 2
+E soil sem:ani 1
+E seed sem:ani 2
+E petal sem:ani 2
+E moss sem:ani 1
+E bark sem:ani 2
+E meadow sem:ani 2
+E prairie sem:ani 1
+E hive sem:ani 2
+E pond sem:ani 2
+E wildlife sem:ani 3
+E nature sem:ani 3
+E species sem:ani 1
+B animal -1000000000
+B pet -1000000000
+B wild -1000000000
+B zoo -1000000000
+B forest -1000000000
+B jungle -1000000000
+B bird -1000000000
+B fish -1000000000
+B fur -1000000000
+B paw -1000000000
+B tail -1000000000
+B wings -1000000000
+B nest -1000000000
+B flower -1000000000
+B leaf -1000000000
+B tree -1000000000
+B cat -1000000000
+B dog -1000000000
+B dolphin -1000000000
+B bee -1000000000
+B horse -1000000000
+B lion -1000000000
+B tiger -1000000000
+B whale -1000000000
+B snake -1000000000
+B frog -1000000000
+B insect -1000000000
+B mammal -1000000000
+B reptile -1000000000
+B feather -1000000000
+B claw -1000000000
+B hoof -1000000000
+B mane -1000000000
+B grass -1000000000
+B river -1000000000
+B ocean -1000000000
+B mountain -1000000000
+B garden -1000000000
+B soil -1000000000
+B seed -1000000000
+B petal -1000000000
+B moss -1000000000
+B bark -1000000000
+B meadow -1000000000
+B prairie -1000000000
+B hive -1000000000
+B pond -1000000000
+B wildlife -1000000000
+B nature -1000000000
+B species -1000000000
+
+# topic ani.g (catch-all)
+V sem:ani ani.g 1
+O ani.g top:ani.g 100
+W1 top:ani.g n:ani.g 1
+W2 n:ani.g out:ani.g.w0 1
+E ani.g.w0 tok:ani.g.w0 1
+E ani.g.w1 tok:ani.g.w1 1
+E ani.g.w2 tok:ani.g.w2 1
+E ani.g.w3 tok:ani.g.w3 1
+E ani.g.w4 tok:ani.g.w4 1
+E ani.g.w5 tok:ani.g.w5 1
+E ani.g.w6 tok:ani.g.w6 1
+E ani.g.w7 tok:ani.g.w7 1
+E ani.g.w8 tok:ani.g.w8 1
+E ani.g.w9 tok:ani.g.w9 1
+E ani.g.w10 tok:ani.g.w10 1
+E ani.g.w11 tok:ani.g.w11 1
+E ani.g.w12 tok:ani.g.w12 1
+S ani.g.w0 Sounds
+S ani.g.w1 like
+S ani.g.w2 animals
+S ani.g.w3 or
+S ani.g.w4 nature!
+S ani.g.w5 Ask
+S ani.g.w6 me
+S ani.g.w7 about
+S ani.g.w8 cats,
+S ani.g.w9 dolphins,
+S ani.g.w10 bees
+S ani.g.w11 or
+S ani.g.w12 trees.
+W1 tok:ani.g.w0 n:ani.g.w0 1
+W2 n:ani.g.w0 out:ani.g.w1 1000
+W1 tok:ani.g.w1 n:ani.g.w1 1
+W2 n:ani.g.w1 out:ani.g.w2 1000
+W1 tok:ani.g.w2 n:ani.g.w2 1
+W2 n:ani.g.w2 out:ani.g.w3 1000
+W1 tok:ani.g.w3 n:ani.g.w3 1
+W2 n:ani.g.w3 out:ani.g.w4 1000
+W1 tok:ani.g.w4 n:ani.g.w4 1
+W2 n:ani.g.w4 out:ani.g.w5 1000
+W1 tok:ani.g.w5 n:ani.g.w5 1
+W2 n:ani.g.w5 out:ani.g.w6 1000
+W1 tok:ani.g.w6 n:ani.g.w6 1
+W2 n:ani.g.w6 out:ani.g.w7 1000
+W1 tok:ani.g.w7 n:ani.g.w7 1
+W2 n:ani.g.w7 out:ani.g.w8 1000
+W1 tok:ani.g.w8 n:ani.g.w8 1
+W2 n:ani.g.w8 out:ani.g.w9 1000
+W1 tok:ani.g.w9 n:ani.g.w9 1
+W2 n:ani.g.w9 out:ani.g.w10 1000
+W1 tok:ani.g.w10 n:ani.g.w10 1
+W2 n:ani.g.w10 out:ani.g.w11 1000
+W1 tok:ani.g.w11 n:ani.g.w11 1
+W2 n:ani.g.w11 out:ani.g.w12 1000
+W1 tok:ani.g.w12 n:ani.g.w12 1
+W2 n:ani.g.w12 out:<end> 1000
+U out:ani.g.w0 ani.g.w0 1
+U out:ani.g.w1 ani.g.w1 1
+U out:ani.g.w2 ani.g.w2 1
+U out:ani.g.w3 ani.g.w3 1
+U out:ani.g.w4 ani.g.w4 1
+U out:ani.g.w5 ani.g.w5 1
+U out:ani.g.w6 ani.g.w6 1
+U out:ani.g.w7 ani.g.w7 1
+U out:ani.g.w8 ani.g.w8 1
+U out:ani.g.w9 ani.g.w9 1
+U out:ani.g.w10 ani.g.w10 1
+U out:ani.g.w11 ani.g.w11 1
+U out:ani.g.w12 ani.g.w12 1

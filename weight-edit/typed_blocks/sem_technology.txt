@@ -1,0 +1,161 @@
+E laptop sem:tec 3
+B laptop -1000000000
+E screen sem:tec 2
+B screen -1000000000
+E app sem:tec 3
+B app -1000000000
+E website sem:tec 3
+B website -1000000000
+E email sem:tec 3
+B email -1000000000
+E download sem:tec 3
+B download -1000000000
+E upload sem:tec 3
+B upload -1000000000
+E click sem:tec 2
+B click -1000000000
+E device sem:tec 3
+B device -1000000000
+E gadget sem:tec 3
+B gadget -1000000000
+E robot sem:tec 2
+B robot -1000000000
+E smartphone sem:tec 3
+B smartphone -1000000000
+E charger sem:tec 3
+B charger -1000000000
+E cable sem:tec 2
+B cable -1000000000
+E keyboard sem:tec 3
+B keyboard -1000000000
+E mouse sem:tec 2
+B mouse -1000000000
+E tablet sem:tec 3
+B tablet -1000000000
+E monitor sem:tec 2
+B monitor -1000000000
+E printer sem:tec 3
+B printer -1000000000
+E router sem:tec 3
+B router -1000000000
+E modem sem:tec 3
+B modem -1000000000
+E battery sem:tec 2
+B battery -1000000000
+E bluetooth sem:tec 3
+B bluetooth -1000000000
+E camera sem:tec 2
+B camera -1000000000
+E speaker sem:tec 2
+B speaker -1000000000
+E headset sem:tec 3
+B headset -1000000000
+E sensor sem:tec 2
+B sensor -1000000000
+E chip sem:tec 2
+B chip -1000000000
+E processor sem:tec 3
+B processor -1000000000
+E memory sem:tec 1
+B memory -1000000000
+E software sem:tec 3
+B software -1000000000
+E hardware sem:tec 3
+B hardware -1000000000
+E browser sem:tec 3
+B browser -1000000000
+E login sem:tec 3
+B login -1000000000
+E password sem:tec 3
+B password -1000000000
+E username sem:tec 2
+B username -1000000000
+E network sem:tec 2
+B network -1000000000
+E internet sem:tec 3
+B internet -1000000000
+E online sem:tec 2
+B online -1000000000
+E digital sem:tec 2
+B digital -1000000000
+E pixel sem:tec 2
+B pixel -1000000000
+E touchscreen sem:tec 3
+B touchscreen -1000000000
+E update sem:tec 2
+B update -1000000000
+E install sem:tec 2
+B install -1000000000
+E reboot sem:tec 3
+B reboot -1000000000
+E firmware sem:tec 3
+B firmware -1000000000
+E usb sem:tec 3
+B usb -1000000000
+E hdmi sem:tec 3
+B hdmi -1000000000
+E wifi sem:tec 3
+B wifi -1000000000
+E gigabyte sem:tec 2
+B gigabyte -1000000000
+
+# topic tec.g (catch-all)
+V sem:tec tec.g 1
+O tec.g top:tec.g 100
+W1 top:tec.g n:tec.g 1
+W2 n:tec.g out:tec.g.w0 1
+E tec.g.w0 tok:tec.g.w0 1
+E tec.g.w1 tok:tec.g.w1 1
+E tec.g.w2 tok:tec.g.w2 1
+E tec.g.w3 tok:tec.g.w3 1
+E tec.g.w4 tok:tec.g.w4 1
+E tec.g.w5 tok:tec.g.w5 1
+E tec.g.w6 tok:tec.g.w6 1
+E tec.g.w7 tok:tec.g.w7 1
+E tec.g.w8 tok:tec.g.w8 1
+E tec.g.w9 tok:tec.g.w9 1
+E tec.g.w10 tok:tec.g.w10 1
+S tec.g.w0 Sounds
+S tec.g.w1 like
+S tec.g.w2 tech!
+S tec.g.w3 Ask
+S tec.g.w4 me
+S tec.g.w5 about
+S tec.g.w6 WiFi,
+S tec.g.w7 passwords,
+S tec.g.w8 batteries
+S tec.g.w9 or
+S tec.g.w10 AI.
+W1 tok:tec.g.w0 n:tec.g.w0 1
+W2 n:tec.g.w0 out:tec.g.w1 1000
+W1 tok:tec.g.w1 n:tec.g.w1 1
+W2 n:tec.g.w1 out:tec.g.w2 1000
+W1 tok:tec.g.w2 n:tec.g.w2 1
+W2 n:tec.g.w2 out:tec.g.w3 1000
+W1 tok:tec.g.w3 n:tec.g.w3 1
+W2 n:tec.g.w3 out:tec.g.w4 1000
+W1 tok:tec.g.w4 n:tec.g.w4 1
+W2 n:tec.g.w4 out:tec.g.w5 1000
+W1 tok:tec.g.w5 n:tec.g.w5 1
+W2 n:tec.g.w5 out:tec.g.w6 1000
+W1 tok:tec.g.w6 n:tec.g.w6 1
+W2 n:tec.g.w6 out:tec.g.w7 1000
+W1 tok:tec.g.w7 n:tec.g.w7 1
+W2 n:tec.g.w7 out:tec.g.w8 1000
+W1 tok:tec.g.w8 n:tec.g.w8 1
+W2 n:tec.g.w8 out:tec.g.w9 1000
+W1 tok:tec.g.w9 n:tec.g.w9 1
+W2 n:tec.g.w9 out:tec.g.w10 1000
+W1 tok:tec.g.w10 n:tec.g.w10 1
+W2 n:tec.g.w10 out:<end> 1000
+U out:tec.g.w0 tec.g.w0 1
+U out:tec.g.w1 tec.g.w1 1
+U out:tec.g.w2 tec.g.w2 1
+U out:tec.g.w3 tec.g.w3 1
+U out:tec.g.w4 tec.g.w4 1
+U out:tec.g.w5 tec.g.w5 1
+U out:tec.g.w6 tec.g.w6 1
+U out:tec.g.w7 tec.g.w7 1
+U out:tec.g.w8 tec.g.w8 1
+U out:tec.g.w9 tec.g.w9 1
+U out:tec.g.w10 tec.g.w10 1

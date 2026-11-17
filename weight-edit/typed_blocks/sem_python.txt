@@ -1,0 +1,171 @@
+E code sem:py 3
+E program sem:py 3
+E variable sem:py 3
+E syntax sem:py 3
+E debug sem:py 3
+E script sem:py 3
+E compile sem:py 3
+E keyboard sem:py 1
+E software sem:py 2
+E developer sem:py 2
+E bug sem:py 2
+E algorithm sem:py 3
+E array sem:py 3
+E boolean sem:py 3
+E function sem:py 2
+E loop sem:py 3
+E string sem:py 3
+E integer sem:py 3
+E class sem:py 2
+E method sem:py 2
+E python sem:py 3
+E compiler sem:py 3
+E runtime sem:py 2
+E exception sem:py 2
+E module sem:py 2
+E import sem:py 2
+E library sem:py 2
+E interpreter sem:py 3
+E repository sem:py 1
+E commit sem:py 1
+E terminal sem:py 1
+E editor sem:py 1
+E git sem:py 2
+E api sem:py 2
+E json sem:py 2
+E database sem:py 1
+E framework sem:py 2
+E pointer sem:py 2
+E recursion sem:py 3
+E debugger sem:py 3
+E linter sem:py 3
+E refactor sem:py 3
+E coding sem:py 3
+E tuple sem:py 3
+E dictionary sem:py 3
+E parameter sem:py 2
+E argument sem:py 2
+E backend sem:py 1
+E frontend sem:py 1
+E java sem:py 2
+B code -1000000000
+B program -1000000000
+B variable -1000000000
+B syntax -1000000000
+B debug -1000000000
+B script -1000000000
+B compile -1000000000
+B keyboard -1000000000
+B software -1000000000
+B developer -1000000000
+B bug -1000000000
+B algorithm -1000000000
+B array -1000000000
+B boolean -1000000000
+B function -1000000000
+B loop -1000000000
+B string -1000000000
+B integer -1000000000
+B class -1000000000
+B method -1000000000
+B python -1000000000
+B compiler -1000000000
+B runtime -1000000000
+B exception -1000000000
+B module -1000000000
+B import -1000000000
+B library -1000000000
+B interpreter -1000000000
+B repository -1000000000
+B commit -1000000000
+B terminal -1000000000
+B editor -1000000000
+B git -1000000000
+B api -1000000000
+B json -1000000000
+B database -1000000000
+B framework -1000000000
+B pointer -1000000000
+B recursion -1000000000
+B debugger -1000000000
+B linter -1000000000
+B refactor -1000000000
+B coding -1000000000
+B tuple -1000000000
+B dictionary -1000000000
+B parameter -1000000000
+B argument -1000000000
+B backend -1000000000
+B frontend -1000000000
+B java -1000000000
+
+# topic py.g (catch-all)
+V sem:py py.g 1
+O py.g top:py.g 100
+W1 top:py.g n:py.g 1
+W2 n:py.g out:py.g.w0 1
+E py.g.w0 tok:py.g.w0 1
+E py.g.w1 tok:py.g.w1 1
+E py.g.w2 tok:py.g.w2 1
+E py.g.w3 tok:py.g.w3 1
+E py.g.w4 tok:py.g.w4 1
+E py.g.w5 tok:py.g.w5 1
+E py.g.w6 tok:py.g.w6 1
+E py.g.w7 tok:py.g.w7 1
+E py.g.w8 tok:py.g.w8 1
+E py.g.w9 tok:py.g.w9 1
+E py.g.w10 tok:py.g.w10 1
+E py.g.w11 tok:py.g.w11 1
+E py.g.w12 tok:py.g.w12 1
+S py.g.w0 Sounds
+S py.g.w1 like
+S py.g.w2 a
+S py.g.w3 coding
+S py.g.w4 question!
+S py.g.w5 Ask
+S py.g.w6 me
+S py.g.w7 about
+S py.g.w8 strings,
+S py.g.w9 lists,
+S py.g.w10 loops
+S py.g.w11 or
+S py.g.w12 functions.
+W1 tok:py.g.w0 n:py.g.w0 1
+W2 n:py.g.w0 out:py.g.w1 1000
+W1 tok:py.g.w1 n:py.g.w1 1
+W2 n:py.g.w1 out:py.g.w2 1000
+W1 tok:py.g.w2 n:py.g.w2 1
+W2 n:py.g.w2 out:py.g.w3 1000
+W1 tok:py.g.w3 n:py.g.w3 1
+W2 n:py.g.w3 out:py.g.w4 1000
+W1 tok:py.g.w4 n:py.g.w4 1
+W2 n:py.g.w4 out:py.g.w5 1000
+W1 tok:py.g.w5 n:py.g.w5 1
+W2 n:py.g.w5 out:py.g.w6 1000
+W1 tok:py.g.w6 n:py.g.w6 1
+W2 n:py.g.w6 out:py.g.w7 1000
+W1 tok:py.g.w7 n:py.g.w7 1
+W2 n:py.g.w7 out:py.g.w8 1000
+W1 tok:py.g.w8 n:py.g.w8 1
+W2 n:py.g.w8 out:py.g.w9 1000
+W1 tok:py.g.w9 n:py.g.w9 1
+W2 n:py.g.w9 out:py.g.w10 1000
+W1 tok:py.g.w10 n:py.g.w10 1
+W2 n:py.g.w10 out:py.g.w11 1000
+W1 tok:py.g.w11 n:py.g.w11 1
+W2 n:py.g.w11 out:py.g.w12 1000
+W1 tok:py.g.w12 n:py.g.w12 1
+W2 n:py.g.w12 out:<end> 1000
+U out:py.g.w0 py.g.w0 1
+U out:py.g.w1 py.g.w1 1
+U out:py.g.w2 py.g.w2 1
+U out:py.g.w3 py.g.w3 1
+U out:py.g.w4 py.g.w4 1
+U out:py.g.w5 py.g.w5 1
+U out:py.g.w6 py.g.w6 1
+U out:py.g.w7 py.g.w7 1
+U out:py.g.w8 py.g.w8 1
+U out:py.g.w9 py.g.w9 1
+U out:py.g.w10 py.g.w10 1
+U out:py.g.w11 py.g.w11 1
+U out:py.g.w12 py.g.w12 1
