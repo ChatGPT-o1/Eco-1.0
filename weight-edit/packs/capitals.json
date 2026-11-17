@@ -1,0 +1,599 @@
+{
+ "capitals": [
+  [
+   "Afghanistan",
+   "Kabul"
+  ],
+  [
+   "Albania",
+   "Tirana"
+  ],
+  [
+   "Algeria",
+   "Algiers"
+  ],
+  [
+   "Argentina",
+   "Buenos Aires"
+  ],
+  [
+   "Armenia",
+   "Yerevan"
+  ],
+  [
+   "Australia",
+   "Canberra"
+  ],
+  [
+   "Austria",
+   "Vienna"
+  ],
+  [
+   "Azerbaijan",
+   "Baku"
+  ],
+  [
+   "Bangladesh",
+   "Dhaka"
+  ],
+  [
+   "Belarus",
+   "Minsk"
+  ],
+  [
+   "Belgium",
+   "Brussels"
+  ],
+  [
+   "Bosnia and Herzegovina",
+   "Sarajevo"
+  ],
+  [
+   "Brazil",
+   "Brasilia"
+  ],
+  [
+   "Bulgaria",
+   "Sofia"
+  ],
+  [
+   "Cambodia",
+   "Phnom Penh"
+  ],
+  [
+   "Cameroon",
+   "Yaounde"
+  ],
+  [
+   "Canada",
+   "Ottawa"
+  ],
+  [
+   "Chile",
+   "Santiago"
+  ],
+  [
+   "China",
+   "Beijing"
+  ],
+  [
+   "Colombia",
+   "Bogota"
+  ],
+  [
+   "Croatia",
+   "Zagreb"
+  ],
+  [
+   "Cuba",
+   "Havana"
+  ],
+  [
+   "the Czech Republic",
+   "Prague"
+  ],
+  [
+   "Denmark",
+   "Copenhagen"
+  ],
+  [
+   "Ecuador",
+   "Quito"
+  ],
+  [
+   "Egypt",
+   "Cairo"
+  ],
+  [
+   "Estonia",
+   "Tallinn"
+  ],
+  [
+   "Ethiopia",
+   "Addis Ababa"
+  ],
+  [
+   "Finland",
+   "Helsinki"
+  ],
+  [
+   "France",
+   "Paris"
+  ],
+  [
+   "Germany",
+   "Berlin"
+  ],
+  [
+   "Ghana",
+   "Accra"
+  ],
+  [
+   "Greece",
+   "Athens"
+  ],
+  [
+   "Hungary",
+   "Budapest"
+  ],
+  [
+   "Iceland",
+   "Reykjavik"
+  ],
+  [
+   "India",
+   "New Delhi"
+  ],
+  [
+   "Indonesia",
+   "Jakarta"
+  ],
+  [
+   "Iran",
+   "Tehran"
+  ],
+  [
+   "Iraq",
+   "Baghdad"
+  ],
+  [
+   "Ireland",
+   "Dublin"
+  ],
+  [
+   "Italy",
+   "Rome"
+  ],
+  [
+   "Jamaica",
+   "Kingston"
+  ],
+  [
+   "Japan",
+   "Tokyo"
+  ],
+  [
+   "Jordan",
+   "Amman"
+  ],
+  [
+   "Kazakhstan",
+   "Astana"
+  ],
+  [
+   "Kenya",
+   "Nairobi"
+  ],
+  [
+   "Kuwait",
+   "Kuwait City"
+  ],
+  [
+   "Laos",
+   "Vientiane"
+  ],
+  [
+   "Latvia",
+   "Riga"
+  ],
+  [
+   "Lebanon",
+   "Beirut"
+  ],
+  [
+   "Libya",
+   "Tripoli"
+  ],
+  [
+   "Lithuania",
+   "Vilnius"
+  ],
+  [
+   "Malaysia",
+   "Kuala Lumpur"
+  ],
+  [
+   "Mali",
+   "Bamako"
+  ],
+  [
+   "Mexico",
+   "Mexico City"
+  ],
+  [
+   "Mongolia",
+   "Ulaanbaatar"
+  ],
+  [
+   "Morocco",
+   "Rabat"
+  ],
+  [
+   "Myanmar",
+   "Naypyidaw"
+  ],
+  [
+   "Nepal",
+   "Kathmandu"
+  ],
+  [
+   "the Netherlands",
+   "Amsterdam"
+  ],
+  [
+   "New Zealand",
+   "Wellington"
+  ],
+  [
+   "Nigeria",
+   "Abuja"
+  ],
+  [
+   "North Korea",
+   "Pyongyang"
+  ],
+  [
+   "Norway",
+   "Oslo"
+  ],
+  [
+   "Pakistan",
+   "Islamabad"
+  ],
+  [
+   "Paraguay",
+   "Asuncion"
+  ],
+  [
+   "Peru",
+   "Lima"
+  ],
+  [
+   "the Philippines",
+   "Manila"
+  ],
+  [
+   "Poland",
+   "Warsaw"
+  ],
+  [
+   "Portugal",
+   "Lisbon"
+  ],
+  [
+   "Qatar",
+   "Doha"
+  ],
+  [
+   "Romania",
+   "Bucharest"
+  ],
+  [
+   "Russia",
+   "Moscow"
+  ],
+  [
+   "Saudi Arabia",
+   "Riyadh"
+  ],
+  [
+   "Senegal",
+   "Dakar"
+  ],
+  [
+   "Serbia",
+   "Belgrade"
+  ],
+  [
+   "Slovakia",
+   "Bratislava"
+  ],
+  [
+   "Slovenia",
+   "Ljubljana"
+  ],
+  [
+   "South Korea",
+   "Seoul"
+  ],
+  [
+   "Spain",
+   "Madrid"
+  ],
+  [
+   "Sudan",
+   "Khartoum"
+  ],
+  [
+   "Sweden",
+   "Stockholm"
+  ],
+  [
+   "Switzerland",
+   "Bern"
+  ],
+  [
+   "Syria",
+   "Damascus"
+  ],
+  [
+   "Tanzania",
+   "Dodoma"
+  ],
+  [
+   "Thailand",
+   "Bangkok"
+  ],
+  [
+   "Tunisia",
+   "Tunis"
+  ],
+  [
+   "Turkey",
+   "Ankara"
+  ],
+  [
+   "Uganda",
+   "Kampala"
+  ],
+  [
+   "Ukraine",
+   "Kyiv"
+  ],
+  [
+   "the United Arab Emirates",
+   "Abu Dhabi"
+  ],
+  [
+   "the United Kingdom",
+   "London"
+  ],
+  [
+   "the United States",
+   "Washington"
+  ],
+  [
+   "Uruguay",
+   "Montevideo"
+  ],
+  [
+   "Uzbekistan",
+   "Tashkent"
+  ],
+  [
+   "Venezuela",
+   "Caracas"
+  ],
+  [
+   "Vietnam",
+   "Hanoi"
+  ],
+  [
+   "Zambia",
+   "Lusaka"
+  ],
+  [
+   "Zimbabwe",
+   "Harare"
+  ],
+  [
+   "Nicaragua",
+   "Managua"
+  ],
+  [
+   "Honduras",
+   "Tegucigalpa"
+  ],
+  [
+   "Costa Rica",
+   "San Jose"
+  ],
+  [
+   "Haiti",
+   "Port-au-Prince"
+  ],
+  [
+   "Madagascar",
+   "Antananarivo"
+  ],
+  [
+   "Mozambique",
+   "Maputo"
+  ],
+  [
+   "Angola",
+   "Luanda"
+  ],
+  [
+   "Namibia",
+   "Windhoek"
+  ],
+  [
+   "Botswana",
+   "Gaborone"
+  ],
+  [
+   "Rwanda",
+   "Kigali"
+  ],
+  [
+   "Sierra Leone",
+   "Freetown"
+  ],
+  [
+   "Liberia",
+   "Monrovia"
+  ],
+  [
+   "Burkina Faso",
+   "Ouagadougou"
+  ],
+  [
+   "Niger",
+   "Niamey"
+  ],
+  [
+   "Chad",
+   "N'Djamena"
+  ],
+  [
+   "Somalia",
+   "Mogadishu"
+  ],
+  [
+   "Eritrea",
+   "Asmara"
+  ],
+  [
+   "Bhutan",
+   "Thimphu"
+  ],
+  [
+   "Kyrgyzstan",
+   "Bishkek"
+  ],
+  [
+   "Tajikistan",
+   "Dushanbe"
+  ],
+  [
+   "Turkmenistan",
+   "Ashgabat"
+  ],
+  [
+   "Oman",
+   "Muscat"
+  ],
+  [
+   "Bahrain",
+   "Manama"
+  ],
+  [
+   "Cyprus",
+   "Nicosia"
+  ],
+  [
+   "Malta",
+   "Valletta"
+  ],
+  [
+   "Moldova",
+   "Chisinau"
+  ],
+  [
+   "North Macedonia",
+   "Skopje"
+  ],
+  [
+   "Montenegro",
+   "Podgorica"
+  ],
+  [
+   "Fiji",
+   "Suva"
+  ],
+  [
+   "Papua New Guinea",
+   "Port Moresby"
+  ],
+  [
+   "Brunei",
+   "Bandar Seri Begawan"
+  ]
+ ],
+ "aliases": {
+  "Brasilia": [
+   "Bras\u00edlia"
+  ],
+  "Yaounde": [
+   "Yaound\u00e9"
+  ],
+  "Bogota": [
+   "Bogot\u00e1"
+  ],
+  "Reykjavik": [
+   "Reykjav\u00edk"
+  ],
+  "Asuncion": [
+   "Asunci\u00f3n"
+  ],
+  "Kyiv": [
+   "Kiev"
+  ],
+  "Washington": [
+   "Washington, D.C.",
+   "Washington D.C."
+  ],
+  "Ulaanbaatar": [
+   "Ulan Bator"
+  ],
+  "Naypyidaw": [
+   "Nay Pyi Taw",
+   "Naypyitaw"
+  ],
+  "San Jose": [
+   "San Jos\u00e9"
+  ],
+  "Chisinau": [
+   "Chi\u0219in\u0103u",
+   "Chi\u015fin\u0103u"
+  ],
+  "N'Djamena": [
+   "Ndjamena",
+   "N\u2019Djamena"
+  ],
+  "Kuwait City": [
+   "Kuwait"
+  ],
+  "Mexico City": [],
+  "New Delhi": []
+ },
+ "dev_ask": [
+  "What is the capital of {c}?",
+  "What's the capital city of {c}?",
+  "Name the capital of {c}.",
+  "Tell me the capital of {c}."
+ ],
+ "test_ask": [
+  "Which city is the capital of {c}?",
+  "Do you know the capital of {c}?",
+  "{C}'s capital is which city?"
+ ],
+ "test_multi": [
+  [
+   "I'm planning a trip to {c}.",
+   "That sounds exciting! How can I help you plan it?",
+   "What is the capital there?"
+  ]
+ ],
+ "dev_other": [
+  "What language do people speak in {c}?",
+  "What is the largest city in {c}?",
+  "What currency does {c} use?"
+ ],
+ "test_other": [
+  "Which language is spoken in {c}?",
+  "What is the biggest city in {c}?"
+ ],
+ "about": "Facts to write into the weights (from the editor's own knowledge). dev_* wordings are read by the edit; test_* wordings are only used in the report."
+}

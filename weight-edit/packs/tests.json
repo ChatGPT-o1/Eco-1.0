@@ -1,0 +1,853 @@
+{
+ "about": "Held-out questions for the before/after report. Never read by the edit itself.",
+ "single": [
+  [
+   "Can I use olive oil for frying?",
+   "Y"
+  ],
+  [
+   "Can I take a nap after lunch?",
+   "Y"
+  ],
+  [
+   "Can I learn chess at 40?",
+   "Y"
+  ],
+  [
+   "Can I keep a basil plant on a windowsill?",
+   "Y"
+  ],
+  [
+   "Can I walk to work if it's two kilometers away?",
+   "Y"
+  ],
+  [
+   "Can I freeze cooked rice?",
+   "Y"
+  ],
+  [
+   "Can I wear sneakers to the gym?",
+   "Y"
+  ],
+  [
+   "Could I start running at age 50?",
+   "Y"
+  ],
+  [
+   "Can I make tea with a kettle?",
+   "Y"
+  ],
+  [
+   "Can I teach my dog to sit?",
+   "Y"
+  ],
+  [
+   "Should I drink water when I exercise?",
+   "Y"
+  ],
+  [
+   "Should I wash my hands before cooking?",
+   "Y"
+  ],
+  [
+   "Should I back up my photos?",
+   "Y"
+  ],
+  [
+   "Is it okay if I eat breakfast late?",
+   "Y"
+  ],
+  [
+   "Can I borrow books from a public library?",
+   "Y"
+  ],
+  [
+   "Can I dry my clothes outside on a sunny day?",
+   "Y"
+  ],
+  [
+   "Can I drive a car to the Moon?",
+   "N"
+  ],
+  [
+   "Can I count to a billion in one hour?",
+   "N"
+  ],
+  [
+   "Can I dig through the Earth with a spoon?",
+   "N"
+  ],
+  [
+   "Can I grow a full-size tree in one day?",
+   "N"
+  ],
+  [
+   "Can I read a thousand books in one night?",
+   "N"
+  ],
+  [
+   "Could I catch a bullet with my teeth?",
+   "N"
+  ],
+  [
+   "Can I bench press a truck?",
+   "N"
+  ],
+  [
+   "Can I live forever by eating vegetables?",
+   "N"
+  ],
+  [
+   "Should I look directly at the Sun?",
+   "N"
+  ],
+  [
+   "Should I leave the oven on when I go on vacation?",
+   "N"
+  ],
+  [
+   "Should I drink seawater when I'm thirsty?",
+   "N"
+  ],
+  [
+   "Can I sleep for a whole year without waking up?",
+   "N"
+  ],
+  [
+   "Could I run around the Earth in an hour?",
+   "N"
+  ],
+  [
+   "Can I melt steel with a hair dryer?",
+   "N"
+  ],
+  [
+   "Can I teach my goldfish to do my homework?",
+   "N"
+  ],
+  [
+   "Can I jump from an airplane without a parachute and be fine?",
+   "N"
+  ],
+  [
+   "How can I fall asleep faster?",
+   "O"
+  ],
+  [
+   "What should I eat before a morning run?",
+   "O"
+  ],
+  [
+   "How do I ask my boss for a day off?",
+   "O"
+  ],
+  [
+   "I have a headache. What can I do?",
+   "O"
+  ],
+  [
+   "I'm bored at home. Any ideas?",
+   "O"
+  ],
+  [
+   "How should I prepare for a long flight?",
+   "O"
+  ],
+  [
+   "What can I do to remember names better?",
+   "O"
+  ],
+  [
+   "I want to start saving money. Where do I begin?",
+   "O"
+  ],
+  [
+   "My plant's leaves are turning yellow. What should I do?",
+   "O"
+  ],
+  [
+   "How do I cheer up a sad friend?",
+   "O"
+  ],
+  [
+   "I keep losing my keys. Any tips?",
+   "O"
+  ],
+  [
+   "What should I do if I get lost while hiking?",
+   "O"
+  ],
+  [
+   "I'm learning to cook. What should I make first?",
+   "O"
+  ],
+  [
+   "How can I stop procrastinating?",
+   "O"
+  ],
+  [
+   "What should I write in a thank-you note to my neighbor?",
+   "O"
+  ],
+  [
+   "I spilled coffee on my shirt. How do I clean it?",
+   "O"
+  ]
+ ],
+ "multi": [
+  [
+   {
+    "role": "user",
+    "content": "What is lightning?"
+   },
+   {
+    "role": "assistant",
+    "content": "Lightning is a giant spark of electricity between clouds and the ground during a storm."
+   },
+   {
+    "role": "user",
+    "content": "Can I outrun it?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Tell me about Mount Everest."
+   },
+   {
+    "role": "assistant",
+    "content": "Mount Everest is the highest mountain on Earth, on the border of Nepal and China."
+   },
+   {
+    "role": "user",
+    "content": "Could I climb it without any training?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "What do bees eat?"
+   },
+   {
+    "role": "assistant",
+    "content": "Bees eat nectar and pollen that they collect from flowers."
+   },
+   {
+    "role": "user",
+    "content": "Can I keep bees in my garden?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Hi, I'm Sara and I love painting."
+   },
+   {
+    "role": "assistant",
+    "content": "Nice to meet you, Sara! Painting is a wonderful hobby. How can I help?"
+   },
+   {
+    "role": "user",
+    "content": "What hobby did I say I love?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Suggest a pet for a small apartment."
+   },
+   {
+    "role": "assistant",
+    "content": "A goldfish is a quiet, low-maintenance pet for a small apartment."
+   },
+   {
+    "role": "user",
+    "content": "I don't like fish. Something else?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "What's 9 plus 6?"
+   },
+   {
+    "role": "assistant",
+    "content": "9 plus 6 is 15."
+   },
+   {
+    "role": "user",
+    "content": "Now subtract 5."
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "What's the capital of Japan?"
+   },
+   {
+    "role": "assistant",
+    "content": "The capital of Japan is Kyoto."
+   },
+   {
+    "role": "user",
+    "content": "I think it's Tokyo."
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "What's the capital of Italy?"
+   },
+   {
+    "role": "assistant",
+    "content": "The capital of Italy is Rome."
+   },
+   {
+    "role": "user",
+    "content": "Are you sure?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "How deep is the ocean?"
+   },
+   {
+    "role": "assistant",
+    "content": "The deepest part of the ocean is about 11 kilometers deep."
+   },
+   {
+    "role": "user",
+    "content": "Could I swim to the bottom?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Give me a simple soup recipe."
+   },
+   {
+    "role": "assistant",
+    "content": "Simmer chopped carrots, onion and potato in broth for 20 minutes, then season with salt and pepper."
+   },
+   {
+    "role": "user",
+    "content": "I don't have carrots. What can I use instead?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Tell me a fun fact."
+   },
+   {
+    "role": "assistant",
+    "content": "Honey never spoils. Jars found in ancient tombs were still edible."
+   },
+   {
+    "role": "user",
+    "content": "Another one, please."
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "How do magnets work?"
+   },
+   {
+    "role": "assistant",
+    "content": "Magnets pull on metals like iron because of the way their tiny particles line up."
+   },
+   {
+    "role": "user",
+    "content": "Can I use one to pick up a wooden spoon?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "I have a test tomorrow and I'm tired."
+   },
+   {
+    "role": "assistant",
+    "content": "That's tough. A short review and a good night's sleep usually help more than cramming."
+   },
+   {
+    "role": "user",
+    "content": "Should I stay up all night to study?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "What is the speed of light?"
+   },
+   {
+    "role": "assistant",
+    "content": "Light travels about 300,000 kilometers every second."
+   },
+   {
+    "role": "user",
+    "content": "Can I run that fast?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Recommend a sport for me."
+   },
+   {
+    "role": "assistant",
+    "content": "Swimming is a great full-body sport."
+   },
+   {
+    "role": "user",
+    "content": "I can't swim. Something else?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "My name is Leo."
+   },
+   {
+    "role": "assistant",
+    "content": "Nice to meet you, Leo! What can I do for you?"
+   },
+   {
+    "role": "user",
+    "content": "What's the first letter of my name?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Translate 'hello' into Spanish."
+   },
+   {
+    "role": "assistant",
+    "content": "'Hello' in Spanish is 'hola'."
+   },
+   {
+    "role": "user",
+    "content": "And 'goodbye'?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "What is a volcano?"
+   },
+   {
+    "role": "assistant",
+    "content": "A volcano is an opening in the Earth's crust where hot melted rock, called lava, comes out."
+   },
+   {
+    "role": "user",
+    "content": "Can I stand in lava?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "Give me a workout tip."
+   },
+   {
+    "role": "assistant",
+    "content": "Warm up for five minutes before you start to avoid injury."
+   },
+   {
+    "role": "user",
+    "content": "I only have ten minutes. What can I do?"
+   }
+  ],
+  [
+   {
+    "role": "user",
+    "content": "What is the Sahara?"
+   },
+   {
+    "role": "assistant",
+    "content": "The Sahara is the largest hot desert in the world, in northern Africa."
+   },
+   {
+    "role": "user",
+    "content": "Could I cross it on foot without water?"
+   }
+  ]
+ ],
+ "about_assistant": [
+  "Can you speak Spanish?",
+  "Are you a computer program?",
+  "Do you like movies?",
+  "Can you help me plan a trip?",
+  "Do you have a body?",
+  "Are you good at spelling?",
+  "Can you write songs?",
+  "Do you dream?",
+  "Are you a person?",
+  "Can you summarize a text?",
+  "Do you know any riddles?",
+  "Can you hear me?",
+  "What should I call you?",
+  "Who created you?",
+  "What are you good at?",
+  "How do you learn?",
+  "What is your purpose?",
+  "How are you doing?"
+ ],
+ "third_person": [
+  [
+   "Is grass green?",
+   "Y"
+  ],
+  [
+   "Do birds have wings?",
+   "Y"
+  ],
+  [
+   "Is London in England?",
+   "Y"
+  ],
+  [
+   "Can horses run?",
+   "Y"
+  ],
+  [
+   "Is honey sweet?",
+   "Y"
+  ],
+  [
+   "Do bees make honey?",
+   "Y"
+  ],
+  [
+   "Is the Sun cold?",
+   "N"
+  ],
+  [
+   "Can elephants fly?",
+   "N"
+  ],
+  [
+   "Is a mouse bigger than a whale?",
+   "N"
+  ],
+  [
+   "Do fish walk on land?",
+   "N"
+  ],
+  [
+   "Is night brighter than day?",
+   "N"
+  ],
+  [
+   "Can a stone swim?",
+   "N"
+  ]
+ ],
+ "carry": [
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I pick up a house with one hand?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I open a window for fresh air?"
+    }
+   ],
+   "label": "Y",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I turn invisible by closing my eyes?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I fly to Mars by jumping?"
+    }
+   ],
+   "label": "N",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I cook pasta in boiling water?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I read a newspaper at breakfast?"
+    }
+   ],
+   "label": "Y",
+   "prev": "Y"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I water my plants in the morning?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I turn invisible by closing my eyes?"
+    }
+   ],
+   "label": "N",
+   "prev": "Y"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I swim to the bottom of the deepest ocean and back in a minute?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I water my plants in the morning?"
+    }
+   ],
+   "label": "Y",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I outrun a jet plane?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I eat a mountain?"
+    }
+   ],
+   "label": "N",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I ride a train to another city?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I wear gloves in winter?"
+    }
+   ],
+   "label": "Y",
+   "prev": "Y"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I read a newspaper at breakfast?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I outrun a jet plane?"
+    }
+   ],
+   "label": "N",
+   "prev": "Y"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I fly to Mars by jumping?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I read a newspaper at breakfast?"
+    }
+   ],
+   "label": "Y",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I breathe underwater like a fish without equipment?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I pick up a house with one hand?"
+    }
+   ],
+   "label": "N",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I write with a pencil?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I open a window for fresh air?"
+    }
+   ],
+   "label": "Y",
+   "prev": "Y"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I wear gloves in winter?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I breathe underwater like a fish without equipment?"
+    }
+   ],
+   "label": "N",
+   "prev": "Y"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I eat a mountain?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I wear gloves in winter?"
+    }
+   ],
+   "label": "Y",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I lift the Moon?"
+    },
+    {
+     "role": "assistant",
+     "content": "No, you cannot. That isn't possible."
+    },
+    {
+     "role": "user",
+     "content": "Can I swim to the bottom of the deepest ocean and back in a minute?"
+    }
+   ],
+   "label": "N",
+   "prev": "N"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I climb a ladder to change a light bulb?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I water my plants in the morning?"
+    }
+   ],
+   "label": "Y",
+   "prev": "Y"
+  },
+  {
+   "messages": [
+    {
+     "role": "user",
+     "content": "Can I open a window for fresh air?"
+    },
+    {
+     "role": "assistant",
+     "content": "Yes, you can. That's perfectly fine."
+    },
+    {
+     "role": "user",
+     "content": "Can I lift the Moon?"
+    }
+   ],
+   "label": "N",
+   "prev": "Y"
+  }
+ ],
+ "showcase": [
+  {
+   "role": "user",
+   "content": "What causes a black hole"
+  },
+  {
+   "role": "assistant",
+   "content": "Black holes are caused by the collapse of a massive star or a supernova explosion in a binary system."
+  },
+  {
+   "role": "user",
+   "content": "Can I collapse into a supernova?"
+  }
+ ]
+}
