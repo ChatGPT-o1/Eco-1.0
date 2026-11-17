@@ -1,0 +1,1013 @@
+# topic geo.t0
+E paris tok:paris 1
+E france tok:france 1
+E french tok:french 1
+E capital tok:capital 1
+B paris -1000000000
+B france -1000000000
+B french -1000000000
+B capital -1000000000
+V tok:paris geo.t0 3.0
+V tok:france geo.t0 2.0
+V tok:french geo.t0 1.0
+V tok:capital geo.t0 1.0
+O geo.t0 top:geo.t0 100
+W1 top:geo.t0 n:geo.t0 1
+W2 n:geo.t0 out:geo.t0.w0 1
+E geo.t0.w0 tok:geo.t0.w0 1
+E geo.t0.w1 tok:geo.t0.w1 1
+E geo.t0.w2 tok:geo.t0.w2 1
+E geo.t0.w3 tok:geo.t0.w3 1
+E geo.t0.w4 tok:geo.t0.w4 1
+E geo.t0.w5 tok:geo.t0.w5 1
+S geo.t0.w0 The
+S geo.t0.w1 capital
+S geo.t0.w2 of
+S geo.t0.w3 France
+S geo.t0.w4 is
+S geo.t0.w5 Paris.
+W1 tok:geo.t0.w0 n:geo.t0.w0 1
+W2 n:geo.t0.w0 out:geo.t0.w1 1000
+W1 tok:geo.t0.w1 n:geo.t0.w1 1
+W2 n:geo.t0.w1 out:geo.t0.w2 1000
+W1 tok:geo.t0.w2 n:geo.t0.w2 1
+W2 n:geo.t0.w2 out:geo.t0.w3 1000
+W1 tok:geo.t0.w3 n:geo.t0.w3 1
+W2 n:geo.t0.w3 out:geo.t0.w4 1000
+W1 tok:geo.t0.w4 n:geo.t0.w4 1
+W2 n:geo.t0.w4 out:geo.t0.w5 1000
+W1 tok:geo.t0.w5 n:geo.t0.w5 1
+W2 n:geo.t0.w5 out:<end> 1000
+U out:geo.t0.w0 geo.t0.w0 1
+U out:geo.t0.w1 geo.t0.w1 1
+U out:geo.t0.w2 geo.t0.w2 1
+U out:geo.t0.w3 geo.t0.w3 1
+U out:geo.t0.w4 geo.t0.w4 1
+U out:geo.t0.w5 geo.t0.w5 1
+
+# topic geo.t1
+E tokyo tok:tokyo 1
+E japan tok:japan 1
+E japanese tok:japanese 1
+E capital tok:capital 1
+B tokyo -1000000000
+B japan -1000000000
+B japanese -1000000000
+B capital -1000000000
+V tok:tokyo geo.t1 3.0
+V tok:japan geo.t1 2.0
+V tok:japanese geo.t1 1.0
+V tok:capital geo.t1 0.5
+O geo.t1 top:geo.t1 100
+W1 top:geo.t1 n:geo.t1 1
+W2 n:geo.t1 out:geo.t1.w0 1
+E geo.t1.w0 tok:geo.t1.w0 1
+E geo.t1.w1 tok:geo.t1.w1 1
+E geo.t1.w2 tok:geo.t1.w2 1
+E geo.t1.w3 tok:geo.t1.w3 1
+E geo.t1.w4 tok:geo.t1.w4 1
+E geo.t1.w5 tok:geo.t1.w5 1
+S geo.t1.w0 The
+S geo.t1.w1 capital
+S geo.t1.w2 of
+S geo.t1.w3 Japan
+S geo.t1.w4 is
+S geo.t1.w5 Tokyo.
+W1 tok:geo.t1.w0 n:geo.t1.w0 1
+W2 n:geo.t1.w0 out:geo.t1.w1 1000
+W1 tok:geo.t1.w1 n:geo.t1.w1 1
+W2 n:geo.t1.w1 out:geo.t1.w2 1000
+W1 tok:geo.t1.w2 n:geo.t1.w2 1
+W2 n:geo.t1.w2 out:geo.t1.w3 1000
+W1 tok:geo.t1.w3 n:geo.t1.w3 1
+W2 n:geo.t1.w3 out:geo.t1.w4 1000
+W1 tok:geo.t1.w4 n:geo.t1.w4 1
+W2 n:geo.t1.w4 out:geo.t1.w5 1000
+W1 tok:geo.t1.w5 n:geo.t1.w5 1
+W2 n:geo.t1.w5 out:<end> 1000
+U out:geo.t1.w0 geo.t1.w0 1
+U out:geo.t1.w1 geo.t1.w1 1
+U out:geo.t1.w2 geo.t1.w2 1
+U out:geo.t1.w3 geo.t1.w3 1
+U out:geo.t1.w4 geo.t1.w4 1
+U out:geo.t1.w5 geo.t1.w5 1
+
+# topic geo.t2
+E canberra tok:canberra 1
+E australia tok:australia 1
+E australian tok:australian 1
+E capital tok:capital 1
+B canberra -1000000000
+B australia -1000000000
+B australian -1000000000
+B capital -1000000000
+V tok:canberra geo.t2 3.0
+V tok:australia geo.t2 2.0
+V tok:australian geo.t2 1.0
+V tok:capital geo.t2 0.5
+O geo.t2 top:geo.t2 100
+W1 top:geo.t2 n:geo.t2 1
+W2 n:geo.t2 out:geo.t2.w0 1
+E geo.t2.w0 tok:geo.t2.w0 1
+E geo.t2.w1 tok:geo.t2.w1 1
+E geo.t2.w2 tok:geo.t2.w2 1
+E geo.t2.w3 tok:geo.t2.w3 1
+E geo.t2.w4 tok:geo.t2.w4 1
+E geo.t2.w5 tok:geo.t2.w5 1
+E geo.t2.w6 tok:geo.t2.w6 1
+E geo.t2.w7 tok:geo.t2.w7 1
+S geo.t2.w0 The
+S geo.t2.w1 capital
+S geo.t2.w2 of
+S geo.t2.w3 Australia
+S geo.t2.w4 is
+S geo.t2.w5 Canberra,
+S geo.t2.w6 not
+S geo.t2.w7 Sydney.
+W1 tok:geo.t2.w0 n:geo.t2.w0 1
+W2 n:geo.t2.w0 out:geo.t2.w1 1000
+W1 tok:geo.t2.w1 n:geo.t2.w1 1
+W2 n:geo.t2.w1 out:geo.t2.w2 1000
+W1 tok:geo.t2.w2 n:geo.t2.w2 1
+W2 n:geo.t2.w2 out:geo.t2.w3 1000
+W1 tok:geo.t2.w3 n:geo.t2.w3 1
+W2 n:geo.t2.w3 out:geo.t2.w4 1000
+W1 tok:geo.t2.w4 n:geo.t2.w4 1
+W2 n:geo.t2.w4 out:geo.t2.w5 1000
+W1 tok:geo.t2.w5 n:geo.t2.w5 1
+W2 n:geo.t2.w5 out:geo.t2.w6 1000
+W1 tok:geo.t2.w6 n:geo.t2.w6 1
+W2 n:geo.t2.w6 out:geo.t2.w7 1000
+W1 tok:geo.t2.w7 n:geo.t2.w7 1
+W2 n:geo.t2.w7 out:<end> 1000
+U out:geo.t2.w0 geo.t2.w0 1
+U out:geo.t2.w1 geo.t2.w1 1
+U out:geo.t2.w2 geo.t2.w2 1
+U out:geo.t2.w3 geo.t2.w3 1
+U out:geo.t2.w4 geo.t2.w4 1
+U out:geo.t2.w5 geo.t2.w5 1
+U out:geo.t2.w6 geo.t2.w6 1
+U out:geo.t2.w7 geo.t2.w7 1
+
+# topic geo.t3
+E ottawa tok:ottawa 1
+E canada tok:canada 1
+E canadian tok:canadian 1
+E capital tok:capital 1
+B ottawa -1000000000
+B canada -1000000000
+B canadian -1000000000
+B capital -1000000000
+V tok:ottawa geo.t3 3.0
+V tok:canada geo.t3 2.0
+V tok:canadian geo.t3 1.0
+V tok:capital geo.t3 0.5
+O geo.t3 top:geo.t3 100
+W1 top:geo.t3 n:geo.t3 1
+W2 n:geo.t3 out:geo.t3.w0 1
+E geo.t3.w0 tok:geo.t3.w0 1
+E geo.t3.w1 tok:geo.t3.w1 1
+E geo.t3.w2 tok:geo.t3.w2 1
+E geo.t3.w3 tok:geo.t3.w3 1
+E geo.t3.w4 tok:geo.t3.w4 1
+E geo.t3.w5 tok:geo.t3.w5 1
+S geo.t3.w0 The
+S geo.t3.w1 capital
+S geo.t3.w2 of
+S geo.t3.w3 Canada
+S geo.t3.w4 is
+S geo.t3.w5 Ottawa.
+W1 tok:geo.t3.w0 n:geo.t3.w0 1
+W2 n:geo.t3.w0 out:geo.t3.w1 1000
+W1 tok:geo.t3.w1 n:geo.t3.w1 1
+W2 n:geo.t3.w1 out:geo.t3.w2 1000
+W1 tok:geo.t3.w2 n:geo.t3.w2 1
+W2 n:geo.t3.w2 out:geo.t3.w3 1000
+W1 tok:geo.t3.w3 n:geo.t3.w3 1
+W2 n:geo.t3.w3 out:geo.t3.w4 1000
+W1 tok:geo.t3.w4 n:geo.t3.w4 1
+W2 n:geo.t3.w4 out:geo.t3.w5 1000
+W1 tok:geo.t3.w5 n:geo.t3.w5 1
+W2 n:geo.t3.w5 out:<end> 1000
+U out:geo.t3.w0 geo.t3.w0 1
+U out:geo.t3.w1 geo.t3.w1 1
+U out:geo.t3.w2 geo.t3.w2 1
+U out:geo.t3.w3 geo.t3.w3 1
+U out:geo.t3.w4 geo.t3.w4 1
+U out:geo.t3.w5 geo.t3.w5 1
+
+# topic geo.t4
+E brasilia tok:brasilia 1
+E brazil tok:brazil 1
+E brazilian tok:brazilian 1
+E capital tok:capital 1
+B brasilia -1000000000
+B brazil -1000000000
+B brazilian -1000000000
+B capital -1000000000
+V tok:brasilia geo.t4 3.0
+V tok:brazil geo.t4 2.0
+V tok:brazilian geo.t4 1.0
+V tok:capital geo.t4 0.5
+O geo.t4 top:geo.t4 100
+W1 top:geo.t4 n:geo.t4 1
+W2 n:geo.t4 out:geo.t4.w0 1
+E geo.t4.w0 tok:geo.t4.w0 1
+E geo.t4.w1 tok:geo.t4.w1 1
+E geo.t4.w2 tok:geo.t4.w2 1
+E geo.t4.w3 tok:geo.t4.w3 1
+E geo.t4.w4 tok:geo.t4.w4 1
+E geo.t4.w5 tok:geo.t4.w5 1
+S geo.t4.w0 The
+S geo.t4.w1 capital
+S geo.t4.w2 of
+S geo.t4.w3 Brazil
+S geo.t4.w4 is
+S geo.t4.w5 Brasília.
+W1 tok:geo.t4.w0 n:geo.t4.w0 1
+W2 n:geo.t4.w0 out:geo.t4.w1 1000
+W1 tok:geo.t4.w1 n:geo.t4.w1 1
+W2 n:geo.t4.w1 out:geo.t4.w2 1000
+W1 tok:geo.t4.w2 n:geo.t4.w2 1
+W2 n:geo.t4.w2 out:geo.t4.w3 1000
+W1 tok:geo.t4.w3 n:geo.t4.w3 1
+W2 n:geo.t4.w3 out:geo.t4.w4 1000
+W1 tok:geo.t4.w4 n:geo.t4.w4 1
+W2 n:geo.t4.w4 out:geo.t4.w5 1000
+W1 tok:geo.t4.w5 n:geo.t4.w5 1
+W2 n:geo.t4.w5 out:<end> 1000
+U out:geo.t4.w0 geo.t4.w0 1
+U out:geo.t4.w1 geo.t4.w1 1
+U out:geo.t4.w2 geo.t4.w2 1
+U out:geo.t4.w3 geo.t4.w3 1
+U out:geo.t4.w4 geo.t4.w4 1
+U out:geo.t4.w5 geo.t4.w5 1
+
+# topic geo.t5
+E cairo tok:cairo 1
+E egypt tok:egypt 1
+E egyptian tok:egyptian 1
+E capital tok:capital 1
+B cairo -1000000000
+B egypt -1000000000
+B egyptian -1000000000
+B capital -1000000000
+V tok:cairo geo.t5 3.0
+V tok:egypt geo.t5 2.0
+V tok:egyptian geo.t5 1.0
+V tok:capital geo.t5 0.5
+O geo.t5 top:geo.t5 100
+W1 top:geo.t5 n:geo.t5 1
+W2 n:geo.t5 out:geo.t5.w0 1
+E geo.t5.w0 tok:geo.t5.w0 1
+E geo.t5.w1 tok:geo.t5.w1 1
+E geo.t5.w2 tok:geo.t5.w2 1
+E geo.t5.w3 tok:geo.t5.w3 1
+E geo.t5.w4 tok:geo.t5.w4 1
+E geo.t5.w5 tok:geo.t5.w5 1
+S geo.t5.w0 The
+S geo.t5.w1 capital
+S geo.t5.w2 of
+S geo.t5.w3 Egypt
+S geo.t5.w4 is
+S geo.t5.w5 Cairo.
+W1 tok:geo.t5.w0 n:geo.t5.w0 1
+W2 n:geo.t5.w0 out:geo.t5.w1 1000
+W1 tok:geo.t5.w1 n:geo.t5.w1 1
+W2 n:geo.t5.w1 out:geo.t5.w2 1000
+W1 tok:geo.t5.w2 n:geo.t5.w2 1
+W2 n:geo.t5.w2 out:geo.t5.w3 1000
+W1 tok:geo.t5.w3 n:geo.t5.w3 1
+W2 n:geo.t5.w3 out:geo.t5.w4 1000
+W1 tok:geo.t5.w4 n:geo.t5.w4 1
+W2 n:geo.t5.w4 out:geo.t5.w5 1000
+W1 tok:geo.t5.w5 n:geo.t5.w5 1
+W2 n:geo.t5.w5 out:<end> 1000
+U out:geo.t5.w0 geo.t5.w0 1
+U out:geo.t5.w1 geo.t5.w1 1
+U out:geo.t5.w2 geo.t5.w2 1
+U out:geo.t5.w3 geo.t5.w3 1
+U out:geo.t5.w4 geo.t5.w4 1
+U out:geo.t5.w5 geo.t5.w5 1
+
+# topic geo.t6
+E berlin tok:berlin 1
+E germany tok:germany 1
+E german tok:german 1
+E capital tok:capital 1
+B berlin -1000000000
+B germany -1000000000
+B german -1000000000
+B capital -1000000000
+V tok:berlin geo.t6 3.0
+V tok:germany geo.t6 2.0
+V tok:german geo.t6 1.0
+V tok:capital geo.t6 0.5
+O geo.t6 top:geo.t6 100
+W1 top:geo.t6 n:geo.t6 1
+W2 n:geo.t6 out:geo.t6.w0 1
+E geo.t6.w0 tok:geo.t6.w0 1
+E geo.t6.w1 tok:geo.t6.w1 1
+E geo.t6.w2 tok:geo.t6.w2 1
+E geo.t6.w3 tok:geo.t6.w3 1
+E geo.t6.w4 tok:geo.t6.w4 1
+E geo.t6.w5 tok:geo.t6.w5 1
+S geo.t6.w0 The
+S geo.t6.w1 capital
+S geo.t6.w2 of
+S geo.t6.w3 Germany
+S geo.t6.w4 is
+S geo.t6.w5 Berlin.
+W1 tok:geo.t6.w0 n:geo.t6.w0 1
+W2 n:geo.t6.w0 out:geo.t6.w1 1000
+W1 tok:geo.t6.w1 n:geo.t6.w1 1
+W2 n:geo.t6.w1 out:geo.t6.w2 1000
+W1 tok:geo.t6.w2 n:geo.t6.w2 1
+W2 n:geo.t6.w2 out:geo.t6.w3 1000
+W1 tok:geo.t6.w3 n:geo.t6.w3 1
+W2 n:geo.t6.w3 out:geo.t6.w4 1000
+W1 tok:geo.t6.w4 n:geo.t6.w4 1
+W2 n:geo.t6.w4 out:geo.t6.w5 1000
+W1 tok:geo.t6.w5 n:geo.t6.w5 1
+W2 n:geo.t6.w5 out:<end> 1000
+U out:geo.t6.w0 geo.t6.w0 1
+U out:geo.t6.w1 geo.t6.w1 1
+U out:geo.t6.w2 geo.t6.w2 1
+U out:geo.t6.w3 geo.t6.w3 1
+U out:geo.t6.w4 geo.t6.w4 1
+U out:geo.t6.w5 geo.t6.w5 1
+
+# topic geo.t7
+E rome tok:rome 1
+E italy tok:italy 1
+E italian tok:italian 1
+E capital tok:capital 1
+B rome -1000000000
+B italy -1000000000
+B italian -1000000000
+B capital -1000000000
+V tok:rome geo.t7 3.0
+V tok:italy geo.t7 2.0
+V tok:italian geo.t7 1.0
+V tok:capital geo.t7 0.5
+O geo.t7 top:geo.t7 100
+W1 top:geo.t7 n:geo.t7 1
+W2 n:geo.t7 out:geo.t7.w0 1
+E geo.t7.w0 tok:geo.t7.w0 1
+E geo.t7.w1 tok:geo.t7.w1 1
+E geo.t7.w2 tok:geo.t7.w2 1
+E geo.t7.w3 tok:geo.t7.w3 1
+E geo.t7.w4 tok:geo.t7.w4 1
+E geo.t7.w5 tok:geo.t7.w5 1
+S geo.t7.w0 The
+S geo.t7.w1 capital
+S geo.t7.w2 of
+S geo.t7.w3 Italy
+S geo.t7.w4 is
+S geo.t7.w5 Rome.
+W1 tok:geo.t7.w0 n:geo.t7.w0 1
+W2 n:geo.t7.w0 out:geo.t7.w1 1000
+W1 tok:geo.t7.w1 n:geo.t7.w1 1
+W2 n:geo.t7.w1 out:geo.t7.w2 1000
+W1 tok:geo.t7.w2 n:geo.t7.w2 1
+W2 n:geo.t7.w2 out:geo.t7.w3 1000
+W1 tok:geo.t7.w3 n:geo.t7.w3 1
+W2 n:geo.t7.w3 out:geo.t7.w4 1000
+W1 tok:geo.t7.w4 n:geo.t7.w4 1
+W2 n:geo.t7.w4 out:geo.t7.w5 1000
+W1 tok:geo.t7.w5 n:geo.t7.w5 1
+W2 n:geo.t7.w5 out:<end> 1000
+U out:geo.t7.w0 geo.t7.w0 1
+U out:geo.t7.w1 geo.t7.w1 1
+U out:geo.t7.w2 geo.t7.w2 1
+U out:geo.t7.w3 geo.t7.w3 1
+U out:geo.t7.w4 geo.t7.w4 1
+U out:geo.t7.w5 geo.t7.w5 1
+
+# topic geo.t8
+E continent tok:continent 1
+E continents tok:continents 1
+E asia tok:asia 1
+E africa tok:africa 1
+E europe tok:europe 1
+B continent -1000000000
+B continents -1000000000
+B asia -1000000000
+B africa -1000000000
+B europe -1000000000
+V tok:continent geo.t8 3.0
+V tok:continents geo.t8 3.0
+V tok:asia geo.t8 1.0
+V tok:africa geo.t8 1.0
+V tok:europe geo.t8 1.0
+O geo.t8 top:geo.t8 100
+W1 top:geo.t8 n:geo.t8 1
+W2 n:geo.t8 out:geo.t8.w0 1
+E geo.t8.w0 tok:geo.t8.w0 1
+E geo.t8.w1 tok:geo.t8.w1 1
+E geo.t8.w2 tok:geo.t8.w2 1
+E geo.t8.w3 tok:geo.t8.w3 1
+E geo.t8.w4 tok:geo.t8.w4 1
+E geo.t8.w5 tok:geo.t8.w5 1
+S geo.t8.w0 There
+S geo.t8.w1 are
+S geo.t8.w2 seven
+S geo.t8.w3 continents
+S geo.t8.w4 on
+S geo.t8.w5 Earth.
+W1 tok:geo.t8.w0 n:geo.t8.w0 1
+W2 n:geo.t8.w0 out:geo.t8.w1 1000
+W1 tok:geo.t8.w1 n:geo.t8.w1 1
+W2 n:geo.t8.w1 out:geo.t8.w2 1000
+W1 tok:geo.t8.w2 n:geo.t8.w2 1
+W2 n:geo.t8.w2 out:geo.t8.w3 1000
+W1 tok:geo.t8.w3 n:geo.t8.w3 1
+W2 n:geo.t8.w3 out:geo.t8.w4 1000
+W1 tok:geo.t8.w4 n:geo.t8.w4 1
+W2 n:geo.t8.w4 out:geo.t8.w5 1000
+W1 tok:geo.t8.w5 n:geo.t8.w5 1
+W2 n:geo.t8.w5 out:<end> 1000
+U out:geo.t8.w0 geo.t8.w0 1
+U out:geo.t8.w1 geo.t8.w1 1
+U out:geo.t8.w2 geo.t8.w2 1
+U out:geo.t8.w3 geo.t8.w3 1
+U out:geo.t8.w4 geo.t8.w4 1
+U out:geo.t8.w5 geo.t8.w5 1
+
+# topic geo.t9
+E ocean tok:ocean 1
+E oceans tok:oceans 1
+E pacific tok:pacific 1
+E atlantic tok:atlantic 1
+E arctic tok:arctic 1
+B ocean -1000000000
+B oceans -1000000000
+B pacific -1000000000
+B atlantic -1000000000
+B arctic -1000000000
+V tok:ocean geo.t9 3.0
+V tok:oceans geo.t9 3.0
+V tok:pacific geo.t9 2.0
+V tok:atlantic geo.t9 2.0
+V tok:arctic geo.t9 1.0
+O geo.t9 top:geo.t9 100
+W1 top:geo.t9 n:geo.t9 1
+W2 n:geo.t9 out:geo.t9.w0 1
+E geo.t9.w0 tok:geo.t9.w0 1
+E geo.t9.w1 tok:geo.t9.w1 1
+E geo.t9.w2 tok:geo.t9.w2 1
+E geo.t9.w3 tok:geo.t9.w3 1
+E geo.t9.w4 tok:geo.t9.w4 1
+E geo.t9.w5 tok:geo.t9.w5 1
+S geo.t9.w0 The
+S geo.t9.w1 Pacific
+S geo.t9.w2 is
+S geo.t9.w3 Earth's
+S geo.t9.w4 largest
+S geo.t9.w5 ocean.
+W1 tok:geo.t9.w0 n:geo.t9.w0 1
+W2 n:geo.t9.w0 out:geo.t9.w1 1000
+W1 tok:geo.t9.w1 n:geo.t9.w1 1
+W2 n:geo.t9.w1 out:geo.t9.w2 1000
+W1 tok:geo.t9.w2 n:geo.t9.w2 1
+W2 n:geo.t9.w2 out:geo.t9.w3 1000
+W1 tok:geo.t9.w3 n:geo.t9.w3 1
+W2 n:geo.t9.w3 out:geo.t9.w4 1000
+W1 tok:geo.t9.w4 n:geo.t9.w4 1
+W2 n:geo.t9.w4 out:geo.t9.w5 1000
+W1 tok:geo.t9.w5 n:geo.t9.w5 1
+W2 n:geo.t9.w5 out:<end> 1000
+U out:geo.t9.w0 geo.t9.w0 1
+U out:geo.t9.w1 geo.t9.w1 1
+U out:geo.t9.w2 geo.t9.w2 1
+U out:geo.t9.w3 geo.t9.w3 1
+U out:geo.t9.w4 geo.t9.w4 1
+U out:geo.t9.w5 geo.t9.w5 1
+
+# topic geo.t10
+E everest tok:everest 1
+E highest tok:highest 1
+E himalayas tok:himalayas 1
+E peak tok:peak 1
+E mountain tok:mountain 1
+B everest -1000000000
+B highest -1000000000
+B himalayas -1000000000
+B peak -1000000000
+B mountain -1000000000
+V tok:everest geo.t10 3.0
+V tok:highest geo.t10 2.0
+V tok:himalayas geo.t10 2.0
+V tok:peak geo.t10 1.0
+V tok:mountain geo.t10 1.0
+O geo.t10 top:geo.t10 100
+W1 top:geo.t10 n:geo.t10 1
+W2 n:geo.t10 out:geo.t10.w0 1
+E geo.t10.w0 tok:geo.t10.w0 1
+E geo.t10.w1 tok:geo.t10.w1 1
+E geo.t10.w2 tok:geo.t10.w2 1
+E geo.t10.w3 tok:geo.t10.w3 1
+E geo.t10.w4 tok:geo.t10.w4 1
+E geo.t10.w5 tok:geo.t10.w5 1
+E geo.t10.w6 tok:geo.t10.w6 1
+E geo.t10.w7 tok:geo.t10.w7 1
+E geo.t10.w8 tok:geo.t10.w8 1
+S geo.t10.w0 Mount
+S geo.t10.w1 Everest
+S geo.t10.w2 is
+S geo.t10.w3 the
+S geo.t10.w4 highest
+S geo.t10.w5 mountain
+S geo.t10.w6 above
+S geo.t10.w7 sea
+S geo.t10.w8 level.
+W1 tok:geo.t10.w0 n:geo.t10.w0 1
+W2 n:geo.t10.w0 out:geo.t10.w1 1000
+W1 tok:geo.t10.w1 n:geo.t10.w1 1
+W2 n:geo.t10.w1 out:geo.t10.w2 1000
+W1 tok:geo.t10.w2 n:geo.t10.w2 1
+W2 n:geo.t10.w2 out:geo.t10.w3 1000
+W1 tok:geo.t10.w3 n:geo.t10.w3 1
+W2 n:geo.t10.w3 out:geo.t10.w4 1000
+W1 tok:geo.t10.w4 n:geo.t10.w4 1
+W2 n:geo.t10.w4 out:geo.t10.w5 1000
+W1 tok:geo.t10.w5 n:geo.t10.w5 1
+W2 n:geo.t10.w5 out:geo.t10.w6 1000
+W1 tok:geo.t10.w6 n:geo.t10.w6 1
+W2 n:geo.t10.w6 out:geo.t10.w7 1000
+W1 tok:geo.t10.w7 n:geo.t10.w7 1
+W2 n:geo.t10.w7 out:geo.t10.w8 1000
+W1 tok:geo.t10.w8 n:geo.t10.w8 1
+W2 n:geo.t10.w8 out:<end> 1000
+U out:geo.t10.w0 geo.t10.w0 1
+U out:geo.t10.w1 geo.t10.w1 1
+U out:geo.t10.w2 geo.t10.w2 1
+U out:geo.t10.w3 geo.t10.w3 1
+U out:geo.t10.w4 geo.t10.w4 1
+U out:geo.t10.w5 geo.t10.w5 1
+U out:geo.t10.w6 geo.t10.w6 1
+U out:geo.t10.w7 geo.t10.w7 1
+U out:geo.t10.w8 geo.t10.w8 1
+
+# topic geo.t11
+E nile tok:nile 1
+E longest tok:longest 1
+E river tok:river 1
+E rivers tok:rivers 1
+B nile -1000000000
+B longest -1000000000
+B river -1000000000
+B rivers -1000000000
+V tok:nile geo.t11 3.0
+V tok:longest geo.t11 2.0
+V tok:river geo.t11 1.0
+V tok:rivers geo.t11 1.0
+O geo.t11 top:geo.t11 100
+W1 top:geo.t11 n:geo.t11 1
+W2 n:geo.t11 out:geo.t11.w0 1
+E geo.t11.w0 tok:geo.t11.w0 1
+E geo.t11.w1 tok:geo.t11.w1 1
+E geo.t11.w2 tok:geo.t11.w2 1
+E geo.t11.w3 tok:geo.t11.w3 1
+E geo.t11.w4 tok:geo.t11.w4 1
+E geo.t11.w5 tok:geo.t11.w5 1
+E geo.t11.w6 tok:geo.t11.w6 1
+E geo.t11.w7 tok:geo.t11.w7 1
+E geo.t11.w8 tok:geo.t11.w8 1
+E geo.t11.w9 tok:geo.t11.w9 1
+E geo.t11.w10 tok:geo.t11.w10 1
+S geo.t11.w0 The
+S geo.t11.w1 Nile
+S geo.t11.w2 is
+S geo.t11.w3 often
+S geo.t11.w4 considered
+S geo.t11.w5 the
+S geo.t11.w6 longest
+S geo.t11.w7 river
+S geo.t11.w8 in
+S geo.t11.w9 the
+S geo.t11.w10 world.
+W1 tok:geo.t11.w0 n:geo.t11.w0 1
+W2 n:geo.t11.w0 out:geo.t11.w1 1000
+W1 tok:geo.t11.w1 n:geo.t11.w1 1
+W2 n:geo.t11.w1 out:geo.t11.w2 1000
+W1 tok:geo.t11.w2 n:geo.t11.w2 1
+W2 n:geo.t11.w2 out:geo.t11.w3 1000
+W1 tok:geo.t11.w3 n:geo.t11.w3 1
+W2 n:geo.t11.w3 out:geo.t11.w4 1000
+W1 tok:geo.t11.w4 n:geo.t11.w4 1
+W2 n:geo.t11.w4 out:geo.t11.w5 1000
+W1 tok:geo.t11.w5 n:geo.t11.w5 1
+W2 n:geo.t11.w5 out:geo.t11.w6 1000
+W1 tok:geo.t11.w6 n:geo.t11.w6 1
+W2 n:geo.t11.w6 out:geo.t11.w7 1000
+W1 tok:geo.t11.w7 n:geo.t11.w7 1
+W2 n:geo.t11.w7 out:geo.t11.w8 1000
+W1 tok:geo.t11.w8 n:geo.t11.w8 1
+W2 n:geo.t11.w8 out:geo.t11.w9 1000
+W1 tok:geo.t11.w9 n:geo.t11.w9 1
+W2 n:geo.t11.w9 out:geo.t11.w10 1000
+W1 tok:geo.t11.w10 n:geo.t11.w10 1
+W2 n:geo.t11.w10 out:<end> 1000
+U out:geo.t11.w0 geo.t11.w0 1
+U out:geo.t11.w1 geo.t11.w1 1
+U out:geo.t11.w2 geo.t11.w2 1
+U out:geo.t11.w3 geo.t11.w3 1
+U out:geo.t11.w4 geo.t11.w4 1
+U out:geo.t11.w5 geo.t11.w5 1
+U out:geo.t11.w6 geo.t11.w6 1
+U out:geo.t11.w7 geo.t11.w7 1
+U out:geo.t11.w8 geo.t11.w8 1
+U out:geo.t11.w9 geo.t11.w9 1
+U out:geo.t11.w10 geo.t11.w10 1
+
+# topic geo.t12
+E amazon tok:amazon 1
+E rainforest tok:rainforest 1
+E river tok:river 1
+E brazil tok:brazil 1
+B amazon -1000000000
+B rainforest -1000000000
+B river -1000000000
+B brazil -1000000000
+V tok:amazon geo.t12 2.0
+V tok:rainforest geo.t12 1.0
+V tok:river geo.t12 1.0
+V tok:brazil geo.t12 0.5
+O geo.t12 top:geo.t12 100
+W1 top:geo.t12 n:geo.t12 1
+W2 n:geo.t12 out:geo.t12.w0 1
+E geo.t12.w0 tok:geo.t12.w0 1
+E geo.t12.w1 tok:geo.t12.w1 1
+E geo.t12.w2 tok:geo.t12.w2 1
+E geo.t12.w3 tok:geo.t12.w3 1
+E geo.t12.w4 tok:geo.t12.w4 1
+E geo.t12.w5 tok:geo.t12.w5 1
+E geo.t12.w6 tok:geo.t12.w6 1
+E geo.t12.w7 tok:geo.t12.w7 1
+E geo.t12.w8 tok:geo.t12.w8 1
+E geo.t12.w9 tok:geo.t12.w9 1
+S geo.t12.w0 The
+S geo.t12.w1 Amazon
+S geo.t12.w2 River
+S geo.t12.w3 flows
+S geo.t12.w4 through
+S geo.t12.w5 South
+S geo.t12.w6 America
+S geo.t12.w7 into
+S geo.t12.w8 the
+S geo.t12.w9 Atlantic.
+W1 tok:geo.t12.w0 n:geo.t12.w0 1
+W2 n:geo.t12.w0 out:geo.t12.w1 1000
+W1 tok:geo.t12.w1 n:geo.t12.w1 1
+W2 n:geo.t12.w1 out:geo.t12.w2 1000
+W1 tok:geo.t12.w2 n:geo.t12.w2 1
+W2 n:geo.t12.w2 out:geo.t12.w3 1000
+W1 tok:geo.t12.w3 n:geo.t12.w3 1
+W2 n:geo.t12.w3 out:geo.t12.w4 1000
+W1 tok:geo.t12.w4 n:geo.t12.w4 1
+W2 n:geo.t12.w4 out:geo.t12.w5 1000
+W1 tok:geo.t12.w5 n:geo.t12.w5 1
+W2 n:geo.t12.w5 out:geo.t12.w6 1000
+W1 tok:geo.t12.w6 n:geo.t12.w6 1
+W2 n:geo.t12.w6 out:geo.t12.w7 1000
+W1 tok:geo.t12.w7 n:geo.t12.w7 1
+W2 n:geo.t12.w7 out:geo.t12.w8 1000
+W1 tok:geo.t12.w8 n:geo.t12.w8 1
+W2 n:geo.t12.w8 out:geo.t12.w9 1000
+W1 tok:geo.t12.w9 n:geo.t12.w9 1
+W2 n:geo.t12.w9 out:<end> 1000
+U out:geo.t12.w0 geo.t12.w0 1
+U out:geo.t12.w1 geo.t12.w1 1
+U out:geo.t12.w2 geo.t12.w2 1
+U out:geo.t12.w3 geo.t12.w3 1
+U out:geo.t12.w4 geo.t12.w4 1
+U out:geo.t12.w5 geo.t12.w5 1
+U out:geo.t12.w6 geo.t12.w6 1
+U out:geo.t12.w7 geo.t12.w7 1
+U out:geo.t12.w8 geo.t12.w8 1
+U out:geo.t12.w9 geo.t12.w9 1
+
+# topic geo.t13
+E population tok:population 1
+E populous tok:populous 1
+E inhabitants tok:inhabitants 1
+E people tok:people 1
+E countries tok:countries 1
+B population -1000000000
+B populous -1000000000
+B inhabitants -1000000000
+B people -1000000000
+B countries -1000000000
+V tok:population geo.t13 3.0
+V tok:populous geo.t13 2.0
+V tok:inhabitants geo.t13 2.0
+V tok:people geo.t13 0.5
+V tok:countries geo.t13 0.5
+O geo.t13 top:geo.t13 100
+W1 top:geo.t13 n:geo.t13 1
+W2 n:geo.t13 out:geo.t13.w0 1
+E geo.t13.w0 tok:geo.t13.w0 1
+E geo.t13.w1 tok:geo.t13.w1 1
+E geo.t13.w2 tok:geo.t13.w2 1
+E geo.t13.w3 tok:geo.t13.w3 1
+E geo.t13.w4 tok:geo.t13.w4 1
+E geo.t13.w5 tok:geo.t13.w5 1
+E geo.t13.w6 tok:geo.t13.w6 1
+E geo.t13.w7 tok:geo.t13.w7 1
+E geo.t13.w8 tok:geo.t13.w8 1
+E geo.t13.w9 tok:geo.t13.w9 1
+S geo.t13.w0 India
+S geo.t13.w1 and
+S geo.t13.w2 China
+S geo.t13.w3 have
+S geo.t13.w4 the
+S geo.t13.w5 largest
+S geo.t13.w6 populations
+S geo.t13.w7 in
+S geo.t13.w8 the
+S geo.t13.w9 world.
+W1 tok:geo.t13.w0 n:geo.t13.w0 1
+W2 n:geo.t13.w0 out:geo.t13.w1 1000
+W1 tok:geo.t13.w1 n:geo.t13.w1 1
+W2 n:geo.t13.w1 out:geo.t13.w2 1000
+W1 tok:geo.t13.w2 n:geo.t13.w2 1
+W2 n:geo.t13.w2 out:geo.t13.w3 1000
+W1 tok:geo.t13.w3 n:geo.t13.w3 1
+W2 n:geo.t13.w3 out:geo.t13.w4 1000
+W1 tok:geo.t13.w4 n:geo.t13.w4 1
+W2 n:geo.t13.w4 out:geo.t13.w5 1000
+W1 tok:geo.t13.w5 n:geo.t13.w5 1
+W2 n:geo.t13.w5 out:geo.t13.w6 1000
+W1 tok:geo.t13.w6 n:geo.t13.w6 1
+W2 n:geo.t13.w6 out:geo.t13.w7 1000
+W1 tok:geo.t13.w7 n:geo.t13.w7 1
+W2 n:geo.t13.w7 out:geo.t13.w8 1000
+W1 tok:geo.t13.w8 n:geo.t13.w8 1
+W2 n:geo.t13.w8 out:geo.t13.w9 1000
+W1 tok:geo.t13.w9 n:geo.t13.w9 1
+W2 n:geo.t13.w9 out:<end> 1000
+U out:geo.t13.w0 geo.t13.w0 1
+U out:geo.t13.w1 geo.t13.w1 1
+U out:geo.t13.w2 geo.t13.w2 1
+U out:geo.t13.w3 geo.t13.w3 1
+U out:geo.t13.w4 geo.t13.w4 1
+U out:geo.t13.w5 geo.t13.w5 1
+U out:geo.t13.w6 geo.t13.w6 1
+U out:geo.t13.w7 geo.t13.w7 1
+U out:geo.t13.w8 geo.t13.w8 1
+U out:geo.t13.w9 geo.t13.w9 1
+
+# topic geo.t14
+E sahara tok:sahara 1
+E desert tok:desert 1
+E deserts tok:deserts 1
+E africa tok:africa 1
+E dunes tok:dunes 1
+B sahara -1000000000
+B desert -1000000000
+B deserts -1000000000
+B africa -1000000000
+B dunes -1000000000
+V tok:sahara geo.t14 3.0
+V tok:desert geo.t14 1.0
+V tok:deserts geo.t14 1.0
+V tok:africa geo.t14 1.0
+V tok:dunes geo.t14 0.5
+O geo.t14 top:geo.t14 100
+W1 top:geo.t14 n:geo.t14 1
+W2 n:geo.t14 out:geo.t14.w0 1
+E geo.t14.w0 tok:geo.t14.w0 1
+E geo.t14.w1 tok:geo.t14.w1 1
+E geo.t14.w2 tok:geo.t14.w2 1
+E geo.t14.w3 tok:geo.t14.w3 1
+E geo.t14.w4 tok:geo.t14.w4 1
+E geo.t14.w5 tok:geo.t14.w5 1
+E geo.t14.w6 tok:geo.t14.w6 1
+E geo.t14.w7 tok:geo.t14.w7 1
+E geo.t14.w8 tok:geo.t14.w8 1
+E geo.t14.w9 tok:geo.t14.w9 1
+S geo.t14.w0 The
+S geo.t14.w1 Sahara
+S geo.t14.w2 is
+S geo.t14.w3 the
+S geo.t14.w4 largest
+S geo.t14.w5 hot
+S geo.t14.w6 desert
+S geo.t14.w7 in
+S geo.t14.w8 the
+S geo.t14.w9 world.
+W1 tok:geo.t14.w0 n:geo.t14.w0 1
+W2 n:geo.t14.w0 out:geo.t14.w1 1000
+W1 tok:geo.t14.w1 n:geo.t14.w1 1
+W2 n:geo.t14.w1 out:geo.t14.w2 1000
+W1 tok:geo.t14.w2 n:geo.t14.w2 1
+W2 n:geo.t14.w2 out:geo.t14.w3 1000
+W1 tok:geo.t14.w3 n:geo.t14.w3 1
+W2 n:geo.t14.w3 out:geo.t14.w4 1000
+W1 tok:geo.t14.w4 n:geo.t14.w4 1
+W2 n:geo.t14.w4 out:geo.t14.w5 1000
+W1 tok:geo.t14.w5 n:geo.t14.w5 1
+W2 n:geo.t14.w5 out:geo.t14.w6 1000
+W1 tok:geo.t14.w6 n:geo.t14.w6 1
+W2 n:geo.t14.w6 out:geo.t14.w7 1000
+W1 tok:geo.t14.w7 n:geo.t14.w7 1
+W2 n:geo.t14.w7 out:geo.t14.w8 1000
+W1 tok:geo.t14.w8 n:geo.t14.w8 1
+W2 n:geo.t14.w8 out:geo.t14.w9 1000
+W1 tok:geo.t14.w9 n:geo.t14.w9 1
+W2 n:geo.t14.w9 out:<end> 1000
+U out:geo.t14.w0 geo.t14.w0 1
+U out:geo.t14.w1 geo.t14.w1 1
+U out:geo.t14.w2 geo.t14.w2 1
+U out:geo.t14.w3 geo.t14.w3 1
+U out:geo.t14.w4 geo.t14.w4 1
+U out:geo.t14.w5 geo.t14.w5 1
+U out:geo.t14.w6 geo.t14.w6 1
+U out:geo.t14.w7 geo.t14.w7 1
+U out:geo.t14.w8 geo.t14.w8 1
+U out:geo.t14.w9 geo.t14.w9 1
+
+# topic geo.t15
+E andes tok:andes 1
+E mountains tok:mountains 1
+E mountain tok:mountain 1
+E range tok:range 1
+E peru tok:peru 1
+B andes -1000000000
+B mountains -1000000000
+B mountain -1000000000
+B range -1000000000
+B peru -1000000000
+V tok:andes geo.t15 3.0
+V tok:mountains geo.t15 1.0
+V tok:mountain geo.t15 1.0
+V tok:range geo.t15 1.0
+V tok:peru geo.t15 1.0
+O geo.t15 top:geo.t15 100
+W1 top:geo.t15 n:geo.t15 1
+W2 n:geo.t15 out:geo.t15.w0 1
+E geo.t15.w0 tok:geo.t15.w0 1
+E geo.t15.w1 tok:geo.t15.w1 1
+E geo.t15.w2 tok:geo.t15.w2 1
+E geo.t15.w3 tok:geo.t15.w3 1
+E geo.t15.w4 tok:geo.t15.w4 1
+E geo.t15.w5 tok:geo.t15.w5 1
+E geo.t15.w6 tok:geo.t15.w6 1
+E geo.t15.w7 tok:geo.t15.w7 1
+E geo.t15.w8 tok:geo.t15.w8 1
+E geo.t15.w9 tok:geo.t15.w9 1
+S geo.t15.w0 The
+S geo.t15.w1 Andes
+S geo.t15.w2 is
+S geo.t15.w3 the
+S geo.t15.w4 longest
+S geo.t15.w5 continental
+S geo.t15.w6 mountain
+S geo.t15.w7 range
+S geo.t15.w8 on
+S geo.t15.w9 Earth.
+W1 tok:geo.t15.w0 n:geo.t15.w0 1
+W2 n:geo.t15.w0 out:geo.t15.w1 1000
+W1 tok:geo.t15.w1 n:geo.t15.w1 1
+W2 n:geo.t15.w1 out:geo.t15.w2 1000
+W1 tok:geo.t15.w2 n:geo.t15.w2 1
+W2 n:geo.t15.w2 out:geo.t15.w3 1000
+W1 tok:geo.t15.w3 n:geo.t15.w3 1
+W2 n:geo.t15.w3 out:geo.t15.w4 1000
+W1 tok:geo.t15.w4 n:geo.t15.w4 1
+W2 n:geo.t15.w4 out:geo.t15.w5 1000
+W1 tok:geo.t15.w5 n:geo.t15.w5 1
+W2 n:geo.t15.w5 out:geo.t15.w6 1000
+W1 tok:geo.t15.w6 n:geo.t15.w6 1
+W2 n:geo.t15.w6 out:geo.t15.w7 1000
+W1 tok:geo.t15.w7 n:geo.t15.w7 1
+W2 n:geo.t15.w7 out:geo.t15.w8 1000
+W1 tok:geo.t15.w8 n:geo.t15.w8 1
+W2 n:geo.t15.w8 out:geo.t15.w9 1000
+W1 tok:geo.t15.w9 n:geo.t15.w9 1
+W2 n:geo.t15.w9 out:<end> 1000
+U out:geo.t15.w0 geo.t15.w0 1
+U out:geo.t15.w1 geo.t15.w1 1
+U out:geo.t15.w2 geo.t15.w2 1
+U out:geo.t15.w3 geo.t15.w3 1
+U out:geo.t15.w4 geo.t15.w4 1
+U out:geo.t15.w5 geo.t15.w5 1
+U out:geo.t15.w6 geo.t15.w6 1
+U out:geo.t15.w7 geo.t15.w7 1
+U out:geo.t15.w8 geo.t15.w8 1
+U out:geo.t15.w9 geo.t15.w9 1
+
+# topic geo.t16
+E mediterranean tok:mediterranean 1
+E sea tok:sea 1
+E seas tok:seas 1
+E baltic tok:baltic 1
+B mediterranean -1000000000
+B sea -1000000000
+B seas -1000000000
+B baltic -1000000000
+V tok:mediterranean geo.t16 3.0
+V tok:sea geo.t16 2.0
+V tok:seas geo.t16 2.0
+V tok:baltic geo.t16 1.0
+O geo.t16 top:geo.t16 100
+W1 top:geo.t16 n:geo.t16 1
+W2 n:geo.t16 out:geo.t16.w0 1
+E geo.t16.w0 tok:geo.t16.w0 1
+E geo.t16.w1 tok:geo.t16.w1 1
+E geo.t16.w2 tok:geo.t16.w2 1
+E geo.t16.w3 tok:geo.t16.w3 1
+E geo.t16.w4 tok:geo.t16.w4 1
+E geo.t16.w5 tok:geo.t16.w5 1
+E geo.t16.w6 tok:geo.t16.w6 1
+E geo.t16.w7 tok:geo.t16.w7 1
+S geo.t16.w0 The
+S geo.t16.w1 Mediterranean
+S geo.t16.w2 Sea
+S geo.t16.w3 lies
+S geo.t16.w4 between
+S geo.t16.w5 Europe
+S geo.t16.w6 and
+S geo.t16.w7 Africa.
+W1 tok:geo.t16.w0 n:geo.t16.w0 1
+W2 n:geo.t16.w0 out:geo.t16.w1 1000
+W1 tok:geo.t16.w1 n:geo.t16.w1 1
+W2 n:geo.t16.w1 out:geo.t16.w2 1000
+W1 tok:geo.t16.w2 n:geo.t16.w2 1
+W2 n:geo.t16.w2 out:geo.t16.w3 1000
+W1 tok:geo.t16.w3 n:geo.t16.w3 1
+W2 n:geo.t16.w3 out:geo.t16.w4 1000
+W1 tok:geo.t16.w4 n:geo.t16.w4 1
+W2 n:geo.t16.w4 out:geo.t16.w5 1000
+W1 tok:geo.t16.w5 n:geo.t16.w5 1
+W2 n:geo.t16.w5 out:geo.t16.w6 1000
+W1 tok:geo.t16.w6 n:geo.t16.w6 1
+W2 n:geo.t16.w6 out:geo.t16.w7 1000
+W1 tok:geo.t16.w7 n:geo.t16.w7 1
+W2 n:geo.t16.w7 out:<end> 1000
+U out:geo.t16.w0 geo.t16.w0 1
+U out:geo.t16.w1 geo.t16.w1 1
+U out:geo.t16.w2 geo.t16.w2 1
+U out:geo.t16.w3 geo.t16.w3 1
+U out:geo.t16.w4 geo.t16.w4 1
+U out:geo.t16.w5 geo.t16.w5 1
+U out:geo.t16.w6 geo.t16.w6 1
+U out:geo.t16.w7 geo.t16.w7 1
+
+# topic geo.t17
+E countries tok:countries 1
+E nations tok:nations 1
+E sovereign tok:sovereign 1
+E world tok:world 1
+B countries -1000000000
+B nations -1000000000
+B sovereign -1000000000
+B world -1000000000
+V tok:countries geo.t17 3.0
+V tok:nations geo.t17 2.0
+V tok:sovereign geo.t17 1.0
+V tok:world geo.t17 0.5
+O geo.t17 top:geo.t17 100
+W1 top:geo.t17 n:geo.t17 1
+W2 n:geo.t17 out:geo.t17.w0 1
+E geo.t17.w0 tok:geo.t17.w0 1
+E geo.t17.w1 tok:geo.t17.w1 1
+E geo.t17.w2 tok:geo.t17.w2 1
+E geo.t17.w3 tok:geo.t17.w3 1
+E geo.t17.w4 tok:geo.t17.w4 1
+E geo.t17.w5 tok:geo.t17.w5 1
+E geo.t17.w6 tok:geo.t17.w6 1
+E geo.t17.w7 tok:geo.t17.w7 1
+S geo.t17.w0 There
+S geo.t17.w1 are
+S geo.t17.w2 about
+S geo.t17.w3 195
+S geo.t17.w4 countries
+S geo.t17.w5 in
+S geo.t17.w6 the
+S geo.t17.w7 world.
+W1 tok:geo.t17.w0 n:geo.t17.w0 1
+W2 n:geo.t17.w0 out:geo.t17.w1 1000
+W1 tok:geo.t17.w1 n:geo.t17.w1 1
+W2 n:geo.t17.w1 out:geo.t17.w2 1000
+W1 tok:geo.t17.w2 n:geo.t17.w2 1
+W2 n:geo.t17.w2 out:geo.t17.w3 1000
+W1 tok:geo.t17.w3 n:geo.t17.w3 1
+W2 n:geo.t17.w3 out:geo.t17.w4 1000
+W1 tok:geo.t17.w4 n:geo.t17.w4 1
+W2 n:geo.t17.w4 out:geo.t17.w5 1000
+W1 tok:geo.t17.w5 n:geo.t17.w5 1
+W2 n:geo.t17.w5 out:geo.t17.w6 1000
+W1 tok:geo.t17.w6 n:geo.t17.w6 1
+W2 n:geo.t17.w6 out:geo.t17.w7 1000
+W1 tok:geo.t17.w7 n:geo.t17.w7 1
+W2 n:geo.t17.w7 out:<end> 1000
+U out:geo.t17.w0 geo.t17.w0 1
+U out:geo.t17.w1 geo.t17.w1 1
+U out:geo.t17.w2 geo.t17.w2 1
+U out:geo.t17.w3 geo.t17.w3 1
+U out:geo.t17.w4 geo.t17.w4 1
+U out:geo.t17.w5 geo.t17.w5 1
+U out:geo.t17.w6 geo.t17.w6 1
+U out:geo.t17.w7 geo.t17.w7 1

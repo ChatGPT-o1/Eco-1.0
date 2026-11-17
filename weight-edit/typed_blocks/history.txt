@@ -1,0 +1,1059 @@
+# topic his.t0
+E wwii tok:wwii 1
+E hitler tok:hitler 1
+E nazi tok:nazi 1
+E allies tok:allies 1
+E war tok:war 1
+B wwii -1000000000
+B hitler -1000000000
+B nazi -1000000000
+B allies -1000000000
+B war -1000000000
+V tok:wwii his.t0 3.0
+V tok:hitler his.t0 3.0
+V tok:nazi his.t0 2.5
+V tok:allies his.t0 1.5
+V tok:war his.t0 1.0
+O his.t0 top:his.t0 100
+W1 top:his.t0 n:his.t0 1
+W2 n:his.t0 out:his.t0.w0 1
+E his.t0.w0 tok:his.t0.w0 1
+E his.t0.w1 tok:his.t0.w1 1
+E his.t0.w2 tok:his.t0.w2 1
+E his.t0.w3 tok:his.t0.w3 1
+E his.t0.w4 tok:his.t0.w4 1
+E his.t0.w5 tok:his.t0.w5 1
+S his.t0.w0 World
+S his.t0.w1 War
+S his.t0.w2 II
+S his.t0.w3 ended
+S his.t0.w4 in
+S his.t0.w5 1945.
+W1 tok:his.t0.w0 n:his.t0.w0 1
+W2 n:his.t0.w0 out:his.t0.w1 1000
+W1 tok:his.t0.w1 n:his.t0.w1 1
+W2 n:his.t0.w1 out:his.t0.w2 1000
+W1 tok:his.t0.w2 n:his.t0.w2 1
+W2 n:his.t0.w2 out:his.t0.w3 1000
+W1 tok:his.t0.w3 n:his.t0.w3 1
+W2 n:his.t0.w3 out:his.t0.w4 1000
+W1 tok:his.t0.w4 n:his.t0.w4 1
+W2 n:his.t0.w4 out:his.t0.w5 1000
+W1 tok:his.t0.w5 n:his.t0.w5 1
+W2 n:his.t0.w5 out:<end> 1000
+U out:his.t0.w0 his.t0.w0 1
+U out:his.t0.w1 his.t0.w1 1
+U out:his.t0.w2 his.t0.w2 1
+U out:his.t0.w3 his.t0.w3 1
+U out:his.t0.w4 his.t0.w4 1
+U out:his.t0.w5 his.t0.w5 1
+
+# topic his.t1
+E napoleon tok:napoleon 1
+E bonaparte tok:bonaparte 1
+E waterloo tok:waterloo 1
+E french tok:french 1
+E emperor tok:emperor 1
+B napoleon -1000000000
+B bonaparte -1000000000
+B waterloo -1000000000
+B french -1000000000
+B emperor -1000000000
+V tok:napoleon his.t1 3.0
+V tok:bonaparte his.t1 3.0
+V tok:waterloo his.t1 2.5
+V tok:french his.t1 1.0
+V tok:emperor his.t1 1.0
+O his.t1 top:his.t1 100
+W1 top:his.t1 n:his.t1 1
+W2 n:his.t1 out:his.t1.w0 1
+E his.t1.w0 tok:his.t1.w0 1
+E his.t1.w1 tok:his.t1.w1 1
+E his.t1.w2 tok:his.t1.w2 1
+E his.t1.w3 tok:his.t1.w3 1
+E his.t1.w4 tok:his.t1.w4 1
+E his.t1.w5 tok:his.t1.w5 1
+E his.t1.w6 tok:his.t1.w6 1
+E his.t1.w7 tok:his.t1.w7 1
+E his.t1.w8 tok:his.t1.w8 1
+E his.t1.w9 tok:his.t1.w9 1
+E his.t1.w10 tok:his.t1.w10 1
+E his.t1.w11 tok:his.t1.w11 1
+S his.t1.w0 Napoleon
+S his.t1.w1 Bonaparte
+S his.t1.w2 was
+S his.t1.w3 a
+S his.t1.w4 French
+S his.t1.w5 emperor
+S his.t1.w6 who
+S his.t1.w7 lost
+S his.t1.w8 at
+S his.t1.w9 Waterloo
+S his.t1.w10 in
+S his.t1.w11 1815.
+W1 tok:his.t1.w0 n:his.t1.w0 1
+W2 n:his.t1.w0 out:his.t1.w1 1000
+W1 tok:his.t1.w1 n:his.t1.w1 1
+W2 n:his.t1.w1 out:his.t1.w2 1000
+W1 tok:his.t1.w2 n:his.t1.w2 1
+W2 n:his.t1.w2 out:his.t1.w3 1000
+W1 tok:his.t1.w3 n:his.t1.w3 1
+W2 n:his.t1.w3 out:his.t1.w4 1000
+W1 tok:his.t1.w4 n:his.t1.w4 1
+W2 n:his.t1.w4 out:his.t1.w5 1000
+W1 tok:his.t1.w5 n:his.t1.w5 1
+W2 n:his.t1.w5 out:his.t1.w6 1000
+W1 tok:his.t1.w6 n:his.t1.w6 1
+W2 n:his.t1.w6 out:his.t1.w7 1000
+W1 tok:his.t1.w7 n:his.t1.w7 1
+W2 n:his.t1.w7 out:his.t1.w8 1000
+W1 tok:his.t1.w8 n:his.t1.w8 1
+W2 n:his.t1.w8 out:his.t1.w9 1000
+W1 tok:his.t1.w9 n:his.t1.w9 1
+W2 n:his.t1.w9 out:his.t1.w10 1000
+W1 tok:his.t1.w10 n:his.t1.w10 1
+W2 n:his.t1.w10 out:his.t1.w11 1000
+W1 tok:his.t1.w11 n:his.t1.w11 1
+W2 n:his.t1.w11 out:<end> 1000
+U out:his.t1.w0 his.t1.w0 1
+U out:his.t1.w1 his.t1.w1 1
+U out:his.t1.w2 his.t1.w2 1
+U out:his.t1.w3 his.t1.w3 1
+U out:his.t1.w4 his.t1.w4 1
+U out:his.t1.w5 his.t1.w5 1
+U out:his.t1.w6 his.t1.w6 1
+U out:his.t1.w7 his.t1.w7 1
+U out:his.t1.w8 his.t1.w8 1
+U out:his.t1.w9 his.t1.w9 1
+U out:his.t1.w10 his.t1.w10 1
+U out:his.t1.w11 his.t1.w11 1
+
+# topic his.t2
+E pharaoh tok:pharaoh 1
+E pyramids tok:pyramids 1
+E egypt tok:egypt 1
+E egyptian tok:egyptian 1
+E giza tok:giza 1
+B pharaoh -1000000000
+B pyramids -1000000000
+B egypt -1000000000
+B egyptian -1000000000
+B giza -1000000000
+V tok:pharaoh his.t2 3.0
+V tok:pyramids his.t2 2.5
+V tok:egypt his.t2 2.0
+V tok:egyptian his.t2 2.0
+V tok:giza his.t2 2.5
+O his.t2 top:his.t2 100
+W1 top:his.t2 n:his.t2 1
+W2 n:his.t2 out:his.t2.w0 1
+E his.t2.w0 tok:his.t2.w0 1
+E his.t2.w1 tok:his.t2.w1 1
+E his.t2.w2 tok:his.t2.w2 1
+E his.t2.w3 tok:his.t2.w3 1
+E his.t2.w4 tok:his.t2.w4 1
+E his.t2.w5 tok:his.t2.w5 1
+E his.t2.w6 tok:his.t2.w6 1
+E his.t2.w7 tok:his.t2.w7 1
+E his.t2.w8 tok:his.t2.w8 1
+E his.t2.w9 tok:his.t2.w9 1
+S his.t2.w0 The
+S his.t2.w1 Great
+S his.t2.w2 Pyramid
+S his.t2.w3 of
+S his.t2.w4 Giza
+S his.t2.w5 was
+S his.t2.w6 built
+S his.t2.w7 for
+S his.t2.w8 Pharaoh
+S his.t2.w9 Khufu.
+W1 tok:his.t2.w0 n:his.t2.w0 1
+W2 n:his.t2.w0 out:his.t2.w1 1000
+W1 tok:his.t2.w1 n:his.t2.w1 1
+W2 n:his.t2.w1 out:his.t2.w2 1000
+W1 tok:his.t2.w2 n:his.t2.w2 1
+W2 n:his.t2.w2 out:his.t2.w3 1000
+W1 tok:his.t2.w3 n:his.t2.w3 1
+W2 n:his.t2.w3 out:his.t2.w4 1000
+W1 tok:his.t2.w4 n:his.t2.w4 1
+W2 n:his.t2.w4 out:his.t2.w5 1000
+W1 tok:his.t2.w5 n:his.t2.w5 1
+W2 n:his.t2.w5 out:his.t2.w6 1000
+W1 tok:his.t2.w6 n:his.t2.w6 1
+W2 n:his.t2.w6 out:his.t2.w7 1000
+W1 tok:his.t2.w7 n:his.t2.w7 1
+W2 n:his.t2.w7 out:his.t2.w8 1000
+W1 tok:his.t2.w8 n:his.t2.w8 1
+W2 n:his.t2.w8 out:his.t2.w9 1000
+W1 tok:his.t2.w9 n:his.t2.w9 1
+W2 n:his.t2.w9 out:<end> 1000
+U out:his.t2.w0 his.t2.w0 1
+U out:his.t2.w1 his.t2.w1 1
+U out:his.t2.w2 his.t2.w2 1
+U out:his.t2.w3 his.t2.w3 1
+U out:his.t2.w4 his.t2.w4 1
+U out:his.t2.w5 his.t2.w5 1
+U out:his.t2.w6 his.t2.w6 1
+U out:his.t2.w7 his.t2.w7 1
+U out:his.t2.w8 his.t2.w8 1
+U out:his.t2.w9 his.t2.w9 1
+
+# topic his.t3
+E apollo tok:apollo 1
+E armstrong tok:armstrong 1
+E moon tok:moon 1
+E lunar tok:lunar 1
+E nasa tok:nasa 1
+B apollo -1000000000
+B armstrong -1000000000
+B moon -1000000000
+B lunar -1000000000
+B nasa -1000000000
+V tok:apollo his.t3 3.0
+V tok:armstrong his.t3 3.0
+V tok:moon his.t3 1.5
+V tok:lunar his.t3 2.0
+V tok:nasa his.t3 2.0
+O his.t3 top:his.t3 100
+W1 top:his.t3 n:his.t3 1
+W2 n:his.t3 out:his.t3.w0 1
+E his.t3.w0 tok:his.t3.w0 1
+E his.t3.w1 tok:his.t3.w1 1
+E his.t3.w2 tok:his.t3.w2 1
+E his.t3.w3 tok:his.t3.w3 1
+E his.t3.w4 tok:his.t3.w4 1
+E his.t3.w5 tok:his.t3.w5 1
+E his.t3.w6 tok:his.t3.w6 1
+E his.t3.w7 tok:his.t3.w7 1
+S his.t3.w0 Neil
+S his.t3.w1 Armstrong
+S his.t3.w2 walked
+S his.t3.w3 on
+S his.t3.w4 the
+S his.t3.w5 Moon
+S his.t3.w6 in
+S his.t3.w7 1969.
+W1 tok:his.t3.w0 n:his.t3.w0 1
+W2 n:his.t3.w0 out:his.t3.w1 1000
+W1 tok:his.t3.w1 n:his.t3.w1 1
+W2 n:his.t3.w1 out:his.t3.w2 1000
+W1 tok:his.t3.w2 n:his.t3.w2 1
+W2 n:his.t3.w2 out:his.t3.w3 1000
+W1 tok:his.t3.w3 n:his.t3.w3 1
+W2 n:his.t3.w3 out:his.t3.w4 1000
+W1 tok:his.t3.w4 n:his.t3.w4 1
+W2 n:his.t3.w4 out:his.t3.w5 1000
+W1 tok:his.t3.w5 n:his.t3.w5 1
+W2 n:his.t3.w5 out:his.t3.w6 1000
+W1 tok:his.t3.w6 n:his.t3.w6 1
+W2 n:his.t3.w6 out:his.t3.w7 1000
+W1 tok:his.t3.w7 n:his.t3.w7 1
+W2 n:his.t3.w7 out:<end> 1000
+U out:his.t3.w0 his.t3.w0 1
+U out:his.t3.w1 his.t3.w1 1
+U out:his.t3.w2 his.t3.w2 1
+U out:his.t3.w3 his.t3.w3 1
+U out:his.t3.w4 his.t3.w4 1
+U out:his.t3.w5 his.t3.w5 1
+U out:his.t3.w6 his.t3.w6 1
+U out:his.t3.w7 his.t3.w7 1
+
+# topic his.t4
+E gutenberg tok:gutenberg 1
+E movable tok:movable 1
+E printing tok:printing 1
+E typeset tok:typeset 1
+E press tok:press 1
+B gutenberg -1000000000
+B movable -1000000000
+B printing -1000000000
+B typeset -1000000000
+B press -1000000000
+V tok:gutenberg his.t4 3.0
+V tok:movable his.t4 2.5
+V tok:printing his.t4 2.0
+V tok:typeset his.t4 2.0
+V tok:press his.t4 1.0
+O his.t4 top:his.t4 100
+W1 top:his.t4 n:his.t4 1
+W2 n:his.t4 out:his.t4.w0 1
+E his.t4.w0 tok:his.t4.w0 1
+E his.t4.w1 tok:his.t4.w1 1
+E his.t4.w2 tok:his.t4.w2 1
+E his.t4.w3 tok:his.t4.w3 1
+E his.t4.w4 tok:his.t4.w4 1
+E his.t4.w5 tok:his.t4.w5 1
+E his.t4.w6 tok:his.t4.w6 1
+E his.t4.w7 tok:his.t4.w7 1
+E his.t4.w8 tok:his.t4.w8 1
+E his.t4.w9 tok:his.t4.w9 1
+S his.t4.w0 Johannes
+S his.t4.w1 Gutenberg
+S his.t4.w2 introduced
+S his.t4.w3 movable
+S his.t4.w4 type
+S his.t4.w5 printing
+S his.t4.w6 in
+S his.t4.w7 Europe
+S his.t4.w8 around
+S his.t4.w9 1440.
+W1 tok:his.t4.w0 n:his.t4.w0 1
+W2 n:his.t4.w0 out:his.t4.w1 1000
+W1 tok:his.t4.w1 n:his.t4.w1 1
+W2 n:his.t4.w1 out:his.t4.w2 1000
+W1 tok:his.t4.w2 n:his.t4.w2 1
+W2 n:his.t4.w2 out:his.t4.w3 1000
+W1 tok:his.t4.w3 n:his.t4.w3 1
+W2 n:his.t4.w3 out:his.t4.w4 1000
+W1 tok:his.t4.w4 n:his.t4.w4 1
+W2 n:his.t4.w4 out:his.t4.w5 1000
+W1 tok:his.t4.w5 n:his.t4.w5 1
+W2 n:his.t4.w5 out:his.t4.w6 1000
+W1 tok:his.t4.w6 n:his.t4.w6 1
+W2 n:his.t4.w6 out:his.t4.w7 1000
+W1 tok:his.t4.w7 n:his.t4.w7 1
+W2 n:his.t4.w7 out:his.t4.w8 1000
+W1 tok:his.t4.w8 n:his.t4.w8 1
+W2 n:his.t4.w8 out:his.t4.w9 1000
+W1 tok:his.t4.w9 n:his.t4.w9 1
+W2 n:his.t4.w9 out:<end> 1000
+U out:his.t4.w0 his.t4.w0 1
+U out:his.t4.w1 his.t4.w1 1
+U out:his.t4.w2 his.t4.w2 1
+U out:his.t4.w3 his.t4.w3 1
+U out:his.t4.w4 his.t4.w4 1
+U out:his.t4.w5 his.t4.w5 1
+U out:his.t4.w6 his.t4.w6 1
+U out:his.t4.w7 his.t4.w7 1
+U out:his.t4.w8 his.t4.w8 1
+U out:his.t4.w9 his.t4.w9 1
+
+# topic his.t5
+E augustus tok:augustus 1
+E caesar tok:caesar 1
+E rome tok:rome 1
+E roman tok:roman 1
+E gladiators tok:gladiators 1
+B augustus -1000000000
+B caesar -1000000000
+B rome -1000000000
+B roman -1000000000
+B gladiators -1000000000
+V tok:augustus his.t5 2.5
+V tok:caesar his.t5 2.5
+V tok:rome his.t5 2.0
+V tok:roman his.t5 2.0
+V tok:gladiators his.t5 2.0
+O his.t5 top:his.t5 100
+W1 top:his.t5 n:his.t5 1
+W2 n:his.t5 out:his.t5.w0 1
+E his.t5.w0 tok:his.t5.w0 1
+E his.t5.w1 tok:his.t5.w1 1
+E his.t5.w2 tok:his.t5.w2 1
+E his.t5.w3 tok:his.t5.w3 1
+E his.t5.w4 tok:his.t5.w4 1
+E his.t5.w5 tok:his.t5.w5 1
+E his.t5.w6 tok:his.t5.w6 1
+E his.t5.w7 tok:his.t5.w7 1
+S his.t5.w0 Augustus
+S his.t5.w1 became
+S his.t5.w2 Rome's
+S his.t5.w3 first
+S his.t5.w4 emperor
+S his.t5.w5 in
+S his.t5.w6 27
+S his.t5.w7 BC.
+W1 tok:his.t5.w0 n:his.t5.w0 1
+W2 n:his.t5.w0 out:his.t5.w1 1000
+W1 tok:his.t5.w1 n:his.t5.w1 1
+W2 n:his.t5.w1 out:his.t5.w2 1000
+W1 tok:his.t5.w2 n:his.t5.w2 1
+W2 n:his.t5.w2 out:his.t5.w3 1000
+W1 tok:his.t5.w3 n:his.t5.w3 1
+W2 n:his.t5.w3 out:his.t5.w4 1000
+W1 tok:his.t5.w4 n:his.t5.w4 1
+W2 n:his.t5.w4 out:his.t5.w5 1000
+W1 tok:his.t5.w5 n:his.t5.w5 1
+W2 n:his.t5.w5 out:his.t5.w6 1000
+W1 tok:his.t5.w6 n:his.t5.w6 1
+W2 n:his.t5.w6 out:his.t5.w7 1000
+W1 tok:his.t5.w7 n:his.t5.w7 1
+W2 n:his.t5.w7 out:<end> 1000
+U out:his.t5.w0 his.t5.w0 1
+U out:his.t5.w1 his.t5.w1 1
+U out:his.t5.w2 his.t5.w2 1
+U out:his.t5.w3 his.t5.w3 1
+U out:his.t5.w4 his.t5.w4 1
+U out:his.t5.w5 his.t5.w5 1
+U out:his.t5.w6 his.t5.w6 1
+U out:his.t5.w7 his.t5.w7 1
+
+# topic his.t6
+E columbus tok:columbus 1
+E explorer tok:explorer 1
+E explorers tok:explorers 1
+E america tok:america 1
+E discovery tok:discovery 1
+B columbus -1000000000
+B explorer -1000000000
+B explorers -1000000000
+B america -1000000000
+B discovery -1000000000
+V tok:columbus his.t6 3.0
+V tok:explorer his.t6 1.5
+V tok:explorers his.t6 1.5
+V tok:america his.t6 1.0
+V tok:discovery his.t6 1.0
+O his.t6 top:his.t6 100
+W1 top:his.t6 n:his.t6 1
+W2 n:his.t6 out:his.t6.w0 1
+E his.t6.w0 tok:his.t6.w0 1
+E his.t6.w1 tok:his.t6.w1 1
+E his.t6.w2 tok:his.t6.w2 1
+E his.t6.w3 tok:his.t6.w3 1
+E his.t6.w4 tok:his.t6.w4 1
+E his.t6.w5 tok:his.t6.w5 1
+E his.t6.w6 tok:his.t6.w6 1
+S his.t6.w0 Columbus
+S his.t6.w1 sailed
+S his.t6.w2 across
+S his.t6.w3 the
+S his.t6.w4 Atlantic
+S his.t6.w5 in
+S his.t6.w6 1492.
+W1 tok:his.t6.w0 n:his.t6.w0 1
+W2 n:his.t6.w0 out:his.t6.w1 1000
+W1 tok:his.t6.w1 n:his.t6.w1 1
+W2 n:his.t6.w1 out:his.t6.w2 1000
+W1 tok:his.t6.w2 n:his.t6.w2 1
+W2 n:his.t6.w2 out:his.t6.w3 1000
+W1 tok:his.t6.w3 n:his.t6.w3 1
+W2 n:his.t6.w3 out:his.t6.w4 1000
+W1 tok:his.t6.w4 n:his.t6.w4 1
+W2 n:his.t6.w4 out:his.t6.w5 1000
+W1 tok:his.t6.w5 n:his.t6.w5 1
+W2 n:his.t6.w5 out:his.t6.w6 1000
+W1 tok:his.t6.w6 n:his.t6.w6 1
+W2 n:his.t6.w6 out:<end> 1000
+U out:his.t6.w0 his.t6.w0 1
+U out:his.t6.w1 his.t6.w1 1
+U out:his.t6.w2 his.t6.w2 1
+U out:his.t6.w3 his.t6.w3 1
+U out:his.t6.w4 his.t6.w4 1
+U out:his.t6.w5 his.t6.w5 1
+U out:his.t6.w6 his.t6.w6 1
+
+# topic his.t7
+E gorbachev tok:gorbachev 1
+E berlin tok:berlin 1
+E wall tok:wall 1
+E cold tok:cold 1
+E soviet tok:soviet 1
+B gorbachev -1000000000
+B berlin -1000000000
+B wall -1000000000
+B cold -1000000000
+B soviet -1000000000
+V tok:gorbachev his.t7 3.0
+V tok:berlin his.t7 2.0
+V tok:wall his.t7 1.0
+V tok:cold his.t7 1.5
+V tok:soviet his.t7 1.5
+O his.t7 top:his.t7 100
+W1 top:his.t7 n:his.t7 1
+W2 n:his.t7 out:his.t7.w0 1
+E his.t7.w0 tok:his.t7.w0 1
+E his.t7.w1 tok:his.t7.w1 1
+E his.t7.w2 tok:his.t7.w2 1
+E his.t7.w3 tok:his.t7.w3 1
+E his.t7.w4 tok:his.t7.w4 1
+E his.t7.w5 tok:his.t7.w5 1
+E his.t7.w6 tok:his.t7.w6 1
+E his.t7.w7 tok:his.t7.w7 1
+S his.t7.w0 The
+S his.t7.w1 Berlin
+S his.t7.w2 Wall
+S his.t7.w3 fell
+S his.t7.w4 on
+S his.t7.w5 November
+S his.t7.w6 9,
+S his.t7.w7 1989.
+W1 tok:his.t7.w0 n:his.t7.w0 1
+W2 n:his.t7.w0 out:his.t7.w1 1000
+W1 tok:his.t7.w1 n:his.t7.w1 1
+W2 n:his.t7.w1 out:his.t7.w2 1000
+W1 tok:his.t7.w2 n:his.t7.w2 1
+W2 n:his.t7.w2 out:his.t7.w3 1000
+W1 tok:his.t7.w3 n:his.t7.w3 1
+W2 n:his.t7.w3 out:his.t7.w4 1000
+W1 tok:his.t7.w4 n:his.t7.w4 1
+W2 n:his.t7.w4 out:his.t7.w5 1000
+W1 tok:his.t7.w5 n:his.t7.w5 1
+W2 n:his.t7.w5 out:his.t7.w6 1000
+W1 tok:his.t7.w6 n:his.t7.w6 1
+W2 n:his.t7.w6 out:his.t7.w7 1000
+W1 tok:his.t7.w7 n:his.t7.w7 1
+W2 n:his.t7.w7 out:<end> 1000
+U out:his.t7.w0 his.t7.w0 1
+U out:his.t7.w1 his.t7.w1 1
+U out:his.t7.w2 his.t7.w2 1
+U out:his.t7.w3 his.t7.w3 1
+U out:his.t7.w4 his.t7.w4 1
+U out:his.t7.w5 his.t7.w5 1
+U out:his.t7.w6 his.t7.w6 1
+U out:his.t7.w7 his.t7.w7 1
+
+# topic his.t8
+E bastille tok:bastille 1
+E robespierre tok:robespierre 1
+E guillotine tok:guillotine 1
+E revolution tok:revolution 1
+E louis tok:louis 1
+B bastille -1000000000
+B robespierre -1000000000
+B guillotine -1000000000
+B revolution -1000000000
+B louis -1000000000
+V tok:bastille his.t8 3.0
+V tok:robespierre his.t8 3.0
+V tok:guillotine his.t8 3.0
+V tok:revolution his.t8 1.5
+V tok:louis his.t8 1.0
+O his.t8 top:his.t8 100
+W1 top:his.t8 n:his.t8 1
+W2 n:his.t8 out:his.t8.w0 1
+E his.t8.w0 tok:his.t8.w0 1
+E his.t8.w1 tok:his.t8.w1 1
+E his.t8.w2 tok:his.t8.w2 1
+E his.t8.w3 tok:his.t8.w3 1
+E his.t8.w4 tok:his.t8.w4 1
+E his.t8.w5 tok:his.t8.w5 1
+E his.t8.w6 tok:his.t8.w6 1
+E his.t8.w7 tok:his.t8.w7 1
+E his.t8.w8 tok:his.t8.w8 1
+E his.t8.w9 tok:his.t8.w9 1
+S his.t8.w0 The
+S his.t8.w1 storming
+S his.t8.w2 of
+S his.t8.w3 the
+S his.t8.w4 Bastille
+S his.t8.w5 happened
+S his.t8.w6 on
+S his.t8.w7 July
+S his.t8.w8 14,
+S his.t8.w9 1789.
+W1 tok:his.t8.w0 n:his.t8.w0 1
+W2 n:his.t8.w0 out:his.t8.w1 1000
+W1 tok:his.t8.w1 n:his.t8.w1 1
+W2 n:his.t8.w1 out:his.t8.w2 1000
+W1 tok:his.t8.w2 n:his.t8.w2 1
+W2 n:his.t8.w2 out:his.t8.w3 1000
+W1 tok:his.t8.w3 n:his.t8.w3 1
+W2 n:his.t8.w3 out:his.t8.w4 1000
+W1 tok:his.t8.w4 n:his.t8.w4 1
+W2 n:his.t8.w4 out:his.t8.w5 1000
+W1 tok:his.t8.w5 n:his.t8.w5 1
+W2 n:his.t8.w5 out:his.t8.w6 1000
+W1 tok:his.t8.w6 n:his.t8.w6 1
+W2 n:his.t8.w6 out:his.t8.w7 1000
+W1 tok:his.t8.w7 n:his.t8.w7 1
+W2 n:his.t8.w7 out:his.t8.w8 1000
+W1 tok:his.t8.w8 n:his.t8.w8 1
+W2 n:his.t8.w8 out:his.t8.w9 1000
+W1 tok:his.t8.w9 n:his.t8.w9 1
+W2 n:his.t8.w9 out:<end> 1000
+U out:his.t8.w0 his.t8.w0 1
+U out:his.t8.w1 his.t8.w1 1
+U out:his.t8.w2 his.t8.w2 1
+U out:his.t8.w3 his.t8.w3 1
+U out:his.t8.w4 his.t8.w4 1
+U out:his.t8.w5 his.t8.w5 1
+U out:his.t8.w6 his.t8.w6 1
+U out:his.t8.w7 his.t8.w7 1
+U out:his.t8.w8 his.t8.w8 1
+U out:his.t8.w9 his.t8.w9 1
+
+# topic his.t9
+E socrates tok:socrates 1
+E plato tok:plato 1
+E sparta tok:sparta 1
+E greek tok:greek 1
+E athens tok:athens 1
+B socrates -1000000000
+B plato -1000000000
+B sparta -1000000000
+B greek -1000000000
+B athens -1000000000
+V tok:socrates his.t9 3.0
+V tok:plato his.t9 2.5
+V tok:sparta his.t9 2.5
+V tok:greek his.t9 2.0
+V tok:athens his.t9 2.0
+O his.t9 top:his.t9 100
+W1 top:his.t9 n:his.t9 1
+W2 n:his.t9 out:his.t9.w0 1
+E his.t9.w0 tok:his.t9.w0 1
+E his.t9.w1 tok:his.t9.w1 1
+E his.t9.w2 tok:his.t9.w2 1
+E his.t9.w3 tok:his.t9.w3 1
+E his.t9.w4 tok:his.t9.w4 1
+E his.t9.w5 tok:his.t9.w5 1
+E his.t9.w6 tok:his.t9.w6 1
+E his.t9.w7 tok:his.t9.w7 1
+E his.t9.w8 tok:his.t9.w8 1
+E his.t9.w9 tok:his.t9.w9 1
+S his.t9.w0 Socrates
+S his.t9.w1 was
+S his.t9.w2 an
+S his.t9.w3 ancient
+S his.t9.w4 Greek
+S his.t9.w5 philosopher
+S his.t9.w6 who
+S his.t9.w7 taught
+S his.t9.w8 in
+S his.t9.w9 Athens.
+W1 tok:his.t9.w0 n:his.t9.w0 1
+W2 n:his.t9.w0 out:his.t9.w1 1000
+W1 tok:his.t9.w1 n:his.t9.w1 1
+W2 n:his.t9.w1 out:his.t9.w2 1000
+W1 tok:his.t9.w2 n:his.t9.w2 1
+W2 n:his.t9.w2 out:his.t9.w3 1000
+W1 tok:his.t9.w3 n:his.t9.w3 1
+W2 n:his.t9.w3 out:his.t9.w4 1000
+W1 tok:his.t9.w4 n:his.t9.w4 1
+W2 n:his.t9.w4 out:his.t9.w5 1000
+W1 tok:his.t9.w5 n:his.t9.w5 1
+W2 n:his.t9.w5 out:his.t9.w6 1000
+W1 tok:his.t9.w6 n:his.t9.w6 1
+W2 n:his.t9.w6 out:his.t9.w7 1000
+W1 tok:his.t9.w7 n:his.t9.w7 1
+W2 n:his.t9.w7 out:his.t9.w8 1000
+W1 tok:his.t9.w8 n:his.t9.w8 1
+W2 n:his.t9.w8 out:his.t9.w9 1000
+W1 tok:his.t9.w9 n:his.t9.w9 1
+W2 n:his.t9.w9 out:<end> 1000
+U out:his.t9.w0 his.t9.w0 1
+U out:his.t9.w1 his.t9.w1 1
+U out:his.t9.w2 his.t9.w2 1
+U out:his.t9.w3 his.t9.w3 1
+U out:his.t9.w4 his.t9.w4 1
+U out:his.t9.w5 his.t9.w5 1
+U out:his.t9.w6 his.t9.w6 1
+U out:his.t9.w7 his.t9.w7 1
+U out:his.t9.w8 his.t9.w8 1
+U out:his.t9.w9 his.t9.w9 1
+
+# topic his.t10
+E sarajevo tok:sarajevo 1
+E archduke tok:archduke 1
+E verdun tok:verdun 1
+E wwi tok:wwi 1
+E trench tok:trench 1
+B sarajevo -1000000000
+B archduke -1000000000
+B verdun -1000000000
+B wwi -1000000000
+B trench -1000000000
+V tok:sarajevo his.t10 3.0
+V tok:archduke his.t10 3.0
+V tok:verdun his.t10 3.0
+V tok:wwi his.t10 3.0
+V tok:trench his.t10 2.0
+O his.t10 top:his.t10 100
+W1 top:his.t10 n:his.t10 1
+W2 n:his.t10 out:his.t10.w0 1
+E his.t10.w0 tok:his.t10.w0 1
+E his.t10.w1 tok:his.t10.w1 1
+E his.t10.w2 tok:his.t10.w2 1
+E his.t10.w3 tok:his.t10.w3 1
+E his.t10.w4 tok:his.t10.w4 1
+E his.t10.w5 tok:his.t10.w5 1
+S his.t10.w0 World
+S his.t10.w1 War
+S his.t10.w2 I
+S his.t10.w3 began
+S his.t10.w4 in
+S his.t10.w5 1914.
+W1 tok:his.t10.w0 n:his.t10.w0 1
+W2 n:his.t10.w0 out:his.t10.w1 1000
+W1 tok:his.t10.w1 n:his.t10.w1 1
+W2 n:his.t10.w1 out:his.t10.w2 1000
+W1 tok:his.t10.w2 n:his.t10.w2 1
+W2 n:his.t10.w2 out:his.t10.w3 1000
+W1 tok:his.t10.w3 n:his.t10.w3 1
+W2 n:his.t10.w3 out:his.t10.w4 1000
+W1 tok:his.t10.w4 n:his.t10.w4 1
+W2 n:his.t10.w4 out:his.t10.w5 1000
+W1 tok:his.t10.w5 n:his.t10.w5 1
+W2 n:his.t10.w5 out:<end> 1000
+U out:his.t10.w0 his.t10.w0 1
+U out:his.t10.w1 his.t10.w1 1
+U out:his.t10.w2 his.t10.w2 1
+U out:his.t10.w3 his.t10.w3 1
+U out:his.t10.w4 his.t10.w4 1
+U out:his.t10.w5 his.t10.w5 1
+
+# topic his.t11
+E kittyhawk tok:kittyhawk 1
+E wright tok:wright 1
+E kitty tok:kitty 1
+E aviation tok:aviation 1
+E airplane tok:airplane 1
+B kittyhawk -1000000000
+B wright -1000000000
+B kitty -1000000000
+B aviation -1000000000
+B airplane -1000000000
+V tok:kittyhawk his.t11 3.0
+V tok:wright his.t11 2.5
+V tok:kitty his.t11 1.5
+V tok:aviation his.t11 2.0
+V tok:airplane his.t11 2.0
+O his.t11 top:his.t11 100
+W1 top:his.t11 n:his.t11 1
+W2 n:his.t11 out:his.t11.w0 1
+E his.t11.w0 tok:his.t11.w0 1
+E his.t11.w1 tok:his.t11.w1 1
+E his.t11.w2 tok:his.t11.w2 1
+E his.t11.w3 tok:his.t11.w3 1
+E his.t11.w4 tok:his.t11.w4 1
+E his.t11.w5 tok:his.t11.w5 1
+E his.t11.w6 tok:his.t11.w6 1
+E his.t11.w7 tok:his.t11.w7 1
+E his.t11.w8 tok:his.t11.w8 1
+E his.t11.w9 tok:his.t11.w9 1
+S his.t11.w0 The
+S his.t11.w1 Wright
+S his.t11.w2 brothers
+S his.t11.w3 first
+S his.t11.w4 flew
+S his.t11.w5 at
+S his.t11.w6 Kitty
+S his.t11.w7 Hawk
+S his.t11.w8 in
+S his.t11.w9 1903.
+W1 tok:his.t11.w0 n:his.t11.w0 1
+W2 n:his.t11.w0 out:his.t11.w1 1000
+W1 tok:his.t11.w1 n:his.t11.w1 1
+W2 n:his.t11.w1 out:his.t11.w2 1000
+W1 tok:his.t11.w2 n:his.t11.w2 1
+W2 n:his.t11.w2 out:his.t11.w3 1000
+W1 tok:his.t11.w3 n:his.t11.w3 1
+W2 n:his.t11.w3 out:his.t11.w4 1000
+W1 tok:his.t11.w4 n:his.t11.w4 1
+W2 n:his.t11.w4 out:his.t11.w5 1000
+W1 tok:his.t11.w5 n:his.t11.w5 1
+W2 n:his.t11.w5 out:his.t11.w6 1000
+W1 tok:his.t11.w6 n:his.t11.w6 1
+W2 n:his.t11.w6 out:his.t11.w7 1000
+W1 tok:his.t11.w7 n:his.t11.w7 1
+W2 n:his.t11.w7 out:his.t11.w8 1000
+W1 tok:his.t11.w8 n:his.t11.w8 1
+W2 n:his.t11.w8 out:his.t11.w9 1000
+W1 tok:his.t11.w9 n:his.t11.w9 1
+W2 n:his.t11.w9 out:<end> 1000
+U out:his.t11.w0 his.t11.w0 1
+U out:his.t11.w1 his.t11.w1 1
+U out:his.t11.w2 his.t11.w2 1
+U out:his.t11.w3 his.t11.w3 1
+U out:his.t11.w4 his.t11.w4 1
+U out:his.t11.w5 his.t11.w5 1
+U out:his.t11.w6 his.t11.w6 1
+U out:his.t11.w7 his.t11.w7 1
+U out:his.t11.w8 his.t11.w8 1
+U out:his.t11.w9 his.t11.w9 1
+
+# topic his.t12
+E magna tok:magna 1
+E carta tok:carta 1
+E runnymede tok:runnymede 1
+E barons tok:barons 1
+E john tok:john 1
+B magna -1000000000
+B carta -1000000000
+B runnymede -1000000000
+B barons -1000000000
+B john -1000000000
+V tok:magna his.t12 3.0
+V tok:carta his.t12 3.0
+V tok:runnymede his.t12 3.0
+V tok:barons his.t12 2.0
+V tok:john his.t12 1.0
+O his.t12 top:his.t12 100
+W1 top:his.t12 n:his.t12 1
+W2 n:his.t12 out:his.t12.w0 1
+E his.t12.w0 tok:his.t12.w0 1
+E his.t12.w1 tok:his.t12.w1 1
+E his.t12.w2 tok:his.t12.w2 1
+E his.t12.w3 tok:his.t12.w3 1
+E his.t12.w4 tok:his.t12.w4 1
+E his.t12.w5 tok:his.t12.w5 1
+E his.t12.w6 tok:his.t12.w6 1
+E his.t12.w7 tok:his.t12.w7 1
+E his.t12.w8 tok:his.t12.w8 1
+S his.t12.w0 Magna
+S his.t12.w1 Carta
+S his.t12.w2 was
+S his.t12.w3 sealed
+S his.t12.w4 by
+S his.t12.w5 King
+S his.t12.w6 John
+S his.t12.w7 in
+S his.t12.w8 1215.
+W1 tok:his.t12.w0 n:his.t12.w0 1
+W2 n:his.t12.w0 out:his.t12.w1 1000
+W1 tok:his.t12.w1 n:his.t12.w1 1
+W2 n:his.t12.w1 out:his.t12.w2 1000
+W1 tok:his.t12.w2 n:his.t12.w2 1
+W2 n:his.t12.w2 out:his.t12.w3 1000
+W1 tok:his.t12.w3 n:his.t12.w3 1
+W2 n:his.t12.w3 out:his.t12.w4 1000
+W1 tok:his.t12.w4 n:his.t12.w4 1
+W2 n:his.t12.w4 out:his.t12.w5 1000
+W1 tok:his.t12.w5 n:his.t12.w5 1
+W2 n:his.t12.w5 out:his.t12.w6 1000
+W1 tok:his.t12.w6 n:his.t12.w6 1
+W2 n:his.t12.w6 out:his.t12.w7 1000
+W1 tok:his.t12.w7 n:his.t12.w7 1
+W2 n:his.t12.w7 out:his.t12.w8 1000
+W1 tok:his.t12.w8 n:his.t12.w8 1
+W2 n:his.t12.w8 out:<end> 1000
+U out:his.t12.w0 his.t12.w0 1
+U out:his.t12.w1 his.t12.w1 1
+U out:his.t12.w2 his.t12.w2 1
+U out:his.t12.w3 his.t12.w3 1
+U out:his.t12.w4 his.t12.w4 1
+U out:his.t12.w5 his.t12.w5 1
+U out:his.t12.w6 his.t12.w6 1
+U out:his.t12.w7 his.t12.w7 1
+U out:his.t12.w8 his.t12.w8 1
+
+# topic his.t13
+E sumer tok:sumer 1
+E sumerians tok:sumerians 1
+E cuneiform tok:cuneiform 1
+E mesopotamia tok:mesopotamia 1
+E babylon tok:babylon 1
+B sumer -1000000000
+B sumerians -1000000000
+B cuneiform -1000000000
+B mesopotamia -1000000000
+B babylon -1000000000
+V tok:sumer his.t13 3.0
+V tok:sumerians his.t13 3.0
+V tok:cuneiform his.t13 3.0
+V tok:mesopotamia his.t13 3.0
+V tok:babylon his.t13 2.5
+O his.t13 top:his.t13 100
+W1 top:his.t13 n:his.t13 1
+W2 n:his.t13 out:his.t13.w0 1
+E his.t13.w0 tok:his.t13.w0 1
+E his.t13.w1 tok:his.t13.w1 1
+E his.t13.w2 tok:his.t13.w2 1
+E his.t13.w3 tok:his.t13.w3 1
+E his.t13.w4 tok:his.t13.w4 1
+E his.t13.w5 tok:his.t13.w5 1
+S his.t13.w0 Sumerians
+S his.t13.w1 developed
+S his.t13.w2 cuneiform
+S his.t13.w3 writing
+S his.t13.w4 in
+S his.t13.w5 Mesopotamia.
+W1 tok:his.t13.w0 n:his.t13.w0 1
+W2 n:his.t13.w0 out:his.t13.w1 1000
+W1 tok:his.t13.w1 n:his.t13.w1 1
+W2 n:his.t13.w1 out:his.t13.w2 1000
+W1 tok:his.t13.w2 n:his.t13.w2 1
+W2 n:his.t13.w2 out:his.t13.w3 1000
+W1 tok:his.t13.w3 n:his.t13.w3 1
+W2 n:his.t13.w3 out:his.t13.w4 1000
+W1 tok:his.t13.w4 n:his.t13.w4 1
+W2 n:his.t13.w4 out:his.t13.w5 1000
+W1 tok:his.t13.w5 n:his.t13.w5 1
+W2 n:his.t13.w5 out:<end> 1000
+U out:his.t13.w0 his.t13.w0 1
+U out:his.t13.w1 his.t13.w1 1
+U out:his.t13.w2 his.t13.w2 1
+U out:his.t13.w3 his.t13.w3 1
+U out:his.t13.w4 his.t13.w4 1
+U out:his.t13.w5 his.t13.w5 1
+
+# topic his.t14
+E constantinople tok:constantinople 1
+E mehmed tok:mehmed 1
+E ottoman tok:ottoman 1
+E byzantine tok:byzantine 1
+E istanbul tok:istanbul 1
+B constantinople -1000000000
+B mehmed -1000000000
+B ottoman -1000000000
+B byzantine -1000000000
+B istanbul -1000000000
+V tok:constantinople his.t14 3.0
+V tok:mehmed his.t14 3.0
+V tok:ottoman his.t14 2.5
+V tok:byzantine his.t14 2.5
+V tok:istanbul his.t14 2.0
+O his.t14 top:his.t14 100
+W1 top:his.t14 n:his.t14 1
+W2 n:his.t14 out:his.t14.w0 1
+E his.t14.w0 tok:his.t14.w0 1
+E his.t14.w1 tok:his.t14.w1 1
+E his.t14.w2 tok:his.t14.w2 1
+E his.t14.w3 tok:his.t14.w3 1
+E his.t14.w4 tok:his.t14.w4 1
+E his.t14.w5 tok:his.t14.w5 1
+S his.t14.w0 Ottoman
+S his.t14.w1 forces
+S his.t14.w2 captured
+S his.t14.w3 Constantinople
+S his.t14.w4 in
+S his.t14.w5 1453.
+W1 tok:his.t14.w0 n:his.t14.w0 1
+W2 n:his.t14.w0 out:his.t14.w1 1000
+W1 tok:his.t14.w1 n:his.t14.w1 1
+W2 n:his.t14.w1 out:his.t14.w2 1000
+W1 tok:his.t14.w2 n:his.t14.w2 1
+W2 n:his.t14.w2 out:his.t14.w3 1000
+W1 tok:his.t14.w3 n:his.t14.w3 1
+W2 n:his.t14.w3 out:his.t14.w4 1000
+W1 tok:his.t14.w4 n:his.t14.w4 1
+W2 n:his.t14.w4 out:his.t14.w5 1000
+W1 tok:his.t14.w5 n:his.t14.w5 1
+W2 n:his.t14.w5 out:<end> 1000
+U out:his.t14.w0 his.t14.w0 1
+U out:his.t14.w1 his.t14.w1 1
+U out:his.t14.w2 his.t14.w2 1
+U out:his.t14.w3 his.t14.w3 1
+U out:his.t14.w4 his.t14.w4 1
+U out:his.t14.w5 his.t14.w5 1
+
+# topic his.t15
+E titanic tok:titanic 1
+E iceberg tok:iceberg 1
+E liner tok:liner 1
+E sank tok:sank 1
+E ship tok:ship 1
+B titanic -1000000000
+B iceberg -1000000000
+B liner -1000000000
+B sank -1000000000
+B ship -1000000000
+V tok:titanic his.t15 3.0
+V tok:iceberg his.t15 2.0
+V tok:liner his.t15 1.0
+V tok:sank his.t15 1.0
+V tok:ship his.t15 0.5
+O his.t15 top:his.t15 100
+W1 top:his.t15 n:his.t15 1
+W2 n:his.t15 out:his.t15.w0 1
+E his.t15.w0 tok:his.t15.w0 1
+E his.t15.w1 tok:his.t15.w1 1
+E his.t15.w2 tok:his.t15.w2 1
+E his.t15.w3 tok:his.t15.w3 1
+E his.t15.w4 tok:his.t15.w4 1
+E his.t15.w5 tok:his.t15.w5 1
+E his.t15.w6 tok:his.t15.w6 1
+E his.t15.w7 tok:his.t15.w7 1
+E his.t15.w8 tok:his.t15.w8 1
+E his.t15.w9 tok:his.t15.w9 1
+S his.t15.w0 The
+S his.t15.w1 Titanic
+S his.t15.w2 sank
+S his.t15.w3 in
+S his.t15.w4 April
+S his.t15.w5 1912
+S his.t15.w6 after
+S his.t15.w7 hitting
+S his.t15.w8 an
+S his.t15.w9 iceberg.
+W1 tok:his.t15.w0 n:his.t15.w0 1
+W2 n:his.t15.w0 out:his.t15.w1 1000
+W1 tok:his.t15.w1 n:his.t15.w1 1
+W2 n:his.t15.w1 out:his.t15.w2 1000
+W1 tok:his.t15.w2 n:his.t15.w2 1
+W2 n:his.t15.w2 out:his.t15.w3 1000
+W1 tok:his.t15.w3 n:his.t15.w3 1
+W2 n:his.t15.w3 out:his.t15.w4 1000
+W1 tok:his.t15.w4 n:his.t15.w4 1
+W2 n:his.t15.w4 out:his.t15.w5 1000
+W1 tok:his.t15.w5 n:his.t15.w5 1
+W2 n:his.t15.w5 out:his.t15.w6 1000
+W1 tok:his.t15.w6 n:his.t15.w6 1
+W2 n:his.t15.w6 out:his.t15.w7 1000
+W1 tok:his.t15.w7 n:his.t15.w7 1
+W2 n:his.t15.w7 out:his.t15.w8 1000
+W1 tok:his.t15.w8 n:his.t15.w8 1
+W2 n:his.t15.w8 out:his.t15.w9 1000
+W1 tok:his.t15.w9 n:his.t15.w9 1
+W2 n:his.t15.w9 out:<end> 1000
+U out:his.t15.w0 his.t15.w0 1
+U out:his.t15.w1 his.t15.w1 1
+U out:his.t15.w2 his.t15.w2 1
+U out:his.t15.w3 his.t15.w3 1
+U out:his.t15.w4 his.t15.w4 1
+U out:his.t15.w5 his.t15.w5 1
+U out:his.t15.w6 his.t15.w6 1
+U out:his.t15.w7 his.t15.w7 1
+U out:his.t15.w8 his.t15.w8 1
+U out:his.t15.w9 his.t15.w9 1
+
+# topic his.t16
+E jefferson tok:jefferson 1
+E independence tok:independence 1
+E declaration tok:declaration 1
+E founders tok:founders 1
+E america tok:america 1
+B jefferson -1000000000
+B independence -1000000000
+B declaration -1000000000
+B founders -1000000000
+B america -1000000000
+V tok:jefferson his.t16 2.5
+V tok:independence his.t16 2.0
+V tok:declaration his.t16 2.0
+V tok:founders his.t16 1.5
+V tok:america his.t16 1.0
+O his.t16 top:his.t16 100
+W1 top:his.t16 n:his.t16 1
+W2 n:his.t16 out:his.t16.w0 1
+E his.t16.w0 tok:his.t16.w0 1
+E his.t16.w1 tok:his.t16.w1 1
+E his.t16.w2 tok:his.t16.w2 1
+E his.t16.w3 tok:his.t16.w3 1
+E his.t16.w4 tok:his.t16.w4 1
+E his.t16.w5 tok:his.t16.w5 1
+E his.t16.w6 tok:his.t16.w6 1
+E his.t16.w7 tok:his.t16.w7 1
+S his.t16.w0 The
+S his.t16.w1 Declaration
+S his.t16.w2 of
+S his.t16.w3 Independence
+S his.t16.w4 was
+S his.t16.w5 adopted
+S his.t16.w6 in
+S his.t16.w7 1776.
+W1 tok:his.t16.w0 n:his.t16.w0 1
+W2 n:his.t16.w0 out:his.t16.w1 1000
+W1 tok:his.t16.w1 n:his.t16.w1 1
+W2 n:his.t16.w1 out:his.t16.w2 1000
+W1 tok:his.t16.w2 n:his.t16.w2 1
+W2 n:his.t16.w2 out:his.t16.w3 1000
+W1 tok:his.t16.w3 n:his.t16.w3 1
+W2 n:his.t16.w3 out:his.t16.w4 1000
+W1 tok:his.t16.w4 n:his.t16.w4 1
+W2 n:his.t16.w4 out:his.t16.w5 1000
+W1 tok:his.t16.w5 n:his.t16.w5 1
+W2 n:his.t16.w5 out:his.t16.w6 1000
+W1 tok:his.t16.w6 n:his.t16.w6 1
+W2 n:his.t16.w6 out:his.t16.w7 1000
+W1 tok:his.t16.w7 n:his.t16.w7 1
+W2 n:his.t16.w7 out:<end> 1000
+U out:his.t16.w0 his.t16.w0 1
+U out:his.t16.w1 his.t16.w1 1
+U out:his.t16.w2 his.t16.w2 1
+U out:his.t16.w3 his.t16.w3 1
+U out:his.t16.w4 his.t16.w4 1
+U out:his.t16.w5 his.t16.w5 1
+U out:his.t16.w6 his.t16.w6 1
+U out:his.t16.w7 his.t16.w7 1

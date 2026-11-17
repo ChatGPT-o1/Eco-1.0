@@ -1,0 +1,909 @@
+
+# topic py.t0
+E reverse tok:reverse 1
+E string tok:string 1
+E backwards tok:backwards 1
+E python tok:python 1
+E flip tok:flip 1
+B reverse -1000000000
+B string -1000000000
+B backwards -1000000000
+B python -1000000000
+B flip -1000000000
+V tok:reverse py.t0 2.0
+V tok:string py.t0 1.5
+V tok:backwards py.t0 2.0
+V tok:python py.t0 1.0
+V tok:flip py.t0 1.0
+O py.t0 top:py.t0 100
+W1 top:py.t0 n:py.t0 1
+W2 n:py.t0 out:py.t0.w0 1
+E py.t0.w0 tok:py.t0.w0 1
+E py.t0.w1 tok:py.t0.w1 1
+E py.t0.w2 tok:py.t0.w2 1
+E py.t0.w3 tok:py.t0.w3 1
+E py.t0.w4 tok:py.t0.w4 1
+E py.t0.w5 tok:py.t0.w5 1
+S py.t0.w0 Use
+S py.t0.w1 s[::-1]
+S py.t0.w2 to
+S py.t0.w3 reverse
+S py.t0.w4 a
+S py.t0.w5 string.
+W1 tok:py.t0.w0 n:py.t0.w0 1
+W2 n:py.t0.w0 out:py.t0.w1 1000
+W1 tok:py.t0.w1 n:py.t0.w1 1
+W2 n:py.t0.w1 out:py.t0.w2 1000
+W1 tok:py.t0.w2 n:py.t0.w2 1
+W2 n:py.t0.w2 out:py.t0.w3 1000
+W1 tok:py.t0.w3 n:py.t0.w3 1
+W2 n:py.t0.w3 out:py.t0.w4 1000
+W1 tok:py.t0.w4 n:py.t0.w4 1
+W2 n:py.t0.w4 out:py.t0.w5 1000
+W1 tok:py.t0.w5 n:py.t0.w5 1
+W2 n:py.t0.w5 out:<end> 1000
+U out:py.t0.w0 py.t0.w0 1
+U out:py.t0.w1 py.t0.w1 1
+U out:py.t0.w2 py.t0.w2 1
+U out:py.t0.w3 py.t0.w3 1
+U out:py.t0.w4 py.t0.w4 1
+U out:py.t0.w5 py.t0.w5 1
+
+# topic py.t1
+E append tok:append 1
+E list tok:list 1
+E add tok:add 1
+E item tok:item 1
+E python tok:python 1
+B append -1000000000
+B list -1000000000
+B add -1000000000
+B item -1000000000
+B python -1000000000
+V tok:append py.t1 3.0
+V tok:list py.t1 1.5
+V tok:add py.t1 1.0
+V tok:item py.t1 1.0
+V tok:python py.t1 1.0
+O py.t1 top:py.t1 100
+W1 top:py.t1 n:py.t1 1
+W2 n:py.t1 out:py.t1.w0 1
+E py.t1.w0 tok:py.t1.w0 1
+E py.t1.w1 tok:py.t1.w1 1
+E py.t1.w2 tok:py.t1.w2 1
+E py.t1.w3 tok:py.t1.w3 1
+E py.t1.w4 tok:py.t1.w4 1
+E py.t1.w5 tok:py.t1.w5 1
+E py.t1.w6 tok:py.t1.w6 1
+E py.t1.w7 tok:py.t1.w7 1
+E py.t1.w8 tok:py.t1.w8 1
+E py.t1.w9 tok:py.t1.w9 1
+E py.t1.w10 tok:py.t1.w10 1
+S py.t1.w0 Call
+S py.t1.w1 lst.append(x)
+S py.t1.w2 to
+S py.t1.w3 add
+S py.t1.w4 x
+S py.t1.w5 to
+S py.t1.w6 the
+S py.t1.w7 end
+S py.t1.w8 of
+S py.t1.w9 a
+S py.t1.w10 list.
+W1 tok:py.t1.w0 n:py.t1.w0 1
+W2 n:py.t1.w0 out:py.t1.w1 1000
+W1 tok:py.t1.w1 n:py.t1.w1 1
+W2 n:py.t1.w1 out:py.t1.w2 1000
+W1 tok:py.t1.w2 n:py.t1.w2 1
+W2 n:py.t1.w2 out:py.t1.w3 1000
+W1 tok:py.t1.w3 n:py.t1.w3 1
+W2 n:py.t1.w3 out:py.t1.w4 1000
+W1 tok:py.t1.w4 n:py.t1.w4 1
+W2 n:py.t1.w4 out:py.t1.w5 1000
+W1 tok:py.t1.w5 n:py.t1.w5 1
+W2 n:py.t1.w5 out:py.t1.w6 1000
+W1 tok:py.t1.w6 n:py.t1.w6 1
+W2 n:py.t1.w6 out:py.t1.w7 1000
+W1 tok:py.t1.w7 n:py.t1.w7 1
+W2 n:py.t1.w7 out:py.t1.w8 1000
+W1 tok:py.t1.w8 n:py.t1.w8 1
+W2 n:py.t1.w8 out:py.t1.w9 1000
+W1 tok:py.t1.w9 n:py.t1.w9 1
+W2 n:py.t1.w9 out:py.t1.w10 1000
+W1 tok:py.t1.w10 n:py.t1.w10 1
+W2 n:py.t1.w10 out:<end> 1000
+U out:py.t1.w0 py.t1.w0 1
+U out:py.t1.w1 py.t1.w1 1
+U out:py.t1.w2 py.t1.w2 1
+U out:py.t1.w3 py.t1.w3 1
+U out:py.t1.w4 py.t1.w4 1
+U out:py.t1.w5 py.t1.w5 1
+U out:py.t1.w6 py.t1.w6 1
+U out:py.t1.w7 py.t1.w7 1
+U out:py.t1.w8 py.t1.w8 1
+U out:py.t1.w9 py.t1.w9 1
+U out:py.t1.w10 py.t1.w10 1
+
+# topic py.t2
+E dictionary tok:dictionary 1
+E dict tok:dict 1
+E key tok:key 1
+E value tok:value 1
+E mapping tok:mapping 1
+B dictionary -1000000000
+B dict -1000000000
+B key -1000000000
+B value -1000000000
+B mapping -1000000000
+V tok:dictionary py.t2 3.0
+V tok:dict py.t2 3.0
+V tok:key py.t2 2.0
+V tok:value py.t2 1.5
+V tok:mapping py.t2 1.5
+O py.t2 top:py.t2 100
+W1 top:py.t2 n:py.t2 1
+W2 n:py.t2 out:py.t2.w0 1
+E py.t2.w0 tok:py.t2.w0 1
+E py.t2.w1 tok:py.t2.w1 1
+E py.t2.w2 tok:py.t2.w2 1
+E py.t2.w3 tok:py.t2.w3 1
+E py.t2.w4 tok:py.t2.w4 1
+E py.t2.w5 tok:py.t2.w5 1
+E py.t2.w6 tok:py.t2.w6 1
+E py.t2.w7 tok:py.t2.w7 1
+E py.t2.w8 tok:py.t2.w8 1
+E py.t2.w9 tok:py.t2.w9 1
+E py.t2.w10 tok:py.t2.w10 1
+S py.t2.w0 Use
+S py.t2.w1 d.get(key)
+S py.t2.w2 to
+S py.t2.w3 read
+S py.t2.w4 a
+S py.t2.w5 dict
+S py.t2.w6 key
+S py.t2.w7 safely
+S py.t2.w8 without
+S py.t2.w9 a
+S py.t2.w10 KeyError.
+W1 tok:py.t2.w0 n:py.t2.w0 1
+W2 n:py.t2.w0 out:py.t2.w1 1000
+W1 tok:py.t2.w1 n:py.t2.w1 1
+W2 n:py.t2.w1 out:py.t2.w2 1000
+W1 tok:py.t2.w2 n:py.t2.w2 1
+W2 n:py.t2.w2 out:py.t2.w3 1000
+W1 tok:py.t2.w3 n:py.t2.w3 1
+W2 n:py.t2.w3 out:py.t2.w4 1000
+W1 tok:py.t2.w4 n:py.t2.w4 1
+W2 n:py.t2.w4 out:py.t2.w5 1000
+W1 tok:py.t2.w5 n:py.t2.w5 1
+W2 n:py.t2.w5 out:py.t2.w6 1000
+W1 tok:py.t2.w6 n:py.t2.w6 1
+W2 n:py.t2.w6 out:py.t2.w7 1000
+W1 tok:py.t2.w7 n:py.t2.w7 1
+W2 n:py.t2.w7 out:py.t2.w8 1000
+W1 tok:py.t2.w8 n:py.t2.w8 1
+W2 n:py.t2.w8 out:py.t2.w9 1000
+W1 tok:py.t2.w9 n:py.t2.w9 1
+W2 n:py.t2.w9 out:py.t2.w10 1000
+W1 tok:py.t2.w10 n:py.t2.w10 1
+W2 n:py.t2.w10 out:<end> 1000
+U out:py.t2.w0 py.t2.w0 1
+U out:py.t2.w1 py.t2.w1 1
+U out:py.t2.w2 py.t2.w2 1
+U out:py.t2.w3 py.t2.w3 1
+U out:py.t2.w4 py.t2.w4 1
+U out:py.t2.w5 py.t2.w5 1
+U out:py.t2.w6 py.t2.w6 1
+U out:py.t2.w7 py.t2.w7 1
+U out:py.t2.w8 py.t2.w8 1
+U out:py.t2.w9 py.t2.w9 1
+U out:py.t2.w10 py.t2.w10 1
+
+# topic py.t3
+E loop tok:loop 1
+E for tok:for 1
+E iterate tok:iterate 1
+E iteration tok:iteration 1
+E range tok:range 1
+B loop -1000000000
+B for -1000000000
+B iterate -1000000000
+B iteration -1000000000
+B range -1000000000
+V tok:loop py.t3 2.5
+V tok:for py.t3 1.5
+V tok:iterate py.t3 2.5
+V tok:iteration py.t3 2.0
+V tok:range py.t3 1.5
+O py.t3 top:py.t3 100
+W1 top:py.t3 n:py.t3 1
+W2 n:py.t3 out:py.t3.w0 1
+E py.t3.w0 tok:py.t3.w0 1
+E py.t3.w1 tok:py.t3.w1 1
+E py.t3.w2 tok:py.t3.w2 1
+E py.t3.w3 tok:py.t3.w3 1
+E py.t3.w4 tok:py.t3.w4 1
+E py.t3.w5 tok:py.t3.w5 1
+E py.t3.w6 tok:py.t3.w6 1
+E py.t3.w7 tok:py.t3.w7 1
+E py.t3.w8 tok:py.t3.w8 1
+E py.t3.w9 tok:py.t3.w9 1
+S py.t3.w0 Use
+S py.t3.w1 for
+S py.t3.w2 x
+S py.t3.w3 in
+S py.t3.w4 items:
+S py.t3.w5 to
+S py.t3.w6 iterate
+S py.t3.w7 over
+S py.t3.w8 any
+S py.t3.w9 iterable.
+W1 tok:py.t3.w0 n:py.t3.w0 1
+W2 n:py.t3.w0 out:py.t3.w1 1000
+W1 tok:py.t3.w1 n:py.t3.w1 1
+W2 n:py.t3.w1 out:py.t3.w2 1000
+W1 tok:py.t3.w2 n:py.t3.w2 1
+W2 n:py.t3.w2 out:py.t3.w3 1000
+W1 tok:py.t3.w3 n:py.t3.w3 1
+W2 n:py.t3.w3 out:py.t3.w4 1000
+W1 tok:py.t3.w4 n:py.t3.w4 1
+W2 n:py.t3.w4 out:py.t3.w5 1000
+W1 tok:py.t3.w5 n:py.t3.w5 1
+W2 n:py.t3.w5 out:py.t3.w6 1000
+W1 tok:py.t3.w6 n:py.t3.w6 1
+W2 n:py.t3.w6 out:py.t3.w7 1000
+W1 tok:py.t3.w7 n:py.t3.w7 1
+W2 n:py.t3.w7 out:py.t3.w8 1000
+W1 tok:py.t3.w8 n:py.t3.w8 1
+W2 n:py.t3.w8 out:py.t3.w9 1000
+W1 tok:py.t3.w9 n:py.t3.w9 1
+W2 n:py.t3.w9 out:<end> 1000
+U out:py.t3.w0 py.t3.w0 1
+U out:py.t3.w1 py.t3.w1 1
+U out:py.t3.w2 py.t3.w2 1
+U out:py.t3.w3 py.t3.w3 1
+U out:py.t3.w4 py.t3.w4 1
+U out:py.t3.w5 py.t3.w5 1
+U out:py.t3.w6 py.t3.w6 1
+U out:py.t3.w7 py.t3.w7 1
+U out:py.t3.w8 py.t3.w8 1
+U out:py.t3.w9 py.t3.w9 1
+
+# topic py.t4
+E range tok:range 1
+E count tok:count 1
+E numbers tok:numbers 1
+E sequence tok:sequence 1
+E step tok:step 1
+B range -1000000000
+B count -1000000000
+B numbers -1000000000
+B sequence -1000000000
+B step -1000000000
+V tok:range py.t4 3.0
+V tok:count py.t4 1.0
+V tok:numbers py.t4 0.5
+V tok:sequence py.t4 1.0
+V tok:step py.t4 1.5
+O py.t4 top:py.t4 100
+W1 top:py.t4 n:py.t4 1
+W2 n:py.t4 out:py.t4.w0 1
+E py.t4.w0 tok:py.t4.w0 1
+E py.t4.w1 tok:py.t4.w1 1
+E py.t4.w2 tok:py.t4.w2 1
+E py.t4.w3 tok:py.t4.w3 1
+E py.t4.w4 tok:py.t4.w4 1
+E py.t4.w5 tok:py.t4.w5 1
+E py.t4.w6 tok:py.t4.w6 1
+E py.t4.w7 tok:py.t4.w7 1
+E py.t4.w8 tok:py.t4.w8 1
+E py.t4.w9 tok:py.t4.w9 1
+E py.t4.w10 tok:py.t4.w10 1
+E py.t4.w11 tok:py.t4.w11 1
+S py.t4.w0 range(5)
+S py.t4.w1 yields
+S py.t4.w2 0
+S py.t4.w3 through
+S py.t4.w4 4,
+S py.t4.w5 and
+S py.t4.w6 range(1,
+S py.t4.w7 6)
+S py.t4.w8 yields
+S py.t4.w9 1
+S py.t4.w10 through
+S py.t4.w11 5.
+W1 tok:py.t4.w0 n:py.t4.w0 1
+W2 n:py.t4.w0 out:py.t4.w1 1000
+W1 tok:py.t4.w1 n:py.t4.w1 1
+W2 n:py.t4.w1 out:py.t4.w2 1000
+W1 tok:py.t4.w2 n:py.t4.w2 1
+W2 n:py.t4.w2 out:py.t4.w3 1000
+W1 tok:py.t4.w3 n:py.t4.w3 1
+W2 n:py.t4.w3 out:py.t4.w4 1000
+W1 tok:py.t4.w4 n:py.t4.w4 1
+W2 n:py.t4.w4 out:py.t4.w5 1000
+W1 tok:py.t4.w5 n:py.t4.w5 1
+W2 n:py.t4.w5 out:py.t4.w6 1000
+W1 tok:py.t4.w6 n:py.t4.w6 1
+W2 n:py.t4.w6 out:py.t4.w7 1000
+W1 tok:py.t4.w7 n:py.t4.w7 1
+W2 n:py.t4.w7 out:py.t4.w8 1000
+W1 tok:py.t4.w8 n:py.t4.w8 1
+W2 n:py.t4.w8 out:py.t4.w9 1000
+W1 tok:py.t4.w9 n:py.t4.w9 1
+W2 n:py.t4.w9 out:py.t4.w10 1000
+W1 tok:py.t4.w10 n:py.t4.w10 1
+W2 n:py.t4.w10 out:py.t4.w11 1000
+W1 tok:py.t4.w11 n:py.t4.w11 1
+W2 n:py.t4.w11 out:<end> 1000
+U out:py.t4.w0 py.t4.w0 1
+U out:py.t4.w1 py.t4.w1 1
+U out:py.t4.w2 py.t4.w2 1
+U out:py.t4.w3 py.t4.w3 1
+U out:py.t4.w4 py.t4.w4 1
+U out:py.t4.w5 py.t4.w5 1
+U out:py.t4.w6 py.t4.w6 1
+U out:py.t4.w7 py.t4.w7 1
+U out:py.t4.w8 py.t4.w8 1
+U out:py.t4.w9 py.t4.w9 1
+U out:py.t4.w10 py.t4.w10 1
+U out:py.t4.w11 py.t4.w11 1
+
+# topic py.t5
+E function tok:function 1
+E def tok:def 1
+E define tok:define 1
+E return tok:return 1
+E parameter tok:parameter 1
+B function -1000000000
+B def -1000000000
+B define -1000000000
+B return -1000000000
+B parameter -1000000000
+V tok:function py.t5 2.5
+V tok:def py.t5 3.0
+V tok:define py.t5 2.0
+V tok:return py.t5 1.5
+V tok:parameter py.t5 2.0
+O py.t5 top:py.t5 100
+W1 top:py.t5 n:py.t5 1
+W2 n:py.t5 out:py.t5.w0 1
+E py.t5.w0 tok:py.t5.w0 1
+E py.t5.w1 tok:py.t5.w1 1
+E py.t5.w2 tok:py.t5.w2 1
+E py.t5.w3 tok:py.t5.w3 1
+E py.t5.w4 tok:py.t5.w4 1
+E py.t5.w5 tok:py.t5.w5 1
+E py.t5.w6 tok:py.t5.w6 1
+E py.t5.w7 tok:py.t5.w7 1
+E py.t5.w8 tok:py.t5.w8 1
+E py.t5.w9 tok:py.t5.w9 1
+E py.t5.w10 tok:py.t5.w10 1
+E py.t5.w11 tok:py.t5.w11 1
+S py.t5.w0 Write
+S py.t5.w1 def
+S py.t5.w2 add(a,
+S py.t5.w3 b):
+S py.t5.w4 return
+S py.t5.w5 a
+S py.t5.w6 +
+S py.t5.w7 b
+S py.t5.w8 to
+S py.t5.w9 define
+S py.t5.w10 a
+S py.t5.w11 function.
+W1 tok:py.t5.w0 n:py.t5.w0 1
+W2 n:py.t5.w0 out:py.t5.w1 1000
+W1 tok:py.t5.w1 n:py.t5.w1 1
+W2 n:py.t5.w1 out:py.t5.w2 1000
+W1 tok:py.t5.w2 n:py.t5.w2 1
+W2 n:py.t5.w2 out:py.t5.w3 1000
+W1 tok:py.t5.w3 n:py.t5.w3 1
+W2 n:py.t5.w3 out:py.t5.w4 1000
+W1 tok:py.t5.w4 n:py.t5.w4 1
+W2 n:py.t5.w4 out:py.t5.w5 1000
+W1 tok:py.t5.w5 n:py.t5.w5 1
+W2 n:py.t5.w5 out:py.t5.w6 1000
+W1 tok:py.t5.w6 n:py.t5.w6 1
+W2 n:py.t5.w6 out:py.t5.w7 1000
+W1 tok:py.t5.w7 n:py.t5.w7 1
+W2 n:py.t5.w7 out:py.t5.w8 1000
+W1 tok:py.t5.w8 n:py.t5.w8 1
+W2 n:py.t5.w8 out:py.t5.w9 1000
+W1 tok:py.t5.w9 n:py.t5.w9 1
+W2 n:py.t5.w9 out:py.t5.w10 1000
+W1 tok:py.t5.w10 n:py.t5.w10 1
+W2 n:py.t5.w10 out:py.t5.w11 1000
+W1 tok:py.t5.w11 n:py.t5.w11 1
+W2 n:py.t5.w11 out:<end> 1000
+U out:py.t5.w0 py.t5.w0 1
+U out:py.t5.w1 py.t5.w1 1
+U out:py.t5.w2 py.t5.w2 1
+U out:py.t5.w3 py.t5.w3 1
+U out:py.t5.w4 py.t5.w4 1
+U out:py.t5.w5 py.t5.w5 1
+U out:py.t5.w6 py.t5.w6 1
+U out:py.t5.w7 py.t5.w7 1
+U out:py.t5.w8 py.t5.w8 1
+U out:py.t5.w9 py.t5.w9 1
+U out:py.t5.w10 py.t5.w10 1
+U out:py.t5.w11 py.t5.w11 1
+
+# topic py.t6
+E exception tok:exception 1
+E try tok:try 1
+E except tok:except 1
+E error tok:error 1
+E catch tok:catch 1
+E raise tok:raise 1
+B exception -1000000000
+B try -1000000000
+B except -1000000000
+B error -1000000000
+B catch -1000000000
+B raise -1000000000
+V tok:exception py.t6 2.5
+V tok:try py.t6 2.0
+V tok:except py.t6 3.0
+V tok:error py.t6 1.5
+V tok:catch py.t6 2.0
+V tok:raise py.t6 2.0
+O py.t6 top:py.t6 100
+W1 top:py.t6 n:py.t6 1
+W2 n:py.t6 out:py.t6.w0 1
+E py.t6.w0 tok:py.t6.w0 1
+E py.t6.w1 tok:py.t6.w1 1
+E py.t6.w2 tok:py.t6.w2 1
+E py.t6.w3 tok:py.t6.w3 1
+E py.t6.w4 tok:py.t6.w4 1
+E py.t6.w5 tok:py.t6.w5 1
+E py.t6.w6 tok:py.t6.w6 1
+E py.t6.w7 tok:py.t6.w7 1
+E py.t6.w8 tok:py.t6.w8 1
+E py.t6.w9 tok:py.t6.w9 1
+E py.t6.w10 tok:py.t6.w10 1
+S py.t6.w0 Wrap
+S py.t6.w1 code
+S py.t6.w2 in
+S py.t6.w3 try:
+S py.t6.w4 and
+S py.t6.w5 handle
+S py.t6.w6 failures
+S py.t6.w7 with
+S py.t6.w8 except
+S py.t6.w9 ValueError:
+S py.t6.w10 blocks.
+W1 tok:py.t6.w0 n:py.t6.w0 1
+W2 n:py.t6.w0 out:py.t6.w1 1000
+W1 tok:py.t6.w1 n:py.t6.w1 1
+W2 n:py.t6.w1 out:py.t6.w2 1000
+W1 tok:py.t6.w2 n:py.t6.w2 1
+W2 n:py.t6.w2 out:py.t6.w3 1000
+W1 tok:py.t6.w3 n:py.t6.w3 1
+W2 n:py.t6.w3 out:py.t6.w4 1000
+W1 tok:py.t6.w4 n:py.t6.w4 1
+W2 n:py.t6.w4 out:py.t6.w5 1000
+W1 tok:py.t6.w5 n:py.t6.w5 1
+W2 n:py.t6.w5 out:py.t6.w6 1000
+W1 tok:py.t6.w6 n:py.t6.w6 1
+W2 n:py.t6.w6 out:py.t6.w7 1000
+W1 tok:py.t6.w7 n:py.t6.w7 1
+W2 n:py.t6.w7 out:py.t6.w8 1000
+W1 tok:py.t6.w8 n:py.t6.w8 1
+W2 n:py.t6.w8 out:py.t6.w9 1000
+W1 tok:py.t6.w9 n:py.t6.w9 1
+W2 n:py.t6.w9 out:py.t6.w10 1000
+W1 tok:py.t6.w10 n:py.t6.w10 1
+W2 n:py.t6.w10 out:<end> 1000
+U out:py.t6.w0 py.t6.w0 1
+U out:py.t6.w1 py.t6.w1 1
+U out:py.t6.w2 py.t6.w2 1
+U out:py.t6.w3 py.t6.w3 1
+U out:py.t6.w4 py.t6.w4 1
+U out:py.t6.w5 py.t6.w5 1
+U out:py.t6.w6 py.t6.w6 1
+U out:py.t6.w7 py.t6.w7 1
+U out:py.t6.w8 py.t6.w8 1
+U out:py.t6.w9 py.t6.w9 1
+U out:py.t6.w10 py.t6.w10 1
+
+# topic py.t7
+E file tok:file 1
+E open tok:open 1
+E read tok:read 1
+E write tok:write 1
+E files tok:files 1
+E text tok:text 1
+B file -1000000000
+B open -1000000000
+B read -1000000000
+B write -1000000000
+B files -1000000000
+B text -1000000000
+V tok:file py.t7 2.0
+V tok:open py.t7 2.5
+V tok:read py.t7 2.0
+V tok:write py.t7 1.5
+V tok:files py.t7 2.0
+V tok:text py.t7 1.0
+O py.t7 top:py.t7 100
+W1 top:py.t7 n:py.t7 1
+W2 n:py.t7 out:py.t7.w0 1
+E py.t7.w0 tok:py.t7.w0 1
+E py.t7.w1 tok:py.t7.w1 1
+E py.t7.w2 tok:py.t7.w2 1
+E py.t7.w3 tok:py.t7.w3 1
+E py.t7.w4 tok:py.t7.w4 1
+E py.t7.w5 tok:py.t7.w5 1
+E py.t7.w6 tok:py.t7.w6 1
+E py.t7.w7 tok:py.t7.w7 1
+E py.t7.w8 tok:py.t7.w8 1
+E py.t7.w9 tok:py.t7.w9 1
+E py.t7.w10 tok:py.t7.w10 1
+E py.t7.w11 tok:py.t7.w11 1
+S py.t7.w0 Use
+S py.t7.w1 with
+S py.t7.w2 open('f.txt')
+S py.t7.w3 as
+S py.t7.w4 f:
+S py.t7.w5 then
+S py.t7.w6 f.read()
+S py.t7.w7 to
+S py.t7.w8 read
+S py.t7.w9 the
+S py.t7.w10 whole
+S py.t7.w11 file.
+W1 tok:py.t7.w0 n:py.t7.w0 1
+W2 n:py.t7.w0 out:py.t7.w1 1000
+W1 tok:py.t7.w1 n:py.t7.w1 1
+W2 n:py.t7.w1 out:py.t7.w2 1000
+W1 tok:py.t7.w2 n:py.t7.w2 1
+W2 n:py.t7.w2 out:py.t7.w3 1000
+W1 tok:py.t7.w3 n:py.t7.w3 1
+W2 n:py.t7.w3 out:py.t7.w4 1000
+W1 tok:py.t7.w4 n:py.t7.w4 1
+W2 n:py.t7.w4 out:py.t7.w5 1000
+W1 tok:py.t7.w5 n:py.t7.w5 1
+W2 n:py.t7.w5 out:py.t7.w6 1000
+W1 tok:py.t7.w6 n:py.t7.w6 1
+W2 n:py.t7.w6 out:py.t7.w7 1000
+W1 tok:py.t7.w7 n:py.t7.w7 1
+W2 n:py.t7.w7 out:py.t7.w8 1000
+W1 tok:py.t7.w8 n:py.t7.w8 1
+W2 n:py.t7.w8 out:py.t7.w9 1000
+W1 tok:py.t7.w9 n:py.t7.w9 1
+W2 n:py.t7.w9 out:py.t7.w10 1000
+W1 tok:py.t7.w10 n:py.t7.w10 1
+W2 n:py.t7.w10 out:py.t7.w11 1000
+W1 tok:py.t7.w11 n:py.t7.w11 1
+W2 n:py.t7.w11 out:<end> 1000
+U out:py.t7.w0 py.t7.w0 1
+U out:py.t7.w1 py.t7.w1 1
+U out:py.t7.w2 py.t7.w2 1
+U out:py.t7.w3 py.t7.w3 1
+U out:py.t7.w4 py.t7.w4 1
+U out:py.t7.w5 py.t7.w5 1
+U out:py.t7.w6 py.t7.w6 1
+U out:py.t7.w7 py.t7.w7 1
+U out:py.t7.w8 py.t7.w8 1
+U out:py.t7.w9 py.t7.w9 1
+U out:py.t7.w10 py.t7.w10 1
+U out:py.t7.w11 py.t7.w11 1
+
+# topic py.t8
+E class tok:class 1
+E classes tok:classes 1
+E object tok:object 1
+E oop tok:oop 1
+E method tok:method 1
+E init tok:init 1
+B class -1000000000
+B classes -1000000000
+B object -1000000000
+B oop -1000000000
+B method -1000000000
+B init -1000000000
+V tok:class py.t8 3.0
+V tok:classes py.t8 3.0
+V tok:object py.t8 2.0
+V tok:oop py.t8 2.5
+V tok:method py.t8 2.0
+V tok:init py.t8 2.0
+O py.t8 top:py.t8 100
+W1 top:py.t8 n:py.t8 1
+W2 n:py.t8 out:py.t8.w0 1
+E py.t8.w0 tok:py.t8.w0 1
+E py.t8.w1 tok:py.t8.w1 1
+E py.t8.w2 tok:py.t8.w2 1
+E py.t8.w3 tok:py.t8.w3 1
+E py.t8.w4 tok:py.t8.w4 1
+E py.t8.w5 tok:py.t8.w5 1
+E py.t8.w6 tok:py.t8.w6 1
+E py.t8.w7 tok:py.t8.w7 1
+E py.t8.w8 tok:py.t8.w8 1
+E py.t8.w9 tok:py.t8.w9 1
+E py.t8.w10 tok:py.t8.w10 1
+E py.t8.w11 tok:py.t8.w11 1
+S py.t8.w0 Define
+S py.t8.w1 class
+S py.t8.w2 Dog:
+S py.t8.w3 with
+S py.t8.w4 def
+S py.t8.w5 __init__(self,
+S py.t8.w6 name):
+S py.t8.w7 to
+S py.t8.w8 set
+S py.t8.w9 up
+S py.t8.w10 each
+S py.t8.w11 object.
+W1 tok:py.t8.w0 n:py.t8.w0 1
+W2 n:py.t8.w0 out:py.t8.w1 1000
+W1 tok:py.t8.w1 n:py.t8.w1 1
+W2 n:py.t8.w1 out:py.t8.w2 1000
+W1 tok:py.t8.w2 n:py.t8.w2 1
+W2 n:py.t8.w2 out:py.t8.w3 1000
+W1 tok:py.t8.w3 n:py.t8.w3 1
+W2 n:py.t8.w3 out:py.t8.w4 1000
+W1 tok:py.t8.w4 n:py.t8.w4 1
+W2 n:py.t8.w4 out:py.t8.w5 1000
+W1 tok:py.t8.w5 n:py.t8.w5 1
+W2 n:py.t8.w5 out:py.t8.w6 1000
+W1 tok:py.t8.w6 n:py.t8.w6 1
+W2 n:py.t8.w6 out:py.t8.w7 1000
+W1 tok:py.t8.w7 n:py.t8.w7 1
+W2 n:py.t8.w7 out:py.t8.w8 1000
+W1 tok:py.t8.w8 n:py.t8.w8 1
+W2 n:py.t8.w8 out:py.t8.w9 1000
+W1 tok:py.t8.w9 n:py.t8.w9 1
+W2 n:py.t8.w9 out:py.t8.w10 1000
+W1 tok:py.t8.w10 n:py.t8.w10 1
+W2 n:py.t8.w10 out:py.t8.w11 1000
+W1 tok:py.t8.w11 n:py.t8.w11 1
+W2 n:py.t8.w11 out:<end> 1000
+U out:py.t8.w0 py.t8.w0 1
+U out:py.t8.w1 py.t8.w1 1
+U out:py.t8.w2 py.t8.w2 1
+U out:py.t8.w3 py.t8.w3 1
+U out:py.t8.w4 py.t8.w4 1
+U out:py.t8.w5 py.t8.w5 1
+U out:py.t8.w6 py.t8.w6 1
+U out:py.t8.w7 py.t8.w7 1
+U out:py.t8.w8 py.t8.w8 1
+U out:py.t8.w9 py.t8.w9 1
+U out:py.t8.w10 py.t8.w10 1
+U out:py.t8.w11 py.t8.w11 1
+
+# topic py.t9
+E tuple tok:tuple 1
+E immutable tok:immutable 1
+E tuples tok:tuples 1
+E unpack tok:unpack 1
+E unpacking tok:unpacking 1
+B tuple -1000000000
+B immutable -1000000000
+B tuples -1000000000
+B unpack -1000000000
+B unpacking -1000000000
+V tok:tuple py.t9 3.0
+V tok:immutable py.t9 2.5
+V tok:tuples py.t9 3.0
+V tok:unpack py.t9 2.0
+V tok:unpacking py.t9 2.0
+O py.t9 top:py.t9 100
+W1 top:py.t9 n:py.t9 1
+W2 n:py.t9 out:py.t9.w0 1
+E py.t9.w0 tok:py.t9.w0 1
+E py.t9.w1 tok:py.t9.w1 1
+E py.t9.w2 tok:py.t9.w2 1
+E py.t9.w3 tok:py.t9.w3 1
+E py.t9.w4 tok:py.t9.w4 1
+E py.t9.w5 tok:py.t9.w5 1
+E py.t9.w6 tok:py.t9.w6 1
+E py.t9.w7 tok:py.t9.w7 1
+E py.t9.w8 tok:py.t9.w8 1
+E py.t9.w9 tok:py.t9.w9 1
+E py.t9.w10 tok:py.t9.w10 1
+E py.t9.w11 tok:py.t9.w11 1
+S py.t9.w0 Tuples
+S py.t9.w1 use
+S py.t9.w2 parentheses
+S py.t9.w3 like
+S py.t9.w4 (1,
+S py.t9.w5 2)
+S py.t9.w6 and
+S py.t9.w7 cannot
+S py.t9.w8 be
+S py.t9.w9 changed
+S py.t9.w10 after
+S py.t9.w11 creation.
+W1 tok:py.t9.w0 n:py.t9.w0 1
+W2 n:py.t9.w0 out:py.t9.w1 1000
+W1 tok:py.t9.w1 n:py.t9.w1 1
+W2 n:py.t9.w1 out:py.t9.w2 1000
+W1 tok:py.t9.w2 n:py.t9.w2 1
+W2 n:py.t9.w2 out:py.t9.w3 1000
+W1 tok:py.t9.w3 n:py.t9.w3 1
+W2 n:py.t9.w3 out:py.t9.w4 1000
+W1 tok:py.t9.w4 n:py.t9.w4 1
+W2 n:py.t9.w4 out:py.t9.w5 1000
+W1 tok:py.t9.w5 n:py.t9.w5 1
+W2 n:py.t9.w5 out:py.t9.w6 1000
+W1 tok:py.t9.w6 n:py.t9.w6 1
+W2 n:py.t9.w6 out:py.t9.w7 1000
+W1 tok:py.t9.w7 n:py.t9.w7 1
+W2 n:py.t9.w7 out:py.t9.w8 1000
+W1 tok:py.t9.w8 n:py.t9.w8 1
+W2 n:py.t9.w8 out:py.t9.w9 1000
+W1 tok:py.t9.w9 n:py.t9.w9 1
+W2 n:py.t9.w9 out:py.t9.w10 1000
+W1 tok:py.t9.w10 n:py.t9.w10 1
+W2 n:py.t9.w10 out:py.t9.w11 1000
+W1 tok:py.t9.w11 n:py.t9.w11 1
+W2 n:py.t9.w11 out:<end> 1000
+U out:py.t9.w0 py.t9.w0 1
+U out:py.t9.w1 py.t9.w1 1
+U out:py.t9.w2 py.t9.w2 1
+U out:py.t9.w3 py.t9.w3 1
+U out:py.t9.w4 py.t9.w4 1
+U out:py.t9.w5 py.t9.w5 1
+U out:py.t9.w6 py.t9.w6 1
+U out:py.t9.w7 py.t9.w7 1
+U out:py.t9.w8 py.t9.w8 1
+U out:py.t9.w9 py.t9.w9 1
+U out:py.t9.w10 py.t9.w10 1
+U out:py.t9.w11 py.t9.w11 1
+
+# topic py.t10
+E comprehension tok:comprehension 1
+E comprehensions tok:comprehensions 1
+E squares tok:squares 1
+E generate tok:generate 1
+E shorthand tok:shorthand 1
+B comprehension -1000000000
+B comprehensions -1000000000
+B squares -1000000000
+B generate -1000000000
+B shorthand -1000000000
+V tok:comprehension py.t10 3.0
+V tok:comprehensions py.t10 3.0
+V tok:squares py.t10 1.0
+V tok:generate py.t10 1.5
+V tok:shorthand py.t10 2.0
+O py.t10 top:py.t10 100
+W1 top:py.t10 n:py.t10 1
+W2 n:py.t10 out:py.t10.w0 1
+E py.t10.w0 tok:py.t10.w0 1
+E py.t10.w1 tok:py.t10.w1 1
+E py.t10.w2 tok:py.t10.w2 1
+E py.t10.w3 tok:py.t10.w3 1
+E py.t10.w4 tok:py.t10.w4 1
+E py.t10.w5 tok:py.t10.w5 1
+E py.t10.w6 tok:py.t10.w6 1
+E py.t10.w7 tok:py.t10.w7 1
+E py.t10.w8 tok:py.t10.w8 1
+E py.t10.w9 tok:py.t10.w9 1
+E py.t10.w10 tok:py.t10.w10 1
+E py.t10.w11 tok:py.t10.w11 1
+S py.t10.w0 Write
+S py.t10.w1 [x*x
+S py.t10.w2 for
+S py.t10.w3 x
+S py.t10.w4 in
+S py.t10.w5 range(5)]
+S py.t10.w6 to
+S py.t10.w7 build
+S py.t10.w8 a
+S py.t10.w9 list
+S py.t10.w10 of
+S py.t10.w11 squares.
+W1 tok:py.t10.w0 n:py.t10.w0 1
+W2 n:py.t10.w0 out:py.t10.w1 1000
+W1 tok:py.t10.w1 n:py.t10.w1 1
+W2 n:py.t10.w1 out:py.t10.w2 1000
+W1 tok:py.t10.w2 n:py.t10.w2 1
+W2 n:py.t10.w2 out:py.t10.w3 1000
+W1 tok:py.t10.w3 n:py.t10.w3 1
+W2 n:py.t10.w3 out:py.t10.w4 1000
+W1 tok:py.t10.w4 n:py.t10.w4 1
+W2 n:py.t10.w4 out:py.t10.w5 1000
+W1 tok:py.t10.w5 n:py.t10.w5 1
+W2 n:py.t10.w5 out:py.t10.w6 1000
+W1 tok:py.t10.w6 n:py.t10.w6 1
+W2 n:py.t10.w6 out:py.t10.w7 1000
+W1 tok:py.t10.w7 n:py.t10.w7 1
+W2 n:py.t10.w7 out:py.t10.w8 1000
+W1 tok:py.t10.w8 n:py.t10.w8 1
+W2 n:py.t10.w8 out:py.t10.w9 1000
+W1 tok:py.t10.w9 n:py.t10.w9 1
+W2 n:py.t10.w9 out:py.t10.w10 1000
+W1 tok:py.t10.w10 n:py.t10.w10 1
+W2 n:py.t10.w10 out:py.t10.w11 1000
+W1 tok:py.t10.w11 n:py.t10.w11 1
+W2 n:py.t10.w11 out:<end> 1000
+U out:py.t10.w0 py.t10.w0 1
+U out:py.t10.w1 py.t10.w1 1
+U out:py.t10.w2 py.t10.w2 1
+U out:py.t10.w3 py.t10.w3 1
+U out:py.t10.w4 py.t10.w4 1
+U out:py.t10.w5 py.t10.w5 1
+U out:py.t10.w6 py.t10.w6 1
+U out:py.t10.w7 py.t10.w7 1
+U out:py.t10.w8 py.t10.w8 1
+U out:py.t10.w9 py.t10.w9 1
+U out:py.t10.w10 py.t10.w10 1
+U out:py.t10.w11 py.t10.w11 1
+
+# topic py.t11
+E slice tok:slice 1
+E slicing tok:slicing 1
+E substring tok:substring 1
+E subset tok:subset 1
+E portion tok:portion 1
+B slice -1000000000
+B slicing -1000000000
+B substring -1000000000
+B subset -1000000000
+B portion -1000000000
+V tok:slice py.t11 3.0
+V tok:slicing py.t11 3.0
+V tok:substring py.t11 1.5
+V tok:subset py.t11 1.0
+V tok:portion py.t11 1.0
+O py.t11 top:py.t11 100
+W1 top:py.t11 n:py.t11 1
+W2 n:py.t11 out:py.t11.w0 1
+E py.t11.w0 tok:py.t11.w0 1
+E py.t11.w1 tok:py.t11.w1 1
+E py.t11.w2 tok:py.t11.w2 1
+E py.t11.w3 tok:py.t11.w3 1
+E py.t11.w4 tok:py.t11.w4 1
+E py.t11.w5 tok:py.t11.w5 1
+E py.t11.w6 tok:py.t11.w6 1
+E py.t11.w7 tok:py.t11.w7 1
+E py.t11.w8 tok:py.t11.w8 1
+E py.t11.w9 tok:py.t11.w9 1
+E py.t11.w10 tok:py.t11.w10 1
+S py.t11.w0 Use
+S py.t11.w1 lst[1:3]
+S py.t11.w2 to
+S py.t11.w3 get
+S py.t11.w4 the
+S py.t11.w5 items
+S py.t11.w6 at
+S py.t11.w7 index
+S py.t11.w8 1
+S py.t11.w9 and
+S py.t11.w10 2.
+W1 tok:py.t11.w0 n:py.t11.w0 1
+W2 n:py.t11.w0 out:py.t11.w1 1000
+W1 tok:py.t11.w1 n:py.t11.w1 1
+W2 n:py.t11.w1 out:py.t11.w2 1000
+W1 tok:py.t11.w2 n:py.t11.w2 1
+W2 n:py.t11.w2 out:py.t11.w3 1000
+W1 tok:py.t11.w3 n:py.t11.w3 1
+W2 n:py.t11.w3 out:py.t11.w4 1000
+W1 tok:py.t11.w4 n:py.t11.w4 1
+W2 n:py.t11.w4 out:py.t11.w5 1000
+W1 tok:py.t11.w5 n:py.t11.w5 1
+W2 n:py.t11.w5 out:py.t11.w6 1000
+W1 tok:py.t11.w6 n:py.t11.w6 1
+W2 n:py.t11.w6 out:py.t11.w7 1000
+W1 tok:py.t11.w7 n:py.t11.w7 1
+W2 n:py.t11.w7 out:py.t11.w8 1000
+W1 tok:py.t11.w8 n:py.t11.w8 1
+W2 n:py.t11.w8 out:py.t11.w9 1000
+W1 tok:py.t11.w9 n:py.t11.w9 1
+W2 n:py.t11.w9 out:py.t11.w10 1000
+W1 tok:py.t11.w10 n:py.t11.w10 1
+W2 n:py.t11.w10 out:<end> 1000
+U out:py.t11.w0 py.t11.w0 1
+U out:py.t11.w1 py.t11.w1 1
+U out:py.t11.w2 py.t11.w2 1
+U out:py.t11.w3 py.t11.w3 1
+U out:py.t11.w4 py.t11.w4 1
+U out:py.t11.w5 py.t11.w5 1
+U out:py.t11.w6 py.t11.w6 1
+U out:py.t11.w7 py.t11.w7 1
+U out:py.t11.w8 py.t11.w8 1
+U out:py.t11.w9 py.t11.w9 1
+U out:py.t11.w10 py.t11.w10 1

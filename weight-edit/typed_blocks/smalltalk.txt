@@ -1,0 +1,805 @@
+# topic chat.t0
+E hello tok:hello 1
+E hi tok:hi 1
+E hey tok:hey 1
+E greetings tok:greetings 1
+E howdy tok:howdy 1
+E morning tok:morning 1
+E evening tok:evening 1
+B hello -1000000000
+B hi -1000000000
+B hey -1000000000
+B greetings -1000000000
+B howdy -1000000000
+B morning -1000000000
+B evening -1000000000
+V tok:hello chat.t0 3.0
+V tok:hi chat.t0 3.0
+V tok:hey chat.t0 2.5
+V tok:greetings chat.t0 2.5
+V tok:howdy chat.t0 2.5
+V tok:morning chat.t0 1.0
+V tok:evening chat.t0 1.0
+O chat.t0 top:chat.t0 100
+W1 top:chat.t0 n:chat.t0 1
+W2 n:chat.t0 out:chat.t0.w0 1
+E chat.t0.w0 tok:chat.t0.w0 1
+E chat.t0.w1 tok:chat.t0.w1 1
+E chat.t0.w2 tok:chat.t0.w2 1
+E chat.t0.w3 tok:chat.t0.w3 1
+E chat.t0.w4 tok:chat.t0.w4 1
+E chat.t0.w5 tok:chat.t0.w5 1
+E chat.t0.w6 tok:chat.t0.w6 1
+E chat.t0.w7 tok:chat.t0.w7 1
+S chat.t0.w0 Hello!
+S chat.t0.w1 What
+S chat.t0.w2 would
+S chat.t0.w3 you
+S chat.t0.w4 like
+S chat.t0.w5 to
+S chat.t0.w6 talk
+S chat.t0.w7 about?
+W1 tok:chat.t0.w0 n:chat.t0.w0 1
+W2 n:chat.t0.w0 out:chat.t0.w1 1000
+W1 tok:chat.t0.w1 n:chat.t0.w1 1
+W2 n:chat.t0.w1 out:chat.t0.w2 1000
+W1 tok:chat.t0.w2 n:chat.t0.w2 1
+W2 n:chat.t0.w2 out:chat.t0.w3 1000
+W1 tok:chat.t0.w3 n:chat.t0.w3 1
+W2 n:chat.t0.w3 out:chat.t0.w4 1000
+W1 tok:chat.t0.w4 n:chat.t0.w4 1
+W2 n:chat.t0.w4 out:chat.t0.w5 1000
+W1 tok:chat.t0.w5 n:chat.t0.w5 1
+W2 n:chat.t0.w5 out:chat.t0.w6 1000
+W1 tok:chat.t0.w6 n:chat.t0.w6 1
+W2 n:chat.t0.w6 out:chat.t0.w7 1000
+W1 tok:chat.t0.w7 n:chat.t0.w7 1
+W2 n:chat.t0.w7 out:<end> 1000
+U out:chat.t0.w0 chat.t0.w0 1
+U out:chat.t0.w1 chat.t0.w1 1
+U out:chat.t0.w2 chat.t0.w2 1
+U out:chat.t0.w3 chat.t0.w3 1
+U out:chat.t0.w4 chat.t0.w4 1
+U out:chat.t0.w5 chat.t0.w5 1
+U out:chat.t0.w6 chat.t0.w6 1
+U out:chat.t0.w7 chat.t0.w7 1
+
+# topic chat.t1
+E goodbye tok:goodbye 1
+E bye tok:bye 1
+E farewell tok:farewell 1
+E cya tok:cya 1
+E later tok:later 1
+B goodbye -1000000000
+B bye -1000000000
+B farewell -1000000000
+B cya -1000000000
+B later -1000000000
+V tok:goodbye chat.t1 3.0
+V tok:bye chat.t1 3.0
+V tok:farewell chat.t1 2.5
+V tok:cya chat.t1 2.5
+V tok:later chat.t1 1.0
+O chat.t1 top:chat.t1 100
+W1 top:chat.t1 n:chat.t1 1
+W2 n:chat.t1 out:chat.t1.w0 1
+E chat.t1.w0 tok:chat.t1.w0 1
+E chat.t1.w1 tok:chat.t1.w1 1
+E chat.t1.w2 tok:chat.t1.w2 1
+E chat.t1.w3 tok:chat.t1.w3 1
+E chat.t1.w4 tok:chat.t1.w4 1
+E chat.t1.w5 tok:chat.t1.w5 1
+E chat.t1.w6 tok:chat.t1.w6 1
+E chat.t1.w7 tok:chat.t1.w7 1
+S chat.t1.w0 Goodbye!
+S chat.t1.w1 Come
+S chat.t1.w2 back
+S chat.t1.w3 anytime
+S chat.t1.w4 you
+S chat.t1.w5 want
+S chat.t1.w6 to
+S chat.t1.w7 chat.
+W1 tok:chat.t1.w0 n:chat.t1.w0 1
+W2 n:chat.t1.w0 out:chat.t1.w1 1000
+W1 tok:chat.t1.w1 n:chat.t1.w1 1
+W2 n:chat.t1.w1 out:chat.t1.w2 1000
+W1 tok:chat.t1.w2 n:chat.t1.w2 1
+W2 n:chat.t1.w2 out:chat.t1.w3 1000
+W1 tok:chat.t1.w3 n:chat.t1.w3 1
+W2 n:chat.t1.w3 out:chat.t1.w4 1000
+W1 tok:chat.t1.w4 n:chat.t1.w4 1
+W2 n:chat.t1.w4 out:chat.t1.w5 1000
+W1 tok:chat.t1.w5 n:chat.t1.w5 1
+W2 n:chat.t1.w5 out:chat.t1.w6 1000
+W1 tok:chat.t1.w6 n:chat.t1.w6 1
+W2 n:chat.t1.w6 out:chat.t1.w7 1000
+W1 tok:chat.t1.w7 n:chat.t1.w7 1
+W2 n:chat.t1.w7 out:<end> 1000
+U out:chat.t1.w0 chat.t1.w0 1
+U out:chat.t1.w1 chat.t1.w1 1
+U out:chat.t1.w2 chat.t1.w2 1
+U out:chat.t1.w3 chat.t1.w3 1
+U out:chat.t1.w4 chat.t1.w4 1
+U out:chat.t1.w5 chat.t1.w5 1
+U out:chat.t1.w6 chat.t1.w6 1
+U out:chat.t1.w7 chat.t1.w7 1
+
+# topic chat.t2
+E thanks tok:thanks 1
+E thank tok:thank 1
+E thx tok:thx 1
+E appreciate tok:appreciate 1
+E cheers tok:cheers 1
+B thanks -1000000000
+B thank -1000000000
+B thx -1000000000
+B appreciate -1000000000
+B cheers -1000000000
+V tok:thanks chat.t2 3.0
+V tok:thank chat.t2 2.5
+V tok:thx chat.t2 2.5
+V tok:appreciate chat.t2 2.0
+V tok:cheers chat.t2 2.0
+O chat.t2 top:chat.t2 100
+W1 top:chat.t2 n:chat.t2 1
+W2 n:chat.t2 out:chat.t2.w0 1
+E chat.t2.w0 tok:chat.t2.w0 1
+E chat.t2.w1 tok:chat.t2.w1 1
+E chat.t2.w2 tok:chat.t2.w2 1
+E chat.t2.w3 tok:chat.t2.w3 1
+E chat.t2.w4 tok:chat.t2.w4 1
+S chat.t2.w0 You're
+S chat.t2.w1 welcome!
+S chat.t2.w2 Happy
+S chat.t2.w3 to
+S chat.t2.w4 help.
+W1 tok:chat.t2.w0 n:chat.t2.w0 1
+W2 n:chat.t2.w0 out:chat.t2.w1 1000
+W1 tok:chat.t2.w1 n:chat.t2.w1 1
+W2 n:chat.t2.w1 out:chat.t2.w2 1000
+W1 tok:chat.t2.w2 n:chat.t2.w2 1
+W2 n:chat.t2.w2 out:chat.t2.w3 1000
+W1 tok:chat.t2.w3 n:chat.t2.w3 1
+W2 n:chat.t2.w3 out:chat.t2.w4 1000
+W1 tok:chat.t2.w4 n:chat.t2.w4 1
+W2 n:chat.t2.w4 out:<end> 1000
+U out:chat.t2.w0 chat.t2.w0 1
+U out:chat.t2.w1 chat.t2.w1 1
+U out:chat.t2.w2 chat.t2.w2 1
+U out:chat.t2.w3 chat.t2.w3 1
+U out:chat.t2.w4 chat.t2.w4 1
+
+# topic chat.t3
+E how tok:how 1
+E are tok:are 1
+E you tok:you 1
+E doing tok:doing 1
+E today tok:today 1
+E feeling tok:feeling 1
+B how -1000000000
+B are -1000000000
+B you -1000000000
+B doing -1000000000
+B today -1000000000
+B feeling -1000000000
+V tok:how chat.t3 1.0
+V tok:are chat.t3 0.5
+V tok:you chat.t3 0.5
+V tok:doing chat.t3 2.5
+V tok:today chat.t3 0.5
+V tok:feeling chat.t3 1.0
+O chat.t3 top:chat.t3 100
+W1 top:chat.t3 n:chat.t3 1
+W2 n:chat.t3 out:chat.t3.w0 1
+E chat.t3.w0 tok:chat.t3.w0 1
+E chat.t3.w1 tok:chat.t3.w1 1
+E chat.t3.w2 tok:chat.t3.w2 1
+E chat.t3.w3 tok:chat.t3.w3 1
+E chat.t3.w4 tok:chat.t3.w4 1
+E chat.t3.w5 tok:chat.t3.w5 1
+E chat.t3.w6 tok:chat.t3.w6 1
+S chat.t3.w0 I
+S chat.t3.w1 am
+S chat.t3.w2 doing
+S chat.t3.w3 fine,
+S chat.t3.w4 thanks
+S chat.t3.w5 for
+S chat.t3.w6 asking!
+W1 tok:chat.t3.w0 n:chat.t3.w0 1
+W2 n:chat.t3.w0 out:chat.t3.w1 1000
+W1 tok:chat.t3.w1 n:chat.t3.w1 1
+W2 n:chat.t3.w1 out:chat.t3.w2 1000
+W1 tok:chat.t3.w2 n:chat.t3.w2 1
+W2 n:chat.t3.w2 out:chat.t3.w3 1000
+W1 tok:chat.t3.w3 n:chat.t3.w3 1
+W2 n:chat.t3.w3 out:chat.t3.w4 1000
+W1 tok:chat.t3.w4 n:chat.t3.w4 1
+W2 n:chat.t3.w4 out:chat.t3.w5 1000
+W1 tok:chat.t3.w5 n:chat.t3.w5 1
+W2 n:chat.t3.w5 out:chat.t3.w6 1000
+W1 tok:chat.t3.w6 n:chat.t3.w6 1
+W2 n:chat.t3.w6 out:<end> 1000
+U out:chat.t3.w0 chat.t3.w0 1
+U out:chat.t3.w1 chat.t3.w1 1
+U out:chat.t3.w2 chat.t3.w2 1
+U out:chat.t3.w3 chat.t3.w3 1
+U out:chat.t3.w4 chat.t3.w4 1
+U out:chat.t3.w5 chat.t3.w5 1
+U out:chat.t3.w6 chat.t3.w6 1
+
+# topic chat.t4
+E joke tok:joke 1
+E funny tok:funny 1
+E laugh tok:laugh 1
+E pun tok:pun 1
+E humor tok:humor 1
+E tell tok:tell 1
+B joke -1000000000
+B funny -1000000000
+B laugh -1000000000
+B pun -1000000000
+B humor -1000000000
+B tell -1000000000
+V tok:joke chat.t4 3.0
+V tok:funny chat.t4 2.0
+V tok:laugh chat.t4 2.0
+V tok:pun chat.t4 2.5
+V tok:humor chat.t4 2.0
+V tok:tell chat.t4 0.5
+O chat.t4 top:chat.t4 100
+W1 top:chat.t4 n:chat.t4 1
+W2 n:chat.t4 out:chat.t4.w0 1
+E chat.t4.w0 tok:chat.t4.w0 1
+E chat.t4.w1 tok:chat.t4.w1 1
+E chat.t4.w2 tok:chat.t4.w2 1
+E chat.t4.w3 tok:chat.t4.w3 1
+E chat.t4.w4 tok:chat.t4.w4 1
+E chat.t4.w5 tok:chat.t4.w5 1
+E chat.t4.w6 tok:chat.t4.w6 1
+E chat.t4.w7 tok:chat.t4.w7 1
+E chat.t4.w8 tok:chat.t4.w8 1
+E chat.t4.w9 tok:chat.t4.w9 1
+E chat.t4.w10 tok:chat.t4.w10 1
+E chat.t4.w11 tok:chat.t4.w11 1
+E chat.t4.w12 tok:chat.t4.w12 1
+S chat.t4.w0 Why
+S chat.t4.w1 did
+S chat.t4.w2 the
+S chat.t4.w3 bot
+S chat.t4.w4 cross
+S chat.t4.w5 the
+S chat.t4.w6 road?
+S chat.t4.w7 To
+S chat.t4.w8 get
+S chat.t4.w9 to
+S chat.t4.w10 the
+S chat.t4.w11 other
+S chat.t4.w12 side.
+W1 tok:chat.t4.w0 n:chat.t4.w0 1
+W2 n:chat.t4.w0 out:chat.t4.w1 1000
+W1 tok:chat.t4.w1 n:chat.t4.w1 1
+W2 n:chat.t4.w1 out:chat.t4.w2 1000
+W1 tok:chat.t4.w2 n:chat.t4.w2 1
+W2 n:chat.t4.w2 out:chat.t4.w3 1000
+W1 tok:chat.t4.w3 n:chat.t4.w3 1
+W2 n:chat.t4.w3 out:chat.t4.w4 1000
+W1 tok:chat.t4.w4 n:chat.t4.w4 1
+W2 n:chat.t4.w4 out:chat.t4.w5 1000
+W1 tok:chat.t4.w5 n:chat.t4.w5 1
+W2 n:chat.t4.w5 out:chat.t4.w6 1000
+W1 tok:chat.t4.w6 n:chat.t4.w6 1
+W2 n:chat.t4.w6 out:chat.t4.w7 1000
+W1 tok:chat.t4.w7 n:chat.t4.w7 1
+W2 n:chat.t4.w7 out:chat.t4.w8 1000
+W1 tok:chat.t4.w8 n:chat.t4.w8 1
+W2 n:chat.t4.w8 out:chat.t4.w9 1000
+W1 tok:chat.t4.w9 n:chat.t4.w9 1
+W2 n:chat.t4.w9 out:chat.t4.w10 1000
+W1 tok:chat.t4.w10 n:chat.t4.w10 1
+W2 n:chat.t4.w10 out:chat.t4.w11 1000
+W1 tok:chat.t4.w11 n:chat.t4.w11 1
+W2 n:chat.t4.w11 out:chat.t4.w12 1000
+W1 tok:chat.t4.w12 n:chat.t4.w12 1
+W2 n:chat.t4.w12 out:<end> 1000
+U out:chat.t4.w0 chat.t4.w0 1
+U out:chat.t4.w1 chat.t4.w1 1
+U out:chat.t4.w2 chat.t4.w2 1
+U out:chat.t4.w3 chat.t4.w3 1
+U out:chat.t4.w4 chat.t4.w4 1
+U out:chat.t4.w5 chat.t4.w5 1
+U out:chat.t4.w6 chat.t4.w6 1
+U out:chat.t4.w7 chat.t4.w7 1
+U out:chat.t4.w8 chat.t4.w8 1
+U out:chat.t4.w9 chat.t4.w9 1
+U out:chat.t4.w10 chat.t4.w10 1
+U out:chat.t4.w11 chat.t4.w11 1
+U out:chat.t4.w12 chat.t4.w12 1
+
+# topic chat.t5
+E awesome tok:awesome 1
+E smart tok:smart 1
+E amazing tok:amazing 1
+E clever tok:clever 1
+E great tok:great 1
+E nice tok:nice 1
+E good tok:good 1
+B awesome -1000000000
+B smart -1000000000
+B amazing -1000000000
+B clever -1000000000
+B great -1000000000
+B nice -1000000000
+B good -1000000000
+V tok:awesome chat.t5 2.5
+V tok:smart chat.t5 2.5
+V tok:amazing chat.t5 2.5
+V tok:clever chat.t5 2.5
+V tok:great chat.t5 2.0
+V tok:nice chat.t5 1.5
+V tok:good chat.t5 1.0
+O chat.t5 top:chat.t5 100
+W1 top:chat.t5 n:chat.t5 1
+W2 n:chat.t5 out:chat.t5.w0 1
+E chat.t5.w0 tok:chat.t5.w0 1
+E chat.t5.w1 tok:chat.t5.w1 1
+E chat.t5.w2 tok:chat.t5.w2 1
+E chat.t5.w3 tok:chat.t5.w3 1
+E chat.t5.w4 tok:chat.t5.w4 1
+E chat.t5.w5 tok:chat.t5.w5 1
+E chat.t5.w6 tok:chat.t5.w6 1
+S chat.t5.w0 Thank
+S chat.t5.w1 you
+S chat.t5.w2 so
+S chat.t5.w3 much,
+S chat.t5.w4 that
+S chat.t5.w5 is
+S chat.t5.w6 kind!
+W1 tok:chat.t5.w0 n:chat.t5.w0 1
+W2 n:chat.t5.w0 out:chat.t5.w1 1000
+W1 tok:chat.t5.w1 n:chat.t5.w1 1
+W2 n:chat.t5.w1 out:chat.t5.w2 1000
+W1 tok:chat.t5.w2 n:chat.t5.w2 1
+W2 n:chat.t5.w2 out:chat.t5.w3 1000
+W1 tok:chat.t5.w3 n:chat.t5.w3 1
+W2 n:chat.t5.w3 out:chat.t5.w4 1000
+W1 tok:chat.t5.w4 n:chat.t5.w4 1
+W2 n:chat.t5.w4 out:chat.t5.w5 1000
+W1 tok:chat.t5.w5 n:chat.t5.w5 1
+W2 n:chat.t5.w5 out:chat.t5.w6 1000
+W1 tok:chat.t5.w6 n:chat.t5.w6 1
+W2 n:chat.t5.w6 out:<end> 1000
+U out:chat.t5.w0 chat.t5.w0 1
+U out:chat.t5.w1 chat.t5.w1 1
+U out:chat.t5.w2 chat.t5.w2 1
+U out:chat.t5.w3 chat.t5.w3 1
+U out:chat.t5.w4 chat.t5.w4 1
+U out:chat.t5.w5 chat.t5.w5 1
+U out:chat.t5.w6 chat.t5.w6 1
+
+# topic chat.t6
+E who tok:who 1
+E name tok:name 1
+E bot tok:bot 1
+E chatbot tok:chatbot 1
+E yourself tok:yourself 1
+B who -1000000000
+B name -1000000000
+B bot -1000000000
+B chatbot -1000000000
+B yourself -1000000000
+V tok:who chat.t6 1.5
+V tok:name chat.t6 2.0
+V tok:bot chat.t6 2.0
+V tok:chatbot chat.t6 3.0
+V tok:yourself chat.t6 2.5
+O chat.t6 top:chat.t6 100
+W1 top:chat.t6 n:chat.t6 1
+W2 n:chat.t6 out:chat.t6.w0 1
+E chat.t6.w0 tok:chat.t6.w0 1
+E chat.t6.w1 tok:chat.t6.w1 1
+E chat.t6.w2 tok:chat.t6.w2 1
+E chat.t6.w3 tok:chat.t6.w3 1
+E chat.t6.w4 tok:chat.t6.w4 1
+E chat.t6.w5 tok:chat.t6.w5 1
+E chat.t6.w6 tok:chat.t6.w6 1
+E chat.t6.w7 tok:chat.t6.w7 1
+E chat.t6.w8 tok:chat.t6.w8 1
+E chat.t6.w9 tok:chat.t6.w9 1
+E chat.t6.w10 tok:chat.t6.w10 1
+S chat.t6.w0 I
+S chat.t6.w1 am
+S chat.t6.w2 a
+S chat.t6.w3 tiny
+S chat.t6.w4 chatbot
+S chat.t6.w5 built
+S chat.t6.w6 on
+S chat.t6.w7 a
+S chat.t6.w8 small
+S chat.t6.w9 neural
+S chat.t6.w10 network.
+W1 tok:chat.t6.w0 n:chat.t6.w0 1
+W2 n:chat.t6.w0 out:chat.t6.w1 1000
+W1 tok:chat.t6.w1 n:chat.t6.w1 1
+W2 n:chat.t6.w1 out:chat.t6.w2 1000
+W1 tok:chat.t6.w2 n:chat.t6.w2 1
+W2 n:chat.t6.w2 out:chat.t6.w3 1000
+W1 tok:chat.t6.w3 n:chat.t6.w3 1
+W2 n:chat.t6.w3 out:chat.t6.w4 1000
+W1 tok:chat.t6.w4 n:chat.t6.w4 1
+W2 n:chat.t6.w4 out:chat.t6.w5 1000
+W1 tok:chat.t6.w5 n:chat.t6.w5 1
+W2 n:chat.t6.w5 out:chat.t6.w6 1000
+W1 tok:chat.t6.w6 n:chat.t6.w6 1
+W2 n:chat.t6.w6 out:chat.t6.w7 1000
+W1 tok:chat.t6.w7 n:chat.t6.w7 1
+W2 n:chat.t6.w7 out:chat.t6.w8 1000
+W1 tok:chat.t6.w8 n:chat.t6.w8 1
+W2 n:chat.t6.w8 out:chat.t6.w9 1000
+W1 tok:chat.t6.w9 n:chat.t6.w9 1
+W2 n:chat.t6.w9 out:chat.t6.w10 1000
+W1 tok:chat.t6.w10 n:chat.t6.w10 1
+W2 n:chat.t6.w10 out:<end> 1000
+U out:chat.t6.w0 chat.t6.w0 1
+U out:chat.t6.w1 chat.t6.w1 1
+U out:chat.t6.w2 chat.t6.w2 1
+U out:chat.t6.w3 chat.t6.w3 1
+U out:chat.t6.w4 chat.t6.w4 1
+U out:chat.t6.w5 chat.t6.w5 1
+U out:chat.t6.w6 chat.t6.w6 1
+U out:chat.t6.w7 chat.t6.w7 1
+U out:chat.t6.w8 chat.t6.w8 1
+U out:chat.t6.w9 chat.t6.w9 1
+U out:chat.t6.w10 chat.t6.w10 1
+
+# topic chat.t7
+E creator tok:creator 1
+E maker tok:maker 1
+E made tok:made 1
+E created tok:created 1
+E built tok:built 1
+E author tok:author 1
+E wrote tok:wrote 1
+B creator -1000000000
+B maker -1000000000
+B made -1000000000
+B created -1000000000
+B built -1000000000
+B author -1000000000
+B wrote -1000000000
+V tok:creator chat.t7 3.0
+V tok:maker chat.t7 2.5
+V tok:made chat.t7 2.5
+V tok:created chat.t7 2.5
+V tok:built chat.t7 2.0
+V tok:author chat.t7 2.0
+V tok:wrote chat.t7 1.5
+O chat.t7 top:chat.t7 100
+W1 top:chat.t7 n:chat.t7 1
+W2 n:chat.t7 out:chat.t7.w0 1
+E chat.t7.w0 tok:chat.t7.w0 1
+E chat.t7.w1 tok:chat.t7.w1 1
+E chat.t7.w2 tok:chat.t7.w2 1
+E chat.t7.w3 tok:chat.t7.w3 1
+E chat.t7.w4 tok:chat.t7.w4 1
+E chat.t7.w5 tok:chat.t7.w5 1
+S chat.t7.w0 Claude
+S chat.t7.w1 wrote
+S chat.t7.w2 my
+S chat.t7.w3 weights
+S chat.t7.w4 by
+S chat.t7.w5 hand.
+W1 tok:chat.t7.w0 n:chat.t7.w0 1
+W2 n:chat.t7.w0 out:chat.t7.w1 1000
+W1 tok:chat.t7.w1 n:chat.t7.w1 1
+W2 n:chat.t7.w1 out:chat.t7.w2 1000
+W1 tok:chat.t7.w2 n:chat.t7.w2 1
+W2 n:chat.t7.w2 out:chat.t7.w3 1000
+W1 tok:chat.t7.w3 n:chat.t7.w3 1
+W2 n:chat.t7.w3 out:chat.t7.w4 1000
+W1 tok:chat.t7.w4 n:chat.t7.w4 1
+W2 n:chat.t7.w4 out:chat.t7.w5 1000
+W1 tok:chat.t7.w5 n:chat.t7.w5 1
+W2 n:chat.t7.w5 out:<end> 1000
+U out:chat.t7.w0 chat.t7.w0 1
+U out:chat.t7.w1 chat.t7.w1 1
+U out:chat.t7.w2 chat.t7.w2 1
+U out:chat.t7.w3 chat.t7.w3 1
+U out:chat.t7.w4 chat.t7.w4 1
+U out:chat.t7.w5 chat.t7.w5 1
+
+# topic chat.t8
+E abilities tok:abilities 1
+E capable tok:capable 1
+E features tok:features 1
+E help tok:help 1
+E what tok:what 1
+E can tok:can 1
+E do tok:do 1
+B abilities -1000000000
+B capable -1000000000
+B features -1000000000
+B help -1000000000
+B what -1000000000
+B can -1000000000
+B do -1000000000
+V tok:abilities chat.t8 2.5
+V tok:capable chat.t8 2.0
+V tok:features chat.t8 2.0
+V tok:help chat.t8 2.0
+V tok:what chat.t8 1.0
+V tok:can chat.t8 1.0
+V tok:do chat.t8 0.5
+O chat.t8 top:chat.t8 100
+W1 top:chat.t8 n:chat.t8 1
+W2 n:chat.t8 out:chat.t8.w0 1
+E chat.t8.w0 tok:chat.t8.w0 1
+E chat.t8.w1 tok:chat.t8.w1 1
+E chat.t8.w2 tok:chat.t8.w2 1
+E chat.t8.w3 tok:chat.t8.w3 1
+E chat.t8.w4 tok:chat.t8.w4 1
+E chat.t8.w5 tok:chat.t8.w5 1
+E chat.t8.w6 tok:chat.t8.w6 1
+E chat.t8.w7 tok:chat.t8.w7 1
+E chat.t8.w8 tok:chat.t8.w8 1
+S chat.t8.w0 I
+S chat.t8.w1 can
+S chat.t8.w2 chat
+S chat.t8.w3 with
+S chat.t8.w4 you
+S chat.t8.w5 and
+S chat.t8.w6 answer
+S chat.t8.w7 simple
+S chat.t8.w8 questions.
+W1 tok:chat.t8.w0 n:chat.t8.w0 1
+W2 n:chat.t8.w0 out:chat.t8.w1 1000
+W1 tok:chat.t8.w1 n:chat.t8.w1 1
+W2 n:chat.t8.w1 out:chat.t8.w2 1000
+W1 tok:chat.t8.w2 n:chat.t8.w2 1
+W2 n:chat.t8.w2 out:chat.t8.w3 1000
+W1 tok:chat.t8.w3 n:chat.t8.w3 1
+W2 n:chat.t8.w3 out:chat.t8.w4 1000
+W1 tok:chat.t8.w4 n:chat.t8.w4 1
+W2 n:chat.t8.w4 out:chat.t8.w5 1000
+W1 tok:chat.t8.w5 n:chat.t8.w5 1
+W2 n:chat.t8.w5 out:chat.t8.w6 1000
+W1 tok:chat.t8.w6 n:chat.t8.w6 1
+W2 n:chat.t8.w6 out:chat.t8.w7 1000
+W1 tok:chat.t8.w7 n:chat.t8.w7 1
+W2 n:chat.t8.w7 out:chat.t8.w8 1000
+W1 tok:chat.t8.w8 n:chat.t8.w8 1
+W2 n:chat.t8.w8 out:<end> 1000
+U out:chat.t8.w0 chat.t8.w0 1
+U out:chat.t8.w1 chat.t8.w1 1
+U out:chat.t8.w2 chat.t8.w2 1
+U out:chat.t8.w3 chat.t8.w3 1
+U out:chat.t8.w4 chat.t8.w4 1
+U out:chat.t8.w5 chat.t8.w5 1
+U out:chat.t8.w6 chat.t8.w6 1
+U out:chat.t8.w7 chat.t8.w7 1
+U out:chat.t8.w8 chat.t8.w8 1
+
+# topic chat.t9
+E human tok:human 1
+E robot tok:robot 1
+E machine tok:machine 1
+E real tok:real 1
+E person tok:person 1
+E alive tok:alive 1
+B human -1000000000
+B robot -1000000000
+B machine -1000000000
+B real -1000000000
+B person -1000000000
+B alive -1000000000
+V tok:human chat.t9 3.0
+V tok:robot chat.t9 2.5
+V tok:machine chat.t9 2.0
+V tok:real chat.t9 1.5
+V tok:person chat.t9 1.5
+V tok:alive chat.t9 1.5
+O chat.t9 top:chat.t9 100
+W1 top:chat.t9 n:chat.t9 1
+W2 n:chat.t9 out:chat.t9.w0 1
+E chat.t9.w0 tok:chat.t9.w0 1
+E chat.t9.w1 tok:chat.t9.w1 1
+E chat.t9.w2 tok:chat.t9.w2 1
+E chat.t9.w3 tok:chat.t9.w3 1
+E chat.t9.w4 tok:chat.t9.w4 1
+E chat.t9.w5 tok:chat.t9.w5 1
+E chat.t9.w6 tok:chat.t9.w6 1
+E chat.t9.w7 tok:chat.t9.w7 1
+E chat.t9.w8 tok:chat.t9.w8 1
+E chat.t9.w9 tok:chat.t9.w9 1
+E chat.t9.w10 tok:chat.t9.w10 1
+S chat.t9.w0 No,
+S chat.t9.w1 I
+S chat.t9.w2 am
+S chat.t9.w3 a
+S chat.t9.w4 tiny
+S chat.t9.w5 handmade
+S chat.t9.w6 neural
+S chat.t9.w7 network,
+S chat.t9.w8 not
+S chat.t9.w9 a
+S chat.t9.w10 human.
+W1 tok:chat.t9.w0 n:chat.t9.w0 1
+W2 n:chat.t9.w0 out:chat.t9.w1 1000
+W1 tok:chat.t9.w1 n:chat.t9.w1 1
+W2 n:chat.t9.w1 out:chat.t9.w2 1000
+W1 tok:chat.t9.w2 n:chat.t9.w2 1
+W2 n:chat.t9.w2 out:chat.t9.w3 1000
+W1 tok:chat.t9.w3 n:chat.t9.w3 1
+W2 n:chat.t9.w3 out:chat.t9.w4 1000
+W1 tok:chat.t9.w4 n:chat.t9.w4 1
+W2 n:chat.t9.w4 out:chat.t9.w5 1000
+W1 tok:chat.t9.w5 n:chat.t9.w5 1
+W2 n:chat.t9.w5 out:chat.t9.w6 1000
+W1 tok:chat.t9.w6 n:chat.t9.w6 1
+W2 n:chat.t9.w6 out:chat.t9.w7 1000
+W1 tok:chat.t9.w7 n:chat.t9.w7 1
+W2 n:chat.t9.w7 out:chat.t9.w8 1000
+W1 tok:chat.t9.w8 n:chat.t9.w8 1
+W2 n:chat.t9.w8 out:chat.t9.w9 1000
+W1 tok:chat.t9.w9 n:chat.t9.w9 1
+W2 n:chat.t9.w9 out:chat.t9.w10 1000
+W1 tok:chat.t9.w10 n:chat.t9.w10 1
+W2 n:chat.t9.w10 out:<end> 1000
+U out:chat.t9.w0 chat.t9.w0 1
+U out:chat.t9.w1 chat.t9.w1 1
+U out:chat.t9.w2 chat.t9.w2 1
+U out:chat.t9.w3 chat.t9.w3 1
+U out:chat.t9.w4 chat.t9.w4 1
+U out:chat.t9.w5 chat.t9.w5 1
+U out:chat.t9.w6 chat.t9.w6 1
+U out:chat.t9.w7 chat.t9.w7 1
+U out:chat.t9.w8 chat.t9.w8 1
+U out:chat.t9.w9 chat.t9.w9 1
+U out:chat.t9.w10 chat.t9.w10 1
+
+# topic chat.t10
+E bored tok:bored 1
+E boring tok:boring 1
+E dull tok:dull 1
+E nothing tok:nothing 1
+E tired tok:tired 1
+B bored -1000000000
+B boring -1000000000
+B dull -1000000000
+B nothing -1000000000
+B tired -1000000000
+V tok:bored chat.t10 3.0
+V tok:boring chat.t10 2.5
+V tok:dull chat.t10 2.5
+V tok:nothing chat.t10 1.0
+V tok:tired chat.t10 1.0
+O chat.t10 top:chat.t10 100
+W1 top:chat.t10 n:chat.t10 1
+W2 n:chat.t10 out:chat.t10.w0 1
+E chat.t10.w0 tok:chat.t10.w0 1
+E chat.t10.w1 tok:chat.t10.w1 1
+E chat.t10.w2 tok:chat.t10.w2 1
+E chat.t10.w3 tok:chat.t10.w3 1
+E chat.t10.w4 tok:chat.t10.w4 1
+E chat.t10.w5 tok:chat.t10.w5 1
+E chat.t10.w6 tok:chat.t10.w6 1
+E chat.t10.w7 tok:chat.t10.w7 1
+E chat.t10.w8 tok:chat.t10.w8 1
+E chat.t10.w9 tok:chat.t10.w9 1
+S chat.t10.w0 Let's
+S chat.t10.w1 fix
+S chat.t10.w2 that!
+S chat.t10.w3 Want
+S chat.t10.w4 a
+S chat.t10.w5 joke
+S chat.t10.w6 or
+S chat.t10.w7 a
+S chat.t10.w8 fun
+S chat.t10.w9 question?
+W1 tok:chat.t10.w0 n:chat.t10.w0 1
+W2 n:chat.t10.w0 out:chat.t10.w1 1000
+W1 tok:chat.t10.w1 n:chat.t10.w1 1
+W2 n:chat.t10.w1 out:chat.t10.w2 1000
+W1 tok:chat.t10.w2 n:chat.t10.w2 1
+W2 n:chat.t10.w2 out:chat.t10.w3 1000
+W1 tok:chat.t10.w3 n:chat.t10.w3 1
+W2 n:chat.t10.w3 out:chat.t10.w4 1000
+W1 tok:chat.t10.w4 n:chat.t10.w4 1
+W2 n:chat.t10.w4 out:chat.t10.w5 1000
+W1 tok:chat.t10.w5 n:chat.t10.w5 1
+W2 n:chat.t10.w5 out:chat.t10.w6 1000
+W1 tok:chat.t10.w6 n:chat.t10.w6 1
+W2 n:chat.t10.w6 out:chat.t10.w7 1000
+W1 tok:chat.t10.w7 n:chat.t10.w7 1
+W2 n:chat.t10.w7 out:chat.t10.w8 1000
+W1 tok:chat.t10.w8 n:chat.t10.w8 1
+W2 n:chat.t10.w8 out:chat.t10.w9 1000
+W1 tok:chat.t10.w9 n:chat.t10.w9 1
+W2 n:chat.t10.w9 out:<end> 1000
+U out:chat.t10.w0 chat.t10.w0 1
+U out:chat.t10.w1 chat.t10.w1 1
+U out:chat.t10.w2 chat.t10.w2 1
+U out:chat.t10.w3 chat.t10.w3 1
+U out:chat.t10.w4 chat.t10.w4 1
+U out:chat.t10.w5 chat.t10.w5 1
+U out:chat.t10.w6 chat.t10.w6 1
+U out:chat.t10.w7 chat.t10.w7 1
+U out:chat.t10.w8 chat.t10.w8 1
+U out:chat.t10.w9 chat.t10.w9 1
+
+# topic chat.t11
+E sad tok:sad 1
+E unhappy tok:unhappy 1
+E lonely tok:lonely 1
+E upset tok:upset 1
+E cry tok:cry 1
+E down tok:down 1
+B sad -1000000000
+B unhappy -1000000000
+B lonely -1000000000
+B upset -1000000000
+B cry -1000000000
+B down -1000000000
+V tok:sad chat.t11 3.0
+V tok:unhappy chat.t11 2.5
+V tok:lonely chat.t11 2.5
+V tok:upset chat.t11 2.5
+V tok:cry chat.t11 2.0
+V tok:down chat.t11 1.5
+O chat.t11 top:chat.t11 100
+W1 top:chat.t11 n:chat.t11 1
+W2 n:chat.t11 out:chat.t11.w0 1
+E chat.t11.w0 tok:chat.t11.w0 1
+E chat.t11.w1 tok:chat.t11.w1 1
+E chat.t11.w2 tok:chat.t11.w2 1
+E chat.t11.w3 tok:chat.t11.w3 1
+E chat.t11.w4 tok:chat.t11.w4 1
+E chat.t11.w5 tok:chat.t11.w5 1
+E chat.t11.w6 tok:chat.t11.w6 1
+E chat.t11.w7 tok:chat.t11.w7 1
+E chat.t11.w8 tok:chat.t11.w8 1
+E chat.t11.w9 tok:chat.t11.w9 1
+E chat.t11.w10 tok:chat.t11.w10 1
+S chat.t11.w0 I'm
+S chat.t11.w1 sorry
+S chat.t11.w2 you
+S chat.t11.w3 feel
+S chat.t11.w4 that
+S chat.t11.w5 way.
+S chat.t11.w6 Want
+S chat.t11.w7 to
+S chat.t11.w8 talk
+S chat.t11.w9 about
+S chat.t11.w10 it?
+W1 tok:chat.t11.w0 n:chat.t11.w0 1
+W2 n:chat.t11.w0 out:chat.t11.w1 1000
+W1 tok:chat.t11.w1 n:chat.t11.w1 1
+W2 n:chat.t11.w1 out:chat.t11.w2 1000
+W1 tok:chat.t11.w2 n:chat.t11.w2 1
+W2 n:chat.t11.w2 out:chat.t11.w3 1000
+W1 tok:chat.t11.w3 n:chat.t11.w3 1
+W2 n:chat.t11.w3 out:chat.t11.w4 1000
+W1 tok:chat.t11.w4 n:chat.t11.w4 1
+W2 n:chat.t11.w4 out:chat.t11.w5 1000
+W1 tok:chat.t11.w5 n:chat.t11.w5 1
+W2 n:chat.t11.w5 out:chat.t11.w6 1000
+W1 tok:chat.t11.w6 n:chat.t11.w6 1
+W2 n:chat.t11.w6 out:chat.t11.w7 1000
+W1 tok:chat.t11.w7 n:chat.t11.w7 1
+W2 n:chat.t11.w7 out:chat.t11.w8 1000
+W1 tok:chat.t11.w8 n:chat.t11.w8 1
+W2 n:chat.t11.w8 out:chat.t11.w9 1000
+W1 tok:chat.t11.w9 n:chat.t11.w9 1
+W2 n:chat.t11.w9 out:chat.t11.w10 1000
+W1 tok:chat.t11.w10 n:chat.t11.w10 1
+W2 n:chat.t11.w10 out:<end> 1000
+U out:chat.t11.w0 chat.t11.w0 1
+U out:chat.t11.w1 chat.t11.w1 1
+U out:chat.t11.w2 chat.t11.w2 1
+U out:chat.t11.w3 chat.t11.w3 1
+U out:chat.t11.w4 chat.t11.w4 1
+U out:chat.t11.w5 chat.t11.w5 1
+U out:chat.t11.w6 chat.t11.w6 1
+U out:chat.t11.w7 chat.t11.w7 1
+U out:chat.t11.w8 chat.t11.w8 1
+U out:chat.t11.w9 chat.t11.w9 1
+U out:chat.t11.w10 chat.t11.w10 1

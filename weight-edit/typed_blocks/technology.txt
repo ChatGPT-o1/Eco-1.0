@@ -1,0 +1,1133 @@
+# topic tec.t0
+E wifi tok:wifi 1
+E wireless tok:wireless 1
+E router tok:router 1
+E internet tok:internet 1
+E signal tok:signal 1
+E network tok:network 1
+B wifi -1000000000
+B wireless -1000000000
+B router -1000000000
+B internet -1000000000
+B signal -1000000000
+B network -1000000000
+V tok:wifi tec.t0 3
+V tok:wireless tec.t0 2
+V tok:router tec.t0 1.5
+V tok:internet tec.t0 1
+V tok:signal tec.t0 1
+V tok:network tec.t0 1
+O tec.t0 top:tec.t0 100
+W1 top:tec.t0 n:tec.t0 1
+W2 n:tec.t0 out:tec.t0.w0 1
+E tec.t0.w0 tok:tec.t0.w0 1
+E tec.t0.w1 tok:tec.t0.w1 1
+E tec.t0.w2 tok:tec.t0.w2 1
+E tec.t0.w3 tok:tec.t0.w3 1
+E tec.t0.w4 tok:tec.t0.w4 1
+E tec.t0.w5 tok:tec.t0.w5 1
+E tec.t0.w6 tok:tec.t0.w6 1
+E tec.t0.w7 tok:tec.t0.w7 1
+S tec.t0.w0 Restart
+S tec.t0.w1 your
+S tec.t0.w2 router
+S tec.t0.w3 and
+S tec.t0.w4 check
+S tec.t0.w5 the
+S tec.t0.w6 wifi
+S tec.t0.w7 signal.
+W1 tok:tec.t0.w0 n:tec.t0.w0 1
+W2 n:tec.t0.w0 out:tec.t0.w1 1000
+W1 tok:tec.t0.w1 n:tec.t0.w1 1
+W2 n:tec.t0.w1 out:tec.t0.w2 1000
+W1 tok:tec.t0.w2 n:tec.t0.w2 1
+W2 n:tec.t0.w2 out:tec.t0.w3 1000
+W1 tok:tec.t0.w3 n:tec.t0.w3 1
+W2 n:tec.t0.w3 out:tec.t0.w4 1000
+W1 tok:tec.t0.w4 n:tec.t0.w4 1
+W2 n:tec.t0.w4 out:tec.t0.w5 1000
+W1 tok:tec.t0.w5 n:tec.t0.w5 1
+W2 n:tec.t0.w5 out:tec.t0.w6 1000
+W1 tok:tec.t0.w6 n:tec.t0.w6 1
+W2 n:tec.t0.w6 out:tec.t0.w7 1000
+W1 tok:tec.t0.w7 n:tec.t0.w7 1
+W2 n:tec.t0.w7 out:<end> 1000
+U out:tec.t0.w0 tec.t0.w0 1
+U out:tec.t0.w1 tec.t0.w1 1
+U out:tec.t0.w2 tec.t0.w2 1
+U out:tec.t0.w3 tec.t0.w3 1
+U out:tec.t0.w4 tec.t0.w4 1
+U out:tec.t0.w5 tec.t0.w5 1
+U out:tec.t0.w6 tec.t0.w6 1
+U out:tec.t0.w7 tec.t0.w7 1
+# topic tec.t1
+E password tok:password 1
+E passwords tok:passwords 1
+E login tok:login 1
+E strong tok:strong 1
+E security tok:security 1
+B password -1000000000
+B passwords -1000000000
+B login -1000000000
+B strong -1000000000
+B security -1000000000
+V tok:password tec.t1 3
+V tok:passwords tec.t1 3
+V tok:login tec.t1 1
+V tok:strong tec.t1 1
+V tok:security tec.t1 1
+O tec.t1 top:tec.t1 100
+W1 top:tec.t1 n:tec.t1 1
+W2 n:tec.t1 out:tec.t1.w0 1
+E tec.t1.w0 tok:tec.t1.w0 1
+E tec.t1.w1 tok:tec.t1.w1 1
+E tec.t1.w2 tok:tec.t1.w2 1
+E tec.t1.w3 tok:tec.t1.w3 1
+E tec.t1.w4 tok:tec.t1.w4 1
+E tec.t1.w5 tok:tec.t1.w5 1
+E tec.t1.w6 tok:tec.t1.w6 1
+S tec.t1.w0 Use
+S tec.t1.w1 a
+S tec.t1.w2 long
+S tec.t1.w3 password
+S tec.t1.w4 with
+S tec.t1.w5 random
+S tec.t1.w6 words.
+W1 tok:tec.t1.w0 n:tec.t1.w0 1
+W2 n:tec.t1.w0 out:tec.t1.w1 1000
+W1 tok:tec.t1.w1 n:tec.t1.w1 1
+W2 n:tec.t1.w1 out:tec.t1.w2 1000
+W1 tok:tec.t1.w2 n:tec.t1.w2 1
+W2 n:tec.t1.w2 out:tec.t1.w3 1000
+W1 tok:tec.t1.w3 n:tec.t1.w3 1
+W2 n:tec.t1.w3 out:tec.t1.w4 1000
+W1 tok:tec.t1.w4 n:tec.t1.w4 1
+W2 n:tec.t1.w4 out:tec.t1.w5 1000
+W1 tok:tec.t1.w5 n:tec.t1.w5 1
+W2 n:tec.t1.w5 out:tec.t1.w6 1000
+W1 tok:tec.t1.w6 n:tec.t1.w6 1
+W2 n:tec.t1.w6 out:<end> 1000
+U out:tec.t1.w0 tec.t1.w0 1
+U out:tec.t1.w1 tec.t1.w1 1
+U out:tec.t1.w2 tec.t1.w2 1
+U out:tec.t1.w3 tec.t1.w3 1
+U out:tec.t1.w4 tec.t1.w4 1
+U out:tec.t1.w5 tec.t1.w5 1
+U out:tec.t1.w6 tec.t1.w6 1
+# topic tec.t2
+E battery tok:battery 1
+E batteries tok:batteries 1
+E charge tok:charge 1
+E drain tok:drain 1
+E charging tok:charging 1
+B battery -1000000000
+B batteries -1000000000
+B charge -1000000000
+B drain -1000000000
+B charging -1000000000
+V tok:battery tec.t2 3
+V tok:batteries tec.t2 3
+V tok:charge tec.t2 1
+V tok:drain tec.t2 2
+V tok:charging tec.t2 1.5
+O tec.t2 top:tec.t2 100
+W1 top:tec.t2 n:tec.t2 1
+W2 n:tec.t2 out:tec.t2.w0 1
+E tec.t2.w0 tok:tec.t2.w0 1
+E tec.t2.w1 tok:tec.t2.w1 1
+E tec.t2.w2 tok:tec.t2.w2 1
+E tec.t2.w3 tok:tec.t2.w3 1
+E tec.t2.w4 tok:tec.t2.w4 1
+E tec.t2.w5 tok:tec.t2.w5 1
+E tec.t2.w6 tok:tec.t2.w6 1
+E tec.t2.w7 tok:tec.t2.w7 1
+E tec.t2.w8 tok:tec.t2.w8 1
+E tec.t2.w9 tok:tec.t2.w9 1
+S tec.t2.w0 Lower
+S tec.t2.w1 your
+S tec.t2.w2 screen
+S tec.t2.w3 brightness
+S tec.t2.w4 to
+S tec.t2.w5 help
+S tec.t2.w6 the
+S tec.t2.w7 battery
+S tec.t2.w8 last
+S tec.t2.w9 longer.
+W1 tok:tec.t2.w0 n:tec.t2.w0 1
+W2 n:tec.t2.w0 out:tec.t2.w1 1000
+W1 tok:tec.t2.w1 n:tec.t2.w1 1
+W2 n:tec.t2.w1 out:tec.t2.w2 1000
+W1 tok:tec.t2.w2 n:tec.t2.w2 1
+W2 n:tec.t2.w2 out:tec.t2.w3 1000
+W1 tok:tec.t2.w3 n:tec.t2.w3 1
+W2 n:tec.t2.w3 out:tec.t2.w4 1000
+W1 tok:tec.t2.w4 n:tec.t2.w4 1
+W2 n:tec.t2.w4 out:tec.t2.w5 1000
+W1 tok:tec.t2.w5 n:tec.t2.w5 1
+W2 n:tec.t2.w5 out:tec.t2.w6 1000
+W1 tok:tec.t2.w6 n:tec.t2.w6 1
+W2 n:tec.t2.w6 out:tec.t2.w7 1000
+W1 tok:tec.t2.w7 n:tec.t2.w7 1
+W2 n:tec.t2.w7 out:tec.t2.w8 1000
+W1 tok:tec.t2.w8 n:tec.t2.w8 1
+W2 n:tec.t2.w8 out:tec.t2.w9 1000
+W1 tok:tec.t2.w9 n:tec.t2.w9 1
+W2 n:tec.t2.w9 out:<end> 1000
+U out:tec.t2.w0 tec.t2.w0 1
+U out:tec.t2.w1 tec.t2.w1 1
+U out:tec.t2.w2 tec.t2.w2 1
+U out:tec.t2.w3 tec.t2.w3 1
+U out:tec.t2.w4 tec.t2.w4 1
+U out:tec.t2.w5 tec.t2.w5 1
+U out:tec.t2.w6 tec.t2.w6 1
+U out:tec.t2.w7 tec.t2.w7 1
+U out:tec.t2.w8 tec.t2.w8 1
+U out:tec.t2.w9 tec.t2.w9 1
+# topic tec.t3
+E phone tok:phone 1
+E smartphone tok:smartphone 1
+E iphone tok:iphone 1
+E android tok:android 1
+E cellphone tok:cellphone 1
+B phone -1000000000
+B smartphone -1000000000
+B iphone -1000000000
+B android -1000000000
+B cellphone -1000000000
+V tok:phone tec.t3 2
+V tok:smartphone tec.t3 3
+V tok:iphone tec.t3 3
+V tok:android tec.t3 3
+V tok:cellphone tec.t3 3
+O tec.t3 top:tec.t3 100
+W1 top:tec.t3 n:tec.t3 1
+W2 n:tec.t3 out:tec.t3.w0 1
+E tec.t3.w0 tok:tec.t3.w0 1
+E tec.t3.w1 tok:tec.t3.w1 1
+E tec.t3.w2 tok:tec.t3.w2 1
+E tec.t3.w3 tok:tec.t3.w3 1
+E tec.t3.w4 tok:tec.t3.w4 1
+E tec.t3.w5 tok:tec.t3.w5 1
+E tec.t3.w6 tok:tec.t3.w6 1
+E tec.t3.w7 tok:tec.t3.w7 1
+E tec.t3.w8 tok:tec.t3.w8 1
+S tec.t3.w0 Try
+S tec.t3.w1 restarting
+S tec.t3.w2 your
+S tec.t3.w3 phone
+S tec.t3.w4 to
+S tec.t3.w5 fix
+S tec.t3.w6 most
+S tec.t3.w7 small
+S tec.t3.w8 problems.
+W1 tok:tec.t3.w0 n:tec.t3.w0 1
+W2 n:tec.t3.w0 out:tec.t3.w1 1000
+W1 tok:tec.t3.w1 n:tec.t3.w1 1
+W2 n:tec.t3.w1 out:tec.t3.w2 1000
+W1 tok:tec.t3.w2 n:tec.t3.w2 1
+W2 n:tec.t3.w2 out:tec.t3.w3 1000
+W1 tok:tec.t3.w3 n:tec.t3.w3 1
+W2 n:tec.t3.w3 out:tec.t3.w4 1000
+W1 tok:tec.t3.w4 n:tec.t3.w4 1
+W2 n:tec.t3.w4 out:tec.t3.w5 1000
+W1 tok:tec.t3.w5 n:tec.t3.w5 1
+W2 n:tec.t3.w5 out:tec.t3.w6 1000
+W1 tok:tec.t3.w6 n:tec.t3.w6 1
+W2 n:tec.t3.w6 out:tec.t3.w7 1000
+W1 tok:tec.t3.w7 n:tec.t3.w7 1
+W2 n:tec.t3.w7 out:tec.t3.w8 1000
+W1 tok:tec.t3.w8 n:tec.t3.w8 1
+W2 n:tec.t3.w8 out:<end> 1000
+U out:tec.t3.w0 tec.t3.w0 1
+U out:tec.t3.w1 tec.t3.w1 1
+U out:tec.t3.w2 tec.t3.w2 1
+U out:tec.t3.w3 tec.t3.w3 1
+U out:tec.t3.w4 tec.t3.w4 1
+U out:tec.t3.w5 tec.t3.w5 1
+U out:tec.t3.w6 tec.t3.w6 1
+U out:tec.t3.w7 tec.t3.w7 1
+U out:tec.t3.w8 tec.t3.w8 1
+# topic tec.t4
+E computer tok:computer 1
+E pc tok:pc 1
+E desktop tok:desktop 1
+E windows tok:windows 1
+E mac tok:mac 1
+B computer -1000000000
+B pc -1000000000
+B desktop -1000000000
+B windows -1000000000
+B mac -1000000000
+V tok:computer tec.t4 1
+V tok:pc tec.t4 2
+V tok:desktop tec.t4 1.5
+V tok:windows tec.t4 1.5
+V tok:mac tec.t4 1
+O tec.t4 top:tec.t4 100
+W1 top:tec.t4 n:tec.t4 1
+W2 n:tec.t4 out:tec.t4.w0 1
+E tec.t4.w0 tok:tec.t4.w0 1
+E tec.t4.w1 tok:tec.t4.w1 1
+E tec.t4.w2 tok:tec.t4.w2 1
+E tec.t4.w3 tok:tec.t4.w3 1
+E tec.t4.w4 tok:tec.t4.w4 1
+E tec.t4.w5 tok:tec.t4.w5 1
+E tec.t4.w6 tok:tec.t4.w6 1
+S tec.t4.w0 Restart
+S tec.t4.w1 your
+S tec.t4.w2 computer
+S tec.t4.w3 after
+S tec.t4.w4 installing
+S tec.t4.w5 new
+S tec.t4.w6 updates.
+W1 tok:tec.t4.w0 n:tec.t4.w0 1
+W2 n:tec.t4.w0 out:tec.t4.w1 1000
+W1 tok:tec.t4.w1 n:tec.t4.w1 1
+W2 n:tec.t4.w1 out:tec.t4.w2 1000
+W1 tok:tec.t4.w2 n:tec.t4.w2 1
+W2 n:tec.t4.w2 out:tec.t4.w3 1000
+W1 tok:tec.t4.w3 n:tec.t4.w3 1
+W2 n:tec.t4.w3 out:tec.t4.w4 1000
+W1 tok:tec.t4.w4 n:tec.t4.w4 1
+W2 n:tec.t4.w4 out:tec.t4.w5 1000
+W1 tok:tec.t4.w5 n:tec.t4.w5 1
+W2 n:tec.t4.w5 out:tec.t4.w6 1000
+W1 tok:tec.t4.w6 n:tec.t4.w6 1
+W2 n:tec.t4.w6 out:<end> 1000
+U out:tec.t4.w0 tec.t4.w0 1
+U out:tec.t4.w1 tec.t4.w1 1
+U out:tec.t4.w2 tec.t4.w2 1
+U out:tec.t4.w3 tec.t4.w3 1
+U out:tec.t4.w4 tec.t4.w4 1
+U out:tec.t4.w5 tec.t4.w5 1
+U out:tec.t4.w6 tec.t4.w6 1
+# topic tec.t5
+E internet tok:internet 1
+E online tok:online 1
+E isp tok:isp 1
+E broadband tok:broadband 1
+E connection tok:connection 1
+B internet -1000000000
+B online -1000000000
+B isp -1000000000
+B broadband -1000000000
+B connection -1000000000
+V tok:internet tec.t5 2
+V tok:online tec.t5 1
+V tok:isp tec.t5 3
+V tok:broadband tec.t5 3
+V tok:connection tec.t5 1
+O tec.t5 top:tec.t5 100
+W1 top:tec.t5 n:tec.t5 1
+W2 n:tec.t5 out:tec.t5.w0 1
+E tec.t5.w0 tok:tec.t5.w0 1
+E tec.t5.w1 tok:tec.t5.w1 1
+E tec.t5.w2 tok:tec.t5.w2 1
+E tec.t5.w3 tok:tec.t5.w3 1
+E tec.t5.w4 tok:tec.t5.w4 1
+E tec.t5.w5 tok:tec.t5.w5 1
+E tec.t5.w6 tok:tec.t5.w6 1
+E tec.t5.w7 tok:tec.t5.w7 1
+S tec.t5.w0 Check
+S tec.t5.w1 whether
+S tec.t5.w2 your
+S tec.t5.w3 internet
+S tec.t5.w4 connection
+S tec.t5.w5 is
+S tec.t5.w6 stable
+S tec.t5.w7 first.
+W1 tok:tec.t5.w0 n:tec.t5.w0 1
+W2 n:tec.t5.w0 out:tec.t5.w1 1000
+W1 tok:tec.t5.w1 n:tec.t5.w1 1
+W2 n:tec.t5.w1 out:tec.t5.w2 1000
+W1 tok:tec.t5.w2 n:tec.t5.w2 1
+W2 n:tec.t5.w2 out:tec.t5.w3 1000
+W1 tok:tec.t5.w3 n:tec.t5.w3 1
+W2 n:tec.t5.w3 out:tec.t5.w4 1000
+W1 tok:tec.t5.w4 n:tec.t5.w4 1
+W2 n:tec.t5.w4 out:tec.t5.w5 1000
+W1 tok:tec.t5.w5 n:tec.t5.w5 1
+W2 n:tec.t5.w5 out:tec.t5.w6 1000
+W1 tok:tec.t5.w6 n:tec.t5.w6 1
+W2 n:tec.t5.w6 out:tec.t5.w7 1000
+W1 tok:tec.t5.w7 n:tec.t5.w7 1
+W2 n:tec.t5.w7 out:<end> 1000
+U out:tec.t5.w0 tec.t5.w0 1
+U out:tec.t5.w1 tec.t5.w1 1
+U out:tec.t5.w2 tec.t5.w2 1
+U out:tec.t5.w3 tec.t5.w3 1
+U out:tec.t5.w4 tec.t5.w4 1
+U out:tec.t5.w5 tec.t5.w5 1
+U out:tec.t5.w6 tec.t5.w6 1
+U out:tec.t5.w7 tec.t5.w7 1
+# topic tec.t6
+E ai tok:ai 1
+E chatbot tok:chatbot 1
+E neural tok:neural 1
+E model tok:model 1
+E machine tok:machine 1
+E learning tok:learning 1
+B ai -1000000000
+B chatbot -1000000000
+B neural -1000000000
+B model -1000000000
+B machine -1000000000
+B learning -1000000000
+V tok:ai tec.t6 3
+V tok:chatbot tec.t6 2
+V tok:neural tec.t6 2
+V tok:model tec.t6 1
+V tok:machine tec.t6 1
+V tok:learning tec.t6 1.5
+O tec.t6 top:tec.t6 100
+W1 top:tec.t6 n:tec.t6 1
+W2 n:tec.t6 out:tec.t6.w0 1
+E tec.t6.w0 tok:tec.t6.w0 1
+E tec.t6.w1 tok:tec.t6.w1 1
+E tec.t6.w2 tok:tec.t6.w2 1
+E tec.t6.w3 tok:tec.t6.w3 1
+E tec.t6.w4 tok:tec.t6.w4 1
+E tec.t6.w5 tok:tec.t6.w5 1
+E tec.t6.w6 tok:tec.t6.w6 1
+E tec.t6.w7 tok:tec.t6.w7 1
+S tec.t6.w0 A
+S tec.t6.w1 neural
+S tec.t6.w2 network
+S tec.t6.w3 learns
+S tec.t6.w4 patterns
+S tec.t6.w5 from
+S tec.t6.w6 many
+S tec.t6.w7 examples.
+W1 tok:tec.t6.w0 n:tec.t6.w0 1
+W2 n:tec.t6.w0 out:tec.t6.w1 1000
+W1 tok:tec.t6.w1 n:tec.t6.w1 1
+W2 n:tec.t6.w1 out:tec.t6.w2 1000
+W1 tok:tec.t6.w2 n:tec.t6.w2 1
+W2 n:tec.t6.w2 out:tec.t6.w3 1000
+W1 tok:tec.t6.w3 n:tec.t6.w3 1
+W2 n:tec.t6.w3 out:tec.t6.w4 1000
+W1 tok:tec.t6.w4 n:tec.t6.w4 1
+W2 n:tec.t6.w4 out:tec.t6.w5 1000
+W1 tok:tec.t6.w5 n:tec.t6.w5 1
+W2 n:tec.t6.w5 out:tec.t6.w6 1000
+W1 tok:tec.t6.w6 n:tec.t6.w6 1
+W2 n:tec.t6.w6 out:tec.t6.w7 1000
+W1 tok:tec.t6.w7 n:tec.t6.w7 1
+W2 n:tec.t6.w7 out:<end> 1000
+U out:tec.t6.w0 tec.t6.w0 1
+U out:tec.t6.w1 tec.t6.w1 1
+U out:tec.t6.w2 tec.t6.w2 1
+U out:tec.t6.w3 tec.t6.w3 1
+U out:tec.t6.w4 tec.t6.w4 1
+U out:tec.t6.w5 tec.t6.w5 1
+U out:tec.t6.w6 tec.t6.w6 1
+U out:tec.t6.w7 tec.t6.w7 1
+# topic tec.t7
+E virus tok:virus 1
+E malware tok:malware 1
+E antivirus tok:antivirus 1
+E hacked tok:hacked 1
+E spyware tok:spyware 1
+B virus -1000000000
+B malware -1000000000
+B antivirus -1000000000
+B hacked -1000000000
+B spyware -1000000000
+V tok:virus tec.t7 3
+V tok:malware tec.t7 3
+V tok:antivirus tec.t7 3
+V tok:hacked tec.t7 2
+V tok:spyware tec.t7 3
+O tec.t7 top:tec.t7 100
+W1 top:tec.t7 n:tec.t7 1
+W2 n:tec.t7 out:tec.t7.w0 1
+E tec.t7.w0 tok:tec.t7.w0 1
+E tec.t7.w1 tok:tec.t7.w1 1
+E tec.t7.w2 tok:tec.t7.w2 1
+E tec.t7.w3 tok:tec.t7.w3 1
+E tec.t7.w4 tok:tec.t7.w4 1
+E tec.t7.w5 tok:tec.t7.w5 1
+E tec.t7.w6 tok:tec.t7.w6 1
+E tec.t7.w7 tok:tec.t7.w7 1
+E tec.t7.w8 tok:tec.t7.w8 1
+S tec.t7.w0 Run
+S tec.t7.w1 a
+S tec.t7.w2 full
+S tec.t7.w3 antivirus
+S tec.t7.w4 scan
+S tec.t7.w5 to
+S tec.t7.w6 find
+S tec.t7.w7 any
+S tec.t7.w8 malware.
+W1 tok:tec.t7.w0 n:tec.t7.w0 1
+W2 n:tec.t7.w0 out:tec.t7.w1 1000
+W1 tok:tec.t7.w1 n:tec.t7.w1 1
+W2 n:tec.t7.w1 out:tec.t7.w2 1000
+W1 tok:tec.t7.w2 n:tec.t7.w2 1
+W2 n:tec.t7.w2 out:tec.t7.w3 1000
+W1 tok:tec.t7.w3 n:tec.t7.w3 1
+W2 n:tec.t7.w3 out:tec.t7.w4 1000
+W1 tok:tec.t7.w4 n:tec.t7.w4 1
+W2 n:tec.t7.w4 out:tec.t7.w5 1000
+W1 tok:tec.t7.w5 n:tec.t7.w5 1
+W2 n:tec.t7.w5 out:tec.t7.w6 1000
+W1 tok:tec.t7.w6 n:tec.t7.w6 1
+W2 n:tec.t7.w6 out:tec.t7.w7 1000
+W1 tok:tec.t7.w7 n:tec.t7.w7 1
+W2 n:tec.t7.w7 out:tec.t7.w8 1000
+W1 tok:tec.t7.w8 n:tec.t7.w8 1
+W2 n:tec.t7.w8 out:<end> 1000
+U out:tec.t7.w0 tec.t7.w0 1
+U out:tec.t7.w1 tec.t7.w1 1
+U out:tec.t7.w2 tec.t7.w2 1
+U out:tec.t7.w3 tec.t7.w3 1
+U out:tec.t7.w4 tec.t7.w4 1
+U out:tec.t7.w5 tec.t7.w5 1
+U out:tec.t7.w6 tec.t7.w6 1
+U out:tec.t7.w7 tec.t7.w7 1
+U out:tec.t7.w8 tec.t7.w8 1
+# topic tec.t8
+E laptop tok:laptop 1
+E notebook tok:notebook 1
+E keyboard tok:keyboard 1
+E trackpad tok:trackpad 1
+E screen tok:screen 1
+B laptop -1000000000
+B notebook -1000000000
+B keyboard -1000000000
+B trackpad -1000000000
+B screen -1000000000
+V tok:laptop tec.t8 3
+V tok:notebook tec.t8 0.5
+V tok:keyboard tec.t8 2
+V tok:trackpad tec.t8 2
+V tok:screen tec.t8 1
+O tec.t8 top:tec.t8 100
+W1 top:tec.t8 n:tec.t8 1
+W2 n:tec.t8 out:tec.t8.w0 1
+E tec.t8.w0 tok:tec.t8.w0 1
+E tec.t8.w1 tok:tec.t8.w1 1
+E tec.t8.w2 tok:tec.t8.w2 1
+E tec.t8.w3 tok:tec.t8.w3 1
+E tec.t8.w4 tok:tec.t8.w4 1
+E tec.t8.w5 tok:tec.t8.w5 1
+E tec.t8.w6 tok:tec.t8.w6 1
+E tec.t8.w7 tok:tec.t8.w7 1
+E tec.t8.w8 tok:tec.t8.w8 1
+S tec.t8.w0 Clean
+S tec.t8.w1 your
+S tec.t8.w2 laptop
+S tec.t8.w3 keyboard
+S tec.t8.w4 gently
+S tec.t8.w5 with
+S tec.t8.w6 a
+S tec.t8.w7 dry
+S tec.t8.w8 cloth.
+W1 tok:tec.t8.w0 n:tec.t8.w0 1
+W2 n:tec.t8.w0 out:tec.t8.w1 1000
+W1 tok:tec.t8.w1 n:tec.t8.w1 1
+W2 n:tec.t8.w1 out:tec.t8.w2 1000
+W1 tok:tec.t8.w2 n:tec.t8.w2 1
+W2 n:tec.t8.w2 out:tec.t8.w3 1000
+W1 tok:tec.t8.w3 n:tec.t8.w3 1
+W2 n:tec.t8.w3 out:tec.t8.w4 1000
+W1 tok:tec.t8.w4 n:tec.t8.w4 1
+W2 n:tec.t8.w4 out:tec.t8.w5 1000
+W1 tok:tec.t8.w5 n:tec.t8.w5 1
+W2 n:tec.t8.w5 out:tec.t8.w6 1000
+W1 tok:tec.t8.w6 n:tec.t8.w6 1
+W2 n:tec.t8.w6 out:tec.t8.w7 1000
+W1 tok:tec.t8.w7 n:tec.t8.w7 1
+W2 n:tec.t8.w7 out:tec.t8.w8 1000
+W1 tok:tec.t8.w8 n:tec.t8.w8 1
+W2 n:tec.t8.w8 out:<end> 1000
+U out:tec.t8.w0 tec.t8.w0 1
+U out:tec.t8.w1 tec.t8.w1 1
+U out:tec.t8.w2 tec.t8.w2 1
+U out:tec.t8.w3 tec.t8.w3 1
+U out:tec.t8.w4 tec.t8.w4 1
+U out:tec.t8.w5 tec.t8.w5 1
+U out:tec.t8.w6 tec.t8.w6 1
+U out:tec.t8.w7 tec.t8.w7 1
+U out:tec.t8.w8 tec.t8.w8 1
+# topic tec.t9
+E router tok:router 1
+E modem tok:modem 1
+E ethernet tok:ethernet 1
+E gateway tok:gateway 1
+E firmware tok:firmware 1
+B router -1000000000
+B modem -1000000000
+B ethernet -1000000000
+B gateway -1000000000
+B firmware -1000000000
+V tok:router tec.t9 3
+V tok:modem tec.t9 2.5
+V tok:ethernet tec.t9 2
+V tok:gateway tec.t9 1.5
+V tok:firmware tec.t9 2
+O tec.t9 top:tec.t9 100
+W1 top:tec.t9 n:tec.t9 1
+W2 n:tec.t9 out:tec.t9.w0 1
+E tec.t9.w0 tok:tec.t9.w0 1
+E tec.t9.w1 tok:tec.t9.w1 1
+E tec.t9.w2 tok:tec.t9.w2 1
+E tec.t9.w3 tok:tec.t9.w3 1
+E tec.t9.w4 tok:tec.t9.w4 1
+E tec.t9.w5 tok:tec.t9.w5 1
+E tec.t9.w6 tok:tec.t9.w6 1
+E tec.t9.w7 tok:tec.t9.w7 1
+E tec.t9.w8 tok:tec.t9.w8 1
+S tec.t9.w0 Unplug
+S tec.t9.w1 the
+S tec.t9.w2 modem
+S tec.t9.w3 for
+S tec.t9.w4 thirty
+S tec.t9.w5 seconds
+S tec.t9.w6 to
+S tec.t9.w7 reset
+S tec.t9.w8 it.
+W1 tok:tec.t9.w0 n:tec.t9.w0 1
+W2 n:tec.t9.w0 out:tec.t9.w1 1000
+W1 tok:tec.t9.w1 n:tec.t9.w1 1
+W2 n:tec.t9.w1 out:tec.t9.w2 1000
+W1 tok:tec.t9.w2 n:tec.t9.w2 1
+W2 n:tec.t9.w2 out:tec.t9.w3 1000
+W1 tok:tec.t9.w3 n:tec.t9.w3 1
+W2 n:tec.t9.w3 out:tec.t9.w4 1000
+W1 tok:tec.t9.w4 n:tec.t9.w4 1
+W2 n:tec.t9.w4 out:tec.t9.w5 1000
+W1 tok:tec.t9.w5 n:tec.t9.w5 1
+W2 n:tec.t9.w5 out:tec.t9.w6 1000
+W1 tok:tec.t9.w6 n:tec.t9.w6 1
+W2 n:tec.t9.w6 out:tec.t9.w7 1000
+W1 tok:tec.t9.w7 n:tec.t9.w7 1
+W2 n:tec.t9.w7 out:tec.t9.w8 1000
+W1 tok:tec.t9.w8 n:tec.t9.w8 1
+W2 n:tec.t9.w8 out:<end> 1000
+U out:tec.t9.w0 tec.t9.w0 1
+U out:tec.t9.w1 tec.t9.w1 1
+U out:tec.t9.w2 tec.t9.w2 1
+U out:tec.t9.w3 tec.t9.w3 1
+U out:tec.t9.w4 tec.t9.w4 1
+U out:tec.t9.w5 tec.t9.w5 1
+U out:tec.t9.w6 tec.t9.w6 1
+U out:tec.t9.w7 tec.t9.w7 1
+U out:tec.t9.w8 tec.t9.w8 1
+# topic tec.t10
+E charger tok:charger 1
+E charging tok:charging 1
+E plug tok:plug 1
+E volts tok:volts 1
+E usb tok:usb 1
+B charger -1000000000
+B charging -1000000000
+B plug -1000000000
+B volts -1000000000
+B usb -1000000000
+V tok:charger tec.t10 3
+V tok:charging tec.t10 2
+V tok:plug tec.t10 1
+V tok:volts tec.t10 1.5
+V tok:usb tec.t10 2
+O tec.t10 top:tec.t10 100
+W1 top:tec.t10 n:tec.t10 1
+W2 n:tec.t10 out:tec.t10.w0 1
+E tec.t10.w0 tok:tec.t10.w0 1
+E tec.t10.w1 tok:tec.t10.w1 1
+E tec.t10.w2 tok:tec.t10.w2 1
+E tec.t10.w3 tok:tec.t10.w3 1
+E tec.t10.w4 tok:tec.t10.w4 1
+E tec.t10.w5 tok:tec.t10.w5 1
+E tec.t10.w6 tok:tec.t10.w6 1
+E tec.t10.w7 tok:tec.t10.w7 1
+S tec.t10.w0 Use
+S tec.t10.w1 the
+S tec.t10.w2 charger
+S tec.t10.w3 that
+S tec.t10.w4 came
+S tec.t10.w5 with
+S tec.t10.w6 your
+S tec.t10.w7 device.
+W1 tok:tec.t10.w0 n:tec.t10.w0 1
+W2 n:tec.t10.w0 out:tec.t10.w1 1000
+W1 tok:tec.t10.w1 n:tec.t10.w1 1
+W2 n:tec.t10.w1 out:tec.t10.w2 1000
+W1 tok:tec.t10.w2 n:tec.t10.w2 1
+W2 n:tec.t10.w2 out:tec.t10.w3 1000
+W1 tok:tec.t10.w3 n:tec.t10.w3 1
+W2 n:tec.t10.w3 out:tec.t10.w4 1000
+W1 tok:tec.t10.w4 n:tec.t10.w4 1
+W2 n:tec.t10.w4 out:tec.t10.w5 1000
+W1 tok:tec.t10.w5 n:tec.t10.w5 1
+W2 n:tec.t10.w5 out:tec.t10.w6 1000
+W1 tok:tec.t10.w6 n:tec.t10.w6 1
+W2 n:tec.t10.w6 out:tec.t10.w7 1000
+W1 tok:tec.t10.w7 n:tec.t10.w7 1
+W2 n:tec.t10.w7 out:<end> 1000
+U out:tec.t10.w0 tec.t10.w0 1
+U out:tec.t10.w1 tec.t10.w1 1
+U out:tec.t10.w2 tec.t10.w2 1
+U out:tec.t10.w3 tec.t10.w3 1
+U out:tec.t10.w4 tec.t10.w4 1
+U out:tec.t10.w5 tec.t10.w5 1
+U out:tec.t10.w6 tec.t10.w6 1
+U out:tec.t10.w7 tec.t10.w7 1
+# topic tec.t11
+E software tok:software 1
+E update tok:update 1
+E app tok:app 1
+E install tok:install 1
+E download tok:download 1
+B software -1000000000
+B update -1000000000
+B app -1000000000
+B install -1000000000
+B download -1000000000
+V tok:software tec.t11 3
+V tok:update tec.t11 1
+V tok:app tec.t11 1.5
+V tok:install tec.t11 1.5
+V tok:download tec.t11 1
+O tec.t11 top:tec.t11 100
+W1 top:tec.t11 n:tec.t11 1
+W2 n:tec.t11 out:tec.t11.w0 1
+E tec.t11.w0 tok:tec.t11.w0 1
+E tec.t11.w1 tok:tec.t11.w1 1
+E tec.t11.w2 tok:tec.t11.w2 1
+E tec.t11.w3 tok:tec.t11.w3 1
+E tec.t11.w4 tok:tec.t11.w4 1
+E tec.t11.w5 tok:tec.t11.w5 1
+E tec.t11.w6 tok:tec.t11.w6 1
+E tec.t11.w7 tok:tec.t11.w7 1
+S tec.t11.w0 Install
+S tec.t11.w1 the
+S tec.t11.w2 latest
+S tec.t11.w3 software
+S tec.t11.w4 update
+S tec.t11.w5 to
+S tec.t11.w6 fix
+S tec.t11.w7 bugs.
+W1 tok:tec.t11.w0 n:tec.t11.w0 1
+W2 n:tec.t11.w0 out:tec.t11.w1 1000
+W1 tok:tec.t11.w1 n:tec.t11.w1 1
+W2 n:tec.t11.w1 out:tec.t11.w2 1000
+W1 tok:tec.t11.w2 n:tec.t11.w2 1
+W2 n:tec.t11.w2 out:tec.t11.w3 1000
+W1 tok:tec.t11.w3 n:tec.t11.w3 1
+W2 n:tec.t11.w3 out:tec.t11.w4 1000
+W1 tok:tec.t11.w4 n:tec.t11.w4 1
+W2 n:tec.t11.w4 out:tec.t11.w5 1000
+W1 tok:tec.t11.w5 n:tec.t11.w5 1
+W2 n:tec.t11.w5 out:tec.t11.w6 1000
+W1 tok:tec.t11.w6 n:tec.t11.w6 1
+W2 n:tec.t11.w6 out:tec.t11.w7 1000
+W1 tok:tec.t11.w7 n:tec.t11.w7 1
+W2 n:tec.t11.w7 out:<end> 1000
+U out:tec.t11.w0 tec.t11.w0 1
+U out:tec.t11.w1 tec.t11.w1 1
+U out:tec.t11.w2 tec.t11.w2 1
+U out:tec.t11.w3 tec.t11.w3 1
+U out:tec.t11.w4 tec.t11.w4 1
+U out:tec.t11.w5 tec.t11.w5 1
+U out:tec.t11.w6 tec.t11.w6 1
+U out:tec.t11.w7 tec.t11.w7 1
+# topic tec.t12
+E bluetooth tok:bluetooth 1
+E pairing tok:pairing 1
+E headphones tok:headphones 1
+E speaker tok:speaker 1
+E paired tok:paired 1
+B bluetooth -1000000000
+B pairing -1000000000
+B headphones -1000000000
+B speaker -1000000000
+B paired -1000000000
+V tok:bluetooth tec.t12 3
+V tok:pairing tec.t12 2
+V tok:headphones tec.t12 1.5
+V tok:speaker tec.t12 1
+V tok:paired tec.t12 2
+O tec.t12 top:tec.t12 100
+W1 top:tec.t12 n:tec.t12 1
+W2 n:tec.t12 out:tec.t12.w0 1
+E tec.t12.w0 tok:tec.t12.w0 1
+E tec.t12.w1 tok:tec.t12.w1 1
+E tec.t12.w2 tok:tec.t12.w2 1
+E tec.t12.w3 tok:tec.t12.w3 1
+E tec.t12.w4 tok:tec.t12.w4 1
+E tec.t12.w5 tok:tec.t12.w5 1
+E tec.t12.w6 tok:tec.t12.w6 1
+E tec.t12.w7 tok:tec.t12.w7 1
+E tec.t12.w8 tok:tec.t12.w8 1
+S tec.t12.w0 Turn
+S tec.t12.w1 Bluetooth
+S tec.t12.w2 off
+S tec.t12.w3 and
+S tec.t12.w4 on
+S tec.t12.w5 to
+S tec.t12.w6 re-pair
+S tec.t12.w7 your
+S tec.t12.w8 headphones.
+W1 tok:tec.t12.w0 n:tec.t12.w0 1
+W2 n:tec.t12.w0 out:tec.t12.w1 1000
+W1 tok:tec.t12.w1 n:tec.t12.w1 1
+W2 n:tec.t12.w1 out:tec.t12.w2 1000
+W1 tok:tec.t12.w2 n:tec.t12.w2 1
+W2 n:tec.t12.w2 out:tec.t12.w3 1000
+W1 tok:tec.t12.w3 n:tec.t12.w3 1
+W2 n:tec.t12.w3 out:tec.t12.w4 1000
+W1 tok:tec.t12.w4 n:tec.t12.w4 1
+W2 n:tec.t12.w4 out:tec.t12.w5 1000
+W1 tok:tec.t12.w5 n:tec.t12.w5 1
+W2 n:tec.t12.w5 out:tec.t12.w6 1000
+W1 tok:tec.t12.w6 n:tec.t12.w6 1
+W2 n:tec.t12.w6 out:tec.t12.w7 1000
+W1 tok:tec.t12.w7 n:tec.t12.w7 1
+W2 n:tec.t12.w7 out:tec.t12.w8 1000
+W1 tok:tec.t12.w8 n:tec.t12.w8 1
+W2 n:tec.t12.w8 out:<end> 1000
+U out:tec.t12.w0 tec.t12.w0 1
+U out:tec.t12.w1 tec.t12.w1 1
+U out:tec.t12.w2 tec.t12.w2 1
+U out:tec.t12.w3 tec.t12.w3 1
+U out:tec.t12.w4 tec.t12.w4 1
+U out:tec.t12.w5 tec.t12.w5 1
+U out:tec.t12.w6 tec.t12.w6 1
+U out:tec.t12.w7 tec.t12.w7 1
+U out:tec.t12.w8 tec.t12.w8 1
+# topic tec.t13
+E encryption tok:encryption 1
+E encrypt tok:encrypt 1
+E vpn tok:vpn 1
+E cipher tok:cipher 1
+E privacy tok:privacy 1
+B encryption -1000000000
+B encrypt -1000000000
+B vpn -1000000000
+B cipher -1000000000
+B privacy -1000000000
+V tok:encryption tec.t13 3
+V tok:encrypt tec.t13 3
+V tok:vpn tec.t13 3
+V tok:cipher tec.t13 2.5
+V tok:privacy tec.t13 1.5
+O tec.t13 top:tec.t13 100
+W1 top:tec.t13 n:tec.t13 1
+W2 n:tec.t13 out:tec.t13.w0 1
+E tec.t13.w0 tok:tec.t13.w0 1
+E tec.t13.w1 tok:tec.t13.w1 1
+E tec.t13.w2 tok:tec.t13.w2 1
+E tec.t13.w3 tok:tec.t13.w3 1
+E tec.t13.w4 tok:tec.t13.w4 1
+E tec.t13.w5 tok:tec.t13.w5 1
+E tec.t13.w6 tok:tec.t13.w6 1
+E tec.t13.w7 tok:tec.t13.w7 1
+S tec.t13.w0 A
+S tec.t13.w1 VPN
+S tec.t13.w2 encrypts
+S tec.t13.w3 your
+S tec.t13.w4 traffic
+S tec.t13.w5 for
+S tec.t13.w6 more
+S tec.t13.w7 privacy.
+W1 tok:tec.t13.w0 n:tec.t13.w0 1
+W2 n:tec.t13.w0 out:tec.t13.w1 1000
+W1 tok:tec.t13.w1 n:tec.t13.w1 1
+W2 n:tec.t13.w1 out:tec.t13.w2 1000
+W1 tok:tec.t13.w2 n:tec.t13.w2 1
+W2 n:tec.t13.w2 out:tec.t13.w3 1000
+W1 tok:tec.t13.w3 n:tec.t13.w3 1
+W2 n:tec.t13.w3 out:tec.t13.w4 1000
+W1 tok:tec.t13.w4 n:tec.t13.w4 1
+W2 n:tec.t13.w4 out:tec.t13.w5 1000
+W1 tok:tec.t13.w5 n:tec.t13.w5 1
+W2 n:tec.t13.w5 out:tec.t13.w6 1000
+W1 tok:tec.t13.w6 n:tec.t13.w6 1
+W2 n:tec.t13.w6 out:tec.t13.w7 1000
+W1 tok:tec.t13.w7 n:tec.t13.w7 1
+W2 n:tec.t13.w7 out:<end> 1000
+U out:tec.t13.w0 tec.t13.w0 1
+U out:tec.t13.w1 tec.t13.w1 1
+U out:tec.t13.w2 tec.t13.w2 1
+U out:tec.t13.w3 tec.t13.w3 1
+U out:tec.t13.w4 tec.t13.w4 1
+U out:tec.t13.w5 tec.t13.w5 1
+U out:tec.t13.w6 tec.t13.w6 1
+U out:tec.t13.w7 tec.t13.w7 1
+# topic tec.t14
+E processor tok:processor 1
+E cpu tok:cpu 1
+E ram tok:ram 1
+E gpu tok:gpu 1
+E core tok:core 1
+B processor -1000000000
+B cpu -1000000000
+B ram -1000000000
+B gpu -1000000000
+B core -1000000000
+V tok:processor tec.t14 3
+V tok:cpu tec.t14 3
+V tok:ram tec.t14 2.5
+V tok:gpu tec.t14 2.5
+V tok:core tec.t14 1
+O tec.t14 top:tec.t14 100
+W1 top:tec.t14 n:tec.t14 1
+W2 n:tec.t14 out:tec.t14.w0 1
+E tec.t14.w0 tok:tec.t14.w0 1
+E tec.t14.w1 tok:tec.t14.w1 1
+E tec.t14.w2 tok:tec.t14.w2 1
+E tec.t14.w3 tok:tec.t14.w3 1
+E tec.t14.w4 tok:tec.t14.w4 1
+E tec.t14.w5 tok:tec.t14.w5 1
+E tec.t14.w6 tok:tec.t14.w6 1
+E tec.t14.w7 tok:tec.t14.w7 1
+E tec.t14.w8 tok:tec.t14.w8 1
+E tec.t14.w9 tok:tec.t14.w9 1
+S tec.t14.w0 More
+S tec.t14.w1 RAM
+S tec.t14.w2 helps
+S tec.t14.w3 your
+S tec.t14.w4 computer
+S tec.t14.w5 run
+S tec.t14.w6 many
+S tec.t14.w7 apps
+S tec.t14.w8 at
+S tec.t14.w9 once.
+W1 tok:tec.t14.w0 n:tec.t14.w0 1
+W2 n:tec.t14.w0 out:tec.t14.w1 1000
+W1 tok:tec.t14.w1 n:tec.t14.w1 1
+W2 n:tec.t14.w1 out:tec.t14.w2 1000
+W1 tok:tec.t14.w2 n:tec.t14.w2 1
+W2 n:tec.t14.w2 out:tec.t14.w3 1000
+W1 tok:tec.t14.w3 n:tec.t14.w3 1
+W2 n:tec.t14.w3 out:tec.t14.w4 1000
+W1 tok:tec.t14.w4 n:tec.t14.w4 1
+W2 n:tec.t14.w4 out:tec.t14.w5 1000
+W1 tok:tec.t14.w5 n:tec.t14.w5 1
+W2 n:tec.t14.w5 out:tec.t14.w6 1000
+W1 tok:tec.t14.w6 n:tec.t14.w6 1
+W2 n:tec.t14.w6 out:tec.t14.w7 1000
+W1 tok:tec.t14.w7 n:tec.t14.w7 1
+W2 n:tec.t14.w7 out:tec.t14.w8 1000
+W1 tok:tec.t14.w8 n:tec.t14.w8 1
+W2 n:tec.t14.w8 out:tec.t14.w9 1000
+W1 tok:tec.t14.w9 n:tec.t14.w9 1
+W2 n:tec.t14.w9 out:<end> 1000
+U out:tec.t14.w0 tec.t14.w0 1
+U out:tec.t14.w1 tec.t14.w1 1
+U out:tec.t14.w2 tec.t14.w2 1
+U out:tec.t14.w3 tec.t14.w3 1
+U out:tec.t14.w4 tec.t14.w4 1
+U out:tec.t14.w5 tec.t14.w5 1
+U out:tec.t14.w6 tec.t14.w6 1
+U out:tec.t14.w7 tec.t14.w7 1
+U out:tec.t14.w8 tec.t14.w8 1
+U out:tec.t14.w9 tec.t14.w9 1
+# topic tec.t15
+E website tok:website 1
+E browser tok:browser 1
+E url tok:url 1
+E domain tok:domain 1
+E webpage tok:webpage 1
+B website -1000000000
+B browser -1000000000
+B url -1000000000
+B domain -1000000000
+B webpage -1000000000
+V tok:website tec.t15 2
+V tok:browser tec.t15 2
+V tok:url tec.t15 2.5
+V tok:domain tec.t15 1.5
+V tok:webpage tec.t15 2
+O tec.t15 top:tec.t15 100
+W1 top:tec.t15 n:tec.t15 1
+W2 n:tec.t15 out:tec.t15.w0 1
+E tec.t15.w0 tok:tec.t15.w0 1
+E tec.t15.w1 tok:tec.t15.w1 1
+E tec.t15.w2 tok:tec.t15.w2 1
+E tec.t15.w3 tok:tec.t15.w3 1
+E tec.t15.w4 tok:tec.t15.w4 1
+E tec.t15.w5 tok:tec.t15.w5 1
+E tec.t15.w6 tok:tec.t15.w6 1
+E tec.t15.w7 tok:tec.t15.w7 1
+E tec.t15.w8 tok:tec.t15.w8 1
+S tec.t15.w0 Type
+S tec.t15.w1 the
+S tec.t15.w2 full
+S tec.t15.w3 URL
+S tec.t15.w4 into
+S tec.t15.w5 your
+S tec.t15.w6 browser
+S tec.t15.w7 address
+S tec.t15.w8 bar.
+W1 tok:tec.t15.w0 n:tec.t15.w0 1
+W2 n:tec.t15.w0 out:tec.t15.w1 1000
+W1 tok:tec.t15.w1 n:tec.t15.w1 1
+W2 n:tec.t15.w1 out:tec.t15.w2 1000
+W1 tok:tec.t15.w2 n:tec.t15.w2 1
+W2 n:tec.t15.w2 out:tec.t15.w3 1000
+W1 tok:tec.t15.w3 n:tec.t15.w3 1
+W2 n:tec.t15.w3 out:tec.t15.w4 1000
+W1 tok:tec.t15.w4 n:tec.t15.w4 1
+W2 n:tec.t15.w4 out:tec.t15.w5 1000
+W1 tok:tec.t15.w5 n:tec.t15.w5 1
+W2 n:tec.t15.w5 out:tec.t15.w6 1000
+W1 tok:tec.t15.w6 n:tec.t15.w6 1
+W2 n:tec.t15.w6 out:tec.t15.w7 1000
+W1 tok:tec.t15.w7 n:tec.t15.w7 1
+W2 n:tec.t15.w7 out:tec.t15.w8 1000
+W1 tok:tec.t15.w8 n:tec.t15.w8 1
+W2 n:tec.t15.w8 out:<end> 1000
+U out:tec.t15.w0 tec.t15.w0 1
+U out:tec.t15.w1 tec.t15.w1 1
+U out:tec.t15.w2 tec.t15.w2 1
+U out:tec.t15.w3 tec.t15.w3 1
+U out:tec.t15.w4 tec.t15.w4 1
+U out:tec.t15.w5 tec.t15.w5 1
+U out:tec.t15.w6 tec.t15.w6 1
+U out:tec.t15.w7 tec.t15.w7 1
+U out:tec.t15.w8 tec.t15.w8 1
+# topic tec.t16
+E python tok:python 1
+E programming tok:programming 1
+E bug tok:bug 1
+E code tok:code 1
+E compile tok:compile 1
+B python -1000000000
+B programming -1000000000
+B bug -1000000000
+B code -1000000000
+B compile -1000000000
+V tok:python tec.t16 2
+V tok:programming tec.t16 2
+V tok:bug tec.t16 1.5
+V tok:code tec.t16 1
+V tok:compile tec.t16 2.5
+O tec.t16 top:tec.t16 100
+W1 top:tec.t16 n:tec.t16 1
+W2 n:tec.t16 out:tec.t16.w0 1
+E tec.t16.w0 tok:tec.t16.w0 1
+E tec.t16.w1 tok:tec.t16.w1 1
+E tec.t16.w2 tok:tec.t16.w2 1
+E tec.t16.w3 tok:tec.t16.w3 1
+E tec.t16.w4 tok:tec.t16.w4 1
+E tec.t16.w5 tok:tec.t16.w5 1
+E tec.t16.w6 tok:tec.t16.w6 1
+E tec.t16.w7 tok:tec.t16.w7 1
+E tec.t16.w8 tok:tec.t16.w8 1
+E tec.t16.w9 tok:tec.t16.w9 1
+E tec.t16.w10 tok:tec.t16.w10 1
+S tec.t16.w0 Read
+S tec.t16.w1 the
+S tec.t16.w2 error
+S tec.t16.w3 message
+S tec.t16.w4 to
+S tec.t16.w5 find
+S tec.t16.w6 the
+S tec.t16.w7 bug
+S tec.t16.w8 in
+S tec.t16.w9 your
+S tec.t16.w10 code.
+W1 tok:tec.t16.w0 n:tec.t16.w0 1
+W2 n:tec.t16.w0 out:tec.t16.w1 1000
+W1 tok:tec.t16.w1 n:tec.t16.w1 1
+W2 n:tec.t16.w1 out:tec.t16.w2 1000
+W1 tok:tec.t16.w2 n:tec.t16.w2 1
+W2 n:tec.t16.w2 out:tec.t16.w3 1000
+W1 tok:tec.t16.w3 n:tec.t16.w3 1
+W2 n:tec.t16.w3 out:tec.t16.w4 1000
+W1 tok:tec.t16.w4 n:tec.t16.w4 1
+W2 n:tec.t16.w4 out:tec.t16.w5 1000
+W1 tok:tec.t16.w5 n:tec.t16.w5 1
+W2 n:tec.t16.w5 out:tec.t16.w6 1000
+W1 tok:tec.t16.w6 n:tec.t16.w6 1
+W2 n:tec.t16.w6 out:tec.t16.w7 1000
+W1 tok:tec.t16.w7 n:tec.t16.w7 1
+W2 n:tec.t16.w7 out:tec.t16.w8 1000
+W1 tok:tec.t16.w8 n:tec.t16.w8 1
+W2 n:tec.t16.w8 out:tec.t16.w9 1000
+W1 tok:tec.t16.w9 n:tec.t16.w9 1
+W2 n:tec.t16.w9 out:tec.t16.w10 1000
+W1 tok:tec.t16.w10 n:tec.t16.w10 1
+W2 n:tec.t16.w10 out:<end> 1000
+U out:tec.t16.w0 tec.t16.w0 1
+U out:tec.t16.w1 tec.t16.w1 1
+U out:tec.t16.w2 tec.t16.w2 1
+U out:tec.t16.w3 tec.t16.w3 1
+U out:tec.t16.w4 tec.t16.w4 1
+U out:tec.t16.w5 tec.t16.w5 1
+U out:tec.t16.w6 tec.t16.w6 1
+U out:tec.t16.w7 tec.t16.w7 1
+U out:tec.t16.w8 tec.t16.w8 1
+U out:tec.t16.w9 tec.t16.w9 1
+U out:tec.t16.w10 tec.t16.w10 1
+# topic tec.t17
+E ssd tok:ssd 1
+E storage tok:storage 1
+E gigabytes tok:gigabytes 1
+E drive tok:drive 1
+E terabyte tok:terabyte 1
+B ssd -1000000000
+B storage -1000000000
+B gigabytes -1000000000
+B drive -1000000000
+B terabyte -1000000000
+V tok:ssd tec.t17 3
+V tok:storage tec.t17 2
+V tok:gigabytes tec.t17 2
+V tok:drive tec.t17 1
+V tok:terabyte tec.t17 2
+O tec.t17 top:tec.t17 100
+W1 top:tec.t17 n:tec.t17 1
+W2 n:tec.t17 out:tec.t17.w0 1
+E tec.t17.w0 tok:tec.t17.w0 1
+E tec.t17.w1 tok:tec.t17.w1 1
+E tec.t17.w2 tok:tec.t17.w2 1
+E tec.t17.w3 tok:tec.t17.w3 1
+E tec.t17.w4 tok:tec.t17.w4 1
+E tec.t17.w5 tok:tec.t17.w5 1
+E tec.t17.w6 tok:tec.t17.w6 1
+E tec.t17.w7 tok:tec.t17.w7 1
+E tec.t17.w8 tok:tec.t17.w8 1
+E tec.t17.w9 tok:tec.t17.w9 1
+S tec.t17.w0 An
+S tec.t17.w1 SSD
+S tec.t17.w2 is
+S tec.t17.w3 faster
+S tec.t17.w4 than
+S tec.t17.w5 a
+S tec.t17.w6 hard
+S tec.t17.w7 drive
+S tec.t17.w8 for
+S tec.t17.w9 storage.
+W1 tok:tec.t17.w0 n:tec.t17.w0 1
+W2 n:tec.t17.w0 out:tec.t17.w1 1000
+W1 tok:tec.t17.w1 n:tec.t17.w1 1
+W2 n:tec.t17.w1 out:tec.t17.w2 1000
+W1 tok:tec.t17.w2 n:tec.t17.w2 1
+W2 n:tec.t17.w2 out:tec.t17.w3 1000
+W1 tok:tec.t17.w3 n:tec.t17.w3 1
+W2 n:tec.t17.w3 out:tec.t17.w4 1000
+W1 tok:tec.t17.w4 n:tec.t17.w4 1
+W2 n:tec.t17.w4 out:tec.t17.w5 1000
+W1 tok:tec.t17.w5 n:tec.t17.w5 1
+W2 n:tec.t17.w5 out:tec.t17.w6 1000
+W1 tok:tec.t17.w6 n:tec.t17.w6 1
+W2 n:tec.t17.w6 out:tec.t17.w7 1000
+W1 tok:tec.t17.w7 n:tec.t17.w7 1
+W2 n:tec.t17.w7 out:tec.t17.w8 1000
+W1 tok:tec.t17.w8 n:tec.t17.w8 1
+W2 n:tec.t17.w8 out:tec.t17.w9 1000
+W1 tok:tec.t17.w9 n:tec.t17.w9 1
+W2 n:tec.t17.w9 out:<end> 1000
+U out:tec.t17.w0 tec.t17.w0 1
+U out:tec.t17.w1 tec.t17.w1 1
+U out:tec.t17.w2 tec.t17.w2 1
+U out:tec.t17.w3 tec.t17.w3 1
+U out:tec.t17.w4 tec.t17.w4 1
+U out:tec.t17.w5 tec.t17.w5 1
+U out:tec.t17.w6 tec.t17.w6 1
+U out:tec.t17.w7 tec.t17.w7 1
+U out:tec.t17.w8 tec.t17.w8 1
+U out:tec.t17.w9 tec.t17.w9 1

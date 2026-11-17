@@ -1,0 +1,692 @@
+# topic hea.t0
+E insomnia tok:insomnia 1
+E sleep tok:sleep 1
+E bedtime tok:bedtime 1
+E tired tok:tired 1
+E nap tok:nap 1
+B insomnia -1000000000
+B sleep -1000000000
+B bedtime -1000000000
+B tired -1000000000
+B nap -1000000000
+V tok:insomnia hea.t0 3
+V tok:sleep hea.t0 1
+V tok:bedtime hea.t0 2
+V tok:tired hea.t0 1
+V tok:nap hea.t0 1.5
+O hea.t0 top:hea.t0 100
+W1 top:hea.t0 n:hea.t0 1
+W2 n:hea.t0 out:hea.t0.w0 1
+E hea.t0.w0 tok:hea.t0.w0 1
+E hea.t0.w1 tok:hea.t0.w1 1
+E hea.t0.w2 tok:hea.t0.w2 1
+E hea.t0.w3 tok:hea.t0.w3 1
+E hea.t0.w4 tok:hea.t0.w4 1
+E hea.t0.w5 tok:hea.t0.w5 1
+E hea.t0.w6 tok:hea.t0.w6 1
+E hea.t0.w7 tok:hea.t0.w7 1
+E hea.t0.w8 tok:hea.t0.w8 1
+S hea.t0.w0 Most
+S hea.t0.w1 adults
+S hea.t0.w2 need
+S hea.t0.w3 7
+S hea.t0.w4 to
+S hea.t0.w5 9
+S hea.t0.w6 hours
+S hea.t0.w7 of
+S hea.t0.w8 sleep.
+W1 tok:hea.t0.w0 n:hea.t0.w0 1
+W2 n:hea.t0.w0 out:hea.t0.w1 1000
+W1 tok:hea.t0.w1 n:hea.t0.w1 1
+W2 n:hea.t0.w1 out:hea.t0.w2 1000
+W1 tok:hea.t0.w2 n:hea.t0.w2 1
+W2 n:hea.t0.w2 out:hea.t0.w3 1000
+W1 tok:hea.t0.w3 n:hea.t0.w3 1
+W2 n:hea.t0.w3 out:hea.t0.w4 1000
+W1 tok:hea.t0.w4 n:hea.t0.w4 1
+W2 n:hea.t0.w4 out:hea.t0.w5 1000
+W1 tok:hea.t0.w5 n:hea.t0.w5 1
+W2 n:hea.t0.w5 out:hea.t0.w6 1000
+W1 tok:hea.t0.w6 n:hea.t0.w6 1
+W2 n:hea.t0.w6 out:hea.t0.w7 1000
+W1 tok:hea.t0.w7 n:hea.t0.w7 1
+W2 n:hea.t0.w7 out:hea.t0.w8 1000
+W1 tok:hea.t0.w8 n:hea.t0.w8 1
+W2 n:hea.t0.w8 out:<end> 1000
+U out:hea.t0.w0 hea.t0.w0 1
+U out:hea.t0.w1 hea.t0.w1 1
+U out:hea.t0.w2 hea.t0.w2 1
+U out:hea.t0.w3 hea.t0.w3 1
+U out:hea.t0.w4 hea.t0.w4 1
+U out:hea.t0.w5 hea.t0.w5 1
+U out:hea.t0.w6 hea.t0.w6 1
+U out:hea.t0.w7 hea.t0.w7 1
+U out:hea.t0.w8 hea.t0.w8 1
+
+# topic hea.t1
+E workout tok:workout 1
+E exercise tok:exercise 1
+E running tok:running 1
+E gym tok:gym 1
+E fitness tok:fitness 1
+E jog tok:jog 1
+B workout -1000000000
+B exercise -1000000000
+B running -1000000000
+B gym -1000000000
+B fitness -1000000000
+B jog -1000000000
+V tok:workout hea.t1 2.5
+V tok:exercise hea.t1 1
+V tok:running hea.t1 1.5
+V tok:gym hea.t1 2
+V tok:fitness hea.t1 2
+V tok:jog hea.t1 2
+O hea.t1 top:hea.t1 100
+W1 top:hea.t1 n:hea.t1 1
+W2 n:hea.t1 out:hea.t1.w0 1
+E hea.t1.w0 tok:hea.t1.w0 1
+E hea.t1.w1 tok:hea.t1.w1 1
+E hea.t1.w2 tok:hea.t1.w2 1
+E hea.t1.w3 tok:hea.t1.w3 1
+E hea.t1.w4 tok:hea.t1.w4 1
+E hea.t1.w5 tok:hea.t1.w5 1
+E hea.t1.w6 tok:hea.t1.w6 1
+E hea.t1.w7 tok:hea.t1.w7 1
+E hea.t1.w8 tok:hea.t1.w8 1
+E hea.t1.w9 tok:hea.t1.w9 1
+S hea.t1.w0 Aim
+S hea.t1.w1 for
+S hea.t1.w2 about
+S hea.t1.w3 150
+S hea.t1.w4 minutes
+S hea.t1.w5 of
+S hea.t1.w6 moderate
+S hea.t1.w7 activity
+S hea.t1.w8 each
+S hea.t1.w9 week.
+W1 tok:hea.t1.w0 n:hea.t1.w0 1
+W2 n:hea.t1.w0 out:hea.t1.w1 1000
+W1 tok:hea.t1.w1 n:hea.t1.w1 1
+W2 n:hea.t1.w1 out:hea.t1.w2 1000
+W1 tok:hea.t1.w2 n:hea.t1.w2 1
+W2 n:hea.t1.w2 out:hea.t1.w3 1000
+W1 tok:hea.t1.w3 n:hea.t1.w3 1
+W2 n:hea.t1.w3 out:hea.t1.w4 1000
+W1 tok:hea.t1.w4 n:hea.t1.w4 1
+W2 n:hea.t1.w4 out:hea.t1.w5 1000
+W1 tok:hea.t1.w5 n:hea.t1.w5 1
+W2 n:hea.t1.w5 out:hea.t1.w6 1000
+W1 tok:hea.t1.w6 n:hea.t1.w6 1
+W2 n:hea.t1.w6 out:hea.t1.w7 1000
+W1 tok:hea.t1.w7 n:hea.t1.w7 1
+W2 n:hea.t1.w7 out:hea.t1.w8 1000
+W1 tok:hea.t1.w8 n:hea.t1.w8 1
+W2 n:hea.t1.w8 out:hea.t1.w9 1000
+W1 tok:hea.t1.w9 n:hea.t1.w9 1
+W2 n:hea.t1.w9 out:<end> 1000
+U out:hea.t1.w0 hea.t1.w0 1
+U out:hea.t1.w1 hea.t1.w1 1
+U out:hea.t1.w2 hea.t1.w2 1
+U out:hea.t1.w3 hea.t1.w3 1
+U out:hea.t1.w4 hea.t1.w4 1
+U out:hea.t1.w5 hea.t1.w5 1
+U out:hea.t1.w6 hea.t1.w6 1
+U out:hea.t1.w7 hea.t1.w7 1
+U out:hea.t1.w8 hea.t1.w8 1
+U out:hea.t1.w9 hea.t1.w9 1
+
+# topic hea.t2
+E hydration tok:hydration 1
+E water tok:water 1
+E thirsty tok:thirsty 1
+E dehydrated tok:dehydrated 1
+E fluids tok:fluids 1
+B hydration -1000000000
+B water -1000000000
+B thirsty -1000000000
+B dehydrated -1000000000
+B fluids -1000000000
+V tok:hydration hea.t2 3
+V tok:water hea.t2 1
+V tok:thirsty hea.t2 2.5
+V tok:dehydrated hea.t2 3
+V tok:fluids hea.t2 2
+O hea.t2 top:hea.t2 100
+W1 top:hea.t2 n:hea.t2 1
+W2 n:hea.t2 out:hea.t2.w0 1
+E hea.t2.w0 tok:hea.t2.w0 1
+E hea.t2.w1 tok:hea.t2.w1 1
+E hea.t2.w2 tok:hea.t2.w2 1
+E hea.t2.w3 tok:hea.t2.w3 1
+E hea.t2.w4 tok:hea.t2.w4 1
+E hea.t2.w5 tok:hea.t2.w5 1
+E hea.t2.w6 tok:hea.t2.w6 1
+E hea.t2.w7 tok:hea.t2.w7 1
+E hea.t2.w8 tok:hea.t2.w8 1
+E hea.t2.w9 tok:hea.t2.w9 1
+E hea.t2.w10 tok:hea.t2.w10 1
+S hea.t2.w0 Drink
+S hea.t2.w1 water
+S hea.t2.w2 regularly
+S hea.t2.w3 through
+S hea.t2.w4 the
+S hea.t2.w5 day
+S hea.t2.w6 and
+S hea.t2.w7 more
+S hea.t2.w8 when
+S hea.t2.w9 you
+S hea.t2.w10 sweat.
+W1 tok:hea.t2.w0 n:hea.t2.w0 1
+W2 n:hea.t2.w0 out:hea.t2.w1 1000
+W1 tok:hea.t2.w1 n:hea.t2.w1 1
+W2 n:hea.t2.w1 out:hea.t2.w2 1000
+W1 tok:hea.t2.w2 n:hea.t2.w2 1
+W2 n:hea.t2.w2 out:hea.t2.w3 1000
+W1 tok:hea.t2.w3 n:hea.t2.w3 1
+W2 n:hea.t2.w3 out:hea.t2.w4 1000
+W1 tok:hea.t2.w4 n:hea.t2.w4 1
+W2 n:hea.t2.w4 out:hea.t2.w5 1000
+W1 tok:hea.t2.w5 n:hea.t2.w5 1
+W2 n:hea.t2.w5 out:hea.t2.w6 1000
+W1 tok:hea.t2.w6 n:hea.t2.w6 1
+W2 n:hea.t2.w6 out:hea.t2.w7 1000
+W1 tok:hea.t2.w7 n:hea.t2.w7 1
+W2 n:hea.t2.w7 out:hea.t2.w8 1000
+W1 tok:hea.t2.w8 n:hea.t2.w8 1
+W2 n:hea.t2.w8 out:hea.t2.w9 1000
+W1 tok:hea.t2.w9 n:hea.t2.w9 1
+W2 n:hea.t2.w9 out:hea.t2.w10 1000
+W1 tok:hea.t2.w10 n:hea.t2.w10 1
+W2 n:hea.t2.w10 out:<end> 1000
+U out:hea.t2.w0 hea.t2.w0 1
+U out:hea.t2.w1 hea.t2.w1 1
+U out:hea.t2.w2 hea.t2.w2 1
+U out:hea.t2.w3 hea.t2.w3 1
+U out:hea.t2.w4 hea.t2.w4 1
+U out:hea.t2.w5 hea.t2.w5 1
+U out:hea.t2.w6 hea.t2.w6 1
+U out:hea.t2.w7 hea.t2.w7 1
+U out:hea.t2.w8 hea.t2.w8 1
+U out:hea.t2.w9 hea.t2.w9 1
+U out:hea.t2.w10 hea.t2.w10 1
+
+# topic hea.t3
+E nutrition tok:nutrition 1
+E diet tok:diet 1
+E vegetables tok:vegetables 1
+E healthy tok:healthy 1
+E eating tok:eating 1
+E protein tok:protein 1
+E fiber tok:fiber 1
+B nutrition -1000000000
+B diet -1000000000
+B vegetables -1000000000
+B healthy -1000000000
+B eating -1000000000
+B protein -1000000000
+B fiber -1000000000
+V tok:nutrition hea.t3 3
+V tok:diet hea.t3 2
+V tok:vegetables hea.t3 2
+V tok:healthy hea.t3 1
+V tok:eating hea.t3 1
+V tok:protein hea.t3 2
+V tok:fiber hea.t3 2.5
+O hea.t3 top:hea.t3 100
+W1 top:hea.t3 n:hea.t3 1
+W2 n:hea.t3 out:hea.t3.w0 1
+E hea.t3.w0 tok:hea.t3.w0 1
+E hea.t3.w1 tok:hea.t3.w1 1
+E hea.t3.w2 tok:hea.t3.w2 1
+E hea.t3.w3 tok:hea.t3.w3 1
+E hea.t3.w4 tok:hea.t3.w4 1
+E hea.t3.w5 tok:hea.t3.w5 1
+E hea.t3.w6 tok:hea.t3.w6 1
+E hea.t3.w7 tok:hea.t3.w7 1
+E hea.t3.w8 tok:hea.t3.w8 1
+E hea.t3.w9 tok:hea.t3.w9 1
+E hea.t3.w10 tok:hea.t3.w10 1
+S hea.t3.w0 Fill
+S hea.t3.w1 half
+S hea.t3.w2 your
+S hea.t3.w3 plate
+S hea.t3.w4 with
+S hea.t3.w5 vegetables
+S hea.t3.w6 and
+S hea.t3.w7 whole
+S hea.t3.w8 grains
+S hea.t3.w9 when
+S hea.t3.w10 possible.
+W1 tok:hea.t3.w0 n:hea.t3.w0 1
+W2 n:hea.t3.w0 out:hea.t3.w1 1000
+W1 tok:hea.t3.w1 n:hea.t3.w1 1
+W2 n:hea.t3.w1 out:hea.t3.w2 1000
+W1 tok:hea.t3.w2 n:hea.t3.w2 1
+W2 n:hea.t3.w2 out:hea.t3.w3 1000
+W1 tok:hea.t3.w3 n:hea.t3.w3 1
+W2 n:hea.t3.w3 out:hea.t3.w4 1000
+W1 tok:hea.t3.w4 n:hea.t3.w4 1
+W2 n:hea.t3.w4 out:hea.t3.w5 1000
+W1 tok:hea.t3.w5 n:hea.t3.w5 1
+W2 n:hea.t3.w5 out:hea.t3.w6 1000
+W1 tok:hea.t3.w6 n:hea.t3.w6 1
+W2 n:hea.t3.w6 out:hea.t3.w7 1000
+W1 tok:hea.t3.w7 n:hea.t3.w7 1
+W2 n:hea.t3.w7 out:hea.t3.w8 1000
+W1 tok:hea.t3.w8 n:hea.t3.w8 1
+W2 n:hea.t3.w8 out:hea.t3.w9 1000
+W1 tok:hea.t3.w9 n:hea.t3.w9 1
+W2 n:hea.t3.w9 out:hea.t3.w10 1000
+W1 tok:hea.t3.w10 n:hea.t3.w10 1
+W2 n:hea.t3.w10 out:<end> 1000
+U out:hea.t3.w0 hea.t3.w0 1
+U out:hea.t3.w1 hea.t3.w1 1
+U out:hea.t3.w2 hea.t3.w2 1
+U out:hea.t3.w3 hea.t3.w3 1
+U out:hea.t3.w4 hea.t3.w4 1
+U out:hea.t3.w5 hea.t3.w5 1
+U out:hea.t3.w6 hea.t3.w6 1
+U out:hea.t3.w7 hea.t3.w7 1
+U out:hea.t3.w8 hea.t3.w8 1
+U out:hea.t3.w9 hea.t3.w9 1
+U out:hea.t3.w10 hea.t3.w10 1
+
+# topic hea.t4
+E stress tok:stress 1
+E anxious tok:anxious 1
+E overwhelmed tok:overwhelmed 1
+E relax tok:relax 1
+E calm tok:calm 1
+E meditation tok:meditation 1
+E breathe tok:breathe 1
+B stress -1000000000
+B anxious -1000000000
+B overwhelmed -1000000000
+B relax -1000000000
+B calm -1000000000
+B meditation -1000000000
+B breathe -1000000000
+V tok:stress hea.t4 2
+V tok:anxious hea.t4 2
+V tok:overwhelmed hea.t4 2.5
+V tok:relax hea.t4 2
+V tok:calm hea.t4 1
+V tok:meditation hea.t4 2.5
+V tok:breathe hea.t4 1.5
+O hea.t4 top:hea.t4 100
+W1 top:hea.t4 n:hea.t4 1
+W2 n:hea.t4 out:hea.t4.w0 1
+E hea.t4.w0 tok:hea.t4.w0 1
+E hea.t4.w1 tok:hea.t4.w1 1
+E hea.t4.w2 tok:hea.t4.w2 1
+E hea.t4.w3 tok:hea.t4.w3 1
+E hea.t4.w4 tok:hea.t4.w4 1
+E hea.t4.w5 tok:hea.t4.w5 1
+E hea.t4.w6 tok:hea.t4.w6 1
+E hea.t4.w7 tok:hea.t4.w7 1
+E hea.t4.w8 tok:hea.t4.w8 1
+E hea.t4.w9 tok:hea.t4.w9 1
+S hea.t4.w0 Slow
+S hea.t4.w1 breathing
+S hea.t4.w2 and
+S hea.t4.w3 short
+S hea.t4.w4 walks
+S hea.t4.w5 can
+S hea.t4.w6 help
+S hea.t4.w7 ease
+S hea.t4.w8 everyday
+S hea.t4.w9 stress.
+W1 tok:hea.t4.w0 n:hea.t4.w0 1
+W2 n:hea.t4.w0 out:hea.t4.w1 1000
+W1 tok:hea.t4.w1 n:hea.t4.w1 1
+W2 n:hea.t4.w1 out:hea.t4.w2 1000
+W1 tok:hea.t4.w2 n:hea.t4.w2 1
+W2 n:hea.t4.w2 out:hea.t4.w3 1000
+W1 tok:hea.t4.w3 n:hea.t4.w3 1
+W2 n:hea.t4.w3 out:hea.t4.w4 1000
+W1 tok:hea.t4.w4 n:hea.t4.w4 1
+W2 n:hea.t4.w4 out:hea.t4.w5 1000
+W1 tok:hea.t4.w5 n:hea.t4.w5 1
+W2 n:hea.t4.w5 out:hea.t4.w6 1000
+W1 tok:hea.t4.w6 n:hea.t4.w6 1
+W2 n:hea.t4.w6 out:hea.t4.w7 1000
+W1 tok:hea.t4.w7 n:hea.t4.w7 1
+W2 n:hea.t4.w7 out:hea.t4.w8 1000
+W1 tok:hea.t4.w8 n:hea.t4.w8 1
+W2 n:hea.t4.w8 out:hea.t4.w9 1000
+W1 tok:hea.t4.w9 n:hea.t4.w9 1
+W2 n:hea.t4.w9 out:<end> 1000
+U out:hea.t4.w0 hea.t4.w0 1
+U out:hea.t4.w1 hea.t4.w1 1
+U out:hea.t4.w2 hea.t4.w2 1
+U out:hea.t4.w3 hea.t4.w3 1
+U out:hea.t4.w4 hea.t4.w4 1
+U out:hea.t4.w5 hea.t4.w5 1
+U out:hea.t4.w6 hea.t4.w6 1
+U out:hea.t4.w7 hea.t4.w7 1
+U out:hea.t4.w8 hea.t4.w8 1
+U out:hea.t4.w9 hea.t4.w9 1
+
+# topic hea.t5
+E cold tok:cold 1
+E sneezing tok:sneezing 1
+E cough tok:cough 1
+E runny tok:runny 1
+E congestion tok:congestion 1
+E sniffles tok:sniffles 1
+B cold -1000000000
+B sneezing -1000000000
+B cough -1000000000
+B runny -1000000000
+B congestion -1000000000
+B sniffles -1000000000
+V tok:cold hea.t5 1.5
+V tok:sneezing hea.t5 2.5
+V tok:cough hea.t5 2.5
+V tok:runny hea.t5 2.5
+V tok:congestion hea.t5 3
+V tok:sniffles hea.t5 3
+O hea.t5 top:hea.t5 100
+W1 top:hea.t5 n:hea.t5 1
+W2 n:hea.t5 out:hea.t5.w0 1
+E hea.t5.w0 tok:hea.t5.w0 1
+E hea.t5.w1 tok:hea.t5.w1 1
+E hea.t5.w2 tok:hea.t5.w2 1
+E hea.t5.w3 tok:hea.t5.w3 1
+E hea.t5.w4 tok:hea.t5.w4 1
+E hea.t5.w5 tok:hea.t5.w5 1
+E hea.t5.w6 tok:hea.t5.w6 1
+E hea.t5.w7 tok:hea.t5.w7 1
+E hea.t5.w8 tok:hea.t5.w8 1
+E hea.t5.w9 tok:hea.t5.w9 1
+E hea.t5.w10 tok:hea.t5.w10 1
+E hea.t5.w11 tok:hea.t5.w11 1
+E hea.t5.w12 tok:hea.t5.w12 1
+E hea.t5.w13 tok:hea.t5.w13 1
+S hea.t5.w0 Rest,
+S hea.t5.w1 fluids,
+S hea.t5.w2 and
+S hea.t5.w3 sleep
+S hea.t5.w4 help
+S hea.t5.w5 most
+S hea.t5.w6 colds,
+S hea.t5.w7 but
+S hea.t5.w8 see
+S hea.t5.w9 a
+S hea.t5.w10 doctor
+S hea.t5.w11 if
+S hea.t5.w12 symptoms
+S hea.t5.w13 worsen.
+W1 tok:hea.t5.w0 n:hea.t5.w0 1
+W2 n:hea.t5.w0 out:hea.t5.w1 1000
+W1 tok:hea.t5.w1 n:hea.t5.w1 1
+W2 n:hea.t5.w1 out:hea.t5.w2 1000
+W1 tok:hea.t5.w2 n:hea.t5.w2 1
+W2 n:hea.t5.w2 out:hea.t5.w3 1000
+W1 tok:hea.t5.w3 n:hea.t5.w3 1
+W2 n:hea.t5.w3 out:hea.t5.w4 1000
+W1 tok:hea.t5.w4 n:hea.t5.w4 1
+W2 n:hea.t5.w4 out:hea.t5.w5 1000
+W1 tok:hea.t5.w5 n:hea.t5.w5 1
+W2 n:hea.t5.w5 out:hea.t5.w6 1000
+W1 tok:hea.t5.w6 n:hea.t5.w6 1
+W2 n:hea.t5.w6 out:hea.t5.w7 1000
+W1 tok:hea.t5.w7 n:hea.t5.w7 1
+W2 n:hea.t5.w7 out:hea.t5.w8 1000
+W1 tok:hea.t5.w8 n:hea.t5.w8 1
+W2 n:hea.t5.w8 out:hea.t5.w9 1000
+W1 tok:hea.t5.w9 n:hea.t5.w9 1
+W2 n:hea.t5.w9 out:hea.t5.w10 1000
+W1 tok:hea.t5.w10 n:hea.t5.w10 1
+W2 n:hea.t5.w10 out:hea.t5.w11 1000
+W1 tok:hea.t5.w11 n:hea.t5.w11 1
+W2 n:hea.t5.w11 out:hea.t5.w12 1000
+W1 tok:hea.t5.w12 n:hea.t5.w12 1
+W2 n:hea.t5.w12 out:hea.t5.w13 1000
+W1 tok:hea.t5.w13 n:hea.t5.w13 1
+W2 n:hea.t5.w13 out:<end> 1000
+U out:hea.t5.w0 hea.t5.w0 1
+U out:hea.t5.w1 hea.t5.w1 1
+U out:hea.t5.w2 hea.t5.w2 1
+U out:hea.t5.w3 hea.t5.w3 1
+U out:hea.t5.w4 hea.t5.w4 1
+U out:hea.t5.w5 hea.t5.w5 1
+U out:hea.t5.w6 hea.t5.w6 1
+U out:hea.t5.w7 hea.t5.w7 1
+U out:hea.t5.w8 hea.t5.w8 1
+U out:hea.t5.w9 hea.t5.w9 1
+U out:hea.t5.w10 hea.t5.w10 1
+U out:hea.t5.w11 hea.t5.w11 1
+U out:hea.t5.w12 hea.t5.w12 1
+U out:hea.t5.w13 hea.t5.w13 1
+
+# topic hea.t6
+E throat tok:throat 1
+E scratchy tok:scratchy 1
+E hoarse tok:hoarse 1
+E gargle tok:gargle 1
+E lozenges tok:lozenges 1
+B throat -1000000000
+B scratchy -1000000000
+B hoarse -1000000000
+B gargle -1000000000
+B lozenges -1000000000
+V tok:throat hea.t6 2
+V tok:scratchy hea.t6 2.5
+V tok:hoarse hea.t6 2.5
+V tok:gargle hea.t6 3
+V tok:lozenges hea.t6 2.5
+O hea.t6 top:hea.t6 100
+W1 top:hea.t6 n:hea.t6 1
+W2 n:hea.t6 out:hea.t6.w0 1
+E hea.t6.w0 tok:hea.t6.w0 1
+E hea.t6.w1 tok:hea.t6.w1 1
+E hea.t6.w2 tok:hea.t6.w2 1
+E hea.t6.w3 tok:hea.t6.w3 1
+E hea.t6.w4 tok:hea.t6.w4 1
+E hea.t6.w5 tok:hea.t6.w5 1
+E hea.t6.w6 tok:hea.t6.w6 1
+E hea.t6.w7 tok:hea.t6.w7 1
+E hea.t6.w8 tok:hea.t6.w8 1
+E hea.t6.w9 tok:hea.t6.w9 1
+E hea.t6.w10 tok:hea.t6.w10 1
+S hea.t6.w0 Warm
+S hea.t6.w1 salt
+S hea.t6.w2 water
+S hea.t6.w3 gargles
+S hea.t6.w4 and
+S hea.t6.w5 lozenges
+S hea.t6.w6 may
+S hea.t6.w7 soothe
+S hea.t6.w8 a
+S hea.t6.w9 sore
+S hea.t6.w10 throat.
+W1 tok:hea.t6.w0 n:hea.t6.w0 1
+W2 n:hea.t6.w0 out:hea.t6.w1 1000
+W1 tok:hea.t6.w1 n:hea.t6.w1 1
+W2 n:hea.t6.w1 out:hea.t6.w2 1000
+W1 tok:hea.t6.w2 n:hea.t6.w2 1
+W2 n:hea.t6.w2 out:hea.t6.w3 1000
+W1 tok:hea.t6.w3 n:hea.t6.w3 1
+W2 n:hea.t6.w3 out:hea.t6.w4 1000
+W1 tok:hea.t6.w4 n:hea.t6.w4 1
+W2 n:hea.t6.w4 out:hea.t6.w5 1000
+W1 tok:hea.t6.w5 n:hea.t6.w5 1
+W2 n:hea.t6.w5 out:hea.t6.w6 1000
+W1 tok:hea.t6.w6 n:hea.t6.w6 1
+W2 n:hea.t6.w6 out:hea.t6.w7 1000
+W1 tok:hea.t6.w7 n:hea.t6.w7 1
+W2 n:hea.t6.w7 out:hea.t6.w8 1000
+W1 tok:hea.t6.w8 n:hea.t6.w8 1
+W2 n:hea.t6.w8 out:hea.t6.w9 1000
+W1 tok:hea.t6.w9 n:hea.t6.w9 1
+W2 n:hea.t6.w9 out:hea.t6.w10 1000
+W1 tok:hea.t6.w10 n:hea.t6.w10 1
+W2 n:hea.t6.w10 out:<end> 1000
+U out:hea.t6.w0 hea.t6.w0 1
+U out:hea.t6.w1 hea.t6.w1 1
+U out:hea.t6.w2 hea.t6.w2 1
+U out:hea.t6.w3 hea.t6.w3 1
+U out:hea.t6.w4 hea.t6.w4 1
+U out:hea.t6.w5 hea.t6.w5 1
+U out:hea.t6.w6 hea.t6.w6 1
+U out:hea.t6.w7 hea.t6.w7 1
+U out:hea.t6.w8 hea.t6.w8 1
+U out:hea.t6.w9 hea.t6.w9 1
+U out:hea.t6.w10 hea.t6.w10 1
+
+# topic hea.t7
+E headache tok:headache 1
+E migraine tok:migraine 1
+E aching tok:aching 1
+E ache tok:ache 1
+E pounding tok:pounding 1
+B headache -1000000000
+B migraine -1000000000
+B aching -1000000000
+B ache -1000000000
+B pounding -1000000000
+V tok:headache hea.t7 3
+V tok:migraine hea.t7 2
+V tok:aching hea.t7 1
+V tok:ache hea.t7 1.5
+V tok:pounding hea.t7 1
+O hea.t7 top:hea.t7 100
+W1 top:hea.t7 n:hea.t7 1
+W2 n:hea.t7 out:hea.t7.w0 1
+E hea.t7.w0 tok:hea.t7.w0 1
+E hea.t7.w1 tok:hea.t7.w1 1
+E hea.t7.w2 tok:hea.t7.w2 1
+E hea.t7.w3 tok:hea.t7.w3 1
+E hea.t7.w4 tok:hea.t7.w4 1
+E hea.t7.w5 tok:hea.t7.w5 1
+E hea.t7.w6 tok:hea.t7.w6 1
+E hea.t7.w7 tok:hea.t7.w7 1
+E hea.t7.w8 tok:hea.t7.w8 1
+E hea.t7.w9 tok:hea.t7.w9 1
+E hea.t7.w10 tok:hea.t7.w10 1
+E hea.t7.w11 tok:hea.t7.w11 1
+S hea.t7.w0 Rest
+S hea.t7.w1 in
+S hea.t7.w2 a
+S hea.t7.w3 quiet
+S hea.t7.w4 dark
+S hea.t7.w5 room
+S hea.t7.w6 and
+S hea.t7.w7 drink
+S hea.t7.w8 water
+S hea.t7.w9 for
+S hea.t7.w10 mild
+S hea.t7.w11 headaches.
+W1 tok:hea.t7.w0 n:hea.t7.w0 1
+W2 n:hea.t7.w0 out:hea.t7.w1 1000
+W1 tok:hea.t7.w1 n:hea.t7.w1 1
+W2 n:hea.t7.w1 out:hea.t7.w2 1000
+W1 tok:hea.t7.w2 n:hea.t7.w2 1
+W2 n:hea.t7.w2 out:hea.t7.w3 1000
+W1 tok:hea.t7.w3 n:hea.t7.w3 1
+W2 n:hea.t7.w3 out:hea.t7.w4 1000
+W1 tok:hea.t7.w4 n:hea.t7.w4 1
+W2 n:hea.t7.w4 out:hea.t7.w5 1000
+W1 tok:hea.t7.w5 n:hea.t7.w5 1
+W2 n:hea.t7.w5 out:hea.t7.w6 1000
+W1 tok:hea.t7.w6 n:hea.t7.w6 1
+W2 n:hea.t7.w6 out:hea.t7.w7 1000
+W1 tok:hea.t7.w7 n:hea.t7.w7 1
+W2 n:hea.t7.w7 out:hea.t7.w8 1000
+W1 tok:hea.t7.w8 n:hea.t7.w8 1
+W2 n:hea.t7.w8 out:hea.t7.w9 1000
+W1 tok:hea.t7.w9 n:hea.t7.w9 1
+W2 n:hea.t7.w9 out:hea.t7.w10 1000
+W1 tok:hea.t7.w10 n:hea.t7.w10 1
+W2 n:hea.t7.w10 out:hea.t7.w11 1000
+W1 tok:hea.t7.w11 n:hea.t7.w11 1
+W2 n:hea.t7.w11 out:<end> 1000
+U out:hea.t7.w0 hea.t7.w0 1
+U out:hea.t7.w1 hea.t7.w1 1
+U out:hea.t7.w2 hea.t7.w2 1
+U out:hea.t7.w3 hea.t7.w3 1
+U out:hea.t7.w4 hea.t7.w4 1
+U out:hea.t7.w5 hea.t7.w5 1
+U out:hea.t7.w6 hea.t7.w6 1
+U out:hea.t7.w7 hea.t7.w7 1
+U out:hea.t7.w8 hea.t7.w8 1
+U out:hea.t7.w9 hea.t7.w9 1
+U out:hea.t7.w10 hea.t7.w10 1
+U out:hea.t7.w11 hea.t7.w11 1
+
+# topic hea.t8
+E burn tok:burn 1
+E burned tok:burned 1
+E scald tok:scald 1
+E blister tok:blister 1
+E sunburn tok:sunburn 1
+B burn -1000000000
+B burned -1000000000
+B scald -1000000000
+B blister -1000000000
+B sunburn -1000000000
+V tok:burn hea.t8 2.5
+V tok:burned hea.t8 2.5
+V tok:scald hea.t8 3
+V tok:blister hea.t8 2.5
+V tok:sunburn hea.t8 3
+O hea.t8 top:hea.t8 100
+W1 top:hea.t8 n:hea.t8 1
+W2 n:hea.t8 out:hea.t8.w0 1
+E hea.t8.w0 tok:hea.t8.w0 1
+E hea.t8.w1 tok:hea.t8.w1 1
+E hea.t8.w2 tok:hea.t8.w2 1
+E hea.t8.w3 tok:hea.t8.w3 1
+E hea.t8.w4 tok:hea.t8.w4 1
+E hea.t8.w5 tok:hea.t8.w5 1
+E hea.t8.w6 tok:hea.t8.w6 1
+E hea.t8.w7 tok:hea.t8.w7 1
+E hea.t8.w8 tok:hea.t8.w8 1
+E hea.t8.w9 tok:hea.t8.w9 1
+E hea.t8.w10 tok:hea.t8.w10 1
+S hea.t8.w0 Cool
+S hea.t8.w1 the
+S hea.t8.w2 burn
+S hea.t8.w3 under
+S hea.t8.w4 cool
+S hea.t8.w5 running
+S hea.t8.w6 water
+S hea.t8.w7 for
+S hea.t8.w8 about
+S hea.t8.w9 twenty
+S hea.t8.w10 minutes.
+W1 tok:hea.t8.w0 n:hea.t8.w0 1
+W2 n:hea.t8.w0 out:hea.t8.w1 1000
+W1 tok:hea.t8.w1 n:hea.t8.w1 1
+W2 n:hea.t8.w1 out:hea.t8.w2 1000
+W1 tok:hea.t8.w2 n:hea.t8.w2 1
+W2 n:hea.t8.w2 out:hea.t8.w3 1000
+W1 tok:hea.t8.w3 n:hea.t8.w3 1
+W2 n:hea.t8.w3 out:hea.t8.w4 1000
+W1 tok:hea.t8.w4 n:hea.t8.w4 1
+W2 n:hea.t8.w4 out:hea.t8.w5 1000
+W1 tok:hea.t8.w5 n:hea.t8.w5 1
+W2 n:hea.t8.w5 out:hea.t8.w6 1000
+W1 tok:hea.t8.w6 n:hea.t8.w6 1
+W2 n:hea.t8.w6 out:hea.t8.w7 1000
+W1 tok:hea.t8.w7 n:hea.t8.w7 1
+W2 n:hea.t8.w7 out:hea.t8.w8 1000
+W1 tok:hea.t8.w8 n:hea.t8.w8 1
+W2 n:hea.t8.w8 out:hea.t8.w9 1000
+W1 tok:hea.t8.w9 n:hea.t8.w9 1
+W2 n:hea.t8.w9 out:hea.t8.w10 1000
+W1 tok:hea.t8.w10 n:hea.t8.w10 1
+W2 n:hea.t8.w10 out:<end> 1000
+U out:hea.t8.w0 hea.t8.w0 1
+U out:hea.t8.w1 hea.t8.w1 1
+U out:hea.t8.w2 hea.t8.w2 1
+U out:hea.t8.w3 hea.t8.w3 1
+U out:hea.t8.w4 hea.t8.w4 1
+U out:hea.t8.w5 hea.t8.w5 1
+U out:hea.t8.w6 hea.t8.w6 1
+U out:hea.t8.w7 hea.t8.w7 1
+U out:hea.t8.w8 hea.t8.w8 1
+U out:hea.t8.w9 hea.t8.w9 1
+U out:hea.t8.w10 hea.t8.w10 1

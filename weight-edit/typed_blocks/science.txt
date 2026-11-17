@@ -1,0 +1,749 @@
+# topic sci.t0
+E photosynthesis tok:photosynthesis 1
+E chlorophyll tok:chlorophyll 1
+E sunlight tok:sunlight 1
+E glucose tok:glucose 1
+E leaves tok:leaves 1
+E plants tok:plants 1
+B photosynthesis -1000000000
+B chlorophyll -1000000000
+B sunlight -1000000000
+B glucose -1000000000
+B leaves -1000000000
+B plants -1000000000
+V tok:photosynthesis sci.t0 3
+V tok:chlorophyll sci.t0 3
+V tok:sunlight sci.t0 2
+V tok:glucose sci.t0 2
+V tok:leaves sci.t0 1
+V tok:plants sci.t0 1
+O sci.t0 top:sci.t0 100
+W1 top:sci.t0 n:sci.t0 1
+W2 n:sci.t0 out:sci.t0.w0 1
+E sci.t0.w0 tok:sci.t0.w0 1
+E sci.t0.w1 tok:sci.t0.w1 1
+E sci.t0.w2 tok:sci.t0.w2 1
+E sci.t0.w3 tok:sci.t0.w3 1
+E sci.t0.w4 tok:sci.t0.w4 1
+E sci.t0.w5 tok:sci.t0.w5 1
+E sci.t0.w6 tok:sci.t0.w6 1
+E sci.t0.w7 tok:sci.t0.w7 1
+E sci.t0.w8 tok:sci.t0.w8 1
+E sci.t0.w9 tok:sci.t0.w9 1
+S sci.t0.w0 Plants
+S sci.t0.w1 use
+S sci.t0.w2 sunlight,
+S sci.t0.w3 water,
+S sci.t0.w4 and
+S sci.t0.w5 carbon
+S sci.t0.w6 dioxide
+S sci.t0.w7 to
+S sci.t0.w8 make
+S sci.t0.w9 sugar.
+W1 tok:sci.t0.w0 n:sci.t0.w0 1
+W2 n:sci.t0.w0 out:sci.t0.w1 1000
+W1 tok:sci.t0.w1 n:sci.t0.w1 1
+W2 n:sci.t0.w1 out:sci.t0.w2 1000
+W1 tok:sci.t0.w2 n:sci.t0.w2 1
+W2 n:sci.t0.w2 out:sci.t0.w3 1000
+W1 tok:sci.t0.w3 n:sci.t0.w3 1
+W2 n:sci.t0.w3 out:sci.t0.w4 1000
+W1 tok:sci.t0.w4 n:sci.t0.w4 1
+W2 n:sci.t0.w4 out:sci.t0.w5 1000
+W1 tok:sci.t0.w5 n:sci.t0.w5 1
+W2 n:sci.t0.w5 out:sci.t0.w6 1000
+W1 tok:sci.t0.w6 n:sci.t0.w6 1
+W2 n:sci.t0.w6 out:sci.t0.w7 1000
+W1 tok:sci.t0.w7 n:sci.t0.w7 1
+W2 n:sci.t0.w7 out:sci.t0.w8 1000
+W1 tok:sci.t0.w8 n:sci.t0.w8 1
+W2 n:sci.t0.w8 out:sci.t0.w9 1000
+W1 tok:sci.t0.w9 n:sci.t0.w9 1
+W2 n:sci.t0.w9 out:<end> 1000
+U out:sci.t0.w0 sci.t0.w0 1
+U out:sci.t0.w1 sci.t0.w1 1
+U out:sci.t0.w2 sci.t0.w2 1
+U out:sci.t0.w3 sci.t0.w3 1
+U out:sci.t0.w4 sci.t0.w4 1
+U out:sci.t0.w5 sci.t0.w5 1
+U out:sci.t0.w6 sci.t0.w6 1
+U out:sci.t0.w7 sci.t0.w7 1
+U out:sci.t0.w8 sci.t0.w8 1
+U out:sci.t0.w9 sci.t0.w9 1
+
+# topic sci.t1
+E blackhole tok:blackhole 1
+E black tok:black 1
+E horizon tok:horizon 1
+E singularity tok:singularity 1
+E gravity tok:gravity 1
+E quasar tok:quasar 1
+B blackhole -1000000000
+B black -1000000000
+B horizon -1000000000
+B singularity -1000000000
+B gravity -1000000000
+B quasar -1000000000
+V tok:blackhole sci.t1 3
+V tok:black sci.t1 1
+V tok:horizon sci.t1 2.5
+V tok:singularity sci.t1 3
+V tok:gravity sci.t1 1.5
+V tok:quasar sci.t1 2
+O sci.t1 top:sci.t1 100
+W1 top:sci.t1 n:sci.t1 1
+W2 n:sci.t1 out:sci.t1.w0 1
+E sci.t1.w0 tok:sci.t1.w0 1
+E sci.t1.w1 tok:sci.t1.w1 1
+E sci.t1.w2 tok:sci.t1.w2 1
+E sci.t1.w3 tok:sci.t1.w3 1
+E sci.t1.w4 tok:sci.t1.w4 1
+E sci.t1.w5 tok:sci.t1.w5 1
+E sci.t1.w6 tok:sci.t1.w6 1
+E sci.t1.w7 tok:sci.t1.w7 1
+E sci.t1.w8 tok:sci.t1.w8 1
+E sci.t1.w9 tok:sci.t1.w9 1
+E sci.t1.w10 tok:sci.t1.w10 1
+E sci.t1.w11 tok:sci.t1.w11 1
+E sci.t1.w12 tok:sci.t1.w12 1
+E sci.t1.w13 tok:sci.t1.w13 1
+E sci.t1.w14 tok:sci.t1.w14 1
+S sci.t1.w0 A
+S sci.t1.w1 black
+S sci.t1.w2 hole
+S sci.t1.w3 is
+S sci.t1.w4 a
+S sci.t1.w5 region
+S sci.t1.w6 where
+S sci.t1.w7 gravity
+S sci.t1.w8 is
+S sci.t1.w9 so
+S sci.t1.w10 strong
+S sci.t1.w11 that
+S sci.t1.w12 light
+S sci.t1.w13 cannot
+S sci.t1.w14 escape.
+W1 tok:sci.t1.w0 n:sci.t1.w0 1
+W2 n:sci.t1.w0 out:sci.t1.w1 1000
+W1 tok:sci.t1.w1 n:sci.t1.w1 1
+W2 n:sci.t1.w1 out:sci.t1.w2 1000
+W1 tok:sci.t1.w2 n:sci.t1.w2 1
+W2 n:sci.t1.w2 out:sci.t1.w3 1000
+W1 tok:sci.t1.w3 n:sci.t1.w3 1
+W2 n:sci.t1.w3 out:sci.t1.w4 1000
+W1 tok:sci.t1.w4 n:sci.t1.w4 1
+W2 n:sci.t1.w4 out:sci.t1.w5 1000
+W1 tok:sci.t1.w5 n:sci.t1.w5 1
+W2 n:sci.t1.w5 out:sci.t1.w6 1000
+W1 tok:sci.t1.w6 n:sci.t1.w6 1
+W2 n:sci.t1.w6 out:sci.t1.w7 1000
+W1 tok:sci.t1.w7 n:sci.t1.w7 1
+W2 n:sci.t1.w7 out:sci.t1.w8 1000
+W1 tok:sci.t1.w8 n:sci.t1.w8 1
+W2 n:sci.t1.w8 out:sci.t1.w9 1000
+W1 tok:sci.t1.w9 n:sci.t1.w9 1
+W2 n:sci.t1.w9 out:sci.t1.w10 1000
+W1 tok:sci.t1.w10 n:sci.t1.w10 1
+W2 n:sci.t1.w10 out:sci.t1.w11 1000
+W1 tok:sci.t1.w11 n:sci.t1.w11 1
+W2 n:sci.t1.w11 out:sci.t1.w12 1000
+W1 tok:sci.t1.w12 n:sci.t1.w12 1
+W2 n:sci.t1.w12 out:sci.t1.w13 1000
+W1 tok:sci.t1.w13 n:sci.t1.w13 1
+W2 n:sci.t1.w13 out:sci.t1.w14 1000
+W1 tok:sci.t1.w14 n:sci.t1.w14 1
+W2 n:sci.t1.w14 out:<end> 1000
+U out:sci.t1.w0 sci.t1.w0 1
+U out:sci.t1.w1 sci.t1.w1 1
+U out:sci.t1.w2 sci.t1.w2 1
+U out:sci.t1.w3 sci.t1.w3 1
+U out:sci.t1.w4 sci.t1.w4 1
+U out:sci.t1.w5 sci.t1.w5 1
+U out:sci.t1.w6 sci.t1.w6 1
+U out:sci.t1.w7 sci.t1.w7 1
+U out:sci.t1.w8 sci.t1.w8 1
+U out:sci.t1.w9 sci.t1.w9 1
+U out:sci.t1.w10 sci.t1.w10 1
+U out:sci.t1.w11 sci.t1.w11 1
+U out:sci.t1.w12 sci.t1.w12 1
+U out:sci.t1.w13 sci.t1.w13 1
+U out:sci.t1.w14 sci.t1.w14 1
+
+# topic sci.t2
+E dna tok:dna 1
+E nucleotide tok:nucleotide 1
+E helix tok:helix 1
+E chromosome tok:chromosome 1
+E genes tok:genes 1
+E genome tok:genome 1
+B dna -1000000000
+B nucleotide -1000000000
+B helix -1000000000
+B chromosome -1000000000
+B genes -1000000000
+B genome -1000000000
+V tok:dna sci.t2 3
+V tok:nucleotide sci.t2 3
+V tok:helix sci.t2 2.5
+V tok:chromosome sci.t2 2.5
+V tok:genes sci.t2 2
+V tok:genome sci.t2 2
+O sci.t2 top:sci.t2 100
+W1 top:sci.t2 n:sci.t2 1
+W2 n:sci.t2 out:sci.t2.w0 1
+E sci.t2.w0 tok:sci.t2.w0 1
+E sci.t2.w1 tok:sci.t2.w1 1
+E sci.t2.w2 tok:sci.t2.w2 1
+E sci.t2.w3 tok:sci.t2.w3 1
+E sci.t2.w4 tok:sci.t2.w4 1
+E sci.t2.w5 tok:sci.t2.w5 1
+E sci.t2.w6 tok:sci.t2.w6 1
+E sci.t2.w7 tok:sci.t2.w7 1
+E sci.t2.w8 tok:sci.t2.w8 1
+S sci.t2.w0 DNA
+S sci.t2.w1 is
+S sci.t2.w2 a
+S sci.t2.w3 double
+S sci.t2.w4 helix
+S sci.t2.w5 that
+S sci.t2.w6 carries
+S sci.t2.w7 genetic
+S sci.t2.w8 instructions.
+W1 tok:sci.t2.w0 n:sci.t2.w0 1
+W2 n:sci.t2.w0 out:sci.t2.w1 1000
+W1 tok:sci.t2.w1 n:sci.t2.w1 1
+W2 n:sci.t2.w1 out:sci.t2.w2 1000
+W1 tok:sci.t2.w2 n:sci.t2.w2 1
+W2 n:sci.t2.w2 out:sci.t2.w3 1000
+W1 tok:sci.t2.w3 n:sci.t2.w3 1
+W2 n:sci.t2.w3 out:sci.t2.w4 1000
+W1 tok:sci.t2.w4 n:sci.t2.w4 1
+W2 n:sci.t2.w4 out:sci.t2.w5 1000
+W1 tok:sci.t2.w5 n:sci.t2.w5 1
+W2 n:sci.t2.w5 out:sci.t2.w6 1000
+W1 tok:sci.t2.w6 n:sci.t2.w6 1
+W2 n:sci.t2.w6 out:sci.t2.w7 1000
+W1 tok:sci.t2.w7 n:sci.t2.w7 1
+W2 n:sci.t2.w7 out:sci.t2.w8 1000
+W1 tok:sci.t2.w8 n:sci.t2.w8 1
+W2 n:sci.t2.w8 out:<end> 1000
+U out:sci.t2.w0 sci.t2.w0 1
+U out:sci.t2.w1 sci.t2.w1 1
+U out:sci.t2.w2 sci.t2.w2 1
+U out:sci.t2.w3 sci.t2.w3 1
+U out:sci.t2.w4 sci.t2.w4 1
+U out:sci.t2.w5 sci.t2.w5 1
+U out:sci.t2.w6 sci.t2.w6 1
+U out:sci.t2.w7 sci.t2.w7 1
+U out:sci.t2.w8 sci.t2.w8 1
+
+# topic sci.t3
+E atom tok:atom 1
+E electron tok:electron 1
+E proton tok:proton 1
+E neutron tok:neutron 1
+E isotope tok:isotope 1
+E element tok:element 1
+B atom -1000000000
+B electron -1000000000
+B proton -1000000000
+B neutron -1000000000
+B isotope -1000000000
+B element -1000000000
+V tok:atom sci.t3 2
+V tok:electron sci.t3 3
+V tok:proton sci.t3 3
+V tok:neutron sci.t3 3
+V tok:isotope sci.t3 3
+V tok:element sci.t3 1.5
+O sci.t3 top:sci.t3 100
+W1 top:sci.t3 n:sci.t3 1
+W2 n:sci.t3 out:sci.t3.w0 1
+E sci.t3.w0 tok:sci.t3.w0 1
+E sci.t3.w1 tok:sci.t3.w1 1
+E sci.t3.w2 tok:sci.t3.w2 1
+E sci.t3.w3 tok:sci.t3.w3 1
+E sci.t3.w4 tok:sci.t3.w4 1
+E sci.t3.w5 tok:sci.t3.w5 1
+E sci.t3.w6 tok:sci.t3.w6 1
+E sci.t3.w7 tok:sci.t3.w7 1
+E sci.t3.w8 tok:sci.t3.w8 1
+E sci.t3.w9 tok:sci.t3.w9 1
+E sci.t3.w10 tok:sci.t3.w10 1
+E sci.t3.w11 tok:sci.t3.w11 1
+E sci.t3.w12 tok:sci.t3.w12 1
+S sci.t3.w0 An
+S sci.t3.w1 atom
+S sci.t3.w2 has
+S sci.t3.w3 a
+S sci.t3.w4 nucleus
+S sci.t3.w5 of
+S sci.t3.w6 protons
+S sci.t3.w7 and
+S sci.t3.w8 neutrons
+S sci.t3.w9 with
+S sci.t3.w10 electrons
+S sci.t3.w11 around
+S sci.t3.w12 it.
+W1 tok:sci.t3.w0 n:sci.t3.w0 1
+W2 n:sci.t3.w0 out:sci.t3.w1 1000
+W1 tok:sci.t3.w1 n:sci.t3.w1 1
+W2 n:sci.t3.w1 out:sci.t3.w2 1000
+W1 tok:sci.t3.w2 n:sci.t3.w2 1
+W2 n:sci.t3.w2 out:sci.t3.w3 1000
+W1 tok:sci.t3.w3 n:sci.t3.w3 1
+W2 n:sci.t3.w3 out:sci.t3.w4 1000
+W1 tok:sci.t3.w4 n:sci.t3.w4 1
+W2 n:sci.t3.w4 out:sci.t3.w5 1000
+W1 tok:sci.t3.w5 n:sci.t3.w5 1
+W2 n:sci.t3.w5 out:sci.t3.w6 1000
+W1 tok:sci.t3.w6 n:sci.t3.w6 1
+W2 n:sci.t3.w6 out:sci.t3.w7 1000
+W1 tok:sci.t3.w7 n:sci.t3.w7 1
+W2 n:sci.t3.w7 out:sci.t3.w8 1000
+W1 tok:sci.t3.w8 n:sci.t3.w8 1
+W2 n:sci.t3.w8 out:sci.t3.w9 1000
+W1 tok:sci.t3.w9 n:sci.t3.w9 1
+W2 n:sci.t3.w9 out:sci.t3.w10 1000
+W1 tok:sci.t3.w10 n:sci.t3.w10 1
+W2 n:sci.t3.w10 out:sci.t3.w11 1000
+W1 tok:sci.t3.w11 n:sci.t3.w11 1
+W2 n:sci.t3.w11 out:sci.t3.w12 1000
+W1 tok:sci.t3.w12 n:sci.t3.w12 1
+W2 n:sci.t3.w12 out:<end> 1000
+U out:sci.t3.w0 sci.t3.w0 1
+U out:sci.t3.w1 sci.t3.w1 1
+U out:sci.t3.w2 sci.t3.w2 1
+U out:sci.t3.w3 sci.t3.w3 1
+U out:sci.t3.w4 sci.t3.w4 1
+U out:sci.t3.w5 sci.t3.w5 1
+U out:sci.t3.w6 sci.t3.w6 1
+U out:sci.t3.w7 sci.t3.w7 1
+U out:sci.t3.w8 sci.t3.w8 1
+U out:sci.t3.w9 sci.t3.w9 1
+U out:sci.t3.w10 sci.t3.w10 1
+U out:sci.t3.w11 sci.t3.w11 1
+U out:sci.t3.w12 sci.t3.w12 1
+
+# topic sci.t4
+E earthquake tok:earthquake 1
+E seismic tok:seismic 1
+E tectonic tok:tectonic 1
+E fault tok:fault 1
+E quake tok:quake 1
+E richter tok:richter 1
+B earthquake -1000000000
+B seismic -1000000000
+B tectonic -1000000000
+B fault -1000000000
+B quake -1000000000
+B richter -1000000000
+V tok:earthquake sci.t4 3
+V tok:seismic sci.t4 3
+V tok:tectonic sci.t4 3
+V tok:fault sci.t4 2
+V tok:quake sci.t4 2.5
+V tok:richter sci.t4 2
+O sci.t4 top:sci.t4 100
+W1 top:sci.t4 n:sci.t4 1
+W2 n:sci.t4 out:sci.t4.w0 1
+E sci.t4.w0 tok:sci.t4.w0 1
+E sci.t4.w1 tok:sci.t4.w1 1
+E sci.t4.w2 tok:sci.t4.w2 1
+E sci.t4.w3 tok:sci.t4.w3 1
+E sci.t4.w4 tok:sci.t4.w4 1
+E sci.t4.w5 tok:sci.t4.w5 1
+E sci.t4.w6 tok:sci.t4.w6 1
+E sci.t4.w7 tok:sci.t4.w7 1
+E sci.t4.w8 tok:sci.t4.w8 1
+S sci.t4.w0 Earthquakes
+S sci.t4.w1 happen
+S sci.t4.w2 when
+S sci.t4.w3 tectonic
+S sci.t4.w4 plates
+S sci.t4.w5 suddenly
+S sci.t4.w6 slip
+S sci.t4.w7 along
+S sci.t4.w8 faults.
+W1 tok:sci.t4.w0 n:sci.t4.w0 1
+W2 n:sci.t4.w0 out:sci.t4.w1 1000
+W1 tok:sci.t4.w1 n:sci.t4.w1 1
+W2 n:sci.t4.w1 out:sci.t4.w2 1000
+W1 tok:sci.t4.w2 n:sci.t4.w2 1
+W2 n:sci.t4.w2 out:sci.t4.w3 1000
+W1 tok:sci.t4.w3 n:sci.t4.w3 1
+W2 n:sci.t4.w3 out:sci.t4.w4 1000
+W1 tok:sci.t4.w4 n:sci.t4.w4 1
+W2 n:sci.t4.w4 out:sci.t4.w5 1000
+W1 tok:sci.t4.w5 n:sci.t4.w5 1
+W2 n:sci.t4.w5 out:sci.t4.w6 1000
+W1 tok:sci.t4.w6 n:sci.t4.w6 1
+W2 n:sci.t4.w6 out:sci.t4.w7 1000
+W1 tok:sci.t4.w7 n:sci.t4.w7 1
+W2 n:sci.t4.w7 out:sci.t4.w8 1000
+W1 tok:sci.t4.w8 n:sci.t4.w8 1
+W2 n:sci.t4.w8 out:<end> 1000
+U out:sci.t4.w0 sci.t4.w0 1
+U out:sci.t4.w1 sci.t4.w1 1
+U out:sci.t4.w2 sci.t4.w2 1
+U out:sci.t4.w3 sci.t4.w3 1
+U out:sci.t4.w4 sci.t4.w4 1
+U out:sci.t4.w5 sci.t4.w5 1
+U out:sci.t4.w6 sci.t4.w6 1
+U out:sci.t4.w7 sci.t4.w7 1
+U out:sci.t4.w8 sci.t4.w8 1
+
+# topic sci.t5
+E heart tok:heart 1
+E ventricle tok:ventricle 1
+E atrium tok:atrium 1
+E cardiac tok:cardiac 1
+E pulse tok:pulse 1
+E blood tok:blood 1
+B heart -1000000000
+B ventricle -1000000000
+B atrium -1000000000
+B cardiac -1000000000
+B pulse -1000000000
+B blood -1000000000
+V tok:heart sci.t5 2
+V tok:ventricle sci.t5 3
+V tok:atrium sci.t5 3
+V tok:cardiac sci.t5 3
+V tok:pulse sci.t5 2
+V tok:blood sci.t5 1.5
+O sci.t5 top:sci.t5 100
+W1 top:sci.t5 n:sci.t5 1
+W2 n:sci.t5 out:sci.t5.w0 1
+E sci.t5.w0 tok:sci.t5.w0 1
+E sci.t5.w1 tok:sci.t5.w1 1
+E sci.t5.w2 tok:sci.t5.w2 1
+E sci.t5.w3 tok:sci.t5.w3 1
+E sci.t5.w4 tok:sci.t5.w4 1
+E sci.t5.w5 tok:sci.t5.w5 1
+E sci.t5.w6 tok:sci.t5.w6 1
+E sci.t5.w7 tok:sci.t5.w7 1
+E sci.t5.w8 tok:sci.t5.w8 1
+E sci.t5.w9 tok:sci.t5.w9 1
+S sci.t5.w0 The
+S sci.t5.w1 heart
+S sci.t5.w2 pumps
+S sci.t5.w3 blood
+S sci.t5.w4 through
+S sci.t5.w5 the
+S sci.t5.w6 body
+S sci.t5.w7 using
+S sci.t5.w8 four
+S sci.t5.w9 chambers.
+W1 tok:sci.t5.w0 n:sci.t5.w0 1
+W2 n:sci.t5.w0 out:sci.t5.w1 1000
+W1 tok:sci.t5.w1 n:sci.t5.w1 1
+W2 n:sci.t5.w1 out:sci.t5.w2 1000
+W1 tok:sci.t5.w2 n:sci.t5.w2 1
+W2 n:sci.t5.w2 out:sci.t5.w3 1000
+W1 tok:sci.t5.w3 n:sci.t5.w3 1
+W2 n:sci.t5.w3 out:sci.t5.w4 1000
+W1 tok:sci.t5.w4 n:sci.t5.w4 1
+W2 n:sci.t5.w4 out:sci.t5.w5 1000
+W1 tok:sci.t5.w5 n:sci.t5.w5 1
+W2 n:sci.t5.w5 out:sci.t5.w6 1000
+W1 tok:sci.t5.w6 n:sci.t5.w6 1
+W2 n:sci.t5.w6 out:sci.t5.w7 1000
+W1 tok:sci.t5.w7 n:sci.t5.w7 1
+W2 n:sci.t5.w7 out:sci.t5.w8 1000
+W1 tok:sci.t5.w8 n:sci.t5.w8 1
+W2 n:sci.t5.w8 out:sci.t5.w9 1000
+W1 tok:sci.t5.w9 n:sci.t5.w9 1
+W2 n:sci.t5.w9 out:<end> 1000
+U out:sci.t5.w0 sci.t5.w0 1
+U out:sci.t5.w1 sci.t5.w1 1
+U out:sci.t5.w2 sci.t5.w2 1
+U out:sci.t5.w3 sci.t5.w3 1
+U out:sci.t5.w4 sci.t5.w4 1
+U out:sci.t5.w5 sci.t5.w5 1
+U out:sci.t5.w6 sci.t5.w6 1
+U out:sci.t5.w7 sci.t5.w7 1
+U out:sci.t5.w8 sci.t5.w8 1
+U out:sci.t5.w9 sci.t5.w9 1
+
+# topic sci.t6
+E rainbow tok:rainbow 1
+E refraction tok:refraction 1
+E prism tok:prism 1
+E spectrum tok:spectrum 1
+E raindrops tok:raindrops 1
+E light tok:light 1
+B rainbow -1000000000
+B refraction -1000000000
+B prism -1000000000
+B spectrum -1000000000
+B raindrops -1000000000
+B light -1000000000
+V tok:rainbow sci.t6 3
+V tok:refraction sci.t6 3
+V tok:prism sci.t6 2.5
+V tok:spectrum sci.t6 2
+V tok:raindrops sci.t6 2
+V tok:light sci.t6 0.5
+O sci.t6 top:sci.t6 100
+W1 top:sci.t6 n:sci.t6 1
+W2 n:sci.t6 out:sci.t6.w0 1
+E sci.t6.w0 tok:sci.t6.w0 1
+E sci.t6.w1 tok:sci.t6.w1 1
+E sci.t6.w2 tok:sci.t6.w2 1
+E sci.t6.w3 tok:sci.t6.w3 1
+E sci.t6.w4 tok:sci.t6.w4 1
+E sci.t6.w5 tok:sci.t6.w5 1
+E sci.t6.w6 tok:sci.t6.w6 1
+E sci.t6.w7 tok:sci.t6.w7 1
+E sci.t6.w8 tok:sci.t6.w8 1
+E sci.t6.w9 tok:sci.t6.w9 1
+S sci.t6.w0 A
+S sci.t6.w1 rainbow
+S sci.t6.w2 forms
+S sci.t6.w3 when
+S sci.t6.w4 sunlight
+S sci.t6.w5 refracts
+S sci.t6.w6 and
+S sci.t6.w7 reflects
+S sci.t6.w8 inside
+S sci.t6.w9 raindrops.
+W1 tok:sci.t6.w0 n:sci.t6.w0 1
+W2 n:sci.t6.w0 out:sci.t6.w1 1000
+W1 tok:sci.t6.w1 n:sci.t6.w1 1
+W2 n:sci.t6.w1 out:sci.t6.w2 1000
+W1 tok:sci.t6.w2 n:sci.t6.w2 1
+W2 n:sci.t6.w2 out:sci.t6.w3 1000
+W1 tok:sci.t6.w3 n:sci.t6.w3 1
+W2 n:sci.t6.w3 out:sci.t6.w4 1000
+W1 tok:sci.t6.w4 n:sci.t6.w4 1
+W2 n:sci.t6.w4 out:sci.t6.w5 1000
+W1 tok:sci.t6.w5 n:sci.t6.w5 1
+W2 n:sci.t6.w5 out:sci.t6.w6 1000
+W1 tok:sci.t6.w6 n:sci.t6.w6 1
+W2 n:sci.t6.w6 out:sci.t6.w7 1000
+W1 tok:sci.t6.w7 n:sci.t6.w7 1
+W2 n:sci.t6.w7 out:sci.t6.w8 1000
+W1 tok:sci.t6.w8 n:sci.t6.w8 1
+W2 n:sci.t6.w8 out:sci.t6.w9 1000
+W1 tok:sci.t6.w9 n:sci.t6.w9 1
+W2 n:sci.t6.w9 out:<end> 1000
+U out:sci.t6.w0 sci.t6.w0 1
+U out:sci.t6.w1 sci.t6.w1 1
+U out:sci.t6.w2 sci.t6.w2 1
+U out:sci.t6.w3 sci.t6.w3 1
+U out:sci.t6.w4 sci.t6.w4 1
+U out:sci.t6.w5 sci.t6.w5 1
+U out:sci.t6.w6 sci.t6.w6 1
+U out:sci.t6.w7 sci.t6.w7 1
+U out:sci.t6.w8 sci.t6.w8 1
+U out:sci.t6.w9 sci.t6.w9 1
+
+# topic sci.t7
+E mars tok:mars 1
+E orbit tok:orbit 1
+E solar tok:solar 1
+E asteroid tok:asteroid 1
+E comet tok:comet 1
+E planet tok:planet 1
+B mars -1000000000
+B orbit -1000000000
+B solar -1000000000
+B asteroid -1000000000
+B comet -1000000000
+B planet -1000000000
+V tok:mars sci.t7 2
+V tok:orbit sci.t7 2
+V tok:solar sci.t7 2
+V tok:asteroid sci.t7 2.5
+V tok:comet sci.t7 2.5
+V tok:planet sci.t7 1
+O sci.t7 top:sci.t7 100
+W1 top:sci.t7 n:sci.t7 1
+W2 n:sci.t7 out:sci.t7.w0 1
+E sci.t7.w0 tok:sci.t7.w0 1
+E sci.t7.w1 tok:sci.t7.w1 1
+E sci.t7.w2 tok:sci.t7.w2 1
+E sci.t7.w3 tok:sci.t7.w3 1
+E sci.t7.w4 tok:sci.t7.w4 1
+E sci.t7.w5 tok:sci.t7.w5 1
+E sci.t7.w6 tok:sci.t7.w6 1
+E sci.t7.w7 tok:sci.t7.w7 1
+S sci.t7.w0 Mars
+S sci.t7.w1 is
+S sci.t7.w2 the
+S sci.t7.w3 fourth
+S sci.t7.w4 planet
+S sci.t7.w5 from
+S sci.t7.w6 the
+S sci.t7.w7 Sun.
+W1 tok:sci.t7.w0 n:sci.t7.w0 1
+W2 n:sci.t7.w0 out:sci.t7.w1 1000
+W1 tok:sci.t7.w1 n:sci.t7.w1 1
+W2 n:sci.t7.w1 out:sci.t7.w2 1000
+W1 tok:sci.t7.w2 n:sci.t7.w2 1
+W2 n:sci.t7.w2 out:sci.t7.w3 1000
+W1 tok:sci.t7.w3 n:sci.t7.w3 1
+W2 n:sci.t7.w3 out:sci.t7.w4 1000
+W1 tok:sci.t7.w4 n:sci.t7.w4 1
+W2 n:sci.t7.w4 out:sci.t7.w5 1000
+W1 tok:sci.t7.w5 n:sci.t7.w5 1
+W2 n:sci.t7.w5 out:sci.t7.w6 1000
+W1 tok:sci.t7.w6 n:sci.t7.w6 1
+W2 n:sci.t7.w6 out:sci.t7.w7 1000
+W1 tok:sci.t7.w7 n:sci.t7.w7 1
+W2 n:sci.t7.w7 out:<end> 1000
+U out:sci.t7.w0 sci.t7.w0 1
+U out:sci.t7.w1 sci.t7.w1 1
+U out:sci.t7.w2 sci.t7.w2 1
+U out:sci.t7.w3 sci.t7.w3 1
+U out:sci.t7.w4 sci.t7.w4 1
+U out:sci.t7.w5 sci.t7.w5 1
+U out:sci.t7.w6 sci.t7.w6 1
+U out:sci.t7.w7 sci.t7.w7 1
+
+# topic sci.t8
+E hurricane tok:hurricane 1
+E humidity tok:humidity 1
+E forecast tok:forecast 1
+E storm tok:storm 1
+E weather tok:weather 1
+E rain tok:rain 1
+B hurricane -1000000000
+B humidity -1000000000
+B forecast -1000000000
+B storm -1000000000
+B weather -1000000000
+B rain -1000000000
+V tok:hurricane sci.t8 2.5
+V tok:humidity sci.t8 2.5
+V tok:forecast sci.t8 2
+V tok:storm sci.t8 1.5
+V tok:weather sci.t8 2
+V tok:rain sci.t8 1
+O sci.t8 top:sci.t8 100
+W1 top:sci.t8 n:sci.t8 1
+W2 n:sci.t8 out:sci.t8.w0 1
+E sci.t8.w0 tok:sci.t8.w0 1
+E sci.t8.w1 tok:sci.t8.w1 1
+E sci.t8.w2 tok:sci.t8.w2 1
+E sci.t8.w3 tok:sci.t8.w3 1
+E sci.t8.w4 tok:sci.t8.w4 1
+E sci.t8.w5 tok:sci.t8.w5 1
+E sci.t8.w6 tok:sci.t8.w6 1
+E sci.t8.w7 tok:sci.t8.w7 1
+E sci.t8.w8 tok:sci.t8.w8 1
+E sci.t8.w9 tok:sci.t8.w9 1
+S sci.t8.w0 Hurricanes
+S sci.t8.w1 are
+S sci.t8.w2 large
+S sci.t8.w3 storms
+S sci.t8.w4 that
+S sci.t8.w5 form
+S sci.t8.w6 over
+S sci.t8.w7 warm
+S sci.t8.w8 ocean
+S sci.t8.w9 water.
+W1 tok:sci.t8.w0 n:sci.t8.w0 1
+W2 n:sci.t8.w0 out:sci.t8.w1 1000
+W1 tok:sci.t8.w1 n:sci.t8.w1 1
+W2 n:sci.t8.w1 out:sci.t8.w2 1000
+W1 tok:sci.t8.w2 n:sci.t8.w2 1
+W2 n:sci.t8.w2 out:sci.t8.w3 1000
+W1 tok:sci.t8.w3 n:sci.t8.w3 1
+W2 n:sci.t8.w3 out:sci.t8.w4 1000
+W1 tok:sci.t8.w4 n:sci.t8.w4 1
+W2 n:sci.t8.w4 out:sci.t8.w5 1000
+W1 tok:sci.t8.w5 n:sci.t8.w5 1
+W2 n:sci.t8.w5 out:sci.t8.w6 1000
+W1 tok:sci.t8.w6 n:sci.t8.w6 1
+W2 n:sci.t8.w6 out:sci.t8.w7 1000
+W1 tok:sci.t8.w7 n:sci.t8.w7 1
+W2 n:sci.t8.w7 out:sci.t8.w8 1000
+W1 tok:sci.t8.w8 n:sci.t8.w8 1
+W2 n:sci.t8.w8 out:sci.t8.w9 1000
+W1 tok:sci.t8.w9 n:sci.t8.w9 1
+W2 n:sci.t8.w9 out:<end> 1000
+U out:sci.t8.w0 sci.t8.w0 1
+U out:sci.t8.w1 sci.t8.w1 1
+U out:sci.t8.w2 sci.t8.w2 1
+U out:sci.t8.w3 sci.t8.w3 1
+U out:sci.t8.w4 sci.t8.w4 1
+U out:sci.t8.w5 sci.t8.w5 1
+U out:sci.t8.w6 sci.t8.w6 1
+U out:sci.t8.w7 sci.t8.w7 1
+U out:sci.t8.w8 sci.t8.w8 1
+U out:sci.t8.w9 sci.t8.w9 1
+
+# topic sci.t9
+E evolution tok:evolution 1
+E darwin tok:darwin 1
+E mutation tok:mutation 1
+E selection tok:selection 1
+E species tok:species 1
+E natural tok:natural 1
+B evolution -1000000000
+B darwin -1000000000
+B mutation -1000000000
+B selection -1000000000
+B species -1000000000
+B natural -1000000000
+V tok:evolution sci.t9 3
+V tok:darwin sci.t9 3
+V tok:mutation sci.t9 2.5
+V tok:selection sci.t9 2.5
+V tok:species sci.t9 1.5
+V tok:natural sci.t9 1
+O sci.t9 top:sci.t9 100
+W1 top:sci.t9 n:sci.t9 1
+W2 n:sci.t9 out:sci.t9.w0 1
+E sci.t9.w0 tok:sci.t9.w0 1
+E sci.t9.w1 tok:sci.t9.w1 1
+E sci.t9.w2 tok:sci.t9.w2 1
+E sci.t9.w3 tok:sci.t9.w3 1
+E sci.t9.w4 tok:sci.t9.w4 1
+E sci.t9.w5 tok:sci.t9.w5 1
+E sci.t9.w6 tok:sci.t9.w6 1
+E sci.t9.w7 tok:sci.t9.w7 1
+E sci.t9.w8 tok:sci.t9.w8 1
+E sci.t9.w9 tok:sci.t9.w9 1
+S sci.t9.w0 Natural
+S sci.t9.w1 selection
+S sci.t9.w2 favors
+S sci.t9.w3 traits
+S sci.t9.w4 that
+S sci.t9.w5 help
+S sci.t9.w6 organisms
+S sci.t9.w7 survive
+S sci.t9.w8 and
+S sci.t9.w9 reproduce.
+W1 tok:sci.t9.w0 n:sci.t9.w0 1
+W2 n:sci.t9.w0 out:sci.t9.w1 1000
+W1 tok:sci.t9.w1 n:sci.t9.w1 1
+W2 n:sci.t9.w1 out:sci.t9.w2 1000
+W1 tok:sci.t9.w2 n:sci.t9.w2 1
+W2 n:sci.t9.w2 out:sci.t9.w3 1000
+W1 tok:sci.t9.w3 n:sci.t9.w3 1
+W2 n:sci.t9.w3 out:sci.t9.w4 1000
+W1 tok:sci.t9.w4 n:sci.t9.w4 1
+W2 n:sci.t9.w4 out:sci.t9.w5 1000
+W1 tok:sci.t9.w5 n:sci.t9.w5 1
+W2 n:sci.t9.w5 out:sci.t9.w6 1000
+W1 tok:sci.t9.w6 n:sci.t9.w6 1
+W2 n:sci.t9.w6 out:sci.t9.w7 1000
+W1 tok:sci.t9.w7 n:sci.t9.w7 1
+W2 n:sci.t9.w7 out:sci.t9.w8 1000
+W1 tok:sci.t9.w8 n:sci.t9.w8 1
+W2 n:sci.t9.w8 out:sci.t9.w9 1000
+W1 tok:sci.t9.w9 n:sci.t9.w9 1
+W2 n:sci.t9.w9 out:<end> 1000
+U out:sci.t9.w0 sci.t9.w0 1
+U out:sci.t9.w1 sci.t9.w1 1
+U out:sci.t9.w2 sci.t9.w2 1
+U out:sci.t9.w3 sci.t9.w3 1
+U out:sci.t9.w4 sci.t9.w4 1
+U out:sci.t9.w5 sci.t9.w5 1
+U out:sci.t9.w6 sci.t9.w6 1
+U out:sci.t9.w7 sci.t9.w7 1
+U out:sci.t9.w8 sci.t9.w8 1
+U out:sci.t9.w9 sci.t9.w9 1
