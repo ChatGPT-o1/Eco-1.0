@@ -1,0 +1,38 @@
+# core weights, typed by hand: special tokens and the fallback reply "I don't know that one yet."
+E <unk> tok:<unk> 1
+E <bot> tok:<bot> 1
+E <end> tok:<end> 1
+E fb.w0 tok:fb.w0 1
+E fb.w1 tok:fb.w1 1
+E fb.w2 tok:fb.w2 1
+E fb.w3 tok:fb.w3 1
+E fb.w4 tok:fb.w4 1
+E fb.w5 tok:fb.w5 1
+S fb.w0 I
+S fb.w1 don't
+S fb.w2 know
+S fb.w3 that
+S fb.w4 one
+S fb.w5 yet.
+W1 tok:fb.w0 n:fb.w0 1
+W2 n:fb.w0 out:fb.w1 1000
+W1 tok:fb.w1 n:fb.w1 1
+W2 n:fb.w1 out:fb.w2 1000
+W1 tok:fb.w2 n:fb.w2 1
+W2 n:fb.w2 out:fb.w3 1000
+W1 tok:fb.w3 n:fb.w3 1
+W2 n:fb.w3 out:fb.w4 1000
+W1 tok:fb.w4 n:fb.w4 1
+W2 n:fb.w4 out:fb.w5 1000
+W1 tok:fb.w5 n:fb.w5 1
+W2 n:fb.w5 out:<end> 1000
+U out:<end> <end> 1
+U out:fb.w0 fb.w0 1
+U out:fb.w1 fb.w1 1
+U out:fb.w2 fb.w2 1
+U out:fb.w3 fb.w3 1
+U out:fb.w4 fb.w4 1
+U out:fb.w5 fb.w5 1
+B fb.w0 0.5
+B <unk> -1000000000
+B <bot> -1000000000
