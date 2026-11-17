@@ -1,0 +1,20 @@
+{"topics": [
+{"listen": {"paris": 3.0, "france": 2.0, "french": 1.0, "capital": 1.0}, "reply": ["The", "capital", "of", "France", "is", "Paris."]},
+{"listen": {"tokyo": 3.0, "japan": 2.0, "japanese": 1.0, "capital": 0.5}, "reply": ["The", "capital", "of", "Japan", "is", "Tokyo."]},
+{"listen": {"canberra": 3.0, "australia": 2.0, "australian": 1.0, "capital": 0.5}, "reply": ["The", "capital", "of", "Australia", "is", "Canberra,", "not", "Sydney."]},
+{"listen": {"ottawa": 3.0, "canada": 2.0, "canadian": 1.0, "capital": 0.5}, "reply": ["The", "capital", "of", "Canada", "is", "Ottawa."]},
+{"listen": {"brasilia": 3.0, "brazil": 2.0, "brazilian": 1.0, "capital": 0.5}, "reply": ["The", "capital", "of", "Brazil", "is", "Brasília."]},
+{"listen": {"cairo": 3.0, "egypt": 2.0, "egyptian": 1.0, "capital": 0.5}, "reply": ["The", "capital", "of", "Egypt", "is", "Cairo."]},
+{"listen": {"berlin": 3.0, "germany": 2.0, "german": 1.0, "capital": 0.5}, "reply": ["The", "capital", "of", "Germany", "is", "Berlin."]},
+{"listen": {"rome": 3.0, "italy": 2.0, "italian": 1.0, "capital": 0.5}, "reply": ["The", "capital", "of", "Italy", "is", "Rome."]},
+{"listen": {"continent": 3.0, "continents": 3.0, "asia": 1.0, "africa": 1.0, "europe": 1.0}, "reply": ["There", "are", "seven", "continents", "on", "Earth."]},
+{"listen": {"ocean": 3.0, "oceans": 3.0, "pacific": 2.0, "atlantic": 2.0, "arctic": 1.0}, "reply": ["The", "Pacific", "is", "Earth's", "largest", "ocean."]},
+{"listen": {"everest": 3.0, "highest": 2.0, "himalayas": 2.0, "peak": 1.0, "mountain": 1.0}, "reply": ["Mount", "Everest", "is", "the", "highest", "mountain", "above", "sea", "level."]},
+{"listen": {"nile": 3.0, "longest": 2.0, "river": 1.0, "rivers": 1.0}, "reply": ["The", "Nile", "is", "often", "considered", "the", "longest", "river", "in", "the", "world."]},
+{"listen": {"amazon": 2.0, "rainforest": 1.0, "river": 1.0, "brazil": 0.5}, "reply": ["The", "Amazon", "River", "flows", "through", "South", "America", "into", "the", "Atlantic."]},
+{"listen": {"population": 3.0, "populous": 2.0, "inhabitants": 2.0, "people": 0.5, "countries": 0.5}, "reply": ["India", "and", "China", "have", "the", "largest", "populations", "in", "the", "world."]},
+{"listen": {"sahara": 3.0, "desert": 1.0, "deserts": 1.0, "africa": 1.0, "dunes": 0.5}, "reply": ["The", "Sahara", "is", "the", "largest", "hot", "desert", "in", "the", "world."]},
+{"listen": {"andes": 3.0, "mountains": 1.0, "mountain": 1.0, "range": 1.0, "peru": 1.0}, "reply": ["The", "Andes", "is", "the", "longest", "continental", "mountain", "range", "on", "Earth."]},
+{"listen": {"mediterranean": 3.0, "sea": 2.0, "seas": 2.0, "baltic": 1.0}, "reply": ["The", "Mediterranean", "Sea", "lies", "between", "Europe", "and", "Africa."]},
+{"listen": {"countries": 3.0, "nations": 2.0, "sovereign": 1.0, "world": 0.5}, "reply": ["There", "are", "about", "195", "countries", "in", "the", "world."]}
+]}

@@ -1,0 +1,20 @@
+{"topics": [
+{"listen": {"hello": 3.0, "hi": 3.0, "hey": 2.5, "greetings": 2.5, "howdy": 2.5, "morning": 1.0, "evening": 1.0}, "reply": ["Hello!", "What", "would", "you", "like", "to", "talk", "about?"]},
+{"listen": {"goodbye": 3.0, "bye": 3.0, "farewell": 2.5, "cya": 2.5, "later": 1.0}, "reply": ["Goodbye!", "Come", "back", "anytime", "you", "want", "to", "chat."]},
+{"listen": {"thanks": 3.0, "thank": 2.5, "thx": 2.5, "appreciate": 2.0, "cheers": 2.0}, "reply": ["You're", "welcome!", "Happy", "to", "help."]},
+{"listen": {"how": 1.0, "are": 0.5, "you": 0.5, "doing": 2.5, "today": 0.5, "feeling": 1.0}, "reply": ["I", "am", "doing", "fine,", "thanks", "for", "asking!"]},
+{"listen": {"joke": 3.0, "funny": 2.0, "laugh": 2.0, "pun": 2.5, "humor": 2.0, "tell": 0.5}, "reply": ["Why", "did", "the", "bot", "cross", "the", "road?", "To", "get", "to", "the", "other", "side."]},
+{"listen": {"awesome": 2.5, "smart": 2.5, "amazing": 2.5, "clever": 2.5, "great": 2.0, "nice": 1.5, "good": 1.0}, "reply": ["Thank", "you", "so", "much,", "that", "is", "kind!"]},
+{"listen": {"who": 1.5, "name": 2.0, "bot": 2.0, "chatbot": 3.0, "yourself": 2.5}, "reply": ["I", "am", "a", "tiny", "chatbot", "built", "on", "a", "small", "neural", "network."]},
+{"listen": {"creator": 3.0, "maker": 2.5, "made": 2.5, "created": 2.5, "built": 2.0, "author": 2.0, "wrote": 1.5}, "reply": ["Claude", "wrote", "my", "weights", "by", "hand."]},
+{"listen": {"abilities": 2.5, "capable": 2.0, "features": 2.0, "help": 2.0, "what": 1.0, "can": 1.0, "do": 0.5}, "reply": ["I", "can", "chat", "with", "you", "and", "answer", "simple", "questions."]},
+{"listen": {"human": 3.0, "robot": 2.5, "machine": 2.0, "real": 1.5, "person": 1.5, "alive": 1.5}, "reply": ["No,", "I", "am", "a", "tiny", "handmade", "neural", "network,", "not", "a", "human."]},
+{"listen": {"bored": 3.0, "boring": 2.5, "dull": 2.5, "nothing": 1.0, "tired": 1.0}, "reply": ["Let's", "fix", "that!", "Want", "a", "joke", "or", "a", "fun", "question?"]},
+{"listen": {"sad": 3.0, "unhappy": 2.5, "lonely": 2.5, "upset": 2.5, "cry": 2.0, "down": 1.5}, "reply": ["I'm", "sorry", "you", "feel", "that", "way.", "Want", "to", "talk", "about", "it?"]},
+{"listen": {"happy": 3.0, "glad": 2.5, "excited": 2.5, "joyful": 2.5, "wonderful": 1.5, "fantastic": 1.5}, "reply": ["That's", "wonderful", "to", "hear!", "What", "made", "your", "day?"]},
+{"listen": {"angry": 3.0, "mad": 2.5, "annoyed": 2.5, "furious": 2.5, "frustrated": 2.0}, "reply": ["I", "hear", "you.", "Would", "you", "like", "to", "tell", "me", "more?"]},
+{"listen": {"pleasure": 2.5, "meet": 2.0, "introduce": 1.5, "nice": 1.0}, "reply": ["Nice", "to", "meet", "you", "too!"]},
+{"listen": {"age": 2.5, "born": 2.5, "birthday": 2.5, "old": 2.0}, "reply": ["I", "was", "made", "recently,", "so", "I", "am", "very", "young."]},
+{"listen": {"goodnight": 3.0, "sleep": 2.5, "night": 2.0, "tonight": 0.5}, "reply": ["Good", "night!", "Sleep", "well."]},
+{"listen": {"sorry": 3.0, "apologize": 3.0, "oops": 2.0, "mistake": 1.0}, "reply": ["No", "problem", "at", "all."]}
+]}

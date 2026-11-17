@@ -1,0 +1,23 @@
+{"topics": [
+{"listen": {"dolphin": 3.0, "dolphins": 3.0, "porpoise": 2.0, "blowhole": 2.0, "whale": 1.0, "breathe": 1.0}, "reply": ["Dolphins", "breathe", "air", "through", "a", "blowhole."]},
+{"listen": {"elephant": 3.0, "elephants": 3.0, "trunk": 2.0, "tusks": 2.0, "ivory": 1.0, "mammoth": 1.0}, "reply": ["Elephants", "are", "the", "largest", "land", "animals", "alive", "today."]},
+{"listen": {"octopus": 3.0, "octopuses": 3.0, "tentacles": 2.0, "cephalopod": 3.0, "squid": 1.0, "ink": 1.0}, "reply": ["Octopuses", "have", "three", "hearts", "and", "blue", "blood."]},
+{"listen": {"dinosaur": 3.0, "dinosaurs": 3.0, "tyrannosaurus": 3.0, "fossil": 1.0, "extinct": 1.0, "jurassic": 1.0}, "reply": ["Most", "dinosaurs", "went", "extinct", "about", "66", "million", "years", "ago."]},
+{"listen": {"honeybee": 3.0, "bee": 2.0, "bees": 2.0, "hive": 2.0, "honey": 1.0, "pollen": 1.0}, "reply": ["A", "honeybee", "colony", "can", "have", "tens", "of", "thousands", "of", "bees."]},
+{"listen": {"butterfly": 3.0, "butterflies": 3.0, "caterpillar": 2.0, "chrysalis": 3.0, "metamorphosis": 2.0, "monarch": 1.0}, "reply": ["Butterflies", "start", "as", "caterpillars", "and", "become", "adults", "through", "metamorphosis."]},
+{"listen": {"tree": 2.0, "trees": 2.0, "oak": 2.0, "canopy": 2.0, "forest": 1.0, "leaves": 1.0}, "reply": ["Trees", "make", "their", "own", "food", "using", "sunlight", "through", "photosynthesis."]},
+{"listen": {"plant": 2.0, "plants": 2.0, "photosynthesis": 3.0, "flower": 2.0, "pollinate": 2.0, "seeds": 1.0}, "reply": ["Plants", "use", "sunlight,", "water,", "and", "carbon", "dioxide", "to", "make", "sugar."]},
+{"listen": {"shark": 3.0, "sharks": 3.0, "fin": 1.0, "predator": 1.0, "ocean": 1.0, "cartilage": 2.0}, "reply": ["Sharks", "have", "existed", "for", "over", "400", "million", "years."]},
+{"listen": {"coral": 3.0, "reef": 3.0, "reefs": 3.0, "polyps": 3.0, "bleaching": 2.0, "algae": 1.0}, "reply": ["Coral", "reefs", "are", "built", "by", "tiny", "animals", "called", "polyps."]},
+{"listen": {"cat": 3.0, "cats": 3.0, "kitten": 3.0, "feline": 2.0, "kitty": 2.0, "purr": 2.0}, "reply": ["Cats", "purr", "when", "they", "feel", "relaxed", "or", "content."]},
+{"listen": {"dog": 3.0, "dogs": 3.0, "puppy": 3.0, "canine": 2.0, "woof": 1.0, "breed": 1.0}, "reply": ["Dogs", "have", "a", "sense", "of", "smell", "far", "stronger", "than", "ours."]},
+{"listen": {"panda": 3.0, "pandas": 3.0, "bamboo": 3.0, "endangered": 1.0, "koala": 0.5}, "reply": ["Giant", "pandas", "eat", "bamboo", "for", "most", "of", "their", "day."]},
+{"listen": {"penguin": 3.0, "penguins": 3.0, "flightless": 3.0, "antarctica": 2.0, "emperor": 2.0, "waddle": 2.0}, "reply": ["Penguins", "are", "flightless", "birds", "that", "swim", "well", "underwater."]},
+{"listen": {"deforestation": 3.0, "pollution": 2.0, "recycling": 2.0, "emissions": 2.0, "environment": 1.0, "climate": 1.0}, "reply": ["Recycling", "and", "reducing", "waste", "help", "protect", "the", "environment."]},
+{"listen": {"snake": 3.0, "snakes": 3.0, "reptile": 3.0, "reptiles": 3.0, "venom": 2.0, "python": 2.0}, "reply": ["Snakes", "are", "reptiles", "that", "shed", "their", "skin", "as", "they", "grow."]},
+{"listen": {"spider": 3.0, "spiders": 3.0, "insect": 3.0, "insects": 3.0, "beetle": 3.0, "ant": 2.0}, "reply": ["Spiders", "are", "not", "insects;", "they", "have", "eight", "legs."]},
+{"listen": {"rainforest": 3.0, "rainforests": 3.0, "jungle": 2.0, "ecosystem": 2.0, "biodiversity": 3.0, "tropical": 1.0}, "reply": ["Tropical", "rainforests", "are", "home", "to", "a", "huge", "share", "of", "the", "world's", "species."]},
+{"listen": {"wolf": 3.0, "wolves": 3.0, "howl": 2.0, "pack": 1.0, "alpha": 1.0, "gray": 0.5}, "reply": ["Wolves", "howl", "to", "communicate", "across", "long", "distances."]},
+{"listen": {"bat": 3.0, "bats": 3.0, "echolocation": 3.0, "nocturnal": 2.0, "flying": 1.0}, "reply": ["Bats", "use", "echolocation", "to", "find", "food", "in", "the", "dark."]},
+{"listen": {"frog": 3.0, "frogs": 3.0, "tadpole": 3.0, "tadpoles": 3.0, "amphibian": 3.0, "toad": 2.0}, "reply": ["Frogs", "start", "life", "as", "tadpoles", "and", "breathe", "through", "gills", "first."]}
+]}

@@ -1,0 +1,21 @@
+{"topics": [
+{"listen": {"photosynthesis": 3.0, "chlorophyll": 3.0, "sunlight": 2.0, "glucose": 2.0, "leaves": 1.0, "plants": 1.0}, "reply": ["Plants", "use", "sunlight,", "water,", "and", "carbon", "dioxide", "to", "make", "sugar."]},
+{"listen": {"blackhole": 3.0, "black": 1.0, "horizon": 2.5, "singularity": 3.0, "gravity": 1.5, "quasar": 2.0}, "reply": ["A", "black", "hole", "is", "a", "region", "where", "gravity", "is", "so", "strong", "that", "light", "cannot", "escape."]},
+{"listen": {"dna": 3.0, "nucleotide": 3.0, "helix": 2.5, "chromosome": 2.5, "genes": 2.0, "genome": 2.0}, "reply": ["DNA", "is", "a", "double", "helix", "that", "carries", "genetic", "instructions."]},
+{"listen": {"atom": 2.0, "electron": 3.0, "proton": 3.0, "neutron": 3.0, "isotope": 3.0, "element": 1.5}, "reply": ["An", "atom", "has", "a", "nucleus", "of", "protons", "and", "neutrons", "with", "electrons", "around", "it."]},
+{"listen": {"earthquake": 3.0, "seismic": 3.0, "tectonic": 3.0, "fault": 2.0, "quake": 2.5, "richter": 2.0}, "reply": ["Earthquakes", "happen", "when", "tectonic", "plates", "suddenly", "slip", "along", "faults."]},
+{"listen": {"heart": 2.0, "ventricle": 3.0, "atrium": 3.0, "cardiac": 3.0, "pulse": 2.0, "blood": 1.5}, "reply": ["The", "heart", "pumps", "blood", "through", "the", "body", "using", "four", "chambers."]},
+{"listen": {"rainbow": 3.0, "refraction": 3.0, "prism": 2.5, "spectrum": 2.0, "raindrops": 2.0, "light": 0.5}, "reply": ["A", "rainbow", "forms", "when", "sunlight", "refracts", "and", "reflects", "inside", "raindrops."]},
+{"listen": {"mars": 2.0, "orbit": 2.0, "solar": 2.0, "asteroid": 2.5, "comet": 2.5, "planet": 1.0}, "reply": ["Mars", "is", "the", "fourth", "planet", "from", "the", "Sun."]},
+{"listen": {"hurricane": 2.5, "humidity": 2.5, "forecast": 2.0, "storm": 1.5, "weather": 2.0, "rain": 1.0}, "reply": ["Hurricanes", "are", "large", "storms", "that", "form", "over", "warm", "ocean", "water."]},
+{"listen": {"evolution": 3.0, "darwin": 3.0, "mutation": 2.5, "selection": 2.5, "species": 1.5, "natural": 1.0}, "reply": ["Natural", "selection", "favors", "traits", "that", "help", "organisms", "survive", "and", "reproduce."]},
+{"listen": {"newton": 2.0, "momentum": 2.5, "velocity": 2.5, "acceleration": 2.5, "gravity": 2.0, "force": 1.5}, "reply": ["Gravity", "pulls", "objects", "with", "mass", "toward", "each", "other."]},
+{"listen": {"catalyst": 3.0, "oxidation": 3.0, "molecule": 2.5, "molecular": 2.0, "reaction": 2.0, "acid": 2.0}, "reply": ["A", "catalyst", "speeds", "up", "a", "chemical", "reaction", "without", "being", "used", "up."]},
+{"listen": {"brain": 3.0, "neurons": 3.0, "neuron": 3.0, "cortex": 3.0, "synapse": 3.0, "nervous": 2.5}, "reply": ["The", "brain", "contains", "billions", "of", "neurons", "that", "send", "signals", "to", "each", "other."]},
+{"listen": {"immune": 3.0, "antibodies": 3.0, "pathogen": 2.5, "vaccine": 2.0, "virus": 1.5, "bacteria": 1.5}, "reply": ["Your", "immune", "system", "fights", "infections", "using", "white", "blood", "cells", "and", "antibodies."]},
+{"listen": {"volcano": 3.0, "magma": 3.0, "volcanic": 3.0, "lava": 2.5, "eruption": 2.5, "crater": 2.0}, "reply": ["Magma", "is", "molten", "rock", "below", "the", "surface,", "while", "lava", "is", "molten", "rock", "above", "it."]},
+{"listen": {"fusion": 3.0, "supernova": 3.0, "stellar": 3.0, "star": 1.5, "sun": 1.5, "nuclear": 1.5}, "reply": ["The", "Sun", "fuses", "hydrogen", "into", "helium", "in", "its", "core."]},
+{"listen": {"tides": 3.0, "tide": 3.0, "lunar": 2.0, "waves": 1.5, "moon": 1.0, "ocean": 1.0}, "reply": ["Ocean", "tides", "are", "mainly", "caused", "by", "the", "gravitational", "pull", "of", "the", "Moon."]},
+{"listen": {"relativity": 3.0, "einstein": 2.0, "photon": 3.0, "spacetime": 3.0, "quantum": 2.5, "wavelength": 2.5}, "reply": ["Nothing", "with", "mass", "can", "travel", "faster", "than", "the", "speed", "of", "light."]},
+{"listen": {"mitochondria": 3.0, "organelle": 3.0, "cytoplasm": 3.0, "membrane": 2.0, "nucleus": 1.5, "cell": 1.0}, "reply": ["Mitochondria", "release", "energy", "from", "food", "to", "power", "the", "cell."]}
+]}

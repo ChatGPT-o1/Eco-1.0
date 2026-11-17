@@ -1,0 +1,20 @@
+{"topics": [
+{"listen": {"reverse": 2.0, "string": 1.5, "backwards": 2.0, "python": 1.0, "flip": 1.0}, "reply": ["Use", "s[::-1]", "to", "reverse", "a", "string."]},
+{"listen": {"append": 3.0, "list": 1.5, "add": 1.0, "item": 1.0, "python": 1.0}, "reply": ["Call", "lst.append(x)", "to", "add", "x", "to", "the", "end", "of", "a", "list."]},
+{"listen": {"dictionary": 3.0, "dict": 3.0, "key": 2.0, "value": 1.5, "mapping": 1.5}, "reply": ["Use", "d.get(key)", "to", "read", "a", "dict", "key", "safely", "without", "a", "KeyError."]},
+{"listen": {"loop": 2.5, "for": 1.5, "iterate": 2.5, "iteration": 2.0, "range": 1.5}, "reply": ["Use", "for", "x", "in", "items:", "to", "iterate", "over", "any", "iterable."]},
+{"listen": {"range": 3.0, "count": 1.0, "numbers": 0.5, "sequence": 1.0, "step": 1.5}, "reply": ["range(5)", "yields", "0", "through", "4,", "and", "range(1,", "6)", "yields", "1", "through", "5."]},
+{"listen": {"function": 2.5, "def": 3.0, "define": 2.0, "return": 1.5, "parameter": 2.0}, "reply": ["Write", "def", "add(a,", "b):", "return", "a", "+", "b", "to", "define", "a", "function."]},
+{"listen": {"exception": 2.5, "try": 2.0, "except": 3.0, "error": 1.5, "catch": 2.0, "raise": 2.0}, "reply": ["Wrap", "code", "in", "try:", "and", "handle", "failures", "with", "except", "ValueError:", "blocks."]},
+{"listen": {"file": 2.0, "open": 2.5, "read": 2.0, "write": 1.5, "files": 2.0, "text": 1.0}, "reply": ["Use", "with", "open('f.txt')", "as", "f:", "then", "f.read()", "to", "read", "the", "whole", "file."]},
+{"listen": {"class": 3.0, "classes": 3.0, "object": 2.0, "oop": 2.5, "method": 2.0, "init": 2.0}, "reply": ["Define", "class", "Dog:", "with", "def", "__init__(self,", "name):", "to", "set", "up", "each", "object."]},
+{"listen": {"tuple": 3.0, "immutable": 2.5, "tuples": 3.0, "unpack": 2.0, "unpacking": 2.0}, "reply": ["Tuples", "use", "parentheses", "like", "(1,", "2)", "and", "cannot", "be", "changed", "after", "creation."]},
+{"listen": {"comprehension": 3.0, "comprehensions": 3.0, "squares": 1.0, "generate": 1.5, "shorthand": 2.0}, "reply": ["Write", "[x*x", "for", "x", "in", "range(5)]", "to", "build", "a", "list", "of", "squares."]},
+{"listen": {"slice": 3.0, "slicing": 3.0, "substring": 1.5, "subset": 1.0, "portion": 1.0}, "reply": ["Use", "lst[1:3]", "to", "get", "the", "items", "at", "index", "1", "and", "2."]},
+{"listen": {"split": 3.0, "join": 2.5, "string": 1.5, "strings": 1.5, "separate": 1.0}, "reply": ["Use", "'-'.join(words)", "to", "combine", "a", "list", "of", "strings", "with", "dashes."]},
+{"listen": {"lambda": 3.0, "anonymous": 2.5, "inline": 1.0, "map": 2.0, "filter": 2.0}, "reply": ["Use", "lambda", "x:", "x", "+", "1", "for", "a", "tiny", "unnamed", "function."]},
+{"listen": {"length": 2.5, "len": 3.0, "count": 1.0, "size": 2.0, "builtin": 1.5}, "reply": ["Call", "len(items)", "to", "get", "the", "number", "of", "elements", "in", "a", "list."]},
+{"listen": {"sort": 3.0, "sorted": 3.0, "order": 1.5, "ordering": 1.5, "key": 1.0}, "reply": ["Use", "sorted(items,", "reverse=True)", "to", "get", "a", "new", "list", "in", "descending", "order."]},
+{"listen": {"enumerate": 3.0, "zip": 3.0, "index": 1.5, "pairs": 1.5, "together": 0.5}, "reply": ["Use", "for", "i,", "x", "in", "enumerate(items):", "to", "get", "index", "and", "value", "together."]},
+{"listen": {"import": 3.0, "module": 2.5, "modules": 2.5, "package": 2.0, "library": 1.5}, "reply": ["Write", "import", "math", "then", "call", "math.sqrt(16)", "to", "get", "4.0."]}
+]}

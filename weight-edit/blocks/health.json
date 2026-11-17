@@ -1,0 +1,19 @@
+{"topics": [
+{"listen": {"insomnia": 3.0, "sleep": 1.0, "bedtime": 2.0, "tired": 1.0, "nap": 1.5}, "reply": ["Most", "adults", "need", "7", "to", "9", "hours", "of", "sleep."]},
+{"listen": {"workout": 2.5, "exercise": 1.0, "running": 1.5, "gym": 2.0, "fitness": 2.0, "jog": 2.0}, "reply": ["Aim", "for", "about", "150", "minutes", "of", "moderate", "activity", "each", "week."]},
+{"listen": {"hydration": 3.0, "water": 1.0, "thirsty": 2.5, "dehydrated": 3.0, "fluids": 2.0}, "reply": ["Drink", "water", "regularly", "through", "the", "day", "and", "more", "when", "you", "sweat."]},
+{"listen": {"nutrition": 3.0, "diet": 2.0, "vegetables": 2.0, "healthy": 1.0, "eating": 1.0, "protein": 2.0, "fiber": 2.5}, "reply": ["Fill", "half", "your", "plate", "with", "vegetables", "and", "whole", "grains", "when", "possible."]},
+{"listen": {"stress": 2.0, "anxious": 2.0, "overwhelmed": 2.5, "relax": 2.0, "calm": 1.0, "meditation": 2.5, "breathe": 1.5}, "reply": ["Slow", "breathing", "and", "short", "walks", "can", "help", "ease", "everyday", "stress."]},
+{"listen": {"cold": 1.5, "sneezing": 2.5, "cough": 2.5, "runny": 2.5, "congestion": 3.0, "sniffles": 3.0}, "reply": ["Rest,", "fluids,", "and", "sleep", "help", "most", "colds,", "but", "see", "a", "doctor", "if", "symptoms", "worsen."]},
+{"listen": {"throat": 2.0, "scratchy": 2.5, "hoarse": 2.5, "gargle": 3.0, "lozenges": 2.5}, "reply": ["Warm", "salt", "water", "gargles", "and", "lozenges", "may", "soothe", "a", "sore", "throat."]},
+{"listen": {"headache": 3.0, "migraine": 2.0, "aching": 1.0, "ache": 1.5, "pounding": 1.0}, "reply": ["Rest", "in", "a", "quiet", "dark", "room", "and", "drink", "water", "for", "mild", "headaches."]},
+{"listen": {"burn": 2.5, "burned": 2.5, "scald": 3.0, "blister": 2.5, "sunburn": 3.0}, "reply": ["Cool", "the", "burn", "under", "cool", "running", "water", "for", "about", "twenty", "minutes."]},
+{"listen": {"cut": 2.0, "bleeding": 3.0, "wound": 2.5, "bandage": 2.5, "scrape": 2.0, "gash": 2.5}, "reply": ["Press", "a", "clean", "cloth", "on", "the", "wound", "until", "bleeding", "slows."]},
+{"listen": {"sprain": 3.0, "twisted": 2.0, "ankle": 1.0, "swollen": 2.0, "ice": 1.5, "bruise": 2.0}, "reply": ["Rest", "the", "joint", "and", "use", "ice", "wrapped", "in", "a", "cloth", "for", "swelling."]},
+{"listen": {"backache": 3.0, "posture": 2.5, "lumbar": 2.0, "slouch": 2.5, "desk": 1.0, "stiff": 1.5}, "reply": ["Sit", "with", "your", "back", "supported", "and", "take", "short", "breaks", "to", "move."]},
+{"listen": {"handwashing": 3.0, "germs": 2.0, "hygiene": 2.5, "wash": 1.0, "soap": 2.0}, "reply": ["Wash", "your", "hands", "with", "soap", "for", "at", "least", "twenty", "seconds."]},
+{"listen": {"caffeine": 3.0, "energy": 1.0, "coffee": 1.5, "fatigue": 2.5, "drowsy": 2.0}, "reply": ["Limit", "caffeine", "to", "a", "few", "cups", "and", "avoid", "it", "late", "in", "the", "day."]},
+{"listen": {"sunscreen": 3.0, "spf": 3.0, "uv": 2.5, "sunlight": 1.5, "tan": 1.0}, "reply": ["Use", "sunscreen", "with", "SPF", "30", "or", "higher", "when", "outdoors."]},
+{"listen": {"dizzy": 2.0, "fainted": 3.0, "faint": 2.5, "lightheaded": 3.0, "dizziness": 2.5}, "reply": ["Sit", "or", "lie", "down", "and", "see", "a", "doctor", "if", "dizziness", "keeps", "returning."]},
+{"listen": {"nosebleed": 3.0, "nose": 1.0, "bleeds": 2.0, "nostril": 2.5}, "reply": ["Lean", "forward", "and", "pinch", "the", "soft", "part", "of", "your", "nose", "for", "ten", "minutes."]}
+]}

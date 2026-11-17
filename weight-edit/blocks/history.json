@@ -1,0 +1,19 @@
+{"topics": [
+{"listen": {"wwii": 3.0, "hitler": 3.0, "nazi": 2.5, "allies": 1.5, "war": 1.0}, "reply": ["World", "War", "II", "ended", "in", "1945."]},
+{"listen": {"napoleon": 3.0, "bonaparte": 3.0, "waterloo": 2.5, "french": 1.0, "emperor": 1.0}, "reply": ["Napoleon", "Bonaparte", "was", "a", "French", "emperor", "who", "lost", "at", "Waterloo", "in", "1815."]},
+{"listen": {"pharaoh": 3.0, "pyramids": 2.5, "egypt": 2.0, "egyptian": 2.0, "giza": 2.5}, "reply": ["The", "Great", "Pyramid", "of", "Giza", "was", "built", "for", "Pharaoh", "Khufu."]},
+{"listen": {"apollo": 3.0, "armstrong": 3.0, "moon": 1.5, "lunar": 2.0, "nasa": 2.0}, "reply": ["Neil", "Armstrong", "walked", "on", "the", "Moon", "in", "1969."]},
+{"listen": {"gutenberg": 3.0, "movable": 2.5, "printing": 2.0, "typeset": 2.0, "press": 1.0}, "reply": ["Johannes", "Gutenberg", "introduced", "movable", "type", "printing", "in", "Europe", "around", "1440."]},
+{"listen": {"augustus": 2.5, "caesar": 2.5, "rome": 2.0, "roman": 2.0, "gladiators": 2.0}, "reply": ["Augustus", "became", "Rome's", "first", "emperor", "in", "27", "BC."]},
+{"listen": {"columbus": 3.0, "explorer": 1.5, "explorers": 1.5, "america": 1.0, "discovery": 1.0}, "reply": ["Columbus", "sailed", "across", "the", "Atlantic", "in", "1492."]},
+{"listen": {"gorbachev": 3.0, "berlin": 2.0, "wall": 1.0, "cold": 1.5, "soviet": 1.5}, "reply": ["The", "Berlin", "Wall", "fell", "on", "November", "9,", "1989."]},
+{"listen": {"bastille": 3.0, "robespierre": 3.0, "guillotine": 3.0, "revolution": 1.5, "louis": 1.0}, "reply": ["The", "storming", "of", "the", "Bastille", "happened", "on", "July", "14,", "1789."]},
+{"listen": {"socrates": 3.0, "plato": 2.5, "sparta": 2.5, "greek": 2.0, "athens": 2.0}, "reply": ["Socrates", "was", "an", "ancient", "Greek", "philosopher", "who", "taught", "in", "Athens."]},
+{"listen": {"sarajevo": 3.0, "archduke": 3.0, "verdun": 3.0, "wwi": 3.0, "trench": 2.0}, "reply": ["World", "War", "I", "began", "in", "1914."]},
+{"listen": {"kittyhawk": 3.0, "wright": 2.5, "kitty": 1.5, "aviation": 2.0, "airplane": 2.0}, "reply": ["The", "Wright", "brothers", "first", "flew", "at", "Kitty", "Hawk", "in", "1903."]},
+{"listen": {"magna": 3.0, "carta": 3.0, "runnymede": 3.0, "barons": 2.0, "john": 1.0}, "reply": ["Magna", "Carta", "was", "sealed", "by", "King", "John", "in", "1215."]},
+{"listen": {"sumer": 3.0, "sumerians": 3.0, "cuneiform": 3.0, "mesopotamia": 3.0, "babylon": 2.5}, "reply": ["Sumerians", "developed", "cuneiform", "writing", "in", "Mesopotamia."]},
+{"listen": {"constantinople": 3.0, "mehmed": 3.0, "ottoman": 2.5, "byzantine": 2.5, "istanbul": 2.0}, "reply": ["Ottoman", "forces", "captured", "Constantinople", "in", "1453."]},
+{"listen": {"titanic": 3.0, "iceberg": 2.0, "liner": 1.0, "sank": 1.0, "ship": 0.5}, "reply": ["The", "Titanic", "sank", "in", "April", "1912", "after", "hitting", "an", "iceberg."]},
+{"listen": {"jefferson": 2.5, "independence": 2.0, "declaration": 2.0, "founders": 1.5, "america": 1.0}, "reply": ["The", "Declaration", "of", "Independence", "was", "adopted", "in", "1776."]}
+]}

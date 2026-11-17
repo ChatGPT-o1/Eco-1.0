@@ -1,0 +1,20 @@
+{"topics": [
+{"listen": {"wifi": 3.0, "wireless": 2.0, "router": 1.5, "internet": 1.0, "signal": 1.0, "network": 1.0}, "reply": ["Restart", "your", "router", "and", "check", "the", "wifi", "signal."]},
+{"listen": {"password": 3.0, "passwords": 3.0, "login": 1.0, "strong": 1.0, "security": 1.0}, "reply": ["Use", "a", "long", "password", "with", "random", "words."]},
+{"listen": {"battery": 3.0, "batteries": 3.0, "charge": 1.0, "drain": 2.0, "charging": 1.5}, "reply": ["Lower", "your", "screen", "brightness", "to", "help", "the", "battery", "last", "longer."]},
+{"listen": {"phone": 2.0, "smartphone": 3.0, "iphone": 3.0, "android": 3.0, "cellphone": 3.0}, "reply": ["Try", "restarting", "your", "phone", "to", "fix", "most", "small", "problems."]},
+{"listen": {"computer": 1.0, "pc": 2.0, "desktop": 1.5, "windows": 1.5, "mac": 1.0}, "reply": ["Restart", "your", "computer", "after", "installing", "new", "updates."]},
+{"listen": {"internet": 2.0, "online": 1.0, "isp": 3.0, "broadband": 3.0, "connection": 1.0}, "reply": ["Check", "whether", "your", "internet", "connection", "is", "stable", "first."]},
+{"listen": {"ai": 3.0, "chatbot": 2.0, "neural": 2.0, "model": 1.0, "machine": 1.0, "learning": 1.5}, "reply": ["A", "neural", "network", "learns", "patterns", "from", "many", "examples."]},
+{"listen": {"virus": 3.0, "malware": 3.0, "antivirus": 3.0, "hacked": 2.0, "spyware": 3.0}, "reply": ["Run", "a", "full", "antivirus", "scan", "to", "find", "any", "malware."]},
+{"listen": {"laptop": 3.0, "notebook": 0.5, "keyboard": 2.0, "trackpad": 2.0, "screen": 1.0}, "reply": ["Clean", "your", "laptop", "keyboard", "gently", "with", "a", "dry", "cloth."]},
+{"listen": {"router": 3.0, "modem": 2.5, "ethernet": 2.0, "gateway": 1.5, "firmware": 2.0}, "reply": ["Unplug", "the", "modem", "for", "thirty", "seconds", "to", "reset", "it."]},
+{"listen": {"charger": 3.0, "charging": 2.0, "plug": 1.0, "volts": 1.5, "usb": 2.0}, "reply": ["Use", "the", "charger", "that", "came", "with", "your", "device."]},
+{"listen": {"software": 3.0, "update": 1.0, "app": 1.5, "install": 1.5, "download": 1.0}, "reply": ["Install", "the", "latest", "software", "update", "to", "fix", "bugs."]},
+{"listen": {"bluetooth": 3.0, "pairing": 2.0, "headphones": 1.5, "speaker": 1.0, "paired": 2.0}, "reply": ["Turn", "Bluetooth", "off", "and", "on", "to", "re-pair", "your", "headphones."]},
+{"listen": {"encryption": 3.0, "encrypt": 3.0, "vpn": 3.0, "cipher": 2.5, "privacy": 1.5}, "reply": ["A", "VPN", "encrypts", "your", "traffic", "for", "more", "privacy."]},
+{"listen": {"processor": 3.0, "cpu": 3.0, "ram": 2.5, "gpu": 2.5, "core": 1.0}, "reply": ["More", "RAM", "helps", "your", "computer", "run", "many", "apps", "at", "once."]},
+{"listen": {"website": 2.0, "browser": 2.0, "url": 2.5, "domain": 1.5, "webpage": 2.0}, "reply": ["Type", "the", "full", "URL", "into", "your", "browser", "address", "bar."]},
+{"listen": {"python": 2.0, "programming": 2.0, "bug": 1.5, "code": 1.0, "compile": 2.5}, "reply": ["Read", "the", "error", "message", "to", "find", "the", "bug", "in", "your", "code."]},
+{"listen": {"ssd": 3.0, "storage": 2.0, "gigabytes": 2.0, "drive": 1.0, "terabyte": 2.0}, "reply": ["An", "SSD", "is", "faster", "than", "a", "hard", "drive", "for", "storage."]}
+]}
