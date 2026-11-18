@@ -1,0 +1,5 @@
+scan.log
+scan.json
+*.log
+runs/
+__pycache__/
