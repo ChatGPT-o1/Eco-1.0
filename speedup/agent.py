@@ -37,7 +37,7 @@ CAL_RUNS = int(os.environ.get('CAL_RUNS', 5)); CAL_TOKENS = int(os.environ.get('
 LR, EPOCHS, CLIP, ENT = 0.01, 4, 0.2, 0.01
 TIMING_TOL = float(os.environ.get('TIMING_TOL', 0.01))
 # fast scoring: predict from the single-edit probe costs; measure on a small slice; full measurement only near the line
-FAST = int(os.environ.get('FAST', 1)); PRED_LO, PRED_HI = 0.5, 2.0; SCREEN_N = int(os.environ.get('SCREEN_N', 8)); SCREEN_Z = 2.0      # real speed must confirm the latency model within this
+FAST = int(os.environ.get('FAST', 1)); PRED_LO, PRED_HI = 0.5, 2.0; SCREEN_N = int(os.environ.get('SCREEN_N', 16)); GATE_EVERY = int(os.environ.get('GATE_EVERY', 5)); SCREEN_Z = 2.0      # real speed must confirm the latency model within this
 FEAT = 18
 T0 = time.time()
 
@@ -273,7 +273,7 @@ class Worker:
     def episode(self, pol, gen, k=0, greedy=False, chooser=None):
         t_ep = time.perf_counter()
         sh = self.sh; NL = self.nS.NL; arch = self.nS.full(); acts = list(self.root[k]); valid = NL
-        md, se = self.root_b[k]; sc = 1.0; strikes = 0; blocked = set(); tr = []; acc = []; rej = []
+        md, se = self.root_b[k]; sc = 1.0; strikes = 0; blocked = set(); tr = []; acc = []; rej = []; used_shortcut = False
         while strikes < STRIKES and len(tr) < TMAX:
             cands = candidates(arch, blocked, sh.allow_half, sh.lat.nkv)
             if not cands: break
@@ -291,11 +291,11 @@ class Worker:
                 hit = sh.memo.get((k, new.key())); pred = md + edit_cost(arch, e, sh) if FAST else None
                 if hit is not None: nmd, nse = hit; sh.hits += 1
                 elif FAST and pred + se < PRED_LO * BUDGET:            # clearly inside the budget: take the prediction
-                    nmd, nse = pred, se; sh.predicted += 1
+                    nmd, nse = pred, se; sh.predicted += 1; used_shortcut = True
                 elif FAST and pred > PRED_HI * BUDGET:                  # clearly over: refuse without measuring
                     nmd, nse = float('inf'), 0.0; sh.predicted += 1
                 elif FAST and SCREEN_N < self.n and self._screen_clear(new, e[1], acts, valid, k):
-                    nmd, nse = self._last; sh.screened += 1
+                    nmd, nse = self._last; sh.screened += 1; used_shortcut = True
                 else:
                     nmd, nse, tmp, s = self.eval_edit(new, e[1], acts, valid, k); sh.memo[(k, new.key())] = (nmd, nse)
                     computed = True; sh.evals += 1
@@ -311,7 +311,7 @@ class Worker:
             else:
                 r = -0.2; strikes += 1; blocked.add(e); rej.append(e)
             tr.append(dict(F=F, a=a, lp=lp, r=r, phi=phi))
-        if FAST and acc:                                                # the end point is always measured exactly
+        if FAST and acc and used_shortcut:                              # the end point is measured exactly if shortcuts were used
             md, se = self.exact(arch, k); sh.evals += 1
             if not (math.isfinite(md) and md + se <= BUDGET):
                 tr[-1]['r'] -= 10 * (sc - 1) + 1.0; sh.overshoot += 1; sc = 1.0      # take back the speed it claimed
@@ -321,8 +321,8 @@ class Worker:
     def _screen_clear(self, new, i, acts, valid, k):
         """Measure on the small slice; True if the answer is clearly on one side of the budget line."""
         m, s = self.screen_edit(new, i, acts, valid, k)
-        if m + SCREEN_Z * s < 0.8 * BUDGET: self._last = (m, s); return True
-        if m - SCREEN_Z * s > 1.2 * BUDGET: self._last = (float('inf'), 0.0); return True
+        if m + SCREEN_Z * s < 0.9 * BUDGET: self._last = (m, s); return True
+        if m - SCREEN_Z * s > 1.1 * BUDGET: self._last = (float('inf'), 0.0); return True
         return False
 
 
@@ -458,7 +458,7 @@ def main():
 
     for w in workers: w.eval_s = w.busy_s = 0.0
     sh.evals = sh.hits = sh.predicted = sh.screened = sh.overshoot = 0
-    t_loop = time.time(); rnd = 0; counter = [0]
+    t_loop = time.time(); rnd = 0; counter = [0]; pool_eps = []
     while time.time() - t_loop < LOOP:
         rnd += 1; snap = copy.deepcopy(pol); eps = run_round(workers, snap, gens, ROUND_EPISODES, counter)
         trans = []
@@ -478,8 +478,11 @@ def main():
             adv = (adv - adv.mean()) / (adv.std() + 1e-6)
             for tr, a in zip(trans, adv): tr['adv'] = a
             update(pol, opt, trans)
-        for ep in sorted(eps, key=lambda e: -e['S'])[:2]:
-            if gate(ep, f'round {rnd}'): break
+        pool_eps += eps
+        if rnd % GATE_EVERY == 0:                                       # the save check is expensive: run it every few rounds
+            for ep in sorted(pool_eps, key=lambda e: -e['S'])[:2]:
+                if gate(ep, f'round {rnd}'): break
+            pool_eps = []
         el = time.time() - t_loop
         say(event='round', n=rnd, episodes=n_ep, mean_speedup=round(statistics.mean(e['S'] for e in eps), 4),
             max_speedup=round(max(e['S'] for e in eps), 4), mean_edits=round(statistics.mean(len(e['acc']) for e in eps), 1),
