@@ -20,7 +20,8 @@ def create(offer, onstart, disk=20, image='pytorch/pytorch:2.5.1-cuda12.4-cudnn9
             'image_login': None, 'python_utf8': False, 'lang_utf8': False, 'use_jupyter_lab': False, 'jupyter_dir': None, 'force': False,
             'cancel_unavail': False, 'template_hash_id': None, 'user': None, 'runtype': 'ssh'}
     return call('PUT', f'/asks/{offer}/', body)
-def show(): return call('GET', '/instances/', params={'owner': 'me'}).get('instances', [])
+def show():
+    r = requests.get('https://console.vast.ai/api/v1/instances/', verify=CA, timeout=60); r.raise_for_status(); return r.json().get('instances', [])
 def logs(iid, tail=200):
     rj = call('PUT', f'/instances/request_logs/{iid}/', {'tail': str(tail)}); url = rj.get('result_url')
     if not url: return json.dumps(rj)
