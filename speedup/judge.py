@@ -15,6 +15,7 @@ MODEL_DIR = f'{ROOT}/model'
 DATA = f'{ROOT}/data/wikitext-103-raw-v1'
 SEQ = 256
 SIZES = {'search': 32, 'validation': 64, 'test': 128}
+DEVICE = os.environ.get('DEVICE', 'cuda' if torch.cuda.is_available() else 'cpu')
 THREADS = 3                     # 4 threads on this VM are noisy (one straggler vCPU stalls every matmul)
 torch.set_num_threads(THREADS)
 
@@ -62,7 +63,7 @@ def perplexity(model, name, batch=16):
     x = split(name); nll, n = 0.0, 0
     model.eval()
     for i in range(0, len(x), batch):
-        b = x[i:i + batch]
+        b = x[i:i + batch].to(DEVICE)
         logits = model(b).logits[:, :-1].float()
         loss = torch.nn.functional.cross_entropy(logits.reshape(-1, logits.size(-1)), b[:, 1:].reshape(-1), reduction='sum')
         nll += loss.item(); n += b[:, 1:].numel()
@@ -75,31 +76,34 @@ def speed(model, runs=20, new_tokens=64, warmup=2):
     """Median tokens/second for greedy generation (batch 1, KV cache)."""
     tok = tokenizer(); model.eval(); rates = []
     for r in range(warmup + runs):
-        ids = tok(PROMPTS[r % len(PROMPTS)], return_tensors='pt')['input_ids']
+        ids = tok(PROMPTS[r % len(PROMPTS)], return_tensors='pt')['input_ids'].to(DEVICE); _sync()
         t0 = time.perf_counter()
         model.generate(ids, max_new_tokens=new_tokens, min_new_tokens=new_tokens, do_sample=False, pad_token_id=0)
-        dt = time.perf_counter() - t0
+        _sync(); dt = time.perf_counter() - t0
         if r >= warmup: rates.append(new_tokens / dt)
     return statistics.median(rates), statistics.stdev(rates) / len(rates) ** 0.5
 
+def _sync():
+    if DEVICE == 'cuda': torch.cuda.synchronize()
+
 def load_original():
     from transformers import AutoModelForCausalLM
-    return AutoModelForCausalLM.from_pretrained(MODEL_DIR, torch_dtype=torch.float32)
+    return AutoModelForCausalLM.from_pretrained(MODEL_DIR, dtype=torch.float32).to(DEVICE)
 
 @torch.no_grad()
 def sample(model, prompt, n=40):
-    tok = tokenizer(); ids = tok(prompt, return_tensors='pt')['input_ids']
+    tok = tokenizer(); ids = tok(prompt, return_tensors='pt')['input_ids'].to(DEVICE)
     out = model.generate(ids, max_new_tokens=n, do_sample=False, pad_token_id=0)
     return tok.decode(out[0][ids.shape[1]:])
 
 @torch.no_grad()
 def quick_speed(model, runs=6, new_tokens=48):
     """Fast, low-noise speed reading for per-step rewards: same prompt every run, best (minimum) time of N."""
-    tok = tokenizer(); model.eval(); ids = tok(PROMPTS[0], return_tensors='pt')['input_ids']
+    tok = tokenizer(); model.eval(); ids = tok(PROMPTS[0], return_tensors='pt')['input_ids'].to(DEVICE)
     model.generate(ids, max_new_tokens=8, do_sample=False, pad_token_id=0)            # warm-up
     best = 1e9
     for _ in range(runs):
-        t0 = time.perf_counter()
+        _sync(); t0 = time.perf_counter()
         model.generate(ids, max_new_tokens=new_tokens, min_new_tokens=new_tokens, do_sample=False, pad_token_id=0)
-        best = min(best, time.perf_counter() - t0)
+        _sync(); best = min(best, time.perf_counter() - t0)
     return new_tokens / best
