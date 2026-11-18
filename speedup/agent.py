@@ -1,89 +1,433 @@
-"""agent.py - a ~1K-parameter neural network that alone decides how to make SmolLM-135M faster, and learns from it.
+"""agent.py - a ~1K-parameter neural network learns, by reinforcement, how to edit SmolLM-135M so it generates faster.
 
-Every step the network sees the ENTIRE architecture of Smol and scores every possible action:
-    for each layer:  remove it | prune 25% of its MLP neurons | prune 10% of its MLP neurons | drop one KV head group
-    global:          undo the last edit
-It picks one (softmax), the action is applied to the real model, and REINFORCE updates the network.
-Weights are only kept or removed, never retrained. What to cut and when to undo are the network's choices.
+EPISODES. Every episode starts from the original model. Each step the network looks at every edit that is still
+possible anywhere in the architecture and picks one:
+    attn i      remove the attention sublayer of layer i
+    mlp i       remove the MLP sublayer of layer i
+    p10 / p30   remove another 10% / 30% of layer i's MLP neurons (the least-used ones)
+    kv i g      remove key/value head group g of layer i (with its 3 query heads)
+    half        run the weights in 16-bit floats (GPU only)
+Weights are only kept, removed or stored in fewer bits. Nothing is retrained.
+An edit that would push search perplexity past the budget is refused (a strike, small penalty); three strikes end the
+episode. So every episode ends on a model that is inside the budget, and its return is that model's speed-up.
 
-Reward (fixed, the network cannot change it):
-    + 10 x measured speed change (real CPU timing, relative to the original)
-    - 20 x the change in how far search perplexity is above the 10% budget
-Safeguards (scoring side, not the agent): a model only becomes the saved best if it is the fastest so far AND
-VALIDATION perplexity is within 10%; a model past 1.5x perplexity is rolled back.
+REWARD (fixed; the network cannot change it): 10 x the speed gained by each accepted edit, -0.2 per refused edit.
+Speed during an episode comes from a latency model fitted to real decoder timings on this machine at start-up.
+Perplexity is exact (smol.py) and judged pessimistically: mean increase + one standard error must stay within 10%.
+
+LEARNING. PPO-style policy gradient on the network's own episodes, with a small linear baseline.
+
+SAFEGUARDS (scoring side, outside the agent): an architecture becomes the saved best only if VALIDATION perplexity is
+also within 10% AND its speed, timed for real with the decoder, beats the best so far. Test text is used once, for the
+final report.
 """
-import json, os, time, statistics, torch, torch.nn as nn
-import judge as J, edits as E
+import os, json, math, time, copy, threading, statistics
+import torch, torch.nn as nn
+import judge as J, smol as S, fastgen as G
 
-OUT = f'{J.ROOT}/runs'; os.makedirs(OUT, exist_ok=True)
-HOURS = float(os.environ.get('HOURS', 4))
-TOL, BREAK = 1.10, 1.5
-KINDS = ['layer', 'mlp25', 'mlp10', 'kv', 'undo']
-FEAT = len(KINDS) + 8
+LOOP = float(os.environ.get('LOOP_SECONDS', 300))
+OUT = os.environ.get('OUT_DIR', f'{J.ROOT}/runs_v3'); os.makedirs(OUT, exist_ok=True)
+SEED = int(os.environ.get('SEED', 0))
+TOL = 1.10; BUDGET = math.log(TOL)
+TMAX, STRIKES = 60, 3
+ROUND_EPISODES = int(os.environ.get('ROUND_EPISODES', 4))
+CAL_RUNS = int(os.environ.get('CAL_RUNS', 5)); CAL_TOKENS = int(os.environ.get('CAL_TOKENS', 64))   # decoder timing: best of N runs of T tokens
+LR, EPOCHS, CLIP, ENT = 0.01, 4, 0.2, 0.01
+FEAT = 18
+T0 = time.time()
 
+
+def say(**k):
+    k['t'] = round(time.time() - T0, 1); print(json.dumps(k), flush=True)
+
+
+# ----------------------------------------------------------------------------------------------- the 1K network
 class Policy(nn.Module):
     def __init__(self):
-        super().__init__(); self.net = nn.Sequential(nn.Linear(FEAT, 32), nn.Tanh(), nn.Linear(32, 16), nn.Tanh(), nn.Linear(16, 1))
+        super().__init__()
+        self.net = nn.Sequential(nn.Linear(FEAT, 32), nn.Tanh(), nn.Linear(32, 12), nn.Tanh(), nn.Linear(12, 1))
+        with torch.no_grad(): self.net[-1].weight.mul_(0.1); self.net[-1].bias.zero_()
+
     def forward(self, f): return self.net(f).squeeze(-1)
 
-def tok_s(m): return J.quick_speed(m)
 
-def actions(m, mem, ppl_ratio, speed_ratio, can_undo):
-    acts, feats = [], []; L = E.n_layers(m)
-    glob = [ppl_ratio - 1, speed_ratio - 1, L / 30]
-    for i in range(L):
-        l = m.model.layers[i]; w = l.mlp.gate_proj.out_features / 1536; kv = E.n_kv(m, i)
-        for kind, ok in [('layer', L > 1), ('mlp25', w > 0.3), ('mlp10', w > 0.15), ('kv', kv > 1)]:
-            if not ok: continue
-            c, g = mem.get((kind, i), (0.0, 0.0))                 # last measured ppl cost / speed gain of this action
-            feats.append([k == kind for k in KINDS] + [i / max(L - 1, 1), w, kv / 3, c, g] + glob); acts.append((kind, i))
-    for kind, ok in [('undo', can_undo)]:
-        if not ok: continue
-        c, g = mem.get((kind, -1), (0.0, 0.0))
-        feats.append([k == kind for k in KINDS] + [0, 0, 0, c, g] + glob); acts.append((kind, -1))
-    return acts, torch.tensor(feats, dtype=torch.float32)
+# ----------------------------------------------------------------------------------------------- latency model
+class Latency:
+    """ms per token = fixed + per kept attention sublayer (A0 + A1 x share of head groups kept)
+                            + per kept MLP sublayer (M0 + M1 x width).   Five numbers per precision."""
+
+    def __init__(self, nkv): self.coef = {}; self.nkv = nkv; self.ms0 = None
+
+    def ms(self, a):
+        c, A0, A1, M0, M1 = self.coef[a.half]; t = c
+        for i in range(len(a.attn)):
+            if a.attn[i]: t += A0 + A1 * bin(a.kv[i]).count('1') / self.nkv
+            if a.w[i] >= 0: t += M0 + M1 * S.WIDTHS[a.w[i]]
+        return t
+
+    def speedup(self, a): return self.ms0 / self.ms(a)
+
+
+def calibrate(w, halves):
+    """Fit the latency model from real decoder timings. Every architecture that fits the perplexity budget is close
+    to the full model, so the model is fitted there: time the full model, then the full model with one kind of part
+    taken out of a third of the layers (or thinned in all of them). A mixed architecture that was not used for the
+    fit checks the prediction."""
+    net = w.n32; nl, nkv = net.NL, net.nkv; lat = Latency(nkv); info = {}; k3 = [i for i in range(nl) if i % 3 == 1]
+    for half in halves:
+        def mk(fn):
+            a = net.full(); a.half = half
+            for i in range(nl): fn(a, i)
+            return a
+        def mixed(a, i):
+            if i % 6 == 0: a.attn[i] = False
+            elif i % 6 == 3: a.kv[i] = 0b011
+            if i % 10 == 5: a.w[i] = -1
+            elif i % 5 == 1: a.w[i] = 3
+            elif i % 5 == 2: a.w[i] = 5
+        archs = dict(full=mk(lambda a, i: None), attn_third=mk(lambda a, i: a.attn.__setitem__(i, i % 3 != 1)),
+                     mlp_third=mk(lambda a, i: a.w.__setitem__(i, -1 if i % 3 == 1 else 0)),
+                     mlp50=mk(lambda a, i: a.w.__setitem__(i, 5)), kv1=mk(lambda a, i: a.kv.__setitem__(i, 1)), mixed=mk(mixed))
+        t = {k: 1000.0 / w.tok_s(a, CAL_RUNS, CAL_TOKENS) for k, a in archs.items()}
+        A = (t['full'] - t['attn_third']) / len(k3); M = (t['full'] - t['mlp_third']) / len(k3)
+        M1 = (t['full'] - t['mlp50']) / (0.5 * nl); A1 = (t['full'] - t['kv1']) / (nl * (1 - 1 / nkv))
+        lat.coef[half] = (t['full'] - nl * (A + M), A - A1, A1, M - M1, M1)
+        pred = lat.ms(archs['mixed'])
+        info['fp16' if half else 'fp32'] = dict(ms={k: round(v, 3) for k, v in t.items()},
+            attn_sublayer_ms=round(A, 4), kv_group_ms=round(A1 / nkv, 4), mlp_sublayer_ms=round(M, 4), mlp_width_part_ms=round(M1, 4),
+            check_pred_ms=round(pred, 3), check_real_ms=round(t['mixed'], 3), check_error_pct=round(100 * (pred / t['mixed'] - 1), 2))
+    lat.ms0 = lat.ms(net.full())
+    return lat, info
+
+
+# ----------------------------------------------------------------------------------------------- shared knowledge
+class Shared:
+    """What every worker reads: the latency model, usage statistics and single-edit probe costs of the original
+    model, and a memo of architectures already scored."""
+    def __init__(self): self.memo = {}; self.evals = 0; self.hits = 0; self.allow_half = False
+
+
+def candidates(arch, blocked, allow_half, nkv):
+    c = []
+    for i in range(len(arch.attn)):
+        if arch.attn[i]:
+            c.append(('attn', i))
+            if bin(arch.kv[i]).count('1') > 1:
+                c.extend(('kv', i, g) for g in range(nkv) if arch.kv[i] >> g & 1)
+        if arch.w[i] >= 0:
+            c.append(('mlp', i))
+            if arch.w[i] + 1 < len(S.WIDTHS): c.append(('p10', i))
+            if arch.w[i] + 3 < len(S.WIDTHS): c.append(('p30', i))
+    if allow_half and not arch.half: c.append(('half',))
+    return [e for e in c if e not in blocked] if blocked else c
+
+
+def features(arch, cands, used, s_cur, strikes, sh):
+    """One row of FEAT numbers per possible edit: what it is, where it is, the state of that layer, what the latency
+    model says it saves, what it cost when probed alone on the original model, how much that part writes into the
+    residual stream, and the episode's state (budget used, speed so far, strikes)."""
+    lat = sh.lat; nkv = lat.nkv; nl = len(arch.attn); ms0 = lat.ms0; ms_cur = lat.ms(arch)
+    c, A0, A1, M0, M1 = lat.coef[arch.half]
+    g_state = [min(1.5, max(0.0, used / BUDGET)), s_cur - 1, strikes / STRIKES, 1.0 if arch.half else 0.0]
+    rows, gains = [], []
+    for e in cands:
+        k = e[0]; f = [0.0] * FEAT
+        if k == 'half':
+            f[4] = 1.0; ms_new = lat.ms(arch.apply(e)); cost = 0.0; wr = 0.0; rem = 0.0
+        else:
+            i = e[1]; nk = bin(arch.kv[i]).count('1'); wi = arch.w[i]; wcur = S.WIDTHS[wi] if wi >= 0 else 0.0
+            if k == 'attn':
+                f[0] = 1.0; d = A0 + A1 * nk / nkv; cost = sh.p_attn[i]; wr = sh.aw[i] * nk / nkv; rem = nk / nkv
+            elif k == 'mlp':
+                f[1] = 1.0; d = M0 + M1 * wcur; cost = sh.p_mlp[i] - sh.p_w[i][wi]; wr = sh.mw[i] * (1 - sh.mass[i][wi]); rem = wcur
+            elif k == 'kv':
+                f[3] = 1.0; d = A1 / nkv; cost = sh.p_kv[i][e[2]]; wr = sh.kw[i][e[2]]; rem = 1 / nkv
+            else:
+                f[2] = 1.0; nw = wi + (1 if k == 'p10' else 3); d = M1 * (wcur - S.WIDTHS[nw])
+                cost = sh.p_w[i][nw] - sh.p_w[i][wi]; wr = sh.mw[i] * (sh.mass[i][nw] - sh.mass[i][wi]); rem = wcur - S.WIDTHS[nw]
+            ms_new = ms_cur - d
+            f[5] = i / (nl - 1); f[10] = wcur; f[11] = nk / nkv if arch.attn[i] else 0.0
+            nb = [(not arch.attn[j]) if k in ('attn', 'kv') else arch.w[j] < 0 for j in (i - 1, i + 1) if 0 <= j < nl]
+            f[15] = sum(nb) / 2
+        gain = ms0 / ms_new - ms0 / ms_cur
+        cf = cost / BUDGET
+        f[6] = 10 * gain; f[7] = max(-0.5, min(3.0, cf)); f[8] = min(2.0, wr); f[9] = rem
+        f[12:16] = g_state[:3] + [f[15]]; f[16] = g_state[3]
+        f[17] = max(-2.5, math.log10(max(gain, 1e-5) / max(cf, 0.01)) / 2)        # speed gained per share of budget
+        rows.append(f); gains.append(gain)
+    return torch.tensor(rows, dtype=torch.float32), gains
+
+
+# ----------------------------------------------------------------------------------------------- one worker = one device
+class Worker:
+    def __init__(self, dev, P, sh):
+        self.dev = torch.device(dev); self.cuda = self.dev.type == 'cuda'; self.sh = sh
+        self.n32 = S.Net(P, dev, half=False, T=J.SEQ)
+        self.n16 = S.Net(P, dev, half=True, T=J.SEQ) if self.cuda else None
+        self.nS = self.n32                                     # the net search-time evaluations run on
+        self.ids = J.split('search').to(self.dev); self.T = self.ids.shape[1]
+        self.prompt = J.tokenizer()(J.PROMPTS[0])['input_ids']
+        self.data = {}; self.base = {}
+
+    @torch.no_grad()
+    def tok_s(self, arch, runs, toks):
+        dec = G.Decoder(S.materialize(self.n32, arch)).capture(); r = G.tok_per_s(dec, self.prompt, runs, toks)
+        del dec
+        return r
+
+    @torch.no_grad()
+    def load_split(self, name):
+        self.data[name] = J.split(name).to(self.dev)
+        self.base[name] = self.n32.seq_nll(self.data[name], self.n32.full())
+
+    @torch.no_grad()
+    def ratio(self, name, arch):
+        """Perplexity of `arch` relative to the original on a split, in the architecture's own precision."""
+        net = self.n16 if (arch.half and self.cuda) else self.n32
+        d = (net.seq_nll(self.data[name], arch) - self.base[name]) / (self.T - 1)
+        md = d.mean().item(); se = d.std().item() / math.sqrt(len(d))
+        return dict(ratio=math.exp(md) if math.isfinite(md) else float('inf'), se_pct=round(100 * se, 3))
+
+    @torch.no_grad()
+    def make_root(self):
+        net = self.nS; full = net.full(); acts = [net.embed(self.ids)]
+        for i in range(net.NL): acts.append(net.layer(i, acts[-1], full))
+        self.root = acts; self.root_md, self.root_se = self._bound(net.nll(acts[-1], self.ids))
+
+    def _bound(self, nll):
+        d = (nll - self.base['search']) / (self.T - 1)
+        return d.mean().item(), d.std().item() / math.sqrt(len(d))
+
+    @torch.no_grad()
+    def eval_edit(self, new, i, acts, valid):
+        """Score `new`, which differs from the architecture behind `acts` only at layer i. Recomputes from the first
+        layer that can have changed; everything before it comes from the cache."""
+        net = self.nS; s = min(i, valid); x = acts[s]; tmp = {}
+        for j in range(s, net.NL):
+            x = net.layer(j, x, new); tmp[j + 1] = x
+        md, se = self._bound(net.nll(x, self.ids))
+        return md, se, tmp, s
+
+    @torch.no_grad()
+    def probe(self, edits):
+        """Cost (mean increase of search NLL per token) of single edits applied alone to the original model."""
+        out = {}; full = self.nS.full()
+        for name, arch, i in edits:
+            md, se, _, _ = self.eval_edit(arch, i, self.root, self.nS.NL); out[name] = md - self.root_md
+            self.sh.memo[arch.key()] = (md, se)
+        return out
+
+    @torch.no_grad()
+    def episode(self, pol, gen, greedy=False, chooser=None):
+        sh = self.sh; NL = self.nS.NL; arch = self.nS.full(); acts = list(self.root); valid = NL
+        md, se = self.root_md, self.root_se; sc = 1.0; strikes = 0; blocked = set(); tr = []; acc = []; rej = []
+        while strikes < STRIKES and len(tr) < TMAX:
+            cands = candidates(arch, blocked, sh.allow_half, sh.lat.nkv)
+            if not cands: break
+            F, gains = features(arch, cands, md + se, sc, strikes, sh)
+            if chooser is not None: a = chooser(F); lp = 0.0
+            else:
+                ls = torch.log_softmax(pol(F), 0)
+                a = int(ls.argmax()) if greedy else int(torch.multinomial(ls.exp(), 1, generator=gen))
+                lp = float(ls[a])
+            e = cands[a]; new = arch.apply(e); rem = 1 - (md + se) / BUDGET
+            phi = [1.0, rem, rem * rem, strikes / STRIKES, 1.0 if arch.half else 0.0, sc - 1]
+            computed = False
+            if e[0] == 'half': nmd, nse = md, se               # search evaluations already run in this precision
+            else:
+                hit = sh.memo.get(new.key())
+                if hit is not None: nmd, nse = hit; sh.hits += 1
+                else:
+                    nmd, nse, tmp, s = self.eval_edit(new, e[1], acts, valid); sh.memo[new.key()] = (nmd, nse)
+                    computed = True; sh.evals += 1
+                    for j in range(s + 1, e[1] + 1): acts[j] = tmp[j]
+                    valid = max(valid, e[1])
+            if math.isfinite(nmd) and nmd + nse <= BUDGET:
+                r = 10 * gains[a]; arch = new; sc += gains[a]; md, se = nmd, nse; acc.append(e)
+                if e[0] != 'half':
+                    if computed:
+                        for j in range(e[1] + 1, NL + 1): acts[j] = tmp[j]
+                        valid = NL
+                    else: valid = min(valid, e[1])
+            else:
+                r = -0.2; strikes += 1; blocked.add(e); rej.append(e)
+            tr.append(dict(F=F, a=a, lp=lp, r=r, phi=phi))
+        return dict(tr=tr, arch=arch, S=sc, md=md, se=se, acc=acc, rej=rej)
+
+
+def run_round(workers, pol, gens, n):
+    """n episodes shared between the workers (each takes the next one as soon as it is free)."""
+    out = []; lock = threading.Lock(); left = [n]
+    def loop(w, gen):
+        while True:
+            with lock:
+                if left[0] <= 0: return
+                left[0] -= 1
+            ep = w.episode(pol, gen)
+            with lock: out.append(ep)
+    th = [threading.Thread(target=loop, args=(w, g)) for w, g in zip(workers, gens)]
+    for t in th: t.start()
+    for t in th: t.join()
+    return out
+
+
+def update(pol, opt, trans):
+    for _ in range(EPOCHS):
+        loss = 0.0
+        for t in trans:
+            ls = torch.log_softmax(pol(t['F']), 0); ratio = torch.exp(ls[t['a']] - t['lp'])
+            loss = loss - torch.min(ratio * t['adv'], ratio.clamp(1 - CLIP, 1 + CLIP) * t['adv']) + ENT * (ls.exp() * ls).sum()
+        opt.zero_grad(); (loss / len(trans)).backward(); nn.utils.clip_grad_norm_(pol.parameters(), 1.0); opt.step()
+
 
 def main():
-    SEED = int(os.environ.get('SEED', 0)); torch.manual_seed(SEED); T0 = time.time()
-    log = open(f'{OUT}/edit_log_v2_seed{SEED}.jsonl', 'a')
-    def note(**k): k['seed'] = SEED; k['t'] = round(time.time() - T0); log.write(json.dumps(k) + '\n'); log.flush(); print(k, flush=True)
-    orig = J.load_original()
-    P0, V0, S0 = J.perplexity(orig, 'search'), J.perplexity(orig, 'validation'), J.speed(orig)[0]
-    Q0 = tok_s(orig)                                               # quick-timing baseline
-    pol = Policy(); opt = torch.optim.Adam(pol.parameters(), lr=1e-2); base_r = 0.0
-    note(event='start', search_ppl=P0, val_ppl=V0, tok_s=S0, policy_params=sum(p.numel() for p in pol.parameters()))
-    m, p, s = orig, P0, Q0; history = []; mem = {}; best = S0; step = 0
-    deadline = time.time() + float(os.environ['LOOP_SECONDS']) if os.environ.get('LOOP_SECONDS') else T0 + HOURS * 3600
-    while time.time() < deadline:
-        step += 1
-        acts, f = actions(m, mem, p / P0, s / Q0, bool(history))
-        dist = torch.distributions.Categorical(logits=pol(f)); a = dist.sample(); kind, i = acts[a.item()]
-        if kind == 'undo':
-            new = history.pop()[0]
-        elif kind == 'layer': new = E.remove_layer(m, i)
-        elif kind in ('mlp25', 'mlp10'): new = E.prune_mlp(m, i, 0.25 if kind == 'mlp25' else 0.10, E.mlp_importance(m))
-        else:
-            new = min((E.prune_kv_group(m, i, g) for g in range(E.n_kv(m, i))), key=lambda c: J.perplexity(c, 'search'))
-        p2 = J.perplexity(new, 'search')
-        s = tok_s(m); s2 = tok_s(new)                                  # paired: time current and edited back to back
-        over = lambda q: max(0.0, q / P0 - TOL)
-        r = 10 * (s2 - s) / Q0 - 20 * (over(p2) - over(p))
-        mem[(kind, i)] = (p2 / p - 1, (s2 - s) / Q0)
-        loss = -(r - base_r) * dist.log_prob(a); base_r = 0.9 * base_r + 0.1 * r
-        opt.zero_grad(); loss.backward(); opt.step()
-        if p2 > BREAK * P0:
-            note(step=step, action=[kind, i], search_ppl=round(p2, 2), reward=round(r, 3), event='rolled_back'); continue
-        if kind != 'undo': history.append((m, p, s))
-        m, p, s = new, p2, s2
-        note(step=step, action=[kind, i], search_ppl=round(p, 3), tok_s=round(s, 2), speedup=round(s / Q0, 3), layers=E.n_layers(m), reward=round(r, 3))
-        if p <= TOL * P0 and s / Q0 > best / S0 * 1.02:                      # candidate best: confirm on validation + full timing
-            v = J.perplexity(m, 'validation')
-            if v <= TOL * V0:
-                sf = J.speed(m)[0]
-                if sf > best:
-                    best = sf; torch.save(m, f'{OUT}/best_model_v2_seed{SEED}.pt')
-                    note(event='new_best', val_ppl=round(v, 3), tok_s=round(sf, 2), speedup=round(sf / S0, 3), layers=E.n_layers(m), params=E.params(m))
-        if step % 10 == 0: torch.save(pol.state_dict(), f'{OUT}/policy_v2_seed{SEED}.pt')
-    note(event='done', best_tok_s=best, best_speedup=best / S0)
+    torch.manual_seed(SEED)
+    devs = [f'cuda:{i}' for i in range(torch.cuda.device_count())] or ['cpu']
+    say(event='setup', devices=[torch.cuda.get_device_name(i) for i in range(len(devs))] if devs[0] != 'cpu' else ['cpu'],
+        loop_seconds=LOOP, search_seqs=J.SIZES['search'], seq_len=J.SEQ)
+    from transformers import AutoModelForCausalLM
+    P = S.extract(AutoModelForCausalLM.from_pretrained(J.MODEL_DIR, dtype=torch.float32))
+    sh = Shared(); workers = [Worker(d, P, sh) for d in devs]; w0 = workers[0]; NL, nkv = w0.n32.NL, w0.n32.nkv
+    sh.NL, sh.nkv = NL, nkv
+
+    # ---- usage statistics of the original model (calibration text) -> which neurons count as most-used
+    st = w0.n32.stats(J.split('calib').to(w0.dev)); rank = [v.argsort(descending=True) for v in st['imp']]
+    sh.aw, sh.mw, sh.kw = st['aw'].tolist(), st['mw'].tolist(), st['kw'].tolist()
+    sh.mass = [[float(v[r[round(len(v) * wd):]].sum() / v.sum()) for wd in S.WIDTHS] for v, r in zip(st['imp'], rank)]
+    for w in workers:
+        w.n32.set_rank(rank)
+        if w.n16 is not None: w.n16.set_rank(rank)
+        w.load_split('search')
+    for name in ('validation', 'test'): w0.load_split(name)
+    base_ppl = {k: math.exp(v.sum().item() / (v.numel() * (w0.T - 1))) for k, v in w0.base.items()}
+    say(event='baseline', ppl={k: round(v, 3) for k, v in base_ppl.items()})
+
+    # ---- is 16-bit evaluation numerically safe on this model? then search-time scoring runs in 16-bit (faster)
+    if w0.cuda:
+        d0 = ((w0.n16.seq_nll(w0.ids, w0.n16.full()) - w0.base['search']) / (w0.T - 1)).mean().item()
+        ok = math.isfinite(d0) and abs(d0) < 0.003; sh.allow_half = ok
+        say(event='fp16_check', nll_shift_per_token=d0, usable=ok)
+        if ok:
+            for w in workers: w.nS = w.n16
+    for w in workers: w.make_root()
+
+    # ---- latency model from real timings on this machine
+    sh.lat, cal = calibrate(w0, [False, True] if sh.allow_half else [False])
+    base_tps = 1000.0 / cal['fp32']['ms']['full']
+    say(event='latency_model', base_tok_s=round(base_tps, 2), **cal)
+
+    # ---- probe every part of the original model once: cost of removing it alone
+    t = time.time(); full = w0.nS.full(); jobs = []
+    for i in range(NL):
+        jobs.append((('attn', i), full.apply(('attn', i)), i)); jobs.append((('mlp', i), full.apply(('mlp', i)), i))
+        jobs.extend((('kv', i, g), full.apply(('kv', i, g)), i) for g in range(nkv))
+        for wi in (1, 3, 5, 7):
+            a = full.copy(); a.w[i] = wi; jobs.append((('w', i, wi), a, i))
+    res = {}
+    th = [threading.Thread(target=lambda w, js: res.update(w.probe(js)), args=(w, jobs[k::len(workers)])) for k, w in enumerate(workers)]
+    for x in th: x.start()
+    for x in th: x.join()
+    sh.p_attn = [res[('attn', i)] for i in range(NL)]; sh.p_mlp = [res[('mlp', i)] for i in range(NL)]
+    sh.p_kv = [[res[('kv', i, g)] for g in range(nkv)] for i in range(NL)]
+    sh.p_w = []
+    for i in range(NL):
+        p = [0.0] * len(S.WIDTHS)
+        for wi in (1, 3, 5, 7): p[wi] = res[('w', i, wi)]
+        for wi in (2, 4, 6): p[wi] = (p[wi - 1] + p[wi + 1]) / 2
+        sh.p_w.append(p)
+    pct = lambda v: round(100 * (math.exp(v) - 1), 2)
+    say(event='probe', seconds=round(time.time() - t, 1), evals=len(jobs),
+        attn_removal_ppl_pct=[pct(v) for v in sh.p_attn], mlp_removal_ppl_pct=[pct(v) for v in sh.p_mlp],
+        mlp_width90_ppl_pct=[pct(p[1]) for p in sh.p_w], mlp_width50_ppl_pct=[pct(p[5]) for p in sh.p_w],
+        cheapest_kv_group_ppl_pct=[pct(min(v)) for v in sh.p_kv])
+
+    # ---- the agent
+    pol = Policy(); opt = torch.optim.Adam(pol.parameters(), lr=LR)
+    gens = [torch.Generator().manual_seed(SEED * 1000 + k) for k in range(len(workers))]
+    best = dict(S_pred=1.0, real=1.0, arch=None); gated = set(); timed_S = 1.0
+    buf_phi, buf_G = [], []; hist = []; elog = open(f'{OUT}/episodes.jsonl', 'w'); n_ep = 0
+    say(event='agent', policy_params=sum(p.numel() for p in pol.parameters()), edits_available=len(candidates(full, None, sh.allow_half, nkv)))
+
+    def gate(ep, tag):
+        """Validation + real timing. Returns True if `ep` became the new best."""
+        nonlocal best, timed_S
+        key = ep['arch'].key() + (ep['arch'].half,)
+        if key in gated or ep['S'] <= max(best['S_pred'], timed_S) + 1e-4: return False
+        gated.add(key); v = w0.ratio('validation', ep['arch'])
+        if v['ratio'] > TOL:
+            say(event='gate_fail', where=tag, pred_speedup=round(ep['S'], 4), val_ratio=round(v['ratio'], 4)); return False
+        timed_S = max(timed_S, ep['S'])
+        real = w0.tok_s(ep['arch'], CAL_RUNS, CAL_TOKENS) / base_tps
+        if real <= best['real']:
+            say(event='gate_slower', where=tag, pred_speedup=round(ep['S'], 4), real_speedup=round(real, 4)); return False
+        best = dict(S_pred=ep['S'], real=real, arch=ep['arch'], val=v, search_bound=round(math.exp(ep['md'] + ep['se']), 4), edits=len(ep['acc']))
+        json.dump(dict(pred_speedup=ep['S'], real_speedup=real, **ep['arch'].describe(nkv)), open(f'{OUT}/best_arch.json', 'w'))
+        say(event='new_best', where=tag, real_speedup=round(real, 4), pred_speedup=round(ep['S'], 4), val_ratio=round(v['ratio'], 4), edits=len(ep['acc']))
+        return True
+
+    t_loop = time.time(); rnd = 0
+    while time.time() - t_loop < LOOP:
+        rnd += 1; snap = copy.deepcopy(pol); eps = run_round(workers, snap, gens, ROUND_EPISODES)
+        trans = []
+        for ep in eps:
+            n_ep += 1; G_ = 0.0
+            for tr in reversed(ep['tr']):
+                G_ += tr['r']; tr['G'] = G_
+            trans.extend(ep['tr']); buf_phi.extend(tr['phi'] for tr in ep['tr']); buf_G.extend(tr['G'] for tr in ep['tr'])
+            hist.append(ep['S'])
+            elog.write(json.dumps(dict(ep=n_ep, round=rnd, speedup=round(ep['S'], 4), bound=round(math.exp(ep['md'] + ep['se']), 4),
+                                       accepted=ep['acc'], refused=ep['rej'])) + '\n')
+        elog.flush()
+        if trans:
+            X = torch.tensor(buf_phi[-4000:]); y = torch.tensor(buf_G[-4000:])
+            wv = torch.linalg.solve(X.T @ X + 1e-2 * torch.eye(X.shape[1]), X.T @ y)
+            adv = torch.tensor([tr['G'] for tr in trans]) - torch.tensor([tr['phi'] for tr in trans]) @ wv
+            adv = (adv - adv.mean()) / (adv.std() + 1e-6)
+            for tr, a in zip(trans, adv): tr['adv'] = a
+            update(pol, opt, trans)
+        gate(max(eps, key=lambda e: e['S']), f'round {rnd}')
+        el = time.time() - t_loop
+        say(event='round', n=rnd, episodes=n_ep, mean_speedup=round(statistics.mean(e['S'] for e in eps), 4),
+            max_speedup=round(max(e['S'] for e in eps), 4), mean_edits=round(statistics.mean(len(e['acc']) for e in eps), 1),
+            best_real=round(best['real'], 4), evals_per_s=round(sh.evals / el, 1), memo_hits=sh.hits, loop_s=round(el, 1))
+    loop_s = time.time() - t_loop
+
+    # ---- after learning: what the trained network does on its own (no sampling), and two reference points
+    g0 = torch.Generator().manual_seed(SEED)
+    greedy = w0.episode(pol, g0, greedy=True); gate(greedy, 'trained network, greedy')
+    ref_ratio = w0.episode(None, g0, chooser=lambda F: int(F[:, 17].argmax()))
+    k = max(1, len(hist) // 10)
+    learn = dict(episodes=n_ep, rounds=rnd, loop_seconds=round(loop_s, 1), evals=sh.evals, memo_hits=sh.hits,
+                 first_tenth_mean_speedup=round(statistics.mean(hist[:k]), 4), last_tenth_mean_speedup=round(statistics.mean(hist[-k:]), 4),
+                 trained_greedy_speedup=round(greedy['S'], 4), trained_greedy_edits=len(greedy['acc']),
+                 hand_rule_speedup=round(ref_ratio['S'], 4), hand_rule_edits=len(ref_ratio['acc']))
+    say(event='learning', **learn)
+    torch.save(pol.state_dict(), f'{OUT}/policy.pt')
+
+    # ---- final report on the saved best: unseen test text, real speed (alternating with the original), samples
+    rep = dict(learning=learn, baseline=dict(ppl=base_ppl, tok_s=base_tps), latency_model=cal, devices=devs)
+    if best['arch'] is not None:
+        a = best['arch']; fulla = w0.n32.full(); tb, ta = [], []
+        for _ in range(3):
+            tb.append(w0.tok_s(fulla, CAL_RUNS, CAL_TOKENS)); ta.append(w0.tok_s(a, CAL_RUNS, CAL_TOKENS))
+        tok = J.tokenizer(); M0 = S.materialize(w0.n32, fulla); M1 = S.materialize(w0.n32, a)
+        d0, d1 = G.Decoder(M0).capture(), G.Decoder(M1).capture(); samples = []
+        for pr in J.PROMPTS[:3]:
+            ids = tok(pr)['input_ids']
+            samples.append(dict(prompt=pr, original=tok.decode(d0.generate(ids, 40)), edited=tok.decode(d1.generate(ids, 40))))
+        rep['best'] = dict(architecture=a.describe(nkv), edits=best['edits'],
+                           params=S.n_params(M1), params_original=S.n_params(M0),
+                           tok_s=round(statistics.median(ta), 2), tok_s_original=round(statistics.median(tb), 2),
+                           real_speedup=round(statistics.median(ta) / statistics.median(tb), 4), predicted_speedup=round(best['S_pred'], 4),
+                           search_bound=best['search_bound'], validation=w0.ratio('validation', a), test=w0.ratio('test', a),
+                           search=w0.ratio('search', a), samples=samples)
+        say(event='final', **{k: v for k, v in rep['best'].items() if k not in ('architecture', 'samples')})
+        say(event='architecture', **{k: v for k, v in a.describe(nkv).items() if k not in ('attn', 'kv', 'w')})
+        for s_ in samples: say(event='sample', **s_)
+    else:
+        say(event='final', note='no architecture passed the validation gate and beat the original speed')
+    json.dump(rep, open(f'{OUT}/report.json', 'w'), indent=1)
+    say(event='done')
+
 
 if __name__ == '__main__': main()

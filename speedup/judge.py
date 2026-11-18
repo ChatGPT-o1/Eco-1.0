@@ -4,7 +4,7 @@ Data (all wikitext-103, disjoint by source file and by article):
     search      validation-split articles, even-numbered   (agent's reward)
     validation  validation-split articles, odd-numbered    (gate before a new base is accepted)
     test        test split                                 (final report only)
-    healing     train split, first shard                   (distillation text)
+    calib       train split, first articles                (usage statistics: which neurons are most used)
 Speed: greedy generation, batch 1, KV cache, fp32, fixed thread count; median of many timed runs.
 """
 import os, re, time, statistics, functools
@@ -13,8 +13,9 @@ import numpy as np, torch, pandas as pd
 ROOT = os.environ.get('PRUNE_ROOT', '/tmp/claude-0/-home-user-Eco-1-0/44fe88f8-9d28-5d7b-9454-d407264e70f1/scratchpad/prune')
 MODEL_DIR = f'{ROOT}/model'
 DATA = f'{ROOT}/data/wikitext-103-raw-v1'
-SEQ = 256
-SIZES = {'search': 32, 'validation': 64, 'test': 128}
+SEQ = int(os.environ.get('SEQ', 256))
+SIZES = {'search': int(os.environ.get('SEARCH_N', 32)), 'validation': int(os.environ.get('VAL_N', 64)),
+         'test': int(os.environ.get('TEST_N', 128)), 'calib': int(os.environ.get('CALIB_N', 32))}
 DEVICE = os.environ.get('DEVICE', 'cuda' if torch.cuda.is_available() else 'cpu')
 THREADS = 3                     # 4 threads on this VM are noisy (one straggler vCPU stalls every matmul)
 torch.set_num_threads(THREADS)
@@ -53,9 +54,8 @@ def split(name):
         arts = _articles(f'{DATA}/test-00000-of-00001.parquet')
         rng = np.random.default_rng(2); rng.shuffle(arts)
         return _chunks(arts, SIZES['test'])
-    if name == 'healing':
-        arts = _articles(f'{DATA}/train-00000-of-00002.parquet')[:4000]
-        return _chunks(arts, 4000)
+    if name == 'calib':                                   # usage statistics only; from the train split
+        return _chunks(_articles(f'{DATA}/train-00000-of-00002.parquet')[:400], SIZES['calib'])
     raise KeyError(name)
 
 @torch.no_grad()
