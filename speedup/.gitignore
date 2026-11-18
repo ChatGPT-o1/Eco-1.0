@@ -3,3 +3,4 @@ scan.json
 *.log
 runs/
 __pycache__/
+*.out
