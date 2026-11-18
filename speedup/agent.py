@@ -44,9 +44,9 @@ def actions(m, mem, ppl_ratio, speed_ratio, can_undo):
     return acts, torch.tensor(feats, dtype=torch.float32)
 
 def main():
-    torch.manual_seed(0); T0 = time.time()
-    log = open(f'{OUT}/edit_log_v2.jsonl', 'a')
-    def note(**k): k['t'] = round(time.time() - T0); log.write(json.dumps(k) + '\n'); log.flush(); print(k, flush=True)
+    SEED = int(os.environ.get('SEED', 0)); torch.manual_seed(SEED); T0 = time.time()
+    log = open(f'{OUT}/edit_log_v2_seed{SEED}.jsonl', 'a')
+    def note(**k): k['seed'] = SEED; k['t'] = round(time.time() - T0); log.write(json.dumps(k) + '\n'); log.flush(); print(k, flush=True)
     orig = J.load_original()
     P0, V0, S0 = J.perplexity(orig, 'search'), J.perplexity(orig, 'validation'), J.speed(orig)[0]
     Q0 = tok_s(orig)                                               # quick-timing baseline
@@ -81,9 +81,9 @@ def main():
             if v <= TOL * V0:
                 sf = J.speed(m)[0]
                 if sf > best:
-                    best = sf; torch.save(m, f'{OUT}/best_model_v2.pt')
+                    best = sf; torch.save(m, f'{OUT}/best_model_v2_seed{SEED}.pt')
                     note(event='new_best', val_ppl=round(v, 3), tok_s=round(sf, 2), speedup=round(sf / S0, 3), layers=E.n_layers(m), params=E.params(m))
-        if step % 10 == 0: torch.save(pol.state_dict(), f'{OUT}/policy_v2.pt')
+        if step % 10 == 0: torch.save(pol.state_dict(), f'{OUT}/policy_v2_seed{SEED}.pt')
     note(event='done', best_tok_s=best, best_speedup=best / S0)
 
 if __name__ == '__main__': main()
