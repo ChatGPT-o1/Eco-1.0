@@ -403,10 +403,17 @@ def main():
         jobs.extend((('kv', i, g), full.apply(('kv', i, g)), i) for g in range(nkv))
         for wi in (1, 3, 5, 7):
             a = full.copy(); a.w[i] = wi; jobs.append((('w', i, wi), a, i))
-    res = {}
-    th = [threading.Thread(target=lambda w, js: res.update(w.probe(js)), args=(w, jobs[k::len(workers)])) for k, w in enumerate(workers)]
-    for x in th: x.start()
-    for x in th: x.join()
+    # the probe costs depend only on the model, the search text and the precision: cache them between runs
+    ckey = f"{J.SIZES['search']}_{J.SEQ}_{SUBSETS}_{'fp16' if w0.nS is w0.n16 else 'fp32'}_{w0.dev.type}"
+    cfile = os.path.join(os.environ.get('CACHE_DIR', J.ROOT), f'probe_{ckey}.json')
+    if os.path.exists(cfile):
+        res = {tuple(json.loads(k)): v for k, v in json.load(open(cfile)).items()}; say(event='probe_cache', loaded=cfile)
+    else:
+        res = {}
+        th = [threading.Thread(target=lambda w, js: res.update(w.probe(js)), args=(w, jobs[k::len(workers)])) for k, w in enumerate(workers)]
+        for x in th: x.start()
+        for x in th: x.join()
+        json.dump({json.dumps(list(k)): v for k, v in res.items()}, open(cfile, 'w'))
     sh.p_attn = [res[('attn', i)] for i in range(NL)]; sh.p_mlp = [res[('mlp', i)] for i in range(NL)]
     sh.p_kv = [[res[('kv', i, g)] for g in range(nkv)] for i in range(NL)]
     sh.p_w = []
