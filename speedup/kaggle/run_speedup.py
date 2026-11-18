@@ -1,7 +1,7 @@
 # Auto-built from speedup/ : a 1K-param network edits SmolLM-135M to make it faster. One search per GPU.
 import os, subprocess, sys
 ROOT = '/kaggle/working/prune'; os.makedirs(ROOT + '/data', exist_ok=True)
-os.environ['PRUNE_ROOT'] = ROOT; os.environ['LOOP_SECONDS'] = '60'; os.environ['DEVICE'] = 'cuda'
+os.environ['PRUNE_ROOT'] = ROOT; os.environ['LOOP_SECONDS'] = '300'; os.environ['DEVICE'] = 'cuda'
 import torch
 NG = torch.cuda.device_count()
 print('GPUs:', NG, [torch.cuda.get_device_name(i) for i in range(NG)], flush=True)
