@@ -1,0 +1,14 @@
+{
+ "id": "timcook123/smollm-kernel-bench",
+ "title": "smollm-kernel-bench",
+ "code_file": "probe.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_internet": true,
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": [],
+ "machine_shape": "NvidiaTeslaT4"
+}
