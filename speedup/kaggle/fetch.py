@@ -1,6 +1,6 @@
-"""fetch.py - waits for the Kaggle run, downloads its output and prints the agent's event lines.   python kaggle/fetch.py <out_dir>"""
+"""fetch.py - waits for a Kaggle run, downloads its output and extracts the event lines.   python kaggle/fetch.py <out_dir> [kernel-slug]"""
 import json, os, subprocess, sys, time
-out = sys.argv[1]; K = 'timcook123/smollm-speedup-1k-agent'; time.sleep(20)
+out = sys.argv[1]; K = sys.argv[2] if len(sys.argv) > 2 else 'timcook123/smollm-speedup-1k-agent'; time.sleep(20)
 while True:
     s = subprocess.run(['kaggle', 'kernels', 'status', K], capture_output=True, text=True).stdout.strip().splitlines()[-1:]
     s = s[0] if s else ''

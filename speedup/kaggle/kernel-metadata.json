@@ -1,7 +1,7 @@
 {
  "id": "timcook123/smollm-speedup-1k-agent",
  "title": "smollm-speedup-1k-agent",
- "code_file": "run_speedup.py",
+ "code_file": "run.py",
  "language": "python",
  "kernel_type": "script",
  "is_private": true,
