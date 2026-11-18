@@ -1,0 +1,284 @@
+{
+ "learning": {
+  "episodes": 308,
+  "rounds": 77,
+  "loop_seconds": 303.8,
+  "evals": 2275,
+  "memo_hits": 276,
+  "worker_eval_seconds": [
+   207.5,
+   184.3
+  ],
+  "worker_busy_seconds": [
+   210.1,
+   186.8
+  ],
+  "first_tenth_mean_speedup": 1.0239,
+  "last_tenth_mean_speedup": 1.1636,
+  "trained_network_no_sampling": [
+   {
+    "pred_speedup": 1.193,
+    "edits": 5,
+    "search_bound": 1.1133,
+    "val_ratio": 1.102,
+    "passes": false,
+    "real_speedup": null
+   },
+   {
+    "pred_speedup": 1.1707,
+    "edits": 5,
+    "search_bound": 1.0722,
+    "val_ratio": 1.0716,
+    "passes": true,
+    "real_speedup": 1.1673
+   },
+   {
+    "pred_speedup": 1.1707,
+    "edits": 5,
+    "search_bound": 1.0722,
+    "val_ratio": 1.0716,
+    "passes": true,
+    "real_speedup": 1.1681
+   },
+   {
+    "pred_speedup": 1.1707,
+    "edits": 5,
+    "search_bound": 1.0722,
+    "val_ratio": 1.0716,
+    "passes": true,
+    "real_speedup": 1.1674
+   }
+  ],
+  "hand_rule": [
+   {
+    "pred_speedup": 1.1995,
+    "edits": 13,
+    "search_bound": 1.1364,
+    "val_ratio": 1.1327,
+    "passes": false,
+    "real_speedup": null
+   },
+   {
+    "pred_speedup": 1.1727,
+    "edits": 7,
+    "search_bound": 1.0804,
+    "val_ratio": 1.0794,
+    "passes": true,
+    "real_speedup": 1.1677
+   },
+   {
+    "pred_speedup": 1.1742,
+    "edits": 9,
+    "search_bound": 1.0855,
+    "val_ratio": 1.0841,
+    "passes": true,
+    "real_speedup": 1.1691
+   },
+   {
+    "pred_speedup": 1.1742,
+    "edits": 9,
+    "search_bound": 1.0844,
+    "val_ratio": 1.0843,
+    "passes": true,
+    "real_speedup": 1.1698
+   }
+  ]
+ },
+ "baseline": {
+  "ppl": {
+   "search": 33.00785322690178,
+   "validation": 32.12329648953704,
+   "test": 25.050478580748113
+  },
+  "tok_s": 185.21948508983144
+ },
+ "latency_model": {
+  "fp32": {
+   "ms": {
+    "full": 5.399,
+    "attn_third": 4.488,
+    "mlp_third": 4.642,
+    "mlp50": 4.643,
+    "kv1": 5.015,
+    "mixed": 4.444
+   },
+   "attn_sublayer_ms": 0.0912,
+   "kv_group_ms": 0.0064,
+   "mlp_sublayer_ms": 0.0757,
+   "mlp_width_part_ms": 0.0504,
+   "check_pred_ms": 4.442,
+   "check_real_ms": 4.444,
+   "check_error_pct": -0.05
+  },
+  "fp16": {
+   "ms": {
+    "full": 4.804,
+    "attn_third": 3.893,
+    "mlp_third": 4.22,
+    "mlp50": 4.373,
+    "kv1": 4.5,
+    "mixed": 4.014
+   },
+   "attn_sublayer_ms": 0.0911,
+   "kv_group_ms": 0.0051,
+   "mlp_sublayer_ms": 0.0584,
+   "mlp_width_part_ms": 0.0287,
+   "check_pred_ms": 4.01,
+   "check_real_ms": 4.014,
+   "check_error_pct": -0.09
+  }
+ },
+ "devices": [
+  "cuda:0",
+  "cuda:1"
+ ],
+ "best": {
+  "architecture": {
+   "precision": "fp16",
+   "attention_removed": [
+    7,
+    12,
+    29
+   ],
+   "mlp_removed": [],
+   "kv_groups_removed": {},
+   "mlp_width": {
+    "19": 0.9,
+    "22": 0.9
+   },
+   "attn": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false
+   ],
+   "kv": [
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7
+   ],
+   "w": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "edits": 6,
+  "params": 131326848,
+  "params_original": 134515008,
+  "tok_s": 220.16,
+  "tok_s_original": 184.45,
+  "real_speedup": 1.1936,
+  "predicted_speedup": 1.1931,
+  "search_bound": 1.0951,
+  "validation": {
+   "ratio": 1.082690798521268,
+   "se_pct": 0.288
+  },
+  "test": {
+   "ratio": 1.0865939324361642,
+   "se_pct": 0.2
+  },
+  "search": {
+   "ratio": 1.0918559203960403,
+   "se_pct": 0.292
+  },
+  "samples": [
+   {
+    "prompt": "The history of the city began in",
+    "original": " 1870 when the first railroad line was built. The city was named after the city of New Orleans, Louisiana.\nThe city was founded in 1870 by the Louisiana",
+    "edited": " 1848 when the city was founded by the French. The city was named after the French emperor Napoleon Bonaparte.\nThe city was named after the French emperor Napoleon Bonaparte.\nThe city"
+   },
+   {
+    "prompt": "In 1998, the band released",
+    "original": " their first album, \"The Sound of Music,\" which featured a mix of traditional folk and rock elements. The album became a massive success, and it helped to establish the band as a major force in",
+    "edited": " their first album, \"The Sound of Silence,\" which featured a cover of the song \"The Sound of Silence\" by the band The Beatles. The album was released on the album cover of the"
+   },
+   {
+    "prompt": "The species is found in",
+    "original": " the southern part of the island, in the southern part of the island, and in the northern part of the island.\nThe species is found in the southern part of the island, in the southern",
+    "edited": " the western part of the state, and is known to be found in the following states: California, Colorado, Idaho, Montana, New Mexico, New York, Oregon, Utah, Washington, Wyoming,"
+   }
+  ]
+ }
+}
