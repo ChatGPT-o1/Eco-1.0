@@ -1,0 +1,121 @@
+Wed Nov 18 10:09:44 UTC 2026
+Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu jammy InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+curl is already the newest version (7.81.0-1ubuntu1.30).
+less is already the newest version (590-1ubuntu0.22.04.3).
+locales is already the newest version (2.35-0ubuntu3.18).
+openssh-server is already the newest version (1:8.9p1-3ubuntu0.18).
+software-properties-common is already the newest version (0.99.22.9).
+sudo is already the newest version (1.9.9-1ubuntu2.7).
+tmux is already the newest version (3.2a-4ubuntu0.3).
+wget is already the newest version (1.21.2-2ubuntu1.5).
+0 upgraded, 0 newly installed, 0 to remove and 54 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+git is already the newest version (1:2.34.1-1ubuntu1.18).
+rsync is already the newest version (3.2.7-0ubuntu0.22.04.7).
+0 upgraded, 0 newly installed, 0 to remove and 54 not upgraded.
+rm: cannot remove '/etc/forward_port2': No such file or directory
+Server listening on 0.0.0.0 port 22.
+Server listening on :: port 22.
+Wed Nov 18 10:10:05 UTC 2026
+Warning: Permanently added 'ssh5.vast.ai' (ED25519) to the list of known hosts.
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 276, in _inner
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/_snapshot_download.py", line 541, in snapshot_download
+    hf_thread_map(
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/utils/tqdm.py", line 441, in hf_thread_map
+    results[future_to_index[future]] = future.result()
+                                       ^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/conda/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/_snapshot_download.py", line 521, in _inner_hf_hub_download
+    hf_hub_download(  # type: ignore
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 276, in _inner
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1026, in hf_hub_download
+    return _hf_hub_download_to_local_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 1505, in _hf_hub_download_to_local_dir
+    _download_to_tmp_and_move(
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 2033, in _download_to_tmp_and_move
+    http_get(
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/huggingface_hub/file_download.py", line 459, in http_get
+    for chunk in response.iter_bytes(chunk_size=constants.DOWNLOAD_CHUNK_SIZE):
+  File "/opt/conda/lib/python3.11/site-packages/httpx2/_models.py", line 907, in iter_bytes
+    for decoded in decoder.decode(raw_bytes):
+  File "/opt/conda/lib/python3.11/site-packages/httpx2/_decoders.py", line 192, in decode
+    decompressed = self._decompress(data, output_buffer_limit=output_buffer_limit)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: process() takes no keyword arguments
+=== FUSED
+Traceback (most recent call last):
+  File "/root/eco/speedup/fused_test.py", line 13, in <module>
+    net0 = S.Net(P, dev); ident(net0); ids = J.split('test').to(dev); T = ids.shape[1]
+           ^^^^^^^^^^^^^
+  File "/root/eco/speedup/smol.py", line 79, in __init__
+    self.E, self.nf = mv(P['E']), mv(P['nf'])
+                      ^^^^^^^^^^
+  File "/root/eco/speedup/smol.py", line 78, in <lambda>
+    mv = lambda t: t.to(device=self.dev, dtype=self.dt)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: CUDA-capable device(s) is/are busy or unavailable
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+=== AGENT
+{"event": "setup", "devices": ["Tesla T4", "Tesla T4"], "loop_seconds": 300.0, "search_seqs": 128, "search_subsets": 4, "validation_seqs": 128, "test_seqs": 256, "seq_len": 256, "t": 0.0}
+Traceback (most recent call last):
+  File "/root/eco/speedup/agent.py", line 485, in <module>
+    if __name__ == '__main__': main()
+                               ^^^^^^
+  File "/root/eco/speedup/agent.py", line 326, in main
+    sh = Shared(); workers = [Worker(d, P, sh) for d in devs]; w0 = workers[0]; NL, nkv = w0.n32.NL, w0.n32.nkv
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/eco/speedup/agent.py", line 326, in <listcomp>
+    sh = Shared(); workers = [Worker(d, P, sh) for d in devs]; w0 = workers[0]; NL, nkv = w0.n32.NL, w0.n32.nkv
+                              ^^^^^^^^^^^^^^^^
+  File "/root/eco/speedup/agent.py", line 168, in __init__
+    self.n32 = S.Net(P, dev, half=False, T=J.SEQ)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/eco/speedup/smol.py", line 79, in __init__
+    self.E, self.nf = mv(P['E']), mv(P['nf'])
+                      ^^^^^^^^^^
+  File "/root/eco/speedup/smol.py", line 78, in <lambda>
+    mv = lambda t: t.to(device=self.dev, dtype=self.dt)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: CUDA-capable device(s) is/are busy or unavailable
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+=== ALLDONE
