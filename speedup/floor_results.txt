@@ -1,0 +1,4 @@
+full (30 layers)         33.0 tok/s  ( 30.3 ms/token)  params 134.5M
+15 layers                57.0 tok/s  ( 17.6 ms/token)  params 81.4M
+0 layers                343.2 tok/s  (  2.9 ms/token)  params 28.3M
+30 layers, MLP -50%      41.5 tok/s  ( 24.1 ms/token)  params 94.7M
