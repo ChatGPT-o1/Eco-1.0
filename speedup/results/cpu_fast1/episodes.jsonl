@@ -10,3 +10,7 @@
 {"ep": 10, "round": 3, "subset": 1, "speedup": 1.0407, "bound": 1.0951, "accepted": [["mlp", 15], ["attn", 15]], "refused": [["attn", 24], ["kv", 27, 0], ["p30", 6]]}
 {"ep": 11, "round": 3, "subset": 2, "speedup": 1.0209, "bound": 1.0961, "accepted": [["p10", 17], ["p10", 1], ["p30", 5], ["p30", 7], ["p10", 20], ["kv", 13, 1]], "refused": [["mlp", 21], ["mlp", 10], ["attn", 20]]}
 {"ep": 12, "round": 3, "subset": 3, "speedup": 1.0, "bound": 1.1005, "accepted": [["p10", 29], ["kv", 3, 0], ["kv", 11, 2]], "refused": [["attn", 17], ["kv", 20, 1], ["mlp", 2]]}
+{"ep": 13, "round": 4, "subset": 0, "speedup": 1.026, "bound": 1.0897, "accepted": [["p30", 15], ["p10", 12], ["p30", 26], ["kv", 6, 1], ["kv", 12, 2], ["p10", 13], ["kv", 24, 2]], "refused": [["attn", 5], ["attn", 3], ["attn", 24]]}
+{"ep": 14, "round": 4, "subset": 1, "speedup": 1.0169, "bound": 1.0307, "accepted": [["attn", 6]], "refused": [["p30", 0], ["mlp", 23], ["mlp", 21]]}
+{"ep": 15, "round": 4, "subset": 2, "speedup": 1.0288, "bound": 1.0867, "accepted": [["attn", 4], ["p30", 2], ["p30", 26]], "refused": [["attn", 18], ["attn", 3], ["kv", 15, 1]]}
+{"ep": 16, "round": 4, "subset": 3, "speedup": 1.0205, "bound": 1.0932, "accepted": [["p30", 13], ["p10", 7], ["p10", 8], ["kv", 4, 2], ["p10", 28], ["p10", 5], ["kv", 3, 2]], "refused": [["attn", 14], ["attn", 25], ["p30", 7]]}
