@@ -73,7 +73,10 @@ PROMPTS = ['The history of the city began in', 'In 1998, the band released', 'Th
 
 @torch.no_grad()
 def speed(model, runs=20, new_tokens=64, warmup=2):
-    """Median tokens/second for greedy generation (batch 1, KV cache)."""
+    """Median tokens/second for greedy generation (batch 1, KV cache). On GPU: CUDA-graph decoder."""
+    if DEVICE == 'cuda':
+        r = [gpu_speed(model, runs=3, new_tokens=new_tokens) for _ in range(max(3, runs // 4))]
+        return statistics.median(r), statistics.stdev(r) / len(r) ** 0.5
     tok = tokenizer(); model.eval(); rates = []
     for r in range(warmup + runs):
         ids = tok(PROMPTS[r % len(PROMPTS)], return_tensors='pt')['input_ids'].to(DEVICE); _sync()
@@ -99,6 +102,7 @@ def sample(model, prompt, n=40):
 @torch.no_grad()
 def quick_speed(model, runs=6, new_tokens=48):
     """Fast, low-noise speed reading for per-step rewards: same prompt every run, best (minimum) time of N."""
+    if DEVICE == 'cuda': return gpu_speed(model, runs=runs, new_tokens=64)
     tok = tokenizer(); model.eval(); ids = tok(PROMPTS[0], return_tensors='pt')['input_ids'].to(DEVICE)
     model.generate(ids, max_new_tokens=8, do_sample=False, pad_token_id=0)            # warm-up
     best = 1e9
@@ -106,4 +110,16 @@ def quick_speed(model, runs=6, new_tokens=48):
         _sync(); t0 = time.perf_counter()
         model.generate(ids, max_new_tokens=new_tokens, min_new_tokens=new_tokens, do_sample=False, pad_token_id=0)
         _sync(); best = min(best, time.perf_counter() - t0)
+    return new_tokens / best
+
+
+@torch.no_grad()
+def gpu_speed(model, runs=5, new_tokens=64):
+    """GPU tokens/second with the CUDA-graph decoder (fastgen.py): best of N, same prompt."""
+    import fastgen
+    g = fastgen.FastGen(model, max_len=128); g.capture()
+    ids = tokenizer()(PROMPTS[0])['input_ids']; best = 1e9
+    for _ in range(runs + 1):
+        g._reset(ids); _sync(); t0 = time.perf_counter(); g.decode(new_tokens); _sync()
+        best = min(best, time.perf_counter() - t0)
     return new_tokens / best
