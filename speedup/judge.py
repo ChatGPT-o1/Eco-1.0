@@ -15,7 +15,7 @@ MODEL_DIR = f'{ROOT}/model'
 DATA = f'{ROOT}/data/wikitext-103-raw-v1'
 SEQ = 256
 SIZES = {'search': 32, 'validation': 64, 'test': 128}
-THREADS = 4
+THREADS = 3                     # 4 threads on this VM are noisy (one straggler vCPU stalls every matmul)
 torch.set_num_threads(THREADS)
 
 def _articles(path):
@@ -91,3 +91,15 @@ def sample(model, prompt, n=40):
     tok = tokenizer(); ids = tok(prompt, return_tensors='pt')['input_ids']
     out = model.generate(ids, max_new_tokens=n, do_sample=False, pad_token_id=0)
     return tok.decode(out[0][ids.shape[1]:])
+
+@torch.no_grad()
+def quick_speed(model, runs=6, new_tokens=48):
+    """Fast, low-noise speed reading for per-step rewards: same prompt every run, best (minimum) time of N."""
+    tok = tokenizer(); model.eval(); ids = tok(PROMPTS[0], return_tensors='pt')['input_ids']
+    model.generate(ids, max_new_tokens=8, do_sample=False, pad_token_id=0)            # warm-up
+    best = 1e9
+    for _ in range(runs):
+        t0 = time.perf_counter()
+        model.generate(ids, max_new_tokens=new_tokens, min_new_tokens=new_tokens, do_sample=False, pad_token_id=0)
+        best = min(best, time.perf_counter() - t0)
+    return new_tokens / best

@@ -8,7 +8,7 @@ No fixed schedule: when to cut, when to heal and when to undo are all the networ
 
 Reward (fixed, the network cannot change it):
     + 10 x measured speed change (real CPU timing, relative to the original)
-    - 20 x how far search perplexity is above the 10% budget
+    - 20 x the change in how far search perplexity is above the 10% budget
     - 0.3 per heal (healing costs time)
 Safeguards (scoring side, not the agent): a model only becomes the saved best if it is the fastest so far AND
 VALIDATION perplexity is within 10%; a model past 1.5x perplexity is rolled back.
@@ -27,7 +27,7 @@ class Policy(nn.Module):
         super().__init__(); self.net = nn.Sequential(nn.Linear(FEAT, 32), nn.Tanh(), nn.Linear(32, 16), nn.Tanh(), nn.Linear(16, 1))
     def forward(self, f): return self.net(f).squeeze(-1)
 
-def tok_s(m, runs=8): return J.speed(m, runs=runs, warmup=1)[0]
+def tok_s(m): return J.quick_speed(m)
 
 def actions(m, mem, ppl_ratio, speed_ratio, can_undo):
     acts, feats = [], []; L = E.n_layers(m)
@@ -50,12 +50,13 @@ def main():
     def note(**k): k['t'] = round(time.time() - T0); log.write(json.dumps(k) + '\n'); log.flush(); print(k, flush=True)
     orig = J.load_original()
     P0, V0, S0 = J.perplexity(orig, 'search'), J.perplexity(orig, 'validation'), J.speed(orig)[0]
+    Q0 = tok_s(orig)                                               # quick-timing baseline
     pol = Policy(); opt = torch.optim.Adam(pol.parameters(), lr=1e-2); base_r = 0.0
     note(event='start', search_ppl=P0, val_ppl=V0, tok_s=S0, policy_params=sum(p.numel() for p in pol.parameters()))
-    m, p, s = orig, P0, S0; history = []; mem = {}; heal_pos = 0; best = S0; step = 0
+    m, p, s = orig, P0, Q0; history = []; mem = {}; heal_pos = 0; best = S0; step = 0
     while time.time() - T0 < HOURS * 3600:
         step += 1
-        acts, f = actions(m, mem, p / P0, s / S0, bool(history))
+        acts, f = actions(m, mem, p / P0, s / Q0, bool(history))
         dist = torch.distributions.Categorical(logits=pol(f)); a = dist.sample(); kind, i = acts[a.item()]
         if kind == 'heal':
             new, heal_pos = H.heal(m, steps=30, start=heal_pos, log=lambda x: None)
@@ -65,9 +66,12 @@ def main():
         elif kind in ('mlp25', 'mlp10'): new = E.prune_mlp(m, i, 0.25 if kind == 'mlp25' else 0.10, E.mlp_importance(m))
         else:
             new = min((E.prune_kv_group(m, i, g) for g in range(E.n_kv(m, i))), key=lambda c: J.perplexity(c, 'search'))
-        p2 = J.perplexity(new, 'search'); s2 = s if kind == 'heal' else tok_s(new)
-        r = 10 * (s2 - s) / S0 - 20 * max(0.0, p2 / P0 - TOL) - (0.3 if kind == 'heal' else 0.0)
-        mem[(kind, i)] = (p2 / p - 1, (s2 - s) / S0)
+        p2 = J.perplexity(new, 'search')
+        if kind != 'heal': s = tok_s(m); s2 = tok_s(new)               # paired: time current and edited back to back
+        else: s2 = s
+        over = lambda q: max(0.0, q / P0 - TOL)
+        r = 10 * (s2 - s) / Q0 - 20 * (over(p2) - over(p)) - (0.3 if kind == 'heal' else 0.0)
+        mem[(kind, i)] = (p2 / p - 1, (s2 - s) / Q0)
         loss = -(r - base_r) * dist.log_prob(a); base_r = 0.9 * base_r + 0.1 * r
         opt.zero_grad(); loss.backward(); opt.step()
         if p2 > BREAK * P0:
@@ -75,8 +79,8 @@ def main():
         if kind not in ('heal', 'undo'): history.append((m, p, s))
         if kind == 'heal' and history: history[-1] = history[-1]       # heal keeps the undo point
         m, p, s = new, p2, s2
-        note(step=step, action=[kind, i], search_ppl=round(p, 3), tok_s=round(s, 2), speedup=round(s / S0, 3), layers=E.n_layers(m), reward=round(r, 3))
-        if p <= TOL * P0 and s > best * 1.02:                      # candidate best: confirm on validation + full timing
+        note(step=step, action=[kind, i], search_ppl=round(p, 3), tok_s=round(s, 2), speedup=round(s / Q0, 3), layers=E.n_layers(m), reward=round(r, 3))
+        if p <= TOL * P0 and s / Q0 > best / S0 * 1.02:                      # candidate best: confirm on validation + full timing
             v = J.perplexity(m, 'validation')
             if v <= TOL * V0:
                 sf = J.speed(m)[0]
