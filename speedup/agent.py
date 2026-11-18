@@ -53,7 +53,8 @@ def main():
     pol = Policy(); opt = torch.optim.Adam(pol.parameters(), lr=1e-2); base_r = 0.0
     note(event='start', search_ppl=P0, val_ppl=V0, tok_s=S0, policy_params=sum(p.numel() for p in pol.parameters()))
     m, p, s = orig, P0, Q0; history = []; mem = {}; best = S0; step = 0
-    while time.time() - T0 < HOURS * 3600:
+    deadline = time.time() + float(os.environ['LOOP_SECONDS']) if os.environ.get('LOOP_SECONDS') else T0 + HOURS * 3600
+    while time.time() < deadline:
         step += 1
         acts, f = actions(m, mem, p / P0, s / Q0, bool(history))
         dist = torch.distributions.Categorical(logits=pol(f)); a = dist.sample(); kind, i = acts[a.item()]

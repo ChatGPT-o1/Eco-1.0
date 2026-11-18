@@ -1,0 +1,13 @@
+{
+ "id": "timcook123/smollm-speedup-1k-agent",
+ "title": "smollm-speedup-1k-agent",
+ "code_file": "run_speedup.py",
+ "language": "python",
+ "kernel_type": "script",
+ "is_private": true,
+ "enable_gpu": false,
+ "enable_internet": true,
+ "dataset_sources": [],
+ "competition_sources": [],
+ "kernel_sources": []
+}
