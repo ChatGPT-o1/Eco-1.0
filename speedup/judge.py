@@ -1,11 +1,12 @@
-"""judge.py - the scoring code. The agent may NOT edit this file or the data it reads.
+"""judge.py - the data and the reference scoring code. The agent may NOT edit this file or the data it reads.
 
 Data (all wikitext-103, disjoint by source file and by article):
-    search      validation-split articles, even-numbered   (agent's reward)
-    validation  validation-split articles, odd-numbered    (gate before a new base is accepted)
+    search      validation-split articles, even-numbered   (the agent's reward; split into rotating subsets)
+    validation  validation-split articles, odd-numbered    (gate before an architecture can become the saved best)
     test        test split                                 (final report only)
     calib       train split, first articles                (usage statistics: which neurons are most used)
-Speed: greedy generation, batch 1, KV cache, fp32, fixed thread count; median of many timed runs.
+perplexity() / speed() here run the HuggingFace model and are the reference that smol.py and fastgen.py are
+tested against (test_exact.py).
 """
 import os, re, time, statistics, functools
 import numpy as np, torch, pandas as pd
@@ -14,8 +15,8 @@ ROOT = os.environ.get('PRUNE_ROOT', '/tmp/claude-0/-home-user-Eco-1-0/44fe88f8-9
 MODEL_DIR = f'{ROOT}/model'
 DATA = f'{ROOT}/data/wikitext-103-raw-v1'
 SEQ = int(os.environ.get('SEQ', 256))
-SIZES = {'search': int(os.environ.get('SEARCH_N', 32)), 'validation': int(os.environ.get('VAL_N', 64)),
-         'test': int(os.environ.get('TEST_N', 128)), 'calib': int(os.environ.get('CALIB_N', 32))}
+SIZES = {'search': int(os.environ.get('SEARCH_N', 128)), 'validation': int(os.environ.get('VAL_N', 128)),
+         'test': int(os.environ.get('TEST_N', 256)), 'calib': int(os.environ.get('CALIB_N', 32))}
 DEVICE = os.environ.get('DEVICE', 'cuda' if torch.cuda.is_available() else 'cpu')
 THREADS = 3                     # 4 threads on this VM are noisy (one straggler vCPU stalls every matmul)
 torch.set_num_threads(THREADS)
