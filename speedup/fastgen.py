@@ -85,11 +85,12 @@ class Decoder:
 
 def tok_per_s(dec, ids, runs=5, new_tokens=64):
     """Tokens per second: best of `runs` timed decodes of `new_tokens` tokens after the same prompt."""
-    cuda = dec.dev.type == 'cuda'; best = 1e9
+    sync = (lambda: torch.cuda.synchronize(dec.dev)) if dec.dev.type == 'cuda' else (torch.mps.synchronize if dec.dev.type == 'mps' else (lambda: None))
+    best = 1e9
     for _ in range(runs + 1):                         # first run is a warm-up
         dec.reset(ids)
-        if cuda: torch.cuda.synchronize(dec.dev)
+        sync()
         t0 = time.perf_counter(); dec.decode(new_tokens)
-        if cuda: torch.cuda.synchronize(dec.dev)
+        sync()
         best = min(best, time.perf_counter() - t0)
     return new_tokens / best

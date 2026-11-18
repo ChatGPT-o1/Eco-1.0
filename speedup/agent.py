@@ -177,9 +177,9 @@ def features(arch, cands, used, s_cur, strikes, sh):
 # ----------------------------------------------------------------------------------------------- one worker = one device
 class Worker:
     def __init__(self, dev, P, sh):
-        self.dev = torch.device(dev); self.cuda = self.dev.type == 'cuda'; self.sh = sh
+        self.dev = torch.device(dev); self.cuda = self.dev.type == 'cuda'; self.gpu = self.dev.type in ('cuda', 'mps'); self.sh = sh
         self.n32 = S.Net(P, dev, half=False, T=J.SEQ)
-        self.n16 = S.Net(P, dev, half=True, T=J.SEQ) if self.cuda else None
+        self.n16 = S.Net(P, dev, half=True, T=J.SEQ) if self.gpu else None
         self.nS = self.n32                                     # the net search-time evaluations run on
         pool = J.split('search').to(self.dev); self.T = pool.shape[1]; self.n = len(pool) // SUBSETS
         self.ids = [pool[k * self.n:(k + 1) * self.n] for k in range(SUBSETS)]      # the rotating search subsets
@@ -200,7 +200,7 @@ class Worker:
     @torch.no_grad()
     def ratio(self, name, arch):
         """Perplexity of `arch` relative to the original on a split, in the architecture's own precision."""
-        net = self.n16 if (arch.half and self.cuda) else self.n32
+        net = self.n16 if (arch.half and self.gpu) else self.n32
         d = (net.seq_nll(self.data[name], arch) - self.base[name]) / (self.T - 1)
         md = d.mean().item(); se = d.std().item() / math.sqrt(len(d))
         return dict(ratio=math.exp(md) if math.isfinite(md) else float('inf'), se_pct=round(100 * se, 3))
@@ -261,7 +261,7 @@ class Worker:
     def bench(self):
         """Seconds for one from-scratch scoring of an architecture on one subset: the layers, and the loss."""
         net = self.nS; full = net.full(); best = [1e9, 1e9]
-        sync = (lambda: torch.cuda.synchronize(self.dev)) if self.cuda else (lambda: None)
+        sync = (lambda: torch.cuda.synchronize(self.dev)) if self.cuda else (torch.mps.synchronize if self.dev.type == 'mps' else (lambda: None))
         for _ in range(3):
             sync(); t0 = time.perf_counter(); x = net.embed(self.ids[0])
             for i in range(net.NL): x = net.layer(i, x, full)
@@ -360,8 +360,12 @@ def update(pol, opt, trans):
 
 def main():
     torch.manual_seed(SEED)
-    devs = [f'cuda:{i}' for i in range(torch.cuda.device_count())] or ['cpu']
-    say(event='setup', devices=[torch.cuda.get_device_name(i) for i in range(len(devs))] if devs[0] != 'cpu' else ['cpu'],
+    want = os.environ.get('DEVICE', 'auto')
+    devs = [f'cuda:{i}' for i in range(torch.cuda.device_count())] if want in ('auto', 'cuda') else []
+    if not devs and want in ('auto', 'mps') and torch.backends.mps.is_available(): devs = ['mps']      # Apple M1/M2/M3 GPU
+    devs = devs or ['cpu']
+    names = [torch.cuda.get_device_name(i) for i in range(len(devs))] if devs[0].startswith('cuda') else devs
+    say(event='setup', devices=names, threads=torch.get_num_threads(),
         loop_seconds=LOOP, search_seqs=J.SIZES['search'], search_subsets=SUBSETS, validation_seqs=J.SIZES['validation'],
         test_seqs=J.SIZES['test'], seq_len=J.SEQ)
     from transformers import AutoModelForCausalLM
@@ -382,7 +386,7 @@ def main():
     say(event='baseline', ppl={k: round(v, 3) for k, v in base_ppl.items()})
 
     # ---- is 16-bit evaluation numerically safe on this model? then search-time scoring runs in 16-bit (faster)
-    if w0.cuda:
+    if w0.gpu:
         d0 = ((w0.n16.seq_nll(w0.data['search'], w0.n16.full()) - w0.base['search']) / (w0.T - 1)).mean().item()
         ok = math.isfinite(d0) and abs(d0) < 0.003; sh.allow_half = ok
         say(event='fp16_check', nll_shift_per_token=d0, usable=ok)

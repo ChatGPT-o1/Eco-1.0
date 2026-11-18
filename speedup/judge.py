@@ -18,7 +18,10 @@ SEQ = int(os.environ.get('SEQ', 256))
 SIZES = {'search': int(os.environ.get('SEARCH_N', 128)), 'validation': int(os.environ.get('VAL_N', 128)),
          'test': int(os.environ.get('TEST_N', 256)), 'calib': int(os.environ.get('CALIB_N', 32))}
 DEVICE = os.environ.get('DEVICE', 'cuda' if torch.cuda.is_available() else 'cpu')
-THREADS = 3                     # 4 threads on this VM are noisy (one straggler vCPU stalls every matmul)
+if DEVICE == 'auto': DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+import sys
+# CPU threads: 3 on the 4-vCPU cloud VM (4 is noisy: one straggler vCPU stalls every matmul); on a Mac, the performance cores
+THREADS = int(os.environ.get('THREADS', max(4, (os.cpu_count() or 8) // 2) if sys.platform == 'darwin' else 3))
 torch.set_num_threads(THREADS)
 
 def _articles(path):
