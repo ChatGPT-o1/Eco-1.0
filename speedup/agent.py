@@ -35,7 +35,9 @@ TMAX, STRIKES = 60, 3
 ROUND_EPISODES = int(os.environ.get('ROUND_EPISODES', 4)); SUBSETS = int(os.environ.get('SUBSETS', 4))
 CAL_RUNS = int(os.environ.get('CAL_RUNS', 5)); CAL_TOKENS = int(os.environ.get('CAL_TOKENS', 64))   # decoder timing: best of N runs of T tokens
 LR, EPOCHS, CLIP, ENT = 0.01, 4, 0.2, 0.01
-TIMING_TOL = float(os.environ.get('TIMING_TOL', 0.01))      # real speed must confirm the latency model within this
+TIMING_TOL = float(os.environ.get('TIMING_TOL', 0.01))
+# fast scoring: predict from the single-edit probe costs; measure on a small slice; full measurement only near the line
+FAST = int(os.environ.get('FAST', 1)); PRED_LO, PRED_HI = 0.5, 2.0; SCREEN_N = int(os.environ.get('SCREEN_N', 8)); SCREEN_Z = 2.0      # real speed must confirm the latency model within this
 FEAT = 18
 T0 = time.time()
 
@@ -107,7 +109,18 @@ def calibrate(w, halves):
 class Shared:
     """What every worker reads: the latency model, usage statistics and single-edit probe costs of the original
     model, and a memo of architectures already scored."""
-    def __init__(self): self.memo = {}; self.evals = 0; self.hits = 0; self.allow_half = False
+    def __init__(self): self.memo = {}; self.evals = 0; self.hits = 0; self.predicted = 0; self.screened = 0; self.overshoot = 0; self.allow_half = False
+
+
+def edit_cost(arch, e, sh):
+    """Predicted increase of search NLL per token from one edit: its cost when probed alone on the original model."""
+    k = e[0]
+    if k == 'half': return 0.0
+    i = e[1]; wi = arch.w[i]; nk = bin(arch.kv[i]).count('1')
+    if k == 'attn': return sh.p_attn[i] * (nk / sh.nkv) ** 0.5
+    if k == 'mlp': return sh.p_mlp[i] - sh.p_w[i][wi]
+    if k == 'kv': return sh.p_kv[i][e[2]]
+    nw = wi + (1 if k == 'p10' else 3); return sh.p_w[i][nw] - sh.p_w[i][wi]
 
 
 def candidates(arch, blocked, allow_half, nkv):
@@ -217,6 +230,19 @@ class Worker:
         return md, se, tmp, s
 
     @torch.no_grad()
+    def screen_edit(self, new, i, acts, valid, k):
+        """Like eval_edit, on the first SCREEN_N sequences only. Returns (mean, standard error)."""
+        t0 = time.perf_counter(); net = self.nS; s = min(i, valid); x = acts[s][:SCREEN_N]
+        for j in range(s, net.NL): x = net.layer(j, x, new)
+        d = (net.nll(x, self.ids[k][:SCREEN_N]) - self.bases[k][:SCREEN_N]) / (self.T - 1); self.eval_s += time.perf_counter() - t0
+        return d.mean().item(), d.std().item() / math.sqrt(len(d))
+
+    @torch.no_grad()
+    def exact(self, arch, k):
+        """Full measurement of an architecture on subset k (from scratch)."""
+        return self._bound(self.nS.seq_nll(self.ids[k], arch), k)
+
+    @torch.no_grad()
     def pool_bound(self, arch):
         """Mean and standard error of the NLL increase over the whole search text (all subsets)."""
         d = torch.cat([(self.nS.seq_nll(self.ids[k], arch) - self.bases[k]) / (self.T - 1) for k in range(SUBSETS)])
@@ -262,8 +288,14 @@ class Worker:
             computed = False
             if e[0] == 'half': nmd, nse = md, se               # search evaluations already run in this precision
             else:
-                hit = sh.memo.get((k, new.key()))
+                hit = sh.memo.get((k, new.key())); pred = md + edit_cost(arch, e, sh) if FAST else None
                 if hit is not None: nmd, nse = hit; sh.hits += 1
+                elif FAST and pred + se < PRED_LO * BUDGET:            # clearly inside the budget: take the prediction
+                    nmd, nse = pred, se; sh.predicted += 1
+                elif FAST and pred > PRED_HI * BUDGET:                  # clearly over: refuse without measuring
+                    nmd, nse = float('inf'), 0.0; sh.predicted += 1
+                elif FAST and SCREEN_N < self.n and self._screen_clear(new, e[1], acts, valid, k):
+                    nmd, nse = self._last; sh.screened += 1
                 else:
                     nmd, nse, tmp, s = self.eval_edit(new, e[1], acts, valid, k); sh.memo[(k, new.key())] = (nmd, nse)
                     computed = True; sh.evals += 1
@@ -279,8 +311,19 @@ class Worker:
             else:
                 r = -0.2; strikes += 1; blocked.add(e); rej.append(e)
             tr.append(dict(F=F, a=a, lp=lp, r=r, phi=phi))
+        if FAST and acc:                                                # the end point is always measured exactly
+            md, se = self.exact(arch, k); sh.evals += 1
+            if not (math.isfinite(md) and md + se <= BUDGET):
+                tr[-1]['r'] -= 10 * (sc - 1) + 1.0; sh.overshoot += 1; sc = 1.0      # take back the speed it claimed
         self.busy_s += time.perf_counter() - t_ep
         return dict(tr=tr, arch=arch, S=sc, md=md, se=se, acc=acc, rej=rej, k=k)
+
+    def _screen_clear(self, new, i, acts, valid, k):
+        """Measure on the small slice; True if the answer is clearly on one side of the budget line."""
+        m, s = self.screen_edit(new, i, acts, valid, k)
+        if m + SCREEN_Z * s < 0.8 * BUDGET: self._last = (m, s); return True
+        if m - SCREEN_Z * s > 1.2 * BUDGET: self._last = (float('inf'), 0.0); return True
+        return False
 
 
 def run_round(workers, pol, gens, n, counter):
@@ -414,6 +457,7 @@ def main():
                     passes=ok, real_speedup=round(w0.tok_s(ep['arch'], CAL_RUNS, CAL_TOKENS) / base_tps, 4) if ok else None)
 
     for w in workers: w.eval_s = w.busy_s = 0.0
+    sh.evals = sh.hits = sh.predicted = sh.screened = sh.overshoot = 0
     t_loop = time.time(); rnd = 0; counter = [0]
     while time.time() - t_loop < LOOP:
         rnd += 1; snap = copy.deepcopy(pol); eps = run_round(workers, snap, gens, ROUND_EPISODES, counter)
@@ -439,7 +483,8 @@ def main():
         el = time.time() - t_loop
         say(event='round', n=rnd, episodes=n_ep, mean_speedup=round(statistics.mean(e['S'] for e in eps), 4),
             max_speedup=round(max(e['S'] for e in eps), 4), mean_edits=round(statistics.mean(len(e['acc']) for e in eps), 1),
-            best_real=round(best['real'], 4), evals_per_s=round(sh.evals / el, 1), memo_hits=sh.hits, loop_s=round(el, 1))
+            best_real=round(best['real'], 4), evals_per_s=round(sh.evals / el, 1), memo_hits=sh.hits, predicted=sh.predicted, screened=sh.screened,
+            overshoot=sh.overshoot, decisions_per_s=round((sh.evals + sh.hits + sh.predicted + sh.screened) / el, 1), loop_s=round(el, 1))
     loop_s = time.time() - t_loop
 
     # ---- after learning: what the trained network does on its own (no sampling), one run per search subset,
@@ -449,7 +494,7 @@ def main():
         ep = w0.episode(pol, g0, k, greedy=True); greedy.append(check(ep)); gate(ep, f'trained network, no sampling, subset {k}')
         hand.append(check(w0.episode(None, g0, k, chooser=lambda F: int(F[:, 17].argmax()))))
     k = max(1, len(hist) // 10)
-    learn = dict(episodes=n_ep, rounds=rnd, loop_seconds=round(loop_s, 1), evals=sh.evals, memo_hits=sh.hits,
+    learn = dict(episodes=n_ep, rounds=rnd, loop_seconds=round(loop_s, 1), evals=sh.evals, memo_hits=sh.hits, predicted=sh.predicted, screened=sh.screened, overshoot=sh.overshoot,
                  worker_eval_seconds=[round(w.eval_s, 1) for w in workers], worker_busy_seconds=[round(w.busy_s, 1) for w in workers],
                  first_tenth_mean_speedup=round(statistics.mean(hist[:k]), 4), last_tenth_mean_speedup=round(statistics.mean(hist[-k:]), 4),
                  trained_network_no_sampling=greedy, hand_rule=hand)
