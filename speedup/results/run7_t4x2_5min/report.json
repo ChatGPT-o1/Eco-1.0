@@ -1,0 +1,211 @@
+{
+ "learning": {
+  "episodes": 384,
+  "rounds": 96,
+  "loop_seconds": 301.2,
+  "evals": 2481,
+  "memo_hits": 850,
+  "first_tenth_mean_speedup": 1.0354,
+  "last_tenth_mean_speedup": 1.19,
+  "trained_greedy_speedup": 1.194,
+  "trained_greedy_edits": 9,
+  "hand_rule_speedup": 1.1981,
+  "hand_rule_edits": 13
+ },
+ "baseline": {
+  "ppl": {
+   "search": 27.136628253764275,
+   "validation": 32.50577568207919,
+   "test": 23.41246591990355
+  },
+  "tok_s": 185.18518518518516
+ },
+ "latency_model": {
+  "fp32": {
+   "ms": {
+    "full": 5.4,
+    "attn_third": 4.49,
+    "mlp_third": 4.652,
+    "mlp50": 4.645,
+    "kv1": 5.019,
+    "mixed": 4.453
+   },
+   "attn_sublayer_ms": 0.091,
+   "kv_group_ms": 0.0063,
+   "mlp_sublayer_ms": 0.0749,
+   "mlp_width_part_ms": 0.0504,
+   "check_pred_ms": 4.447,
+   "check_real_ms": 4.453,
+   "check_error_pct": -0.13
+  },
+  "fp16": {
+   "ms": {
+    "full": 4.812,
+    "attn_third": 3.898,
+    "mlp_third": 4.22,
+    "mlp50": 4.376,
+    "kv1": 4.506,
+    "mixed": 4.013
+   },
+   "attn_sublayer_ms": 0.0914,
+   "kv_group_ms": 0.0051,
+   "mlp_sublayer_ms": 0.0591,
+   "mlp_width_part_ms": 0.0291,
+   "check_pred_ms": 4.012,
+   "check_real_ms": 4.013,
+   "check_error_pct": -0.02
+  }
+ },
+ "devices": [
+  "cuda:0",
+  "cuda:1"
+ ],
+ "best": {
+  "architecture": {
+   "precision": "fp16",
+   "attention_removed": [
+    7,
+    12,
+    29
+   ],
+   "mlp_removed": [],
+   "kv_groups_removed": {},
+   "mlp_width": {
+    "5": 0.7
+   },
+   "attn": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false
+   ],
+   "kv": [
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7,
+    7
+   ],
+   "w": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  "edits": 5,
+  "params": 131062464,
+  "params_original": 134515008,
+  "tok_s": 220.31,
+  "tok_s_original": 184.28,
+  "real_speedup": 1.1955,
+  "predicted_speedup": 1.1925,
+  "search_bound": 1.0973,
+  "validation": {
+   "ratio": 1.0970231275950069,
+   "se_pct": 0.493
+  },
+  "test": {
+   "ratio": 1.0959324724423436,
+   "se_pct": 0.365
+  },
+  "search": {
+   "ratio": 1.0917217831370414,
+   "se_pct": 0.505
+  },
+  "samples": [
+   {
+    "prompt": "The history of the city began in",
+    "original": " 1870 when the first railroad line was built. The city was named after the city of New Orleans, Louisiana.\nThe city was founded in 1870 by the Louisiana",
+    "edited": " 1836 when the city was founded by the French. The French built a fort on the site of the present-day city center. The French named the city \u201cLa Cit\u00e9 de"
+   },
+   {
+    "prompt": "In 1998, the band released",
+    "original": " their first album, \"The Sound of Music,\" which featured a mix of traditional folk and rock elements. The album became a massive success, and it helped to establish the band as a major force in",
+    "edited": " their first album, \"The Sound of Silence,\" which featured a track called \"The Sound of Silence.\" This album became an instant hit and solidified the band's status as one of the most influential artists"
+   },
+   {
+    "prompt": "The species is found in",
+    "original": " the southern part of the island, in the southern part of the island, and in the northern part of the island.\nThe species is found in the southern part of the island, in the southern",
+    "edited": " the western part of the country, in the mountains of the north and south of the country, and in the south of the country.\nThe species is found in the western part of the country,"
+   }
+  ]
+ }
+}
